@@ -1,0 +1,295 @@
+;; Author: najjt (https://github.com/najjt)
+;; * Layers made by gsinclair (https://github.com/gsinclair) (https://gist.github.com/gsinclair/f4ab34da53034374eb6164698a0a8ace)
+;;
+;; --- Cheatsheets ---
+;;
+;; Layers       Selection
+;;
+;;  w            u i o
+;; a s d f      h j k l
+;;      c v      n m , .
+;;
+;; Modifiers
+;;
+;; !  | mandatory
+;; #  | optional
+;; C  | left_command
+;; T  | left_control
+;; O  | left_option
+;; S  | left_shift
+;; F  | fn
+;; Q  | right_command
+;; W  | right_control
+;; E  | right_option
+;; R  | right_shift
+;; P  | caps_lock
+;; !! | mandatory command + control + optional + shift (hyper)
+;; ## | optional any
+
+{
+ :simlayers {
+             :w-mode {:key :w}    ; text selection
+             :e-mode {:key :e}    ; text navigation
+             :r-mode {:key :r}    ; text deletion
+             :a-mode {:key :a}    ; hjkl navigation + tab + page down/up
+             :s-mode {:key :s}    ; punctuation         ? ! : ; ' " ` ~
+             :d-mode {:key :d}    ; arithmetic          + - * / = % < > #
+             :f-mode {:key :f}    ; delimeters          ( ) [ ] { } and ! ? $
+             :c-mode {:key :c}    ; remaining symbols   ^ | \ _ @
+             :v-mode {:key :v}    ; number pad
+             }
+
+ :devices {
+           :hhkb-classic [{:product_id 32 :vendor_id 1278}]
+           :internal-keyboard [{:product_id 641 :vendor_id 1452}]
+           }
+
+ :main [
+
+        {:des "hhkb-specific keybindings"
+         :rules [:hhkb-classic
+                 [:##left_control :left_control nil {:alone :escape}]]}
+
+        {:des "internal keyboard-specific keybindings"
+         :rules [:internal-keyboard
+                 [:##caps_lock :left_control nil {:alone :escape}]]}
+
+        {:des "yabai keybindings"
+         :rules [
+                 ;; change layout
+                 [:!TOa "/opt/homebrew/bin/yabai -m space --layout bsp"]
+                 [:!TOd "/opt/homebrew/bin/yabai -m space --layout float"]
+                 [:!TOs "/opt/homebrew/bin/yabai -m space --layout $(/opt/homebrew/bin/yabai -m query --spaces --space | jq -r 'if .type == \"bsp\" then \"float\" else \"bsp\" end')"]
+
+                 ;; restart yabai
+                 [:!TSOr "/opt/homebrew/bin/yabai --restart-service"]
+
+                 ;; --- open applications ---
+
+                 ;; open terminal
+                 [:!TOreturn_or_enter "open /Applications/WezTerm.app"]
+
+                 ;; open browser
+                 [:!TSreturn_or_enter "open /Applications/qutebrowser.app"]
+
+                 ;; open emacs
+                 [:!Treturn_or_enter "/opt/homebrew/bin/emacsclient -c -n -a '' -e '(select-frame-set-input-focus (selected-frame))'"]
+
+                 ;; --- focus navigation ---
+
+                 ;; focus window
+                 [:!Oh "/opt/homebrew/bin/yabai -m window --focus west"]
+                 [:!Oj "/opt/homebrew/bin/yabai -m window --focus south"]
+                 [:!Ok "/opt/homebrew/bin/yabai -m window --focus north"]
+                 [:!Ol "/opt/homebrew/bin/yabai -m window --focus east"]
+
+                 ;; focus desktop
+                 [:!Ox "/opt/homebrew/bin/yabai -m space --focus recent"]
+                 [:!Oz "/opt/homebrew/bin/yabai -m space --focus prev"]
+                 [:!Oc "/opt/homebrew/bin/yabai -m space --focus next"]
+                 [:!O1 "/opt/homebrew/bin/yabai -m space --focus 1"]
+                 [:!O2 "/opt/homebrew/bin/yabai -m space --focus 2"]
+                 [:!O3 "/opt/homebrew/bin/yabai -m space --focus 3"]
+                 [:!O4 "/opt/homebrew/bin/yabai -m space --focus 4"]
+                 [:!O5 "/opt/homebrew/bin/yabai -m space --focus 5"]
+                 [:!O6 "/opt/homebrew/bin/yabai -m space --focus 6"]
+                 [:!O7 "/opt/homebrew/bin/yabai -m space --focus 7"]
+                 [:!O8 "/opt/homebrew/bin/yabai -m space --focus 8"]
+                 [:!O9 "/opt/homebrew/bin/yabai -m space --focus 9"]
+                 [:!O0"/opt/homebrew/bin/yabai -m space --focus 10"]
+
+                 ;; focus monitor
+                 [:!TOz "/opt/homebrew/bin/yabai -m display --focus prev"]
+                 [:!TOc "/opt/homebrew/bin/yabai -m display --focus next"]
+
+                 ;; --- resizing ---
+
+                 ;; toggle window native fullscreen
+                 [:!Of "/opt/homebrew/bin/yabai -m window --toggle zoom-fullscreen"]
+
+                 ;; toggle float and move to center of screen
+                 [:!Ot "/opt/homebrew/bin/yabai -m window --toggle float --grid 4:4:1:1:2:2"]
+
+                 ;; balance size of windows
+                 [:!SO0 "/opt/homebrew/bin/yabai -m space --balance"]
+
+                 ;; increase window size
+                 [:!SOw "/opt/homebrew/bin/yabai -m window --resize top:0:-20"]
+                 [:!SOa "/opt/homebrew/bin/yabai -m window --resize left:-20:0"]
+                 [:!SOs "/opt/homebrew/bin/yabai -m window --resize bottom:0:20"]
+                 [:!SOd "/opt/homebrew/bin/yabai -m window --resize right:20:0"]
+
+                 ;; decrease window size
+                 [:!SCw "/opt/homebrew/bin/yabai -m window --resize top:0:20"]
+                 [:!SCa "/opt/homebrew/bin/yabai -m window --resize left:20:0"]
+                 [:!SCs "/opt/homebrew/bin/yabai -m window --resize bottom:0:-20"]
+                 [:!SCd "/opt/homebrew/bin/yabai -m window --resize right:-20:0"]
+
+                 ;; --- moving windows ---
+
+                 ;; move windows
+                 [:!STw "/opt/homebrew/bin/yabai -m window --move rel:0:-20"]
+                 [:!STa "/opt/homebrew/bin/yabai -m window --move rel:-20:0"]
+                 [:!STs "/opt/homebrew/bin/yabai -m window --move rel:0:20"]
+                 [:!STd "/opt/homebrew/bin/yabai -m window --move rel:20:0"]
+
+                 ;; swap window
+                 [:!SOh "/opt/homebrew/bin/yabai -m window --swap west"]
+                 [:!SOj "/opt/homebrew/bin/yabai -m window --swap south"]
+                 [:!SOk "/opt/homebrew/bin/yabai -m window --swap north"]
+                 [:!SOl "/opt/homebrew/bin/yabai -m window --swap east"]
+
+                 ;; send window to desktop n and follow focus
+                 [:!SOx "/opt/homebrew/bin/yabai -m window --space recent && /opt/homebrew/bin/yabai -m space --focus recent"]
+                 [:!SOz "/opt/homebrew/bin/yabai -m window --space prev && /opt/homebrew/bin/yabai -m space --focus prev"]
+                 [:!SOc "/opt/homebrew/bin/yabai -m window --space next && /opt/homebrew/bin/yabai -m space --focus next"]
+                 [:!SO1 "/opt/homebrew/bin/yabai -m window --space 1 && /opt/homebrew/bin/yabai -m space --focus 1"]
+                 [:!SO2 "/opt/homebrew/bin/yabai -m window --space 2 && /opt/homebrew/bin/yabai -m space --focus 2"]
+                 [:!SO3 "/opt/homebrew/bin/yabai -m window --space 3 && /opt/homebrew/bin/yabai -m space --focus 3"]
+                 [:!SO4 "/opt/homebrew/bin/yabai -m window --space 4 && /opt/homebrew/bin/yabai -m space --focus 4"]
+
+                 ;; create new desktop, send window there and follow focus
+                 [:!SOn "/opt/homebrew/bin/yabai -m space --create && index=\"$(/opt/homebrew/bin/yabai -m query --spaces --display | /opt/homebrew/bin/jq 'map(select(.\"is-native-fullscreen\" == false))[-1].index')\" && /opt/homebrew/bin/yabai -m window --space \"${index}\" && /opt/homebrew/bin/yabai -m space --focus \"${index}\""]
+
+                 ;; send window to monitor and follow focus
+                 [:!OCz "/opt/homebrew/bin/yabai -m window --display prev && /opt/homebrew/bin/yabai -m display --focus prev"]
+                 [:!OCc "/opt/homebrew/bin/yabai -m window --display next && /opt/homebrew/bin/yabai -m display --focus next"]
+
+                 ;; --- misc ---
+
+                 ;; toggle opacity for current window
+                 ;;[:!Oo "/opt/homebrew/bin/yabai -m window --opacity $(/opt/homebrew/bin/yabai -m query --windows --window | jq -r 'if .opacity < 1.0 then 0.95 else 1.0 end')"]
+                 ]}
+
+        {:des "w-layer for text selection"
+         :rules [:w-mode
+                  [:##u :!Sleft_arrow]                  ; e -> u        shift+left
+                  [:##i :!Sright_arrow]                 ; e -> i        shift+right
+                  [:##j :!SOleft_arrow]                 ; e -> j        shift+opt+left
+                  [:##k :!SOright_arrow]                ; e -> k        shift+opt+right
+                  [:##h :!SCleft_arrow]                 ; e -> h        shift+cmd+left
+                  [:##l :!SCright_arrow]                ; e -> l        shift+cmd+right
+                ]
+         }
+
+        {:des "e-layer for text navigation"
+         :rules [:e-mode
+                  [:##u :left_arrow]                    ; e -> u         left
+                  [:##i :right_arrow]                   ; e -> i         right
+
+                  [:##h :!Cleft_arrow]                  ; e -> h         cmd+left
+                  [:##j :!Oleft_arrow]                  ; e -> j         opt+left
+                  [:##k :!Oright_arrow]                 ; e -> k         opt+right
+                  [:##l :!Cright_arrow]                 ; e -> l         cmd+right
+
+                  [:n :return_or_enter]                 ; e -> n         enter
+                  [:m :return_or_enter]                 ; e -> m         enter
+                ]
+         }
+
+        {:des "r-layer for text deletion"
+         :rules [:r-mode
+                  [:##u :delete_or_backspace]           ; r -> j          delete word backwards
+                  [:##i :delete_forward]                ; r -> j          delete word backwards
+
+                  [:##h :!Cdelete_or_backspace]         ; r -> h          delete to beginning of line
+                  [:##j :!Odelete_or_backspace]         ; r -> j          delete word backwards
+                  [:##k :!Odelete_forward]              ; r -> k          delete word forwards
+                  [:##l :!Cdelete_forward]              ; r -> l          delete to end of line
+                ]
+         }
+
+        {:des "a-layer for hjkl movement + tab + page down/up"
+         :rules [:a-mode
+                  [:##u :tab]                           ; a -> u        tab
+                  [:##i :tab]                           ; a -> i        tab
+
+                  [:##h :left_arrow]                    ; a -> h        left
+                  [:##j :down_arrow]                    ; a -> j        down
+                  [:##k :up_arrow]                      ; a -> k        up
+                  [:##l :right_arrow]                   ; a -> l        right
+
+                  [:comma :page_down]                   ; a -> ,        page down
+                  [:period :page_up]                    ; a -> .        page up
+                ]
+         }
+
+        {:des "s-layer for punctuation"
+         :rules [:s-mode
+                 [:##u :!Oquote]                        ; s -> u        '
+                 [:##i :!SOquote]                       ; s -> i        "
+                 [:##o :grave_accent_and_tilde]         ; s -> o        `
+
+                 [:##j :comma]                          ; s -> j        ,
+                 [:##k :period]                         ; s -> k        .
+                 [:##l :!S7]                            ; s -> l        &
+
+                 [:##m :!Osemicolon]                    ; s -> m        ;
+                 [:##comma :!SOsemicolon]               ; s -> ,        :
+                 [:##period :!Sgrave_accent_and_tilde]  ; s -> .        ~
+                ]
+         }
+
+        {:des "d-layer for arithmetic symbols"
+         :rules [:d-mode
+                  [:##u :!Scomma]                       ; d -> u        <
+                  [:##i :!Speriod]                      ; d -> i        >
+                  [:##o :!S3]                           ; d -> o        #
+
+                  [:##j :!Sequal_sign]                  ; d -> j        +
+                  [:##k :hyphen]                        ; d -> k        -
+                  [:##l :equal_sign]                    ; d -> l        =
+
+                  [:##m :!S8]                           ; d -> m        *
+                  [:##comma :slash]                     ; d -> ,        /
+                  [:##period :!S5]                      ; d -> .        %
+                ]
+         }
+
+        {:des "f-layer for delimeters and ! ? $"
+         :rules [:f-mode
+                 [:##u :!SOopen_bracket]                ; f -> u         {
+                 [:##i :!SOclose_bracket]               ; f -> i         }
+                 [:##o :!S1]                            ; f -> o         !
+
+                 [:##j :!S9]                            ; f -> j         (
+                 [:##k :!S0]                            ; f -> k         )
+                 [:##l :!Sslash]                        ; f -> l         ?
+
+                 [:##m :!Oopen_bracket]                 ; f -> m         [
+                 [:##comma :!Oclose_bracket]            ; f -> ,         ]
+                 [:##period :!S4]                       ; f -> .         $
+                ]
+         }
+
+        {:des "c-layer for remaining symbols ^ | \\ _ @"
+         :rules [:c-mode
+                 [:##u :!S6]                            ; c -> u        ^
+
+                 [:##j :!Sbackslash]                    ; c -> j        |
+                 [:##k :!S2]                            ; c -> k        @
+
+                 [:##m :backslash]                      ; c -> m        \
+                 [:##comma :!Shyphen]                   ; c -> ,        _
+                ]
+        }
+
+        {:des "v-layer for number pad"
+         :rules [:v-mode
+                 [:u :7]
+                 [:i :8]
+                 [:o :9]
+
+                 [:j :4]
+                 [:k :5]
+                 [:l :6]
+
+                 [:n :0]
+                 [:m :1]
+                 [:comma :2]
+                 [:period :3]
+                ]
+        }
+
+ ]
+}

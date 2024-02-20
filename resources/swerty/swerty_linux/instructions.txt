@@ -1,0 +1,27 @@
+Installation instructions: Swerty for Linux
+
+Add the contents of se.txt to the end of the file /usr/share/X11/xkb/symbols/se.
+Then look up the following section in the file /usr/share/X11/xkb/rules/evdev.xml:
+
+    <layout>
+      <configItem>
+        <name>se</name>
+        <shortDescription>Swe</shortDescription>
+        <description>Sweden</description>
+        <languageList><iso639Id>swe</iso639Id></languageList>
+      </configItem>
+      <variantList>
+
+Add the following variant block after the line <variantList>:
+
+        <variant>
+          <configItem>
+            <name>swerty</name>
+            <description>Swerty</description>
+          </configItem>
+        </variant>
+
+Finally, after the line "! variant" in the file /usr/share/X11/xkb/rules/evdev.lst add the following line:
+  swerty          se: Swerty
+
+Now Swerty should show up as one of the alternative keyboard layouts for Swedish. 

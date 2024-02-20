@@ -1,0 +1,13 @@
+dsvplay https://play.dsv.su.se/
+st mbook http://localhost:8384/
+st mpi http://192.168.1.48:8384/#
+daisy https://daisy.dsv.su.se/student/aktuellt.jspa
+libris https://libris.kb.se/
+chatgpt https://chat.openai.com/
+mail https://mail.proton.me/u/0/inbox
+router admin http://192.168.1.1/Main_Login.asp
+mooc https://java-programming.mooc.fi/
+ilearn https://nextilearn.dsv.su.se/my/
+cryptdrive https://cryptpad.fr/drive/
+dotfiles https://github.com/najjt/dotfiles
+overleaf https://www.overleaf.com/project
