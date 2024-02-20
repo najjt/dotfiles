@@ -1,0 +1,35 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("init.org"
+ (filename . "~/.emacs.d/init.org")
+ (front-context-string . "#+TITLE: Emacs C")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 26041 3078 354930 0))
+("home"
+ (filename . "~/")
+ (front-context-string . ".emacs.d\n  -rw-r")
+ (rear-context-string . "08 28 Jan 13:22 ")
+ (position . 593)
+ (last-modified 26038 18334 159280 0))
+("notes"
+ (filename . "~/Documents/notes/")
+ (front-context-string . "org\n  drwx------")
+ (rear-context-string . "52 27 Jan 18:17 ")
+ (position . 469)
+ (last-modified 26037 26485 467809 0))
+("alda"
+ (filename . "~/Documents/kurser/alda/")
+ (front-context-string . "litt\n  drwxr-xr-")
+ (rear-context-string . "96 16 Jan 15:09 ")
+ (position . 188)
+ (last-modified 26037 26481 331748 0))
+("vesk"
+ (filename . "~/Documents/kurser/vesk/")
+ (front-context-string)
+ (rear-context-string . "92 15 Jan 14:23 ")
+ (position . 368)
+ (last-modified 26037 26477 737888 0))
+)
