@@ -32,4 +32,6 @@ export PATH="/opt/homebrew/bin:$PATH"
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
+{{- else if eq .chezmoi.os "linux" }}
+eval "$(home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{- end }}
