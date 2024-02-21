@@ -3,8 +3,8 @@ Welcome to my dotfiles repository! I use [chezmoi](https://www.chezmoi.io/) to m
 * **Shell**: zsh
 * **Terminal**: WezTerm
 * **Editor**: Emacs, see my [literate configuration](.emacs.d/init.org)
-* **Browser**: qutebrowser & Firefox
-* **OS**: macOS
+* **Browser**: qutebrowser
+* **OS**: macOS/Linux Mint
 * **WM**: yabai
 * **Statusbar**: Sketchybar
 
