@@ -2,5 +2,7 @@
 .config/yabai
 .config/sketchybar
 .config/karabiner*
+.qutebrowser
 {{- else if ne .chezmoi.os "linux" }}
+.config/qutebrowser
 {{- end }}
