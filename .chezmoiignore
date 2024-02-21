@@ -1,0 +1,6 @@
+{{- if ne .chezmoi.os "darwin" }}
+.config/yabai
+.config/sketchybar
+.config/karabiner*
+{{- else if ne .chezmoi.os "linux" }}
+{{- end }}
