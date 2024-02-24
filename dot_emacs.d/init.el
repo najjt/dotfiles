@@ -432,22 +432,16 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
   :init
   (persp-mode))
 
+(use-package persp-projectile
+  :after perspective)
+
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-17"))
 
 (use-package nerd-icons)
 
-(use-package mood-line
-  :config
-  ;(mood-line-mode 1)
-  (column-number-mode t)) ; show column no. in modeline
-
 (use-package standard-themes)
 
 (use-package doom-themes)
-
-(use-package spaceway-theme
-  :ensure nil
-  :load-path "elisp/spaceway/")
 
 ;; disable border around modelines
 (custom-set-faces
@@ -476,24 +470,19 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
       "^\\*vterm.*\\*$"  vterm-mode
       "^\\*ansi-term.*\\*$"  ansi-term-mode
       "^\\*tex-shell.*\\*$"
-      "^\\*Flycheck.*\\*$"))
+      "^\\*Flycheck.*\\*$"
+      "^\\*Buffer List*\\*$"))
   (popper-mode 1)
   (popper-echo-mode 1)
   (setq popper-mode-line " POP "))
 
 ;; turn on line numbers and highlight current line
-(dolist (hook '(fundamental-mode-hook conf-mode-hook prog-mode-hook text-mode-hook markdown-mode-hook org-mode-hook))
+(dolist (hook '(fundamental-mode conf-mode-hook prog-mode-hook text-mode-hook markdown-mode-hook org-mode-hook))
   (add-hook hook 'display-line-numbers-mode)
-  ;(add-hook hook 'hl-line-mode)
   )
 
 ;; relative line numbers
 (setq display-line-numbers-type 'relative)
-
-(setq frame-title-format
-      '((:eval (if (buffer-file-name)
-                   (abbreviate-file-name (buffer-file-name))
-                 "%b"))))
 
 (use-package dashboard
   :demand t
@@ -516,11 +505,6 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
         (lambda (frame)
           (with-selected-frame frame
             (dashboard-open))))
-
-(use-package darkroom
-  :bind ("C-x f" . darkroom-tentative-mode)
-  :custom
-  (darkroom-text-scale-increase 0.2))
 
 (use-package perfect-margin
   :diminish
@@ -679,7 +663,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :init
-  (setq projectile-switch-project-action #'projectile-find-file)
+  (setq projectile-switch-project-action #'projectile-persp-switch-project)
   :config
   (projectile-mode 1)
   (setq projectile-ignored-projects '("~/.cfg" "~/.emacs.d" "~/Projects/pathfinder")
@@ -1054,6 +1038,9 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 
 ;; display right and left fringe
 (fringe-mode '(8 . 8))
+
+;; turn off blinking cursor
+(blinking-cursor-mode 0)
 
 ;; soft-wrap text
 (global-visual-line-mode t)
