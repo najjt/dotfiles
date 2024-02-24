@@ -1263,7 +1263,6 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
   (use-package org
     :pin nongnu
     :ensure org-contrib ; needed for org-contacts
-    :diminish org-indent-mode
     :hook (org-mode . org-indent-mode)
     :bind (("C-c a" . org-agenda)
            ("C-c c" . org-capture)

@@ -718,7 +718,6 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (use-package org
   :pin nongnu
   :ensure org-contrib ; needed for org-contacts
-  :diminish org-indent-mode
   :hook (org-mode . org-indent-mode)
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
