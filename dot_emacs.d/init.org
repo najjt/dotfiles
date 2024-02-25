@@ -316,23 +316,6 @@ Automatically update packages every seven days with [[https://github.com/rranell
 
 #+end_src
 
-** Diminish
-
-[[https://github.com/emacsmirror/diminish][Diminish]] hides minor modes from the modeline.
-
-#+begin_src emacs-lisp
-
-  (use-package diminish
-    :diminish visual-line-mode
-    :diminish centered-window-mode
-    :diminish eldoc-mode
-    :diminish evil-collection-unimpaired-mode
-    :diminish org-indent-mode
-    :diminish lsp-lens-mode
-    :diminish lsp-modeline-workspace-status-mode)
-
-#+end_src
-
 * Global Functionalities
 ** User Information
 
@@ -916,7 +899,7 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
     (setq dashboard-center-content t
           dashboard-set-footer nil
           dashboard-display-icons-p t
-          dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name))
+          dashboard-projects-switch-function 'projectile-persp-switch-project))
 
   ;; hook dashboard-open to creation of new frame
   (add-hook 'after-make-frame-functions
@@ -1163,7 +1146,7 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
     :bind-keymap
     ("C-c p" . projectile-command-map)
     :init
-    (setq projectile-switch-project-action #'projectile-persp-switch-project)
+    (setq projectile-switch-project-action #'projectile-dired)
     :config
     (projectile-mode 1)
     (setq projectile-ignored-projects '("~/.cfg" "~/.emacs.d" "~/Projects/pathfinder")
@@ -1677,7 +1660,7 @@ PlantUML Mode, a major mode for editing PlantUML sources.
   (fringe-mode '(8 . 8))
 
   ;; turn off blinking cursor
-  (blinking-cursor-mode 0)
+  (blink-cursor-mode 0)
 
   ;; soft-wrap text
   (global-visual-line-mode t)
@@ -1712,6 +1695,24 @@ PlantUML Mode, a major mode for editing PlantUML sources.
 
   ;; add a newline automatically at the end of the file upon save
   (setq require-final-newline t)
+
+#+end_src
+
+* Diminish
+
+[[https://github.com/emacsmirror/diminish][Diminish]] hides minor modes from the modeline.
+
+#+begin_src emacs-lisp
+
+  (use-package diminish
+    :diminish visual-line-mode
+    :diminish centered-window-mode
+    :diminish eldoc-mode
+    :diminish evil-collection-unimpaired-mode
+    :diminish org-indent-mode
+    :diminish abbrev-mode
+    :diminish lsp-lens-mode
+    :diminish lsp-modeline-workspace-status-mode)
 
 #+end_src
 

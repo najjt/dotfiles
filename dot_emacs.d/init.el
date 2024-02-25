@@ -100,15 +100,6 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
   :config
   (auto-package-update-maybe))
 
-(use-package diminish
-  :diminish visual-line-mode
-  :diminish centered-window-mode
-  :diminish eldoc-mode
-  :diminish evil-collection-unimpaired-mode
-  :diminish org-indent-mode
-  :diminish lsp-lens-mode
-  :diminish lsp-modeline-workspace-status-mode)
-
 (setq user-full-name "Martin Lönn Andersson")
 (setq user-mail-address "mlonna@pm.me")
 
@@ -498,7 +489,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
   (setq dashboard-center-content t
         dashboard-set-footer nil
         dashboard-display-icons-p t
-        dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name))
+        dashboard-projects-switch-function 'projectile-persp-switch-project))
 
 ;; hook dashboard-open to creation of new frame
 (add-hook 'after-make-frame-functions
@@ -663,7 +654,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :init
-  (setq projectile-switch-project-action #'projectile-persp-switch-project)
+  (setq projectile-switch-project-action #'projectile-dired)
   :config
   (projectile-mode 1)
   (setq projectile-ignored-projects '("~/.cfg" "~/.emacs.d" "~/Projects/pathfinder")
@@ -1039,7 +1030,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (fringe-mode '(8 . 8))
 
 ;; turn off blinking cursor
-(blinking-cursor-mode 0)
+(blink-cursor-mode 0)
 
 ;; soft-wrap text
 (global-visual-line-mode t)
@@ -1074,3 +1065,13 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 
 ;; add a newline automatically at the end of the file upon save
 (setq require-final-newline t)
+
+(use-package diminish
+  :diminish visual-line-mode
+  :diminish centered-window-mode
+  :diminish eldoc-mode
+  :diminish evil-collection-unimpaired-mode
+  :diminish org-indent-mode
+  :diminish abbrev-mode
+  :diminish lsp-lens-mode
+  :diminish lsp-modeline-workspace-status-mode)
