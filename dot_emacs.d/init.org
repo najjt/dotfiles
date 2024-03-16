@@ -2,7 +2,7 @@
 #+AUTHOR: Martin Lönn Andersson
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el
 
-* Table of Contents
+* Table of Contents :toc:
 - [[#preamble][Preamble]]
 - [[#startup][Startup]]
   - [[#early-init][Early Init]]
@@ -58,7 +58,6 @@
   - [[#org][Org]]
   - [[#calendar][Calendar]]
   - [[#plantuml--graphviz][PlantUML & Graphviz]]
-  - [[#mail][Mail]]
   - [[#pdf-tools][PDF Tools]]
 - [[#miscellaneous][Miscellaneous]]
 - [[#diminish][Diminish]]
