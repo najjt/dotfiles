@@ -426,7 +426,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (use-package persp-projectile
   :after perspective)
 
-(add-to-list 'default-frame-alist '(font . "Ubuntu Mono-17"))
+(add-to-list 'default-frame-alist '(font . "Jetbrains Mono-15"))
 
 (use-package nerd-icons)
 
@@ -907,117 +907,6 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
   :custom
   (org-plantuml-jar-path (expand-file-name "~/tools/plantuml/plantuml.jar")))
 
-(use-package mu4e
-  :ensure nil
-  :defer 20 ; load 20 s after startup
-  :commands (mu4e make-mu4e-context)
-  :bind
-  (:map mu4e-view-mode-map
-    ("e" . mu4e-view-save-attachment))
-  :config
-  (add-to-list 'gnutls-trustfiles (expand-file-name "~/.config/protonmail/bridge/cert.pem"))
-
-  (setq mail-user-agent 'mu4e-user-agent) ; mu4e default email client
-  (set-variable 'read-mail-command 'mu4e) ; mu4e default email reader
-
-  (setq
-   ;; User info
-   user-mail-address "mlonna@pm.me"
-   user-full-name  "Martin Lönn Andersson"
-
-   ;; Maildir setup
-   mu4e-root-maildir "~/.mail"
-   mu4e-attachment-dir "~/Downloads"
-   mu4e-maildir-shortcuts
-   '((:maildir "/INBOX"           :key ?i)
-     (:maildir "/Folders/viktigt" :key ?v)
-     (:maildir "/Folders/orders"  :key ?b))
-
-   mu4e-contexts
-   `(,(make-mu4e-context
-       :name "prof"
-       :match-func
-       (lambda (msg)
-         (when msg
-           (mu4e-message-contact-field-matches msg
-                                               :to "mlonna@pm.me")))
-       :vars '((user-mail-address . "mlonna@pm.me" )
-               (user-full-name . "Martin Lönn Andersson")
-               (mu4e-drafts-folder . "/Drafts")
-               (mu4e-sent-folder . "/Sent")
-               (mu4e-refile-folder . "/Archive")
-               (mu4e-trash-folder . "/Trash")))
-
-     ,(make-mu4e-context
-       :name "me"
-       :match-func
-       (lambda (msg)
-         (when msg
-           (mu4e-message-contact-field-matches msg
-                                               :to "nitramla@pm.me")))
-       :vars '((user-mail-address . "nitramla@pm.me")
-               (user-full-name . "Martin")
-               (mu4e-drafts-folder . "/Drafts")
-               (mu4e-sent-folder . "/Sent")
-               (mu4e-refile-folder . "/Archive")
-               (mu4e-trash-folder . "/Trash")))
-
-     ,(make-mu4e-context
-       :name "safe"
-       :match-func
-       (lambda (msg)
-         (when msg
-           (mu4e-message-contact-field-matches msg
-                                               :to "hemlg@pm.me")))
-       :vars '((user-mail-address . "hemlg@pm.me")
-               (user-full-name . "Martin")
-               (mu4e-drafts-folder . "/Drafts")
-               (mu4e-sent-folder . "/Sent")
-               (mu4e-refile-folder . "/Archive")
-               (mu4e-trash-folder . "/Trash")))
-
-     ,(make-mu4e-context
-       :name "trash"
-       :match-func
-       (lambda (msg)
-         (when msg
-           (mu4e-message-contact-field-matches msg
-                                               :to "trshcan@pm.me")))
-       :vars '((user-mail-address . "trshcan@pm.me")
-               (user-full-name . "Martin")
-               (mu4e-drafts-folder . "/Drafts")
-               (mu4e-sent-folder . "/Sent")
-               (mu4e-refile-folder . "/Archive")
-               (mu4e-trash-folder . "/Trash"))))
-
-   ;; start with the first (default) context
-   mu4e-context-policy 'pick-first
-   ;; ask for context if no context matches
-   mu4e-compose-context-policy 'ask
-
-   ;; Fetch mail
-   mu4e-get-mail-command "mbsync -a"
-   mu4e-change-filenames-when-moving t   ; needed for mbsync
-   mu4e-update-interval 120              ; update every 2 minutes
-
-   ;; Send mail
-   message-send-mail-function 'message-send-mail-with-sendmail
-   smtpmail-auth-credentials "~/.authinfo"
-   smtpmail-smtp-server "127.0.0.1"
-   smtpmail-smtp-service 1025
-   smtpmail-stream-type 'starttls
-
-   ;; Other options
-   mu4e-confirm-quit nil
-   ;; re-flow mail so it's not hard wrapped
-   mu4e-compose-format-flowed t
-   ;; hide annoying retrieving msg in mini buffer
-   mu4e-hide-index-messages t
-   mu4e-index-update-error-warning 'nil))
-
-(my/leader-keys
-  "m" '(mu4e :which-key "open mail"))
-
 (use-package pdf-tools
   :mode "\\.pdf\\'"
   :custom
@@ -1031,6 +920,8 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 
 ;; turn off blinking cursor
 (blink-cursor-mode 0)
+
+(column-number-mode)
 
 ;; soft-wrap text
 (global-visual-line-mode t)

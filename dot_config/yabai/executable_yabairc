@@ -30,6 +30,8 @@ yabai -m config                                          \
                 auto_balance                off          \
                 external_bar                main:0:25    \
                                                          \
+                focus_follows_mouse         autofocus    \
+                                                         \
                 top_padding                 20           \
                 bottom_padding              20           \
                 left_padding                20           \
