@@ -510,137 +510,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
   :ensure nil
   :mode ("\\.edn\\'" "\\.lua\\'"))
 
-(use-package lsp-mode
-  :commands lsp
-  :diminish lsp-lens-mode
-  :hook
-  ((java-mode tex-mode) . lsp-deferred)
-
-  :custom
-  (lsp-keymap-prefix "C-c l")
-  (lsp-auto-guess-root nil)
-  (lsp-prefer-flymake nil) ; use flycheck instead of flymake
-  (lsp-enable-file-watchers nil)
-  (lsp-enable-folding nil)
-  (read-process-output-max (* 1024 1024))
-  (lsp-keep-workspace-alive nil)
-  (lsp-enable-which-key-integration t)
-
-  ;; headerline breadcrumb
-  (lsp-headerline-breadcrumb-segments '(path-up-to-project file))
-  (lsp-headerline-breadcrumb-mode)
-
-  :bind
-  (:map lsp-mode-map ("C-c C-f" . lsp-format-buffer))
-
-  :config
-  (setq lsp-headerline-breadcrumb-icons-enable nil
-        lsp-modeline-code-actions-enable nil
-        lsp-signature-auto-activate t
-        lsp-signature-render-documentation t
-        lsp-modeline-diagnostics-enable nil
-        lsp-eldoc-enable-hover t)
-
-  (defun lsp-update-server ()
-    "Update LSP server."
-    (interactive)
-    ;; equals to `C-u M-x lsp-install-server'
-    (lsp-install-server t))
-
-  ;; ivy integration
-  (use-package lsp-ivy
-    :after lsp)
-
-  ;; treemacs integration
-  (use-package lsp-treemacs
-    :after lsp))
-
-(use-package lsp-ui
-  :hook (lsp-mode . lsp-ui-mode)
-  :after lsp-mode
-  :diminish
-  :commands lsp-ui-mode
-  :custom-face
-  (lsp-ui-doc-background ((t (:background nil))))
-  (lsp-ui-doc-header ((t (:inherit (font-lock-string-face italic)))))
-  :bind
-  (:map lsp-ui-mode-map
-        ("M-r" . lsp-ui-peek-find-definitions)
-        ("M-?" . lsp-ui-peek-find-references)
-        ("C-c u" . lsp-ui-imenu)
-        ("M-i" . lsp-ui-doc-glance))
-  :custom
-  (lsp-ui-doc-header t)
-  (lsp-ui-doc-include-signature t)
-  (lsp-ui-doc-border (face-foreground 'default))
-  (lsp-ui-sideline-enable nil)
-  (lsp-ui-sideline-ignore-duplicate t)
-  (lsp-ui-sideline-show-code-actions nil)
-  :config
-  ;; use lsp-ui-doc-webkit only in GUI
-  (when (display-graphic-p)
-    (setq lsp-ui-doc-use-webkit t)))
-
-(use-package dap-mode
-  :diminish
-  :bind
-  (:map dap-mode-map
-        (("<f12>" . dap-debug)
-         ("<f8>" . dap-continue)
-         ("<f9>" . dap-next)
-         ("<M-f11>" . dap-step-in)
-         ("C-M-<f11>" . dap-step-out)
-         ("<f7>" . dap-breakpoint-toggle))))
-
-(use-package flycheck
-  :defer t
-  :diminish
-  :hook (lsp-mode . flycheck-mode)
-  :commands (flycheck-add-mode)
-  :bind ("C-c f e" . flycheck-list-errors)
-  :custom
-  (flycheck-emacs-lisp-load-path 'inherit)
-  (flycheck-indication-mode (if (display-graphic-p) 'left-fringe))
-  :init
-  (if (display-graphic-p)
-      (use-package flycheck-posframe
-        :custom-face
-        (flycheck-posframe-face ((t (:foreground ,(face-foreground 'success)))))
-        (flycheck-posframe-info-face ((t (:foreground ,(face-foreground 'success)))))
-        :hook (flycheck-mode . flycheck-posframe-mode)
-        :custom
-        (flycheck-posframe-position 'window-bottom-left-corner)
-        (flycheck-posframe-border-width 3)
-        (flycheck-posframe-inhibit-functions
-         '((lambda (&rest _) (bound-and-true-p company-backend)))))
-    (use-package flycheck-pos-tip
-      :defines flycheck-pos-tip-timeout
-      :hook (flycheck-mode . flycheck-pos-tip-mode)
-      :custom (flycheck-pos-tip-timeout 30)))
-  :config
-  (use-package flycheck-popup-tip
-    :hook (flycheck-mode . flycheck-popup-tip-mode))
-
-  (when (fboundp 'define-fringe-bitmap)
-    (define-fringe-bitmap 'flycheck-fringe-bitmap-double-arrow
-      [16 48 112 240 112 48 16] nil nil 'center)))
-
-(use-package company
-  :diminish
-  :after lsp-mode
-  :hook ((prog-mode LaTeX-mode latex-mode) . company-mode)
-  :bind
-  (:map company-active-map
-        ("<tab>" . company-complete-selection))
-  (:map lsp-mode-map
-        ("<tab>" . company-indent-or-complete-common))
-  :custom
-  (company-minimum-prefix-length 1)
-  (company-idle-delay 0.0))
-
-(use-package company-box
-  :diminish
-  :hook (company-mode . company-box-mode))
+(use-package eglot)
 
 (use-package evil-nerd-commenter
   :bind ("M-/" . evilnc-comment-or-uncomment-lines))
@@ -667,23 +537,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
-(use-package lsp-java
-  :after lsp-mode
-  :if (executable-find "mvn")
-  :init
-  (use-package request :defer t)
-  :custom
-  (lsp-java-server-install-dir (expand-file-name "~/.emacs.d/eclipse.jdt.ls/server/"))
-  (lsp-java-workspace-dir (expand-file-name "~/.emacs.d/eclipse.jdt.ls/workspace/")))
-
-(use-package python-mode
-  :ensure nil
-  :after flycheck
-  :mode "\\.py\\'"
-  :custom
-  (python-indent-offset 4)
-  (flycheck-python-pycompile-executable "python3")
-  (python-shell-interpreter "python3"))
+(use-package eglot-java)
 
 (use-package tex
   :ensure auctex
@@ -963,6 +817,4 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
   :diminish eldoc-mode
   :diminish evil-collection-unimpaired-mode
   :diminish org-indent-mode
-  :diminish abbrev-mode
-  :diminish lsp-lens-mode
-  :diminish lsp-modeline-workspace-status-mode)
+  :diminish abbrev-mode)

@@ -2,7 +2,13 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("init.org"
+(("pvt15"
+ (filename . "~/Documents/kurser/pvt15/")
+ (front-context-string . ".\n  drwx------@ ")
+ (rear-context-string . "60 22 Mar 11:36 ")
+ (position . 90)
+ (last-modified 26109 24397 796887 0))
+("init.org"
  (filename . "~/.emacs.d/init.org")
  (front-context-string . "#+TITLE: Emacs C")
  (rear-context-string)
@@ -20,16 +26,4 @@
  (rear-context-string . "52 27 Jan 18:17 ")
  (position . 469)
  (last-modified 26037 26485 467809 0))
-("alda"
- (filename . "~/Documents/kurser/alda/")
- (front-context-string . "litt\n  drwxr-xr-")
- (rear-context-string . "96 16 Jan 15:09 ")
- (position . 188)
- (last-modified 26037 26481 331748 0))
-("vesk"
- (filename . "~/Documents/kurser/vesk/")
- (front-context-string)
- (rear-context-string . "92 15 Jan 14:23 ")
- (position . 368)
- (last-modified 26037 26477 737888 0))
 )
