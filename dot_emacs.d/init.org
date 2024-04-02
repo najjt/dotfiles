@@ -380,7 +380,7 @@ To spell check files, I use =flyspell= and =hunspell= in order to spell check in
       ;; ispell-set-spellchecker-params has to be called before ispell-hunspell-add-multi-dic
       (ispell-set-spellchecker-params)
       (ispell-hunspell-add-multi-dic "en_US,sv")
-      (setq ispell-personal-dictionary "~/.hunspell_personal")))
+      (setq ispell-personal-dictionary "~/resources/spelling/.hunspell_personal")))
 
 #+end_src
 

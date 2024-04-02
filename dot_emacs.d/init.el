@@ -130,7 +130,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
     ;; ispell-set-spellchecker-params has to be called before ispell-hunspell-add-multi-dic
     (ispell-set-spellchecker-params)
     (ispell-hunspell-add-multi-dic "en_US,sv")
-    (setq ispell-personal-dictionary "~/.hunspell_personal")))
+    (setq ispell-personal-dictionary "~/resources/spelling/.hunspell_personal")))
 
 ;; save text entered in minibuffer prompts
 (setq history-length 25)
