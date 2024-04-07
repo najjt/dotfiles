@@ -1112,6 +1112,32 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
           org-agenda-current-time-string
           "← now")
 
+    (setq org-agenda-custom-commands
+          '(("s" "Super agenda"
+             ((agenda "" ((org-agenda-span 'day)
+                          (org-super-agenda-groups
+                           '((:name "Schedule"
+                                    :time-grid t)
+                             (:name "Vanor"
+                                    :habit t)
+                             (:name "Overdue"
+                                    :deadline past
+                                    :scheduled past)
+                             (:name "Studier"
+                                    :and (:category "studier" :scheduled today)
+                                    :and (:category "studier" :deadline today))
+                             (:name "Privat"
+                                    :and (:category ("privat" "capture" "computer") :scheduled today)
+                                    :and (:category ("privat" "capture" "computer") :deadline today))
+                             (:name "Upcoming Deadlines"
+                                    :deadline future)
+                             (:discard (:anything t))))))
+              (alltodo "" ((org-agenda-overriding-header "")
+                           (org-super-agenda-groups
+                            '((:name "Priority Items"
+                                     :priority>= "C")
+                              (:discard (:anything t))))))))))
+
     ;; date heading settings
     (custom-set-faces
      '(org-agenda-date ((t (:height 1.0 :weight bold :background nil))))
@@ -1148,11 +1174,13 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
                       :and (:category ("privat" "capture" "computer") :deadline today))
                (:name "Upcoming Deadlines"
                       :deadline future)
+               (:name "Priority Items"
+                      :priority>= "C")
                (:discard (:anything t)))))
         (apply orig-fun args)))
 
-
-    (advice-add 'org-agenda-list :around #'my-org-agenda-list))
+    ;;(advice-add 'org-agenda-list :around #'my-org-agenda-list))
+    )
 
 #+end_src
 
