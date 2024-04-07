@@ -656,33 +656,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (use-package org-super-agenda
   :after org-agenda
   :config
-  (org-super-agenda-mode 1)
-
-  ;; only apply super agenda groups on org-agenda-list
-  (defun my-org-agenda-list (orig-fun &rest args)
-    (let ((org-super-agenda-groups
-           '((:name "Schedule"
-                    :time-grid t)
-             (:name "Vanor"
-                    :habit t)
-             (:name "Overdue"
-                    :deadline past
-                    :scheduled past)
-             (:name "Studier"
-                    :and (:category "studier" :scheduled today)
-                    :and (:category "studier" :deadline today))
-             (:name "Privat"
-                    :and (:category ("privat" "capture" "computer") :scheduled today)
-                    :and (:category ("privat" "capture" "computer") :deadline today))
-             (:name "Upcoming Deadlines"
-                    :deadline future)
-             (:name "Priority Items"
-                    :priority>= "C")
-             (:discard (:anything t)))))
-      (apply orig-fun args)))
-
-  ;;(advice-add 'org-agenda-list :around #'my-org-agenda-list))
-  )
+  (org-super-agenda-mode 1))
 
 (use-package org-capture
   :ensure nil
