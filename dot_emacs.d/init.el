@@ -344,7 +344,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
   :diminish
   :bind
   ("M-x" . counsel-M-x)
-  ("C-M-j" . counsel-switch-buffer)
+  ("C-M-j" . persp-counsel-switch-buffer)
   ("C-x C-f" . counsel-find-file)
 
   :config
@@ -417,7 +417,6 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (use-package perspective
   :hook (persp-created . dashboard-open)
   :bind
-  ("C-x C-b" . persp-list-buffers)
   :custom
   (persp-mode-prefix-key (kbd "C-c M-p"))
   :init
