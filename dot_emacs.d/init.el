@@ -639,13 +639,13 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
                            (:name "Privat"
                                   :and (:category ("privat" "capture" "computer") :scheduled today)
                                   :and (:category ("privat" "capture" "computer") :deadline today))
-                           (:name "Upcoming Deadlines"
-                                  :deadline future)
                            (:discard (:anything t))))))
             (alltodo "" ((org-agenda-overriding-header "")
                          (org-super-agenda-groups
                           '((:name "Priority Items"
                                    :priority>= "C")
+                            (:name "Upcoming Deadlines"
+                                   :deadline future)
                             (:discard (:anything t))))))))))
 
   ;; date heading settings
