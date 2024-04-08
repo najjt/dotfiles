@@ -25,6 +25,8 @@ alias python="python3"
 alias tmc="~/tools/tmc/tmc"
 
 {{- if eq .chezmoi.os "darwin" }}
+# restart emacs homebrew service
+alias restartemacs="brew services restart emacs-plus"
 
 export PATH="/opt/homebrew/bin:$PATH"
 
