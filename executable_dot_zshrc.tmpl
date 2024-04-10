@@ -24,7 +24,7 @@ alias wt="curl wttr.in"         # weather forecast
 alias python="python3"
 alias tmc="~/tools/tmc/tmc"
 
-{{- if eq .chezmoi.os "darwin" }}
+{{ if eq .chezmoi.os "darwin" }}
 # restart emacs homebrew service
 alias emacsre="brew services restart emacs-plus"
 
@@ -34,8 +34,6 @@ export PATH="/opt/homebrew/bin:$PATH"
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
-{{- else if eq .chezmoi.os "linux" }}
+{{ else if eq .chezmoi.os "linux" }}
 alias chezmoi="~/.local/bin/chezmoi"
-
-export PATH="~/.local/bin:$PATH"
-{{- end }}
+{{ end }}
