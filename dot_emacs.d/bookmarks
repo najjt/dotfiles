@@ -2,7 +2,19 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("chezmoi"
+(("org"
+ (filename . "~/Documents/notes/org/")
+ (front-context-string . ".\n  drwx---rwx@ ")
+ (rear-context-string . "52  9 Apr 20:12 ")
+ (position . 86)
+ (last-modified 26133 41796 238358 0))
+("notes"
+ (filename . "~/Documents/notes/")
+ (front-context-string . ".\n  drwx------+ ")
+ (rear-context-string . "84  4 Feb 14:11 ")
+ (position . 82)
+ (last-modified 26133 41790 710020 0))
+("chezmoi"
  (filename . "~/.local/share/chezmoi/")
  (front-context-string . ".\n  drwx------@ ")
  (rear-context-string . "16  2 Mar 14:36 ")
@@ -26,10 +38,4 @@
  (rear-context-string . "08 28 Jan 13:22 ")
  (position . 593)
  (last-modified 26038 18334 159280 0))
-("notes"
- (filename . "~/Documents/notes/")
- (front-context-string . "org\n  drwx------")
- (rear-context-string . "52 27 Jan 18:17 ")
- (position . 469)
- (last-modified 26037 26485 467809 0))
 )
