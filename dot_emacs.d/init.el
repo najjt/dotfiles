@@ -575,6 +575,16 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
         org-export-backends '(md org ascii html icalendar latex odt rss)
         org-ellipsis " ▾")
 
+  (custom-set-faces
+   '(org-level-1 ((t (:inherit outline-1 :weight bold))))
+   '(org-level-2 ((t (:inherit outline-2 :weight normal))))
+   '(org-level-3 ((t (:inherit outline-3 :weight normal))))
+   '(org-level-4 ((t (:inherit outline-4 :weight normal))))
+   '(org-level-5 ((t (:inherit outline-5 :weight normal))))
+   '(org-level-6 ((t (:inherit outline-6 :weight normal))))
+   '(org-level-7 ((t (:inherit outline-7 :weight normal))))
+   '(org-level-8 ((t (:inherit outline-8 :weight normal)))))
+
   ;; remap org indentation keys
   (with-eval-after-load 'org
     (general-define-key
@@ -585,7 +595,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 ;; change default bullets
 (use-package org-bullets
   :after org
-  ;:hook (org-mode . org-bullets-mode)
+                                        ;:hook (org-mode . org-bullets-mode)
   :custom
   (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
