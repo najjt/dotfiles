@@ -7,4 +7,5 @@ README.md
 {{ end }}
 {{ if ne .chezmoi.os "linux" }}
 .config/qutebrowser/
+.config/kmonad/
 {{ end }}
