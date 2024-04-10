@@ -1067,7 +1067,7 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
   ;; change default bullets
   (use-package org-bullets
     :after org
-    :hook (org-mode . org-bullets-mode)
+    ;:hook (org-mode . org-bullets-mode)
     :custom
     (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 

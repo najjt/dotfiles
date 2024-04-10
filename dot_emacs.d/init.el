@@ -585,7 +585,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 ;; change default bullets
 (use-package org-bullets
   :after org
-  :hook (org-mode . org-bullets-mode)
+  ;:hook (org-mode . org-bullets-mode)
   :custom
   (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
