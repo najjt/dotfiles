@@ -15,28 +15,13 @@ export EDITOR=emacsclient
 export VISUAL=emacsclient
 export PAGER=cat
 
-{{ if eq .chezmoi.os "darwin" }}
+
+
+
+
 path=(
-    /opt/local/sbin
-    /opt/local/bin
-    /usr/local/bin
-    /usr/bin
-    /usr/local/sicstus4.8.0/bin
-    /Applications/WezTerm.app/Contents/MacOS
-    /Users/najjt/Library/Python/3.9/bin
-    /Users/najjt/Projects/kod/scripts
+    /home/najjt/.local/bin
     $path
 )
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
-# jupyter
-export JUPYTER_PATH=/opt/homebrew/share/jupyter
-export JUPYTER_CONFIG_PATH=/opt/homebrew/etc/jupyter
 
-# java
-#export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home"
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home"
-
-{{ else if eq .chezmoi.os "linux" }}
-export PATH="/home/najjt/.local/bin:$PATH"
-{{- end }}
