@@ -425,7 +425,11 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (use-package persp-projectile
   :after perspective)
 
+{{ if eq .chezmoi.os "darwin" }}
 (add-to-list 'default-frame-alist '(font . "Jetbrains Mono-15"))
+{{ else if eq .chezmoi.os "linux" }}
+(add-to-list 'default-frame-alist '(font . "Jetbrains Mono-13"))
+{{ end }}
 
 (use-package nerd-icons)
 

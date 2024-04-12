@@ -791,11 +791,10 @@ Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
 ** Font & Icons
 
 #+begin_src emacs-lisp
-
   {{ if eq .chezmoi.os "darwin" }}
   (add-to-list 'default-frame-alist '(font . "Jetbrains Mono-15"))
   {{ else if eq .chezmoi.os "linux" }}
-  (add-to-list 'default-frame-alist '(font . "Jetbrains Mono-10"))
+  (add-to-list 'default-frame-alist '(font . "Jetbrains Mono-13"))
   {{ end }}
 #+end_src
 
