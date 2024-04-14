@@ -7,5 +7,3 @@ Welcome to my dotfiles repository! I use [chezmoi](https://www.chezmoi.io/) to m
 * **OS**: macOS/Linux Mint
 * **WM**: yabai
 * **Statusbar**: Sketchybar
-
-![](resources/screenshot.png)
