@@ -1,13 +1,37 @@
 (defcfg
   input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
-  output (uinput-sink "KMonad kbd" "sleep 1 & setxkbmap -option compose:lalt")
-  cmp-seq lalt
+  output (uinput-sink "KMonad kbd" "sleep 1 & setxkbmap -option compose:ralt")
+  cmp-seq ralt
   fallthrough true
   allow-cmd true
 )
 
 (defalias
-  ec (tap-hold 200 esc lctl)
+  ;; tap for esc, hold for ctrl
+  ec (tap-hold-next-release 200 esc lctl)
+
+  ;; layers
+  a (tap-hold-next-release 200 d (layer-toggle arithmetic))
+  p (tap-hold-next-release 200 s (layer-toggle punctuation))
+  n (tap-hold-next-release 200 v (layer-toggle numbers))
+  c (tap-hold-next-release 200 c (layer-toggle symbols))
+  d (tap-hold-next-release 200 f (layer-toggle delimiters))
+  r (tap-hold-next-release 200 r (layer-toggle deletion))
+  e (tap-hold-next-release 200 e (layer-toggle navigation))
+  w (tap-hold-next-release 200 w (layer-toggle selection))
+  v (tap-hold-next-release 200 a (layer-toggle vi))
+
+  ;;  aliases for deletion
+  cb C-bspc
+  scb S-C-bspc
+
+  ;; aliases for navigation
+  al A-left
+  ar A-right
+
+  ;; aliases for selection
+  sal S-A-left
+  sar S-A-right
 )
 
 (defsrc
@@ -30,65 +54,82 @@
 
 (deflayer base
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  @ec a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  tab  q   @w   @e   @r    t    y    u    i    o    p    [    ]    \
+  @ec @v   @p   @a   @d    g    h    j    k    l    ;    '    ret
+  lsft z    x   @c   @n    b    n    m    ,    .    /    rsft
   lctl lmet lalt           spc            ralt rmet cmp rctrl
 )
 
 
 (deflayer arithmetic
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    <    >    #    _    _    _    _
+  _    _    _    _    _    _    _    +    -    =    _    _    _
+  _    _    _    _    _    _    _    *    /    %    _    _
   _    _    _              _              _    _    _    _
 )
 
 (deflayer punctuation
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    '    "    `    _    _    _    _
+  _    _    _    _    _    _    _    ,    .    &    _    _    _
+  _    _    _    _    _    _    _    ;    :    ~    _    _
   _    _    _              _              _    _    _    _
 )
 
-(deflayer parentheses
+(deflayer delimiters
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    {    }    !    _    _    _    _
+  _    _    _    _    _    _    _    \(   \)   ?    _    _    _
+  _    _    _    _    _    _    _    [    ]    $    _    _
+  _    _    _              _              _    _    _    _
+)
+
+(deflayer numbers
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    7    8    9    _    _    _    _
+  _    _    _    _    _    _    _    4    5    6    _    _    _
+  _    _    _    _    _    _    0    1    2    3    _    _
+  _    _    _              _              _    _    _    _
+)
+
+
+(deflayer symbols
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    ^    _    _    _    _    _    _
+  _    _    _    _    _    _    _    |    @    _    _    _    _
+  _    _    _    _    _    _    _    \\   \_   _    _    _
   _    _    _              _              _    _    _    _
 )
 
 (deflayer selection
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _   @sal @sar  _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _    _
 )
 
 (deflayer navigation
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _  left right  _    _    _    _    _
+  _    _    _    _    _    _    _   @al  @ar   _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _    _
 )
 
 (deflayer deletion
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _   bspc  _    _    _    _    _    _
+  _    _    _    _    _    _  @scb  @cb   _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _    _
 )
 
-(deflayer vim_movement
+(deflayer vi
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _  tab    _    _    _    _    _    _
+  _    _    _    _    _    _  left down   up right  _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _    _
 )

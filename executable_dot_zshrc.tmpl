@@ -37,4 +37,7 @@ source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 {{ else if eq .chezmoi.os "linux" }}
 # restart emacs service
 alias emacsre="systemctl --user restart emacs"
+
+# zsh vi mode
+source $HOME/.config/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 {{ end }}
