@@ -1,5 +1,6 @@
 #+TITLE: Emacs config
 #+AUTHOR: Martin Lönn Andersson
+#+PROPERTY: header-args:emacs-lisp :tangle ./init.el
 
 * Contents :toc:
 - [[#preamble][Preamble]]
@@ -119,6 +120,7 @@ Run Emacs as a [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Emacs
 
   (require 'server)
   (if (not (server-running-p)) (server-start))
+  (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
 
 #+end_src
 
@@ -665,7 +667,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     :diminish
     :bind
     ("M-x" . counsel-M-x)
-    ("C-M-j" . persp-counsel-switch-buffer)
+    ("C-M-j" . counsel-switch-buffer)
     ("C-x C-f" . counsel-find-file)
 
     :config
@@ -791,7 +793,7 @@ Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
 
 #+begin_src emacs-lisp
 
-  (set-frame-font "JetBrains Mono 15" nil t)
+  (add-to-list 'default-frame-alist '(font . "Jetbrains Mono-15"))
 
 #+end_src
 
@@ -880,14 +882,21 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
     :custom-face
     (dashboard-items-face ((t (:weight normal))))
     :custom
+    (dashboard-startupify-list '(dashboard-insert-banner
+                                 dashboard-insert-newline
+                                 dashboard-insert-banner-title
+                                 dashboard-insert-init-info
+                                 dashboard-insert-newline
+                                 dashboard-insert-items))
     (dashboard-items '((bookmarks . 7)
                        (projects . 5)))
     :config
     (dashboard-setup-startup-hook)
 
     (setq dashboard-center-content t
-          dashboard-set-footer nil
           dashboard-display-icons-p t
+          dashboard-icon-type 'nerd-icons
+          dashboard-projects-backend 'projectile
           dashboard-projects-switch-function 'projectile-persp-switch-project))
 
   ;; hook dashboard-open to creation of new frame
@@ -1343,6 +1352,8 @@ PlantUML Mode, a major mode for editing PlantUML sources.
 * Miscellaneous
 
 #+begin_src emacs-lisp
+
+  (use-package edn)
 
   ;; display right and left fringe
   (fringe-mode '(8 . 8))
