@@ -1,2 +1,18 @@
-ctrl + enter
+#
+# application shortcuts
+#
+
+# open emacs
+ctrl + Return
      emacsclient -c -n -a '' -e '(select-frame-set-input-focus (selected-frame))'
+
+# open browser
+
+ctrl + shift + Return
+     qutebrowser
+
+ctrl + alt + T
+     wezterm
+
+super + space
+     dmenu
