@@ -15,8 +15,8 @@ config.set('content.javascript.clipboard', 'access', 'github.com')
 config.bind('<Meta+x>', 'cmd-set-text :')
 config.bind('<Ctrl+s>', 'cmd-set-text /')
 {{ else if eq .chezmoi.os "linux" }}
-c.fonts.default_size = '13pt'
-c.fonts.web.size.default = 15
+c.fonts.default_size = '14pt'
+c.fonts.web.size.default = 17
 
 config.bind('<Alt+x>', 'set-cmd-text :')
 config.bind('<Ctrl+s>', 'set-cmd-text /')
