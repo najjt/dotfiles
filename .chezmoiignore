@@ -3,9 +3,11 @@ README.md
 .config/yabai
 .config/sketchybar
 .config/karabiner*
+.config/sioyek
 .qutebrowser/
 {{ end }}
 {{ if ne .chezmoi.os "linux" }}
 .config/qutebrowser/
 .config/kmonad/
+.config/sxhkd/
 {{ end }}
