@@ -3,7 +3,6 @@ import os
 os.environ['PATH'] = '/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/TeX/texbin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/local/sbin:/opt/local/bin:/usr/local/sicstus4.8.0/bin:/Applications/WezTerm.app/Contents/MacOS:/Users/najjt/Library/Python/3.9/bin:/Users/najjt/Projects/kod/scripts'
 
 c.fonts.default_size = '15pt'
-c.fonts.web.size.default = 20
 
 config.set('content.javascript.clipboard', 'access', 'dsv.su.se')
 config.set('content.javascript.clipboard', 'access', 'nextilearn.dsv.su.se')
@@ -15,8 +14,7 @@ config.set('content.javascript.clipboard', 'access', 'github.com')
 config.bind('<Meta+x>', 'cmd-set-text :')
 config.bind('<Ctrl+s>', 'cmd-set-text /')
 {{ else if eq .chezmoi.os "linux" }}
-c.fonts.default_size = '13pt'
-c.fonts.web.size.default = 15
+c.fonts.default_size = '14pt'
 
 config.bind('<Alt+x>', 'set-cmd-text :')
 config.bind('<Ctrl+s>', 'set-cmd-text /')
@@ -576,6 +574,8 @@ c.colors.tabs.selected.even.bg = '#747474'
 # empty value, a system-specific monospace default is used.
 # Type: List of Font, or Font
 c.fonts.default_family = 'JetBrains Mono'
+
+c.fonts.web.size.default = 20
 
 # Bindings for normal mode
 config.bind(',M', 'hint links spawn mpv {hint-url}')

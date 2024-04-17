@@ -361,7 +361,7 @@ To spell check files, I use =flyspell= and =hunspell= in order to spell check in
 
 1. Install [[https://github.com/hunspell/hunspell][hunspell]].
 2. Install dictionary files.
-2. Create a personal dictionary file =~/.hunspell_personal=.
+3. Create a personal dictionary file, e.g. =~/.hunspell_personal=.
 
 #+begin_src emacs-lisp
 
@@ -376,7 +376,7 @@ To spell check files, I use =flyspell= and =hunspell= in order to spell check in
     (with-eval-after-load "ispell"
       (setenv "LANG" "en_US.UTF-8")
       (setq ispell-program-name "hunspell"
-            ispell-dictionary "en_US,sv")
+            ispell-dictionary "en_US,sv_SE")
 
       ;; ispell-set-spellchecker-params has to be called before ispell-hunspell-add-multi-dic
       (ispell-set-spellchecker-params)
@@ -795,7 +795,11 @@ Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
 
 #+begin_src emacs-lisp
 
-  (add-to-list 'default-frame-alist '(font . "Jetbrains Mono-15"))
+  (when *sys/linux*
+    (add-to-list 'default-frame-alist '(font . "Jetbrains Mono-13")))
+
+  (when *sys/mac*
+    (add-to-list 'default-frame-alist '(font . "Jetbrains Mono-15")))
 
 #+end_src
 
