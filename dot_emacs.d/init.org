@@ -779,6 +779,7 @@ Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
     :hook (persp-created . dashboard-open)
     :bind
     ("C-M-j" . persp-counsel-switch-buffer)
+    ("C-M-b" . persp-switch)
     :custom
     (persp-mode-prefix-key (kbd "C-c M-p"))
     :init
@@ -1064,8 +1065,11 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
           org-tags-column 0
           org-startup-folded t
           org-export-backends '(md org ascii html icalendar latex odt rss)
-          org-ellipsis " ▾")
+          org-ellipsis " ▾"
+          org-blank-before-new-entry (quote ((heading . nil)
+                                             (plain-list-item . nil))))
 
+    ;; make only first org heading be bold
     (custom-set-faces
      '(org-level-1 ((t (:inherit outline-1 :weight bold))))
      '(org-level-2 ((t (:inherit outline-2 :weight normal))))
@@ -1086,7 +1090,6 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
   ;; change default bullets
   (use-package org-bullets
     :after org
-                                          ;:hook (org-mode . org-bullets-mode)
     :custom
     (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
