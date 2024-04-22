@@ -15,4 +15,4 @@ ctrl + alt + T
      wezterm
 
 super + space
-     dmenu
+     dmenu_run -fn 'JetBrains Mono-14'
