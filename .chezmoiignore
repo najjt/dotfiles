@@ -10,5 +10,5 @@ README.md
 .config/qutebrowser/
 .config/kmonad/
 .config/sxhkd/
-.config/i3/
+.config/i3*
 {{ end }}
