@@ -20,8 +20,12 @@ set $ws9 "9"
 set $ws10 "10"
 
 focus_follows_mouse no
+
 gaps inner 20
 gaps outer 20px
+
+default_border pixel 0
+default_floating_border pixel 0
 
 #
 # System
