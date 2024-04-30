@@ -4,14 +4,15 @@ return {
     window_decorations = "RESIZE",
     font = wezterm.font 'JetBrains Mono',
 
-    {{- if eq .chezmoi.os "darwin" }}
+    {{ if eq .chezmoi.os "darwin" }}
     font_size = 15,
-    {{- else if eq .chezmoi.os "linux" }}
+    {{ else if eq .chezmoi.os "linux" }}
     font_size = 13,
-    {{- end }}
+    {{ end }}
 
     line_height = 1.1,
     hide_tab_bar_if_only_one_tab = true,
+    use_fancy_tab_bar = false,
     bypass_mouse_reporting_modifiers = "SHIFT",
     send_composed_key_when_left_alt_is_pressed = true,
     send_composed_key_when_right_alt_is_pressed = true,
