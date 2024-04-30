@@ -12,16 +12,16 @@
   - [[#load-path][Load Path]]
   - [[#custom-file][Custom File]]
   - [[#backup-directory][Backup Directory]]
-- [[#package-management][Package Management]]
+- [[#package-management][Package management]]
   - [[#package-archives--initialize-package-manager][Package Archives & Initialize Package Manager]]
   - [[#use-package][Use Package]]
   - [[#auto-package-update][Auto Package Update]]
 - [[#global-functionalities][Global Functionalities]]
-  - [[#user-information][User Information]]
-  - [[#environment-variables][Environment Variables]]
+  - [[#user-information][User information]]
+  - [[#environment-variables][Environment variables]]
   - [[#swiper][Swiper]]
-  - [[#markdown-mode][Markdown Mode]]
-  - [[#spell-checking][Spell Checking]]
+  - [[#markdown-mode][Markdown mode]]
+  - [[#spell-checking][Spell checking]]
   - [[#history][History]]
   - [[#undo-tree][Undo Tree]]
   - [[#general][General]]
@@ -30,25 +30,28 @@
   - [[#dired][Dired]]
   - [[#help-functionality][Help functionality]]
   - [[#terminal][Terminal]]
-  - [[#smooth-scrolling][Smooth Scrolling]]
+  - [[#smooth-scrolling][Smooth scrolling]]
   - [[#perspective][Perspective]]
 - [[#ui-enhancements][UI Enhancements]]
   - [[#font--icons][Font & Icons]]
   - [[#themes][Themes]]
-  - [[#popup-buffers][Popup Buffers]]
+  - [[#popup-buffers][Popup buffers]]
   - [[#lines][Lines]]
   - [[#dashboard][Dashboard]]
   - [[#centered-buffers][Centered Buffers]]
-- [[#general-programming][General Programming]]
+- [[#general-programming][General programming]]
   - [[#prog-mode][Prog Mode]]
   - [[#eglot][Eglot]]
+  - [[#dap-mode][DAP Mode]]
   - [[#comments][Comments]]
   - [[#match-delimiters][Match Delimiters]]
   - [[#projectile][Projectile]]
   - [[#magit][Magit]]
+  - [[#treemacs][Treemacs]]
 - [[#programming][Programming]]
   - [[#java][Java]]
   - [[#tex][TeX]]
+  - [[#dart][Dart]]
 - [[#office][Office]]
   - [[#org][Org]]
   - [[#calendar][Calendar]]
@@ -56,7 +59,7 @@
   - [[#pdf-tools][PDF Tools]]
 - [[#miscellaneous][Miscellaneous]]
 - [[#diminish][Diminish]]
-- [[#tangle--reload-on-save][Tangle & Reload On Save]]
+- [[#tangle--reload-on-save][Tangle & reload on save]]
 
 * Preamble
 
@@ -256,7 +259,7 @@ Set backup directory location.
 
 #+end_src
 
-* Package Management
+* Package management
 ** Package Archives & Initialize Package Manager
 
 Set up MELPA, ELPA and Non-GNU ELPA and initialize the package manager.
@@ -309,7 +312,7 @@ Automatically update packages every seven days with [[https://github.com/rranell
 #+end_src
 
 * Global Functionalities
-** User Information
+** User information
 
 #+begin_src emacs-lisp
 
@@ -318,7 +321,7 @@ Automatically update packages every seven days with [[https://github.com/rranell
 
 #+end_src
 
-** Environment Variables
+** Environment variables
 
 Get environment variables from shell with [[https://github.com/purcell/exec-path-from-shell][exec-path-from-shell]].
 
@@ -343,7 +346,7 @@ Get environment variables from shell with [[https://github.com/purcell/exec-path
 
 #+end_src
 
-** Markdown Mode
+** Markdown mode
 
 The [[https://jblevins.org/projects/markdown-mode/][markdown mode]] package provides better markdown support.
 
@@ -353,7 +356,7 @@ The [[https://jblevins.org/projects/markdown-mode/][markdown mode]] package prov
 
 #+end_src
 
-** Spell Checking
+** Spell checking
 
 To spell check files, I use =flyspell= and =hunspell= in order to spell check in both Swedish and English.
 
@@ -751,7 +754,7 @@ A better terminal emulation with [[https://github.com/akermu/emacs-libvterm][vte
 
 #+end_src
 
-** Smooth Scrolling
+** Smooth scrolling
 
 #+begin_src emacs-lisp
 
@@ -826,39 +829,41 @@ Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
 
 #+end_src
 
-** Popup Buffers
+** Popup buffers
 
 Popup buffers with [[https://github.com/karthink/popper][popper]].
 
 #+begin_src emacs-lisp
 
-  (use-package popper
-    :bind
-    ("C-å"   . popper-toggle)
-    ("M-å"   . popper-cycle)
-    ("C-M-å" . popper-toggle-type)
-    :init
-    (setq popper-reference-buffers
-      '("\\*Messages\\*"
-        "\\*Warnings\\*"
-        "\\*Compile-Log\\*"
-        "^\\*compilation.*\\*$" comint-mode
-        "Output\\*$"
-        help-mode
-        helpful-mode
-        compilation-mode
-        "\\*Async Shell Command\\*"
-        "^\\*eshell.*\\*$" eshell-mode
-        "^\\*shell.*\\*$"  shell-mode
-        "^\\*term.*\\*$"   term-mode
-        "^\\*vterm.*\\*$"  vterm-mode
-        "^\\*ansi-term.*\\*$"  ansi-term-mode
-        "^\\*tex-shell.*\\*$"
-        "^\\*Flycheck.*\\*$"
-        "^\\*Buffer List*\\*$"))
-    (popper-mode 1)
-    (popper-echo-mode 1)
-    (setq popper-mode-line " POP "))
+      (use-package popper
+        :bind
+        ("C-å"   . popper-toggle)
+        ("M-å"   . popper-cycle)
+        ("C-M-å" . popper-toggle-type)
+        :init
+        (setq popper-reference-buffers
+          '("\\*Messages\\*"
+            "\\*Warnings\\*"
+            "\\*Compile-Log\\*"
+            "^\\*compilation.*\\*$" comint-mode
+            "Output\\*$"
+            help-mode
+            helpful-mode
+            compilation-mode
+            "\\*Async Shell Command\\*"
+            "^\\*eshell.*\\*$" eshell-mode
+            "^\\*shell.*\\*$"  shell-mode
+            "^\\*term.*\\*$"   term-mode
+            "^\\*vterm.*\\*$"  vterm-mode
+            "^\\*ansi-term.*\\*$"  ansi-term-mode
+            "^\\*tex-shell.*\\*$"
+            "^\\*Flycheck.*\\*$"
+            "^\\*Buffer List*\\*$"
+            "^\\*LSP Error List*\\*$"
+            "^\\*Dart Run out*\\*$"))
+        (popper-mode 1)
+        (popper-echo-mode 1)
+        (setq popper-mode-line " POP "))
 
 #+end_src
 
@@ -931,7 +936,7 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
 
 #+end_src
 
-* General Programming
+* General programming
 ** Prog Mode
 
 #+begin_src emacs-lisp
@@ -946,6 +951,13 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
 #+begin_src emacs-lisp
 
   (use-package eglot)
+
+#+end_src
+** DAP Mode
+
+#+begin_src emacs-lisp
+
+  (use-package dape)
 
 #+end_src
 
@@ -1007,6 +1019,14 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
 #+end_src
 
 #+RESULTS:
+** Treemacs
+
+#+begin_src emacs-lisp
+
+  (with-eval-after-load 'treemacs
+    (treemacs-resize-icons 15))
+
+#+end_src
 
 * Programming
 ** Java
@@ -1045,6 +1065,25 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
                           TeX-PDF-mode t
                           TeX-source-correlate-method 'synctex
                           TeX-source-correlate-start-server t))))
+
+#+end_src
+** Dart
+
+#+begin_src emacs-lisp
+
+  (setq package-selected-packages
+    '(dart-mode lsp-mode lsp-dart lsp-treemacs flycheck company
+      ;; Optional packages
+      lsp-ui company hover))
+
+  (when (cl-find-if-not #'package-installed-p package-selected-packages)
+    (package-refresh-contents)
+    (mapc #'package-install package-selected-packages))
+
+  (add-hook 'dart-mode-hook 'lsp)
+
+  (setq gc-cons-threshold (* 100 1024 1024)
+        read-process-output-max (* 1024 1024))
 
 #+end_src
 
@@ -1423,7 +1462,7 @@ PlantUML Mode, a major mode for editing PlantUML sources.
 
 #+end_src
 
-* Tangle & Reload On Save
+* Tangle & reload on save
 
 These hooks will ask to tangle all code blocks and reload configuration on save.
 
