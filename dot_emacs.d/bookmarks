@@ -2,7 +2,13 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org"
+(("Projects"
+ (filename . "~/Projects/")
+ (front-context-string . ".\n  drwxr-x---+ ")
+ (rear-context-string . "12 24 Apr 12:19 ")
+ (position . 75)
+ (last-modified 26160 57460 952138 0))
+("org"
  (filename . "~/Documents/notes/org/")
  (front-context-string . ".\n  drwx---rwx@ ")
  (rear-context-string . "52  9 Apr 20:12 ")
