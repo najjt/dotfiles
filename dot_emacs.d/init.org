@@ -907,6 +907,7 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
     (setq dashboard-center-content t
           dashboard-display-icons-p t
           dashboard-icon-type 'nerd-icons
+          dashboard-set-file-icons t
           dashboard-projects-backend 'projectile
           dashboard-projects-switch-function 'projectile-persp-switch-project))
 
