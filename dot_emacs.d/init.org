@@ -379,11 +379,14 @@ To spell check files, I use =flyspell= and =hunspell= in order to spell check in
     (with-eval-after-load "ispell"
       (setenv "LANG" "en_US.UTF-8")
       (setq ispell-program-name "hunspell"
-            ispell-dictionary "en_US,sv_SE")
+            ispell-dictionary "en_US,sv_SE"
+            ispell-local-dictionary-alist
+            '(("sv_SE" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "sv_SE,en_US") nil utf-8))
+            ispell-hunspell-dictionary-alist ispell-local-dictionary-alist)
 
       ;; ispell-set-spellchecker-params has to be called before ispell-hunspell-add-multi-dic
       (ispell-set-spellchecker-params)
-      (ispell-hunspell-add-multi-dic "en_US,sv")
+      (ispell-hunspell-add-multi-dic "en_US,sv_SE")
       (setq ispell-personal-dictionary "~/resources/spelling/.hunspell_personal")))
 
 #+end_src
