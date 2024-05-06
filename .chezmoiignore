@@ -5,6 +5,7 @@ README.md
 .config/karabiner*
 .config/sioyek
 .qutebrowser/
+.config/borders
 {{ end }}
 {{ if ne .chezmoi.os "linux" }}
 .config/qutebrowser/
