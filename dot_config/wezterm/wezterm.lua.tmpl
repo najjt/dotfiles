@@ -1,20 +1,38 @@
 local wezterm = require 'wezterm'
+local act = wezterm.action
+local config = wezterm.config_builder()
 
-return {
-    window_decorations = "RESIZE",
-    font = wezterm.font 'JetBrains Mono',
+config.window_decorations = "RESIZE"
+config.font = wezterm.font 'JetBrains Mono'
+{{ if eq .chezmoi.os "darwin" }}
+config.font_size = 15
+{{ else if eq .chezmoi.os "linux" }}
+config.font_size = 13
+{{ end }}
+config.line_height = 1.2
+config.hide_tab_bar_if_only_one_tab = true
+config.use_fancy_tab_bar = false
+config.bypass_mouse_reporting_modifiers = "SHIFT"
+config.send_composed_key_when_left_alt_is_pressed = true
+config.send_composed_key_when_right_alt_is_pressed = true
+config.window_close_confirmation = 'NeverPrompt'
 
-    {{ if eq .chezmoi.os "darwin" }}
-    font_size = 15,
-    {{ else if eq .chezmoi.os "linux" }}
-    font_size = 13,
-    {{ end }}
-
-    line_height = 1.1,
-    hide_tab_bar_if_only_one_tab = true,
-    use_fancy_tab_bar = false,
-    bypass_mouse_reporting_modifiers = "SHIFT",
-    send_composed_key_when_left_alt_is_pressed = true,
-    send_composed_key_when_right_alt_is_pressed = true,
-    window_close_confirmation = 'NeverPrompt',
+config.keys = {
+            {
+            key = 't',
+            mods = 'CTRL',
+            action = act.SpawnTab 'CurrentPaneDomain',
+            },
+            {
+            key = 'w',
+            mods = 'CTRL',
+            action = act.CloseCurrentTab { confirm = false},
+            },
+            {
+            key = 'n',
+            mods = 'CTRL',
+            action = act.SpawnWindow,
+            },
 }
+
+return config
