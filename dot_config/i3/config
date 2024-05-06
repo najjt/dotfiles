@@ -1,6 +1,12 @@
 # bsp
 exec --no-startup-id ~/.config/i3/i3-alternating-layout/alternating_layouts.py
 
+# wallpaper
+exec ~/tools/scripts/rotating_wallpaper.sh
+
+# alt tab
+exec_always alttab
+
 #
 # Defaults
 #
@@ -21,11 +27,17 @@ set $ws10 "10"
 
 focus_follows_mouse no
 
-gaps inner 20
+gaps inner 20px
 gaps outer 20px
 
-default_border pixel 0
-default_floating_border pixel 0
+default_border normal
+default_floating_border normal
+
+#
+# Appearance
+#
+
+#client.focused 4c7899
 
 #
 # System
@@ -85,7 +97,7 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # enter fullscreen mode for the focused container
-bindsym Shift+$mod+f fullscreen toggle
+bindsym $mod+f fullscreen toggle
 
 # change container layout
 bindsym $mod+Control+s layout stacking
@@ -119,6 +131,9 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 
 # reload the configuration file
 bindsym $mod+Control+Shift+r reload
+
+# restart i3
+bindsym $mod+Control+Shift+e restart
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Control+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
