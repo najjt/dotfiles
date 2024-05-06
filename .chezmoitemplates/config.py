@@ -60,7 +60,11 @@ c.statusbar.show = 'always'
 c.statusbar.position = 'bottom'
 c.tabs.show = 'multiple'
 c.tabs.title.format = '{index}: {audio}{current_title}'
+{{ if eq .chezmoi.os "darwin" }}
 c.window.hide_decoration = True
+{{ else if eq .chezmoi.os "linux" }}
+c.window.hide_decoration = False
+{{ end }}
 c.window.title_format = ' '
 
 # Colors
