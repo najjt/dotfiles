@@ -191,7 +191,7 @@ Set super key to meta on Linux.
 #+begin_src emacs-lisp
 
   (when *sys/linux*
-    (setq x-super-keysym 'meta))
+    (setq x-super-keysym 'alt))
 
 #+end_src
 
