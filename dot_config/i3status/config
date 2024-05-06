@@ -1,5 +1,5 @@
 general {
-        colors = true
+        colors = false
         interval = 5
 }
 
@@ -19,7 +19,7 @@ ethernet _first_ {
 }
 
 battery all {
-        format = "%status: %percentage %remaining"
+        format = "%status: %percentage %remaining "
 }
 
 disk "/" {
@@ -27,7 +27,7 @@ disk "/" {
 }
 
 load {
-        format = "%1min"
+        format = "%1min "
 }
 
 memory {
