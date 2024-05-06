@@ -1,4 +1,5 @@
 README.md
+.DS_STORE
 {{ if ne .chezmoi.os "darwin" }}
 .config/yabai
 .config/sketchybar
