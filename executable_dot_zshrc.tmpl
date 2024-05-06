@@ -23,7 +23,6 @@ alias pi="ssh pi@192.168.1.48"  # ssh to raspberry pi
 alias wt="curl wttr.in"         # weather forecast
 alias python="python3"
 alias tmc="~/tools/tmc/tmc"
-
 {{ if eq .chezmoi.os "darwin" }}
 # restart emacs homebrew service
 alias emacsre="brew services restart emacs-plus"
@@ -33,16 +32,15 @@ export PATH="/opt/homebrew/bin:$PATH"
 # homebrew formulae
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-
 {{ else if eq .chezmoi.os "linux" }}
 # restart emacs service
 alias emacsre="systemctl --user restart emacs"
 
 # zsh vi mode
 source $HOME/.config/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
-{{ end }}
+export ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 
+{{ end }}
 # emacs vterm directory tracking shell-side config
 if [[ "$INSIDE_EMACS" = 'vterm' ]] \
     && [[ -n ${EMACS_VTERM_PATH} ]] \
