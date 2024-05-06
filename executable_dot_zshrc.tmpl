@@ -29,17 +29,23 @@ alias emacsre="brew services restart emacs-plus"
 
 export PATH="/opt/homebrew/bin:$PATH"
 
-# homebrew formulae
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# zsh vi mode
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+# zsh syntax highlighting
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 {{ else if eq .chezmoi.os "linux" }}
 # restart emacs service
 alias emacsre="systemctl --user restart emacs"
 
 # zsh vi mode
+function zvm_config() {
+  ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+}
 source $HOME/.config/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-export ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 
+# zsh syntax highlighting
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 {{ end }}
 # emacs vterm directory tracking shell-side config
 if [[ "$INSIDE_EMACS" = 'vterm' ]] \
