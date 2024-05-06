@@ -8,10 +8,11 @@ README.md
 .config/borders
 {{ end }}
 {{ if ne .chezmoi.os "linux" }}
-.config/qutebrowser/
-.config/kmonad/
-.config/sxhkd/
+.config/qutebrowser
+.config/kmonad
+.config/sxhkd
 .config/i3*
 .zprofile
 .xinitrc
+.config/dunst
 {{ end }}
