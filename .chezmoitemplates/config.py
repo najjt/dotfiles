@@ -110,7 +110,11 @@ config.bind('öd', 'download-open')
 config.bind(',m', 'spawn mpv {url}')
 config.bind(',M', 'hint links spawn mpv {hint-url}')
 config.bind(',c', 'hint code userscript code_select.py')
+{{ if eq .chezmoi.os "darwin" }}
 config.bind(',j', 'set -u {url} content.javascript.clipboard access')
+{{ else if eq .chezmoi.os "linux" }}
+config.bind(',j', 'set -u {url} content.javascript.can_access_clipboard true')
+{{ end }}
 
 # Unbind conflicting and uwanted keys
 config.unbind('<Alt+1>')
