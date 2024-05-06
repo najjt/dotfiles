@@ -11,7 +11,7 @@ bar=(
     blur_radius=0
     padding_left=0
     padding_right=$PADDING
-    color=0xff1B1D1F
+    color=0xff000000
     position=bottom
     sticky=on
     display=main
@@ -22,24 +22,24 @@ sketchybar --bar "${bar[@]}"
 defaults=(
     updates=when_shown
     drawing=on
-    label.font="$LABEL_FONT:Bold:14.0"
+    label.font="$LABEL_FONT:Thin:14.0"
     label.padding_left=$PADDING
     label.padding_right=$PADDING
-    label.color=0xffB3B5B4
+    label.color=0xffFFFFFF
 )
 
 sketchybar --default "${defaults[@]}"
 
 # left
 source "$ITEM_DIR/spaces.sh"
-source "$ITEM_DIR/front_app.sh"
+#source "$ITEM_DIR/front_app.sh"
 
 # right
 source "$ITEM_DIR/date_and_time.sh"
 source "$ITEM_DIR/network.sh"
 source "$ITEM_DIR/battery.sh"
-# source "$ITEM_DIR/memory.sh"
-# source "$ITEM_DIR/cpu.sh"
+#source "$ITEM_DIR/memory.sh"
+#source "$ITEM_DIR/cpu.sh"
 source "$ITEM_DIR/vpn.sh"
 
 sketchybar --hotload on
@@ -47,4 +47,4 @@ sketchybar --hotload on
 # initializing
 sketchybar --update
 
-echo "sketchybar configuration loaded.."
+echo "sketchybar configuration loaded..."
