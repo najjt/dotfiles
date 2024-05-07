@@ -1,0 +1,52 @@
+# xdg
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+# lang & locale
+export LANG="en_US.UTF-8"
+export LC_ALL="en_IE.UTF-8"
+
+# default programs
+export BROWSER=qutebrowser
+export TERMINAL=wezterm
+export EDITOR=emacsclient
+export VISUAL=emacsclient
+export PAGER=cat
+
+export GPG_TTY=$(tty)
+{{ if eq .chezmoi.os "darwin" }}
+path=(
+    /opt/local/sbin
+    /opt/local/bin
+    /usr/local/bin
+    /usr/bin
+    /usr/local/sicstus4.8.0/bin
+    /Applications/WezTerm.app/Contents/MacOS
+    /Users/najjt/Library/Python/3.9/bin
+    /Users/najjt/tools/flutter/bin
+    /Users/najjt/.gem/bin
+    $path
+)
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
+# jupyter
+export JUPYTER_PATH=/opt/homebrew/share/jupyter
+export JUPYTER_CONFIG_PATH=/opt/homebrew/etc/jupyter
+
+# java
+#export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home"
+{{ else if eq .chezmoi.os "linux" }}
+path=(
+    /usr/local/bin
+    /usr/bin
+    /home/najjt/.local/bin
+    /home/najjt/Applications
+    $path
+)
+export PATH="$PATH"
+{{ end }}
+
+export GPG_TTY=$(tty)
