@@ -5,5 +5,5 @@ Welcome to my dotfiles repository! I use [chezmoi](https://www.chezmoi.io/) to m
 * **Editor**: Emacs, see my [literate configuration](dot_emacs.d/init.org)
 * **Browser**: qutebrowser
 * **OS**: macOS/Linux Mint
-* **WM**: yabai
-* **Statusbar**: Sketchybar
+* **WM**: yabai/i3
+* **Statusbar**: Sketchybar/i3status
