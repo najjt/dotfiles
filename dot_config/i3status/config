@@ -3,11 +3,16 @@ general {
         interval = 5
 }
 
-order += "load"
+order += "path_exists VPN"
 order += "memory"
 order += "battery all"
 order += "wireless _first_"
 order += "tztime local"
+
+path_exists VPN {
+     # path exists when a VPN tunnel launched by nmcli/nm-applet is active
+     path = "/proc/sys/net/ipv4/conf/tun0"
+}
 
 wireless _first_ {
         format_up = "%essid"
@@ -20,14 +25,6 @@ ethernet _first_ {
 
 battery all {
         format = "%status: %percentage %remaining "
-}
-
-disk "/" {
-        format = "%avail"
-}
-
-load {
-        format = "%1min "
 }
 
 memory {

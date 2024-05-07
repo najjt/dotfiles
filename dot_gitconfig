@@ -1,0 +1,11 @@
+[user]
+	name = najjt
+	email = trshcan@pm.me
+[credential]
+	helper = 
+	helper = /usr/local/bin/git-credential-manager
+	credentialStore = gpg
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[alias]
+	ac = !git add -A && git commit -m
