@@ -18,6 +18,7 @@
   - [[#auto-package-update][Auto Package Update]]
 - [[#global-functionalities][Global Functionalities]]
   - [[#user-information][User information]]
+  - [[#chezmoi][Chezmoi]]
   - [[#environment-variables][Environment variables]]
   - [[#swiper][Swiper]]
   - [[#markdown-mode][Markdown mode]]
@@ -318,6 +319,13 @@ Automatically update packages every seven days with [[https://github.com/rranell
 
   (setq user-full-name "Martin Lönn Andersson")
   (setq user-mail-address "mlonna@pm.me")
+
+#+end_src
+** Chezmoi
+
+#+begin_src emacs-lisp
+
+  (use-package chezmoi)
 
 #+end_src
 
