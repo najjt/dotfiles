@@ -12,31 +12,31 @@
   - [[#load-path][Load Path]]
   - [[#custom-file][Custom File]]
   - [[#backup-directory][Backup Directory]]
-- [[#package-management][Package management]]
+- [[#package-management][Package Management]]
   - [[#package-archives--initialize-package-manager][Package Archives & Initialize Package Manager]]
   - [[#use-package][Use Package]]
   - [[#auto-package-update][Auto Package Update]]
 - [[#global-functionalities][Global Functionalities]]
-  - [[#user-information][User information]]
+  - [[#user-information][User Information]]
   - [[#chezmoi][Chezmoi]]
-  - [[#environment-variables][Environment variables]]
+  - [[#environment-variables][Environment Variables]]
   - [[#swiper][Swiper]]
-  - [[#markdown-mode][Markdown mode]]
-  - [[#spell-checking][Spell checking]]
+  - [[#markdown-mode][Markdown Mode]]
+  - [[#spell-checking][Spell Checking]]
   - [[#history][History]]
   - [[#undo-tree][Undo Tree]]
   - [[#general][General]]
   - [[#evil][Evil]]
   - [[#hydra][Hydra]]
   - [[#dired][Dired]]
-  - [[#help-functionality][Help functionality]]
+  - [[#help-functionality][Help Functionality]]
   - [[#terminal][Terminal]]
-  - [[#smooth-scrolling][Smooth scrolling]]
+  - [[#smooth-scrolling][Smooth Scrolling]]
   - [[#perspective][Perspective]]
 - [[#ui-enhancements][UI Enhancements]]
   - [[#font--icons][Font & Icons]]
   - [[#themes][Themes]]
-  - [[#popup-buffers][Popup buffers]]
+  - [[#popup-buffers][Popup Buffers]]
   - [[#lines][Lines]]
   - [[#dashboard][Dashboard]]
   - [[#centered-buffers][Centered Buffers]]
@@ -260,7 +260,7 @@ Set backup directory location.
 
 #+end_src
 
-* Package management
+* Package Management
 ** Package Archives & Initialize Package Manager
 
 Set up MELPA, ELPA and Non-GNU ELPA and initialize the package manager.
@@ -313,7 +313,7 @@ Automatically update packages every seven days with [[https://github.com/rranell
 #+end_src
 
 * Global Functionalities
-** User information
+** User Information
 
 #+begin_src emacs-lisp
 
@@ -329,7 +329,7 @@ Automatically update packages every seven days with [[https://github.com/rranell
 
 #+end_src
 
-** Environment variables
+** Environment Variables
 
 Get environment variables from shell with [[https://github.com/purcell/exec-path-from-shell][exec-path-from-shell]].
 
@@ -354,7 +354,7 @@ Get environment variables from shell with [[https://github.com/purcell/exec-path
 
 #+end_src
 
-** Markdown mode
+** Markdown Mode
 
 The [[https://jblevins.org/projects/markdown-mode/][markdown mode]] package provides better markdown support.
 
@@ -364,7 +364,7 @@ The [[https://jblevins.org/projects/markdown-mode/][markdown mode]] package prov
 
 #+end_src
 
-** Spell checking
+** Spell Checking
 
 To spell check files, I use =flyspell= and =hunspell= in order to spell check in both Swedish and English.
 
@@ -669,7 +669,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
 
 #+end_src
 
-** Help functionality
+** Help Functionality
 *** Counsel and Ivy
 
 [[https://github.com/abo-abo/swiper][Counsel and Ivy]] provide generic completion and enhanced versions of common Emacs commands.
@@ -765,7 +765,7 @@ A better terminal emulation with [[https://github.com/akermu/emacs-libvterm][vte
 
 #+end_src
 
-** Smooth scrolling
+** Smooth Scrolling
 
 #+begin_src emacs-lisp
 
@@ -840,41 +840,43 @@ Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
 
 #+end_src
 
-** Popup buffers
+** Popup Buffers
 
 Popup buffers with [[https://github.com/karthink/popper][popper]].
 
 #+begin_src emacs-lisp
 
-      (use-package popper
-        :bind
-        ("C-å"   . popper-toggle)
-        ("M-å"   . popper-cycle)
-        ("C-M-å" . popper-toggle-type)
-        :init
-        (setq popper-reference-buffers
-          '("\\*Messages\\*"
-            "\\*Warnings\\*"
-            "\\*Compile-Log\\*"
-            "^\\*compilation.*\\*$" comint-mode
-            "Output\\*$"
-            help-mode
-            helpful-mode
-            compilation-mode
-            "\\*Async Shell Command\\*"
-            "^\\*eshell.*\\*$" eshell-mode
-            "^\\*shell.*\\*$"  shell-mode
-            "^\\*term.*\\*$"   term-mode
-            "^\\*vterm.*\\*$"  vterm-mode
-            "^\\*ansi-term.*\\*$"  ansi-term-mode
-            "^\\*tex-shell.*\\*$"
-            "^\\*Flycheck.*\\*$"
-            "^\\*Buffer List*\\*$"
-            "^\\*LSP Error List*\\*$"
-            "^\\*Dart Run out*\\*$"))
-        (popper-mode 1)
-        (popper-echo-mode 1)
-        (setq popper-mode-line " POP "))
+  (use-package popper
+    :bind
+    ("C-å"   . popper-toggle)
+    ("M-å"   . popper-cycle)
+    ("C-M-å" . popper-toggle-type)
+    :init
+    (setq popper-reference-buffers
+      '("\\*Messages\\*"
+        "\\*Warnings\\*"
+        "\\*Compile-Log\\*"
+        "^\\*compilation.*\\*$" comint-mode
+        "Output\\*$"
+        help-mode
+        helpful-mode
+        compilation-mode
+        "\\*Async Shell Command\\*"
+        "^\\*eshell.*\\*$" eshell-mode
+        "^\\*shell.*\\*$"  shell-mode
+        "^\\*term.*\\*$"   term-mode
+        "^\\*vterm.*\\*$"  vterm-mode
+        "^\\*ansi-term.*\\*$"  ansi-term-mode
+        "^\\*tex-shell.*\\*$"
+        "^\\*Flycheck.*\\*$"
+        "^\\*Buffer List*\\*$"
+        "^\\*LSP Error List*\\*$"
+        "^\\*Dart Run out*\\*$"
+        "^\\magit:.*\\*$"
+        ))
+    (popper-mode 1)
+    (popper-echo-mode 1)
+    (setq popper-mode-line " POP "))
 
 #+end_src
 
