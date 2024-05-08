@@ -79,7 +79,7 @@ bindsym Control+Return exec emacsclient -c -n -a '' -e '(select-frame-set-input-
 bindsym Control+Shift+Return exec qutebrowser
 
 # start dmenu
-bindsym $mod+space exec --no-startup-id dmenu_run
+bindsym $mod+space exec --no-startup-id rofi -show run
 
 # kill focused window
 bindsym $mod+w kill
@@ -148,11 +148,11 @@ bindsym $mod+Shift+s resize shrink height 5 px or 5 ppt
 bindsym $mod+Shift+w resize grow height 5 px or 5 ppt
 bindsym $mod+Shift+0 exec i3_balance_workspace
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/tools/scripts/volume_brightness.sh volume_up
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/tools/scripts/volume_brightness.sh volume_down
-bindsym XF86AudioMute exec --no-startup-id ~/tools/scripts/volume_brightness.sh volume_mute
-bindsym XF86MonBrightnessUp exec --no-startup-id ~/tools/scripts/volume_brightness.sh brightness_up
-bindsym XF86MonBrightnessDown exec --no-startup-id ~/tools/scripts/volume_brightness.sh brightness_down
+bindsym XF86AudioRaiseVolume exec ~/tools/scripts/volume_brightness.sh volume_up
+bindsym XF86AudioLowerVolume exec ~/tools/scripts/volume_brightness.sh volume_down
+bindsym XF86AudioMute exec  ~/tools/scripts/volume_brightness.sh volume_mute
+bindsym XF86MonBrightnessUp exec ~/tools/scripts/volume_brightness.sh brightness_up
+bindsym XF86MonBrightnessDown exec ~/tools/scripts/volume_brightness.sh brightness_down
 
 bar {
         status_command i3status
