@@ -1026,7 +1026,9 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
 
   (use-package magit
     :custom
-    (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+    (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+    :bind
+    ("C-x m" . magit-status))
 
 #+end_src
 
