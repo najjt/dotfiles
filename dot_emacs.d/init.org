@@ -34,6 +34,7 @@
   - [[#smooth-scrolling][Smooth Scrolling]]
   - [[#perspective][Perspective]]
 - [[#ui-enhancements][UI Enhancements]]
+  - [[#general-1][General]]
   - [[#font--icons][Font & Icons]]
   - [[#themes][Themes]]
   - [[#popup-buffers][Popup Buffers]]
@@ -42,7 +43,6 @@
   - [[#centered-buffers][Centered Buffers]]
 - [[#general-programming][General programming]]
   - [[#prog-mode][Prog Mode]]
-  - [[#eglot][Eglot]]
   - [[#dap-mode][DAP Mode]]
   - [[#comments][Comments]]
   - [[#match-delimiters][Match Delimiters]]
@@ -323,6 +323,8 @@ Automatically update packages every seven days with [[https://github.com/rranell
 #+end_src
 ** Chezmoi
 
+I manage my dotfiles with [[https://github.com/tuh8888/chezmoi.el][chezmoi]], and this package provides some useful functions for this.
+
 #+begin_src emacs-lisp
 
   (use-package chezmoi)
@@ -356,7 +358,7 @@ Get environment variables from shell with [[https://github.com/purcell/exec-path
 
 ** Markdown Mode
 
-The [[https://jblevins.org/projects/markdown-mode/][markdown mode]] package provides better markdown support.
+The [[https://jblevins.org/projects/markdown-mode/][Markdown Mode]] package provides better markdown support.
 
 #+begin_src emacs-lisp
 
@@ -542,7 +544,9 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     (my/leader-keys
       "t" '(hydra-theme/body :which-key "choose theme")
       "r" '(hydra-window/body :which-key "resize window")
-      "s" '(hydra-text-scale/body :which-key "scale text")))
+      "s" '(hydra-text-scale/body :which-key "scale text")
+      "a" '(org-agenda :which-key "open org agenda")
+      "c" '(my/custom-open-calendar :which-key "open calendar")))
 
 #+end_src
 
@@ -803,6 +807,28 @@ Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
 #+end_src
 
 * UI Enhancements
+** General
+
+#+begin_src emacs-lisp
+
+  ;; display right and left fringe
+  (fringe-mode '(8 . 8))
+
+  ;; turn off blinking cursor
+  (blink-cursor-mode 0)
+
+  ;; show column number in status bar
+  (column-number-mode)
+
+  ;; soft-wrap text
+  (global-visual-line-mode t)
+
+  ;; tabs are four spaces
+  (setq-default tab-width 4
+                indent-tabs-mode nil)
+
+#+end_src
+
 ** Font & Icons
 
 #+begin_src emacs-lisp
@@ -830,6 +856,8 @@ Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
   (use-package standard-themes)
 
   (use-package doom-themes)
+
+  (use-package modus-themes)
 
   ;; disable border around modelines
   (custom-set-faces
@@ -882,14 +910,14 @@ Popup buffers with [[https://github.com/karthink/popper][popper]].
 
 ** Lines
 
+Turn on relative line numbers for text modes.
+
 #+begin_src emacs-lisp
 
-  ;; turn on line numbers and highlight current line
   (dolist (hook '(fundamental-mode conf-mode-hook prog-mode-hook text-mode-hook markdown-mode-hook org-mode-hook))
     (add-hook hook 'display-line-numbers-mode)
     )
 
-  ;; relative line numbers
   (setq display-line-numbers-type 'relative
         display-line-numbers-width-start t
         )
@@ -962,13 +990,6 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
     :mode ("\\.edn\\'" "\\.lua\\'"))
 
 #+end_src
-** Eglot
-
-#+begin_src emacs-lisp
-
-  (use-package eglot)
-
-#+end_src
 ** DAP Mode
 
 #+begin_src emacs-lisp
@@ -1024,7 +1045,7 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
 
 ** Magit
 
-[[https://magit.vc/][Magit]]: a complete text-based user interface to Git
+[[https://magit.vc/][Magit]]: a complete text-based user interface to Git.
 
 #+begin_src emacs-lisp
 
@@ -1050,8 +1071,6 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
 ** Java
 
 #+begin_src emacs-lisp
-
-  (use-package eglot-java)
 
 #+end_src
 
@@ -1289,32 +1308,6 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
 
 #+end_src
 
-*** Org Habit
-
-[[https://orgmode.org/manual/Tracking-your-habits.html][Org Habit]] gives the ability to track habits.
-
-#+begin_src emacs-lisp
-
-  (use-package org-habit
-    :ensure nil
-    :after org
-    :config
-    (setq org-habit-show-habits-only-for-today t)
-
-    ;; the org habit graph changes colors per theme,
-    ;; so I define consistent colors for the habit graph
-    (custom-set-faces
-     '(org-habit-clear-face ((t (:background "#1468de"))))
-     '(org-habit-clear-future-face ((t (:background "#1468de"))))
-     '(org-habit-ready-face ((t (:background "#14de4a"))))
-     '(org-habit-ready-future-face ((t (:background "#14de4a"))))
-     '(org-habit-alert-face ((t (:background "#f0f00c"))))
-     '(org-habit-alert-future-face ((t (:background "#f0f00c"))))
-     '(org-habit-overdue-face ((t (:background "#f00c0c"))))
-     '(org-habit-overdue-future-face ((t (:background "#f00c0c"))))))
-
-#+end_src
-
 *** Org Contacts
 
 Contacts in Org Mode with [[https://orgmode.org/worg/org-contrib/org-contacts.html][Org Contacts]].
@@ -1375,14 +1368,11 @@ Calendar framework with [[https://github.com/kiwanami/emacs-calfw][calfw]].
       (cfw:org-create-source "medium purple"))
      :view 'two-weeks))
 
-  (my/leader-keys
-    "c" '(my/custom-open-calendar :which-key "open calendar"))
-
 #+end_src
 
 ** PlantUML & Graphviz
 
-PlantUML Mode, a major mode for editing PlantUML sources.
+[[https://github.com/skuro/plantuml-mode][PlantUML Mode]], a major mode for editing PlantUML sources.
 
 *Prerequisite*:
 
@@ -1418,22 +1408,8 @@ PlantUML Mode, a major mode for editing PlantUML sources.
 
 #+begin_src emacs-lisp
 
+  ;; .edn file type support
   (use-package edn)
-
-  ;; display right and left fringe
-  (fringe-mode '(8 . 8))
-
-  ;; turn off blinking cursor
-  (blink-cursor-mode 0)
-
-  (column-number-mode)
-
-  ;; soft-wrap text
-  (global-visual-line-mode t)
-
-  ;; tabs are four spaces
-  (setq-default tab-width 4
-                indent-tabs-mode nil)
 
   ;; set language environment
   (set-language-environment "UTF-8")
