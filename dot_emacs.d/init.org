@@ -655,7 +655,10 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     :custom
     (dired-free-space nil)
     :config
-    (setq dired-listing-switches "-lAX --group-directories-first")
+    (when *sys/mac*
+      (setq dired-listing-switches "-lA"))
+    (when *sys/linux*
+      (setq dired-listing-switches "-lAX --group-directories-first"))
     (evil-collection-define-key 'normal 'dired-mode-map
       "h" 'dired-up-directory
       "l" 'dired-find-file)
@@ -663,7 +666,6 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
       :diminish
       :hook
       (dired-mode . nerd-icons-dired-mode)))
-
 
 #+end_src
 
