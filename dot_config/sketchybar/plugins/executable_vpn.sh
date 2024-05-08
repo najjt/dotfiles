@@ -3,9 +3,9 @@
 IS_VPN=$(ifconfig | grep -m1 'utun4')
 
 if [[ $IS_VPN != "" ]]; then
-    LABEL="ON"
+    LABEL="yes"
 else
-    LABEL="OFF"
+    LABEL="no"
 fi
 
 sketchybar --set $NAME label="VPN: ${LABEL}"
