@@ -655,10 +655,8 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     :custom
     (dired-free-space nil)
     :config
-    (when *sys/mac*
-      (setq dired-listing-switches "-lA"))
-    (when *sys/linux*
-      (setq dired-listing-switches "-lAX --group-directories-first"))
+    (setq insert-directory-program "gls"
+          dired-listing-switches "-lAX --group-directories-first")
     (evil-collection-define-key 'normal 'dired-mode-map
       "h" 'dired-up-directory
       "l" 'dired-find-file)
@@ -872,7 +870,7 @@ Popup buffers with [[https://github.com/karthink/popper][popper]].
         "^\\*Buffer List*\\*$"
         "^\\*LSP Error List*\\*$"
         "^\\*Dart Run out*\\*$"
-        "^\\magit:.*\\*$"
+        "^magit:.*$"
         ))
     (popper-mode 1)
     (popper-echo-mode 1)
