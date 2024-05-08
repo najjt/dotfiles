@@ -655,13 +655,14 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     :custom
     (dired-free-space nil)
     :config
+    (setq dired-listing-switches "-lAX --group-directories-first")
     (evil-collection-define-key 'normal 'dired-mode-map
       "h" 'dired-up-directory
       "l" 'dired-find-file)
     (use-package nerd-icons-dired ; use nerd icons in dired
-    :diminish
-    :hook
-    (dired-mode . nerd-icons-dired-mode)))
+      :diminish
+      :hook
+      (dired-mode . nerd-icons-dired-mode)))
 
 
 #+end_src
