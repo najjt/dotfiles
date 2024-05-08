@@ -890,7 +890,9 @@ Popup buffers with [[https://github.com/karthink/popper][popper]].
     )
 
   ;; relative line numbers
-  (setq display-line-numbers-type 'relative)
+  (setq display-line-numbers-type 'relative
+        display-line-numbers-width-start t
+        )
 
 #+end_src
 
