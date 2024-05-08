@@ -17,6 +17,9 @@ exec_always dunst
 # hide cursor when typing
 exec_always xbanish
 
+# redshift blue light filter
+exec_always redshift
+
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
