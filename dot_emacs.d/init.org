@@ -870,7 +870,11 @@ Popup buffers with [[https://github.com/karthink/popper][popper]].
         "^\\*Buffer List*\\*$"
         "^\\*LSP Error List*\\*$"
         "^\\*Dart Run out*\\*$"
+<<<<<<< HEAD
         "^magit:.*$"
+=======
+        "^\\magit:.*\\*$"
+>>>>>>> 58cccceb619b0f6d7d859ef03d7e4199787d3a65
         ))
     (popper-mode 1)
     (popper-echo-mode 1)
