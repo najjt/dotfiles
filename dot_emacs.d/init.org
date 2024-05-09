@@ -930,9 +930,15 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
 
 #+begin_src emacs-lisp
 
+  (defun my/custom-open-org-agenda ()
+    (interactive)
+    (org-agenda nil "s"))
+
+
   (use-package dashboard
     :demand t
     :diminish (dashboard-mode page-break-lines-mode)
+    :hook (dashboard-after-initialize . my/custom-open-org-agenda)
     :custom-face
     (dashboard-items-face ((t (:weight normal))))
     :custom
