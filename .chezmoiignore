@@ -16,4 +16,5 @@ README.md
 .zprofile
 .xinitrc
 .config/dunst
+.config/rofi
 {{ end }}
