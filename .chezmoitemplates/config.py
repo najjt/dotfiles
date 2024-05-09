@@ -33,7 +33,7 @@ c.tabs.position = 'bottom'
 c.url.default_page = 'about:blank'
 c.url.searchengines = {'DEFAULT': 'https://www.google.com/search?q={}'}
 c.url.start_pages = 'about:blank'
-c.zoom.default = '110%'
+c.zoom.default = '125%'
 
 # Cookies
 config.set('content.cookies.accept', 'all', 'chrome-devtools://*')

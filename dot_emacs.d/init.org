@@ -659,8 +659,9 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     :custom
     (dired-free-space nil)
     :config
-    (setq insert-directory-program "gls"
-          dired-listing-switches "-lAX --group-directories-first")
+    (when *sys/mac*
+      (setq insert-directory-program "gls"))
+    (setq dired-listing-switches "-lAX --group-directories-first")
     (evil-collection-define-key 'normal 'dired-mode-map
       "h" 'dired-up-directory
       "l" 'dired-find-file)
