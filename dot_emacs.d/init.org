@@ -16,7 +16,6 @@
   - [[#package-archives--initialize-package-manager][Package Archives & Initialize Package Manager]]
   - [[#use-package][Use Package]]
   - [[#auto-package-update][Auto Package Update]]
-  - [[#gnu-elpa-keyring-update][GNU ELPA Keyring Update]]
 - [[#exwm][EXWM]]
 - [[#global-functionalities][Global Functionalities]]
   - [[#user-information][User Information]]
@@ -35,6 +34,7 @@
   - [[#terminal][Terminal]]
   - [[#smooth-scrolling][Smooth Scrolling]]
   - [[#perspective][Perspective]]
+  - [[#web-feed-reader][Web Feed Reader]]
 - [[#ui-enhancements][UI Enhancements]]
   - [[#general-1][General]]
   - [[#font--icons][Font & Icons]]
@@ -43,7 +43,7 @@
   - [[#lines][Lines]]
   - [[#dashboard][Dashboard]]
   - [[#centered-buffers][Centered Buffers]]
-- [[#general-programming][General programming]]
+- [[#general-programming][General Programming]]
   - [[#prog-mode][Prog Mode]]
   - [[#dap-mode][DAP Mode]]
   - [[#comments][Comments]]
@@ -62,7 +62,7 @@
   - [[#pdf-tools][PDF Tools]]
 - [[#miscellaneous][Miscellaneous]]
 - [[#diminish][Diminish]]
-- [[#tangle--reload-on-save][Tangle & reload on save]]
+- [[#tangle--reload-on-save][Tangle & Reload On Save]]
 
 * Preamble
 
@@ -814,6 +814,20 @@ Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
 
   (use-package persp-projectile
     :after perspective)
+
+#+end_src
+** Web Feed Reader
+
+[[https://github.com/skeeto/elfeed][Elfeed]] is an extensible web feed reader.
+
+#+begin_src emacs-lisp
+
+  (use-package elfeed
+    :config
+    (global-set-key (kbd "C-x w") 'elfeed)
+    (setq elfeed-feeds
+          '("https:/sachachua.com/blog/category/emacs/feed/"
+            "https://systemcrafters.net/rss/news.xml")))
 
 #+end_src
 
