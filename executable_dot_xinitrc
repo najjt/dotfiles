@@ -15,9 +15,11 @@ export EDITOR="$VISUAL"
 xhost +SI localuser $USER
 
 tlp &
-syncthing -no-browser &
+syncthing --no-browser &
+kmonad &
+redshift &
 nm-applet &
 pasystray &
 
-# Finally launch emacs.
+# launch emacs
 exec dbus-launch --exit-with-session emacs
