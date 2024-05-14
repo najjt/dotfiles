@@ -126,7 +126,7 @@ Run Emacs as a [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Emacs
 
   (require 'server)
   (if (not (server-running-p)) (server-start))
-  (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
+  ;; (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
 
 #+end_src
 *** Suppress Warnings Buffer
@@ -329,64 +329,76 @@ Automatically update packages every seven days with [[https://github.com/rranell
 #+begin_src emacs-lisp
 
   (when *sys/linux*
-    ;; Turn on `display-time-mode' if you don't use an external bar.
-    (setq display-time-default-load-average nil)
-    (display-time-mode t)
+    (use-package exwm
+      :config
+      ;; start ido mode for ...
+      (ido-mode 1)
 
-    ;; You are strongly encouraged to enable something like `ido-mode' to alter
-    ;; the default behavior of 'C-x b', or you will take great pains to switch
-    ;; to or back from a floating frame (remember 'C-x 5 o' if you refuse this
-    ;; proposal however).
-    ;; You may also want to call `exwm-config-ido' later (see below).
-    (ido-mode 1)
+      (require 'exwm) ;; load EXWM.
 
-    ;; Emacs server is not required to run EXWM but it has some interesting uses
-    ;; (see next section).
-    (server-start)
+      ;; fix problems with ido
+      (require 'exwm-config)
+      (exwm-config-ido)
 
-    ;;;; Below are configurations for EXWM.
+      (defun my/exwm-update-class ()
+        (exwm-workspace-rename-buffer exwm-class-name))
 
-    ;; Load EXWM.
-    (require 'exwm)
+      ;; update buffer titles to the application name
+      (add-hook 'exwm-update-class-hook #'my/exwm-update-class)
 
-    ;; Fix problems with Ido (if you use it).
-    (require 'exwm-config)
-    (exwm-config-ido)
+      ;; set initial number of workspaces
+      (setq exwm-workspace-number 5)
 
-    (add-hook 'exwm-update-title-hook
-              (lambda () (exwm-workspace-rename-buffer exwm-title)))
+      (setq exwm-input-global-keys
+            '(?\C-x
+              ?\C-u
+              ?\C-h
+              ?\M-x
+              ?\C-\M-j
+              ?\A-\ ))
 
-    ;; Set the initial number of workspaces (they can also be created later).
-    (setq exwm-workspace-number 4)
+      ;; window switching
+      (exwm-input-set-key (kbd "A-k") 'evil-window-up)
+      (exwm-input-set-key (kbd "A-j") 'evil-window-down)
+      (exwm-input-set-key (kbd "A-l") 'evil-window-right)
+      (exwm-input-set-key (kbd "A-h") 'evil-window-left)
 
-    (setq exwm-workspace-index-map
-          (lambda (index)
-            (let ((named-workspaces ["0" "1" "2" "3" "4" "5" "6" "7" "8" "9"]))
-              (if (< index (length named-workspaces))
-                  (elt named-workspaces index)
-                (number-to-string index)))))
+      ;; workspace switching
 
-    ;; window switching with windmove
-    (exwm-input-set-key (kbd "<A-k>") 'windmove-up)
-    (exwm-input-set-key (kbd "<A-j>") 'windmove-down)
-    (exwm-input-set-key (kbd "<A-l>") 'windmove-right)
-    (exwm-input-set-key (kbd "<A-h>") 'windmove-left)
+      ;; toggle char/line mode
+      (exwm-input-set-key (kbd "A-q") 'exwm-reset)
 
-    (defun launch-terminal ()
-      (interactive)
-      (start-process-shell-command "wezterm" nil "wezterm"))
+      (defun launch-terminal ()
+        (interactive)
+        (start-process-shell-command "wezterm" nil "wezterm"))
 
-    (defun launch-browser ()
-      (interactive)
-      (start-process-shell-command "qutebrowser" nil "qutebrowser"))
+      (defun launch-browser ()
+        (interactive)
+        (start-process-shell-command "qutebrowser" nil "qutebrowser"))
 
-    (exwm-input-set-key (kbd "A-<return>") 'launch-terminal)
-    (exwm-input-set-key (kbd "C-S-<return>") 'launch-browser)
+      (defun launch-application (command)
+        (interactive (list (read-shell-command "$ ")))
+        (start-process-shell-command command nil command))
 
-    ;; Do not forget to enable EXWM. It will start by itself when things are
-    ;; ready.  You can put it _anywhere_ in your configuration.
-    (exwm-enable)
-    )
+      (defun lock-screen ()
+        (interactive)
+        (start-process "" nil "/usr/bin/slock"))
+
+      ;; launch terminal
+      (exwm-input-set-key (kbd "A-<return>") 'launch-terminal)
+
+      ;; launch browser
+      (global-unset-key "C-S-<return>")
+      (exwm-input-set-key (kbd "C-S-<return>") 'launch-browser)
+
+      ;; launch application
+      (exwm-input-set-key (kbd "M-SPC")  'launch-application)
+
+      ;; lock screen
+      (exwm-input-set-key (kbd "C-A-q")  'lock-screen)
+
+      ;; enable exwm
+      (exwm-enable)))
 
 #+end_src
 
@@ -1032,7 +1044,6 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
   (use-package dashboard
     :demand t
     :diminish (dashboard-mode page-break-lines-mode)
-    :hook (dashboard-after-initialize . my/custom-open-org-agenda)
     :custom-face
     (dashboard-items-face ((t (:weight normal))))
     :custom
