@@ -36,7 +36,7 @@
   - [[#perspective][Perspective]]
   - [[#web-feed-reader][Web Feed Reader]]
 - [[#ui-enhancements][UI Enhancements]]
-  - [[#general-1][General]]
+  - [[#general-appearance-settings][General Appearance Settings]]
   - [[#font--icons][Font & Icons]]
   - [[#themes][Themes]]
   - [[#popup-buffers][Popup Buffers]]
@@ -54,7 +54,6 @@
 - [[#programming][Programming]]
   - [[#java][Java]]
   - [[#tex][TeX]]
-  - [[#dart][Dart]]
 - [[#office][Office]]
   - [[#org][Org]]
   - [[#calendar][Calendar]]
@@ -126,9 +125,9 @@ Run Emacs as a [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Emacs
 
   (require 'server)
   (if (not (server-running-p)) (server-start))
-  ;; (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
 
 #+end_src
+
 *** Suppress Warnings Buffer
 
 The =*Warnings*= buffer sometimes pops up unnecessarily and intrusively, so I lower the severity level for warnings to errors.
@@ -141,7 +140,7 @@ The =*Warnings*= buffer sometimes pops up unnecessarily and intrusively, so I lo
 
 ** Garbage Collection
 
-A large ~gc-cons-threshold~ may cause freezing and stuttering during long-term interactive use.
+A large =gc-cons-threshold= may cause freezing and stuttering during long-term interactive use.
 
 If you experience freezing, decrease this amount, if you experience stuttering, increase this amount.
 
@@ -162,26 +161,28 @@ Garbage Collect when Emacs is out of focus and avoid garbage collection when usi
 #+begin_src emacs-lisp
 
   (add-hook 'emacs-startup-hook
-        (lambda ()
-          (if (boundp 'after-focus-change-function)
-          (add-function :after after-focus-change-function
-                (lambda ()
-                  (unless (frame-focus-state)
-                    (garbage-collect))))
-        (add-hook 'after-focus-change-function 'garbage-collect))
-          (defun gc-minibuffer-setup-hook ()
-        (setq gc-cons-threshold (* better-gc-cons-threshold 2)))
+            (lambda ()
+              (if (boundp 'after-focus-change-function)
+                  (add-function :after after-focus-change-function
+                                (lambda ()
+                                  (unless (frame-focus-state)
+                                    (garbage-collect))))
+                (add-hook 'after-focus-change-function 'garbage-collect))
+              (defun gc-minibuffer-setup-hook ()
+                (setq gc-cons-threshold (* better-gc-cons-threshold 2)))
 
-          (defun gc-minibuffer-exit-hook ()
-        (garbage-collect)
-        (setq gc-cons-threshold better-gc-cons-threshold))
+              (defun gc-minibuffer-exit-hook ()
+                (garbage-collect)
+                (setq gc-cons-threshold better-gc-cons-threshold))
 
-          (add-hook 'minibuffer-setup-hook #'gc-minibuffer-setup-hook)
-          (add-hook 'minibuffer-exit-hook #'gc-minibuffer-exit-hook)))
+              (add-hook 'minibuffer-setup-hook #'gc-minibuffer-setup-hook)
+              (add-hook 'minibuffer-exit-hook #'gc-minibuffer-exit-hook)))
 
 #+end_src
 
 ** Define Constants
+
+These constants are used below for OS-specific settings.
 
 #+begin_src emacs-lisp
 
@@ -198,7 +199,7 @@ Garbage Collect when Emacs is out of focus and avoid garbage collection when usi
 ** OS-specific Adaptions
 *** Linux
 
-Set super key to meta on Linux.
+Set super key to alt key on Linux.
 
 #+begin_src emacs-lisp
 
@@ -224,7 +225,7 @@ Set meta key, turn off option key as modifier, set dired to not use ~--dired~ fl
 
 ** Load Path
 
-Set load path to include ~./elisp~ folder and ensure theme is remembered by loading ~custom.el~.
+Set load path to include =./elisp= folder and ensure theme is remembered by loading =custom.el=.
 
 #+begin_src emacs-lisp
 
@@ -249,7 +250,7 @@ Set load path to include ~./elisp~ folder and ensure theme is remembered by load
 
 ** Custom File
 
-Customize-based settings should live in ~custom.el~ file.
+Customize-based settings should live in =custom.el= file.
 
 #+begin_src emacs-lisp
 
@@ -274,7 +275,7 @@ Set backup directory location.
 * Package Management
 ** Package Archives & Initialize Package Manager
 
-Set up MELPA, ELPA and Non-GNU ELPA and initialize the package manager.
+Set package archives and initialize the package manager.
 
 #+begin_src emacs-lisp
 
@@ -289,9 +290,10 @@ Set up MELPA, ELPA and Non-GNU ELPA and initialize the package manager.
   (package-initialize)
 
 #+end_src
+
 ** Use Package
 
-A nicer way to set up packages with [[https://github.com/jwiegley/use-package][use-package]]. Make sure =use-package= is installed, refresh package contents, always ensure packages are installed and turn on verbose logging.
+A nicer way to set up packages is with [[https://github.com/jwiegley/use-package][use-package]]. Make sure =use-package= is installed, refresh package contents, always ensure packages are installed and turn on verbose logging.
 
 #+begin_src emacs-lisp
 
@@ -324,7 +326,10 @@ Automatically update packages every seven days with [[https://github.com/rranell
     (auto-package-update-maybe))
 
 #+end_src
+
 * EXWM
+
+[[https://github.com/emacs-exwm/exwm][EXWM]], the Emacs X Window Manager. Emacs for everything!
 
 #+begin_src emacs-lisp
 
@@ -411,6 +416,7 @@ Automatically update packages every seven days with [[https://github.com/rranell
   (setq user-mail-address "mlonna@pm.me")
 
 #+end_src
+
 ** Chezmoi
 
 I manage my dotfiles with [[https://github.com/tuh8888/chezmoi.el][chezmoi]], and this package provides some useful functions for this.
@@ -423,7 +429,7 @@ I manage my dotfiles with [[https://github.com/tuh8888/chezmoi.el][chezmoi]], an
 
 ** Environment Variables
 
-Get environment variables from shell with [[https://github.com/purcell/exec-path-from-shell][exec-path-from-shell]].
+Get environment variables from your shell with [[https://github.com/purcell/exec-path-from-shell][exec-path-from-shell]].
 
 #+begin_src emacs-lisp
 
@@ -452,7 +458,7 @@ The [[https://jblevins.org/projects/markdown-mode/][Markdown Mode]] package prov
 
 #+begin_src emacs-lisp
 
-    (use-package markdown-mode :defer t)
+  (use-package markdown-mode :defer t)
 
 #+end_src
 
@@ -542,6 +548,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     (general-define-key
      "<escape>" 'keyboard-escape-quit)
 
+    ;; increase/decrease text size
     (general-define-key
      "C-=" #'text-scale-increase
      "C-+" #'text-scale-increase
@@ -561,6 +568,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     :bind
     ("C-z" . evil-local-mode)
 
+    ;; window navigation
     (:map evil-normal-state-map
           ("C-w h" . evil-window-left)
           ("C-w j" . evil-window-down)
@@ -587,6 +595,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
                       ansi-term-mode))
         (add-to-list 'evil-emacs-state-modes mode)))
 
+    ;; turn on evil mode
     (evil-mode +1)
 
     ;; move on visual lines unless a count is involved
@@ -648,7 +657,6 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     "choose theme"
     ("l" (my/enable-theme 'standard-light) "standard-light")
     ("v" (my/enable-theme 'modus-vivendi) "modus-vivendi")
-    ("t" (my/enable-theme 'doom-tokyo-night) "tokyo night")
     ("f" nil "finished" :exit t))
 
   (defun my/disable-all-themes ()
@@ -725,18 +733,6 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
 
 #+end_src
 
-*** Scale Text
-
-#+begin_src emacs-lisp
-
-  (defhydra hydra-text-scale (:timeout 4)
-    "scale text"
-    ("j" text-scale-increase "in")
-    ("k" text-scale-decrease "out")
-    ("f" nil "finished" :exit t))
-
-#+end_src
-
 ** Dired
 
 #+begin_src emacs-lisp
@@ -746,19 +742,23 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     :commands (dired dired-jump)
     :hook (dired-mode . (lambda () (dired-hide-details-mode)))
     :bind ("C-x C-j" . dired-jump)
-    :custom
-    (dired-free-space nil)
+    :custom (dired-free-space nil) ; hide free space
     :config
     (when *sys/mac*
       (setq insert-directory-program "gls"))
+
+    ;; group dotfiles and directories
     (setq dired-listing-switches "-lAX --group-directories-first")
+
+    ;; vim-style navigation
     (evil-collection-define-key 'normal 'dired-mode-map
       "h" 'dired-up-directory
       "l" 'dired-find-file)
-    (use-package nerd-icons-dired ; use nerd icons in dired
+
+    ;; use nerd icons in dired
+    (use-package nerd-icons-dired
       :diminish
-      :hook
-      (dired-mode . nerd-icons-dired-mode)))
+      :hook (dired-mode . nerd-icons-dired-mode)))
 
 #+end_src
 
@@ -837,8 +837,7 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
   ;; display help for next command keystroke
   (use-package which-key
     :diminish
-    :config
-    (which-key-mode 1))
+    :config (which-key-mode 1))
 
 #+end_src
 
@@ -896,6 +895,7 @@ Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
     :after perspective)
 
 #+end_src
+
 ** Web Feed Reader
 
 [[https://github.com/skeeto/elfeed][Elfeed]] is an extensible web feed reader.
@@ -910,8 +910,9 @@ Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
             "https://systemcrafters.net/rss/news.xml")))
 
 #+end_src
+
 * UI Enhancements
-** General
+** General Appearance Settings
 
 #+begin_src emacs-lisp
 
@@ -926,10 +927,6 @@ Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
 
   ;; soft-wrap text
   (global-visual-line-mode t)
-
-  ;; tabs are four spaces
-  (setq-default tab-width 4
-                indent-tabs-mode nil)
 
 #+end_src
 
@@ -958,8 +955,6 @@ Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
 #+begin_src emacs-lisp
 
   (use-package standard-themes)
-
-  (use-package doom-themes)
 
   (use-package modus-themes)
 
@@ -1021,12 +1016,10 @@ Turn on relative line numbers for text modes.
 #+begin_src emacs-lisp
 
   (dolist (hook '(fundamental-mode conf-mode-hook prog-mode-hook text-mode-hook markdown-mode-hook org-mode-hook))
-    (add-hook hook 'display-line-numbers-mode)
-    )
+    (add-hook hook 'display-line-numbers-mode))
 
   (setq display-line-numbers-type 'relative
-        display-line-numbers-width-start t
-        )
+        display-line-numbers-width-start t)
 
 #+end_src
 
@@ -1036,6 +1029,7 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
 
 #+begin_src emacs-lisp
 
+  ;; open my custom super agenda
   (defun my/custom-open-org-agenda ()
     (interactive)
     (org-agenda nil "s"))
@@ -1053,6 +1047,7 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
                                  dashboard-insert-init-info
                                  dashboard-insert-newline
                                  dashboard-insert-items))
+
     (dashboard-items '((bookmarks . 7)
                        (projects . 5)))
     :config
@@ -1067,16 +1062,16 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
 
   ;; hook dashboard-open to creation of new frame
   (add-hook 'after-make-frame-functions
-          (lambda (frame)
-            (with-selected-frame frame
-              (dashboard-open))))
+            (lambda (frame)
+              (with-selected-frame frame
+                (dashboard-open))))
 
 
 #+end_src
 
 ** Centered Buffers
 
-[[https://github.com/mpwang/perfect-margin][perfect-margin]] makes some buffers centered.
+[[https://github.com/mpwang/perfect-margin][perfect-margin]] makes some buffers centered (text buffers).
 
 #+begin_src emacs-lisp
 
@@ -1101,6 +1096,7 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
     :mode ("\\.edn\\'" "\\.lua\\'"))
 
 #+end_src
+
 ** DAP Mode
 
 #+begin_src emacs-lisp
@@ -1145,8 +1141,7 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
     (setq projectile-switch-project-action #'projectile-dired)
     :config
     (projectile-mode 1)
-    (setq projectile-ignored-projects '("~/.cfg" "~/.emacs.d" "~/Projects/pathfinder")
-          projectile-track-known-projects-automatically nil)
+    (setq projectile-track-known-projects-automatically nil)
 
     (use-package counsel-projectile
       :config (counsel-projectile-mode 1)))
@@ -1170,8 +1165,11 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
 #+RESULTS:
 ** Treemacs
 
+Treemacs is used by LSP Mode, and here are some settings for it.
+
 #+begin_src emacs-lisp
 
+  ;; reduce default icon size
   (with-eval-after-load 'treemacs
     (treemacs-resize-icons 15))
 
@@ -1212,25 +1210,6 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
                           TeX-PDF-mode t
                           TeX-source-correlate-method 'synctex
                           TeX-source-correlate-start-server t))))
-
-#+end_src
-** Dart
-
-#+begin_src emacs-lisp
-
-  (setq package-selected-packages
-    '(dart-mode lsp-mode lsp-dart lsp-treemacs flycheck company
-      ;; Optional packages
-      lsp-ui company hover))
-
-  (when (cl-find-if-not #'package-installed-p package-selected-packages)
-    (package-refresh-contents)
-    (mapc #'package-install package-selected-packages))
-
-  (add-hook 'dart-mode-hook 'lsp)
-
-  (setq gc-cons-threshold (* 100 1024 1024)
-        read-process-output-max (* 1024 1024))
 
 #+end_src
 
@@ -1516,7 +1495,13 @@ Calendar framework with [[https://github.com/kiwanami/emacs-calfw][calfw]].
 
 * Miscellaneous
 
+I didn't know where else to put these.
+
 #+begin_src emacs-lisp
+
+  ;; tabs are four spaces
+  (setq-default tab-width 4
+                indent-tabs-mode nil)
 
   ;; .edn file type support
   (use-package edn)
