@@ -562,7 +562,6 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     (my/leader-keys
       "t" '(hydra-theme/body :which-key "choose theme")
       "r" '(hydra-window/body :which-key "resize window")
-      "s" '(hydra-text-scale/body :which-key "scale text")
       "a" '(org-agenda :which-key "open org agenda")
       "c" '(my/custom-open-calendar :which-key "open calendar")))
 
