@@ -1,4 +1,4 @@
-#+TITLE: Emacs config
+#+TITLE: Emacs Config
 #+AUTHOR: Martin Lönn Andersson
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el
 
@@ -33,7 +33,6 @@
   - [[#terminal][Terminal]]
   - [[#smooth-scrolling][Smooth Scrolling]]
   - [[#perspective][Perspective]]
-  - [[#web-feed-reader][Web Feed Reader]]
 - [[#ui-enhancements][UI Enhancements]]
   - [[#general-appearance-settings][General Appearance Settings]]
   - [[#font--icons][Font & Icons]]
@@ -811,25 +810,6 @@ Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
 
   (use-package persp-projectile
     :after perspective)
-
-#+end_src
-
-** Web Feed Reader
-
-[[https://github.com/skeeto/elfeed][Elfeed]] is an extensible web feed reader.
-
-#+begin_src emacs-lisp
-
-  (use-package elfeed
-    :config
-    (global-set-key (kbd "C-x w") 'elfeed)
-    (setq elfeed-feeds
-          '("https:/sachachua.com/blog/category/emacs/feed/"
-            "https://systemcrafters.net/rss/news.xml"
-            "https://protesilaos.com/commentary.xml"
-            "https://protesilaos.com/news.xml"
-            "https://www.youtube.com/c/GavinFreeborn"
-            )))
 
 #+end_src
 
