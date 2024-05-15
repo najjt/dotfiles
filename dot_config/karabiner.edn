@@ -31,12 +31,11 @@
              :w-mode {:key :w}    ; text selection
              :e-mode {:key :e}    ; text navigation
              :r-mode {:key :r}    ; text deletion
-             :a-mode {:key :a}    ; hjkl navigation + tab + page down/up
+             :a-mode {:key :a}    ; hjkl navigation
              :s-mode {:key :s}    ; punctuation         ? ! : ; ' " ` ~
              :d-mode {:key :d}    ; arithmetic          + - * / = % < > #
              :f-mode {:key :f}    ; delimeters          ( ) [ ] { } and ! ? $
              :c-mode {:key :c}    ; remaining symbols   ^ | \ _ @
-             :v-mode {:key :v}    ; number pad
              }
 
  :devices {
@@ -54,6 +53,18 @@
          :rules [:internal-keyboard
                  [:##caps_lock :left_control nil {:alone :escape}]]}
 
+        {:des "open applications"
+         :rules [
+                 ;; open terminal
+                 [:!Oreturn_or_enter "open /Applications/WezTerm.app"]
+
+                 ;; open browser
+                 [:!TSreturn_or_enter "open /Applications/qutebrowser.app"]
+
+                 ;; open emacs
+                 [:!Treturn_or_enter "/opt/homebrew/bin/emacsclient -c -n -a '' -e '(select-frame-set-input-focus (selected-frame))'"]]}
+
+
         {:des "yabai keybindings"
          :rules [
                  ;; change layout
@@ -63,17 +74,6 @@
 
                  ;; restart yabai
                  [:!TSOr "/opt/homebrew/bin/yabai --restart-service"]
-
-                 ;; --- open applications ---
-
-                 ;; open terminal
-                 [:!Oreturn_or_enter "open /Applications/WezTerm.app"]
-
-                 ;; open browser
-                 [:!TSreturn_or_enter "open /Applications/qutebrowser.app"]
-
-                 ;; open emacs
-                 [:!Treturn_or_enter "/opt/homebrew/bin/emacsclient -c -n -a '' -e '(select-frame-set-input-focus (selected-frame))'"]
 
                  ;; --- focus navigation ---
 
@@ -188,18 +188,12 @@
                 ]
          }
 
-        {:des "a-layer for hjkl movement + tab + page down/up"
+        {:des "a-layer for hjkl movement"
          :rules [:a-mode
-                  [:##u :tab]                           ; a -> u        tab
-                  [:##i :tab]                           ; a -> i        tab
-
                   [:##h :left_arrow]                    ; a -> h        left
                   [:##j :down_arrow]                    ; a -> j        down
                   [:##k :up_arrow]                      ; a -> k        up
                   [:##l :right_arrow]                   ; a -> l        right
-
-                  [:comma :page_down]                   ; a -> ,        page down
-                  [:period :page_up]                    ; a -> .        page up
                 ]
          }
 
@@ -262,23 +256,5 @@
                  [:##comma :!Shyphen]                   ; c -> ,        _
                 ]
         }
-
-        {:des "v-layer for number pad"
-         :rules [:v-mode
-                 [:u :7]
-                 [:i :8]
-                 [:o :9]
-
-                 [:j :4]
-                 [:k :5]
-                 [:l :6]
-
-                 [:n :0]
-                 [:m :1]
-                 [:comma :2]
-                 [:period :3]
-                ]
-        }
-
  ]
 }
