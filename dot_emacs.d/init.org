@@ -760,7 +760,7 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
 
 ** Terminal
 
-A better terminal emulation with [[https://github.com/akermu/emacs-libvterm][vterm]].
+A better terminal emulation with [[https://github.com/akermu/emacs-libvterm][vterm]], plus multiple vterm buffers with [[https://github.com/suonlight/multi-vterm][multi-vterm]].
 
 #+begin_src emacs-lisp
 
