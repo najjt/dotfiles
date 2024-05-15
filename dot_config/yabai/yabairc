@@ -34,7 +34,7 @@ yabai -m config                                          \
                 bottom_padding              10           \
                 left_padding                10           \
                 right_padding               10           \
-                window_gap                  10           \
+                window_gap                  15           \
                                                          \
                 window_placement            second_child \
                 window_shadow               off          \
