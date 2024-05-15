@@ -8,11 +8,6 @@ xsetroot -cursor_name left_ptr
 # set keyboard repeat rate
 xset r rate 300 50
 
-# If Emacs is started in server mode, `emacsclient` is a convenient way to
-# edit files in place (used by e.g. `git commit`).
-export VISUAL=emacsclient
-export EDITOR="$VISUAL"
-
 # disable access control
 xhost +SI:localuser:$USER
 
@@ -26,4 +21,4 @@ nm-applet &
 pasystray &
 
 # launch emacs
-exec dbus-launch --exit-with-session emacs
+exec i3
