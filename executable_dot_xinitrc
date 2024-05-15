@@ -1,7 +1,5 @@
 #!/bin/sh
 
-xhost +
-
 # set fallback cursor
 xsetroot -cursor_name left_ptr
 
@@ -19,9 +17,10 @@ gnome-settings-daemon &
 tlp &
 syncthing --no-browser &
 kmonad &
+xbanish &
 redshift &
 nm-applet &
-pasystray &
+openvpn &
 
-# launch emacs
+# launch wm
 exec i3
