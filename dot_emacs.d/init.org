@@ -766,11 +766,22 @@ A better terminal emulation with [[https://github.com/akermu/emacs-libvterm][vte
 
   (use-package vterm
     :commands vterm
-    :bind ("C-x t" . vterm)
     :custom
     (term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
     (vterm-shell "zsh")
-    (vterm-max-scrollback 10000))
+    (vterm-max-scrollback 10000)
+    :config
+    ;; open multiple vterm buffers
+    (use-package multi-vterm
+      :bind ("C-x t" . multi-vterm)
+      :config
+      ;; dedicated terminal height of 50 rows
+      (setq multi-vterm-dedicated-window-percent 30)
+      (add-hook 'vterm-mode-hook
+                (lambda ()
+                  (setq-local evil-insert-state-cursor 'box)
+                  (evil-insert-state)))
+    ))
 
 #+end_src
 
@@ -899,13 +910,12 @@ Popup buffers with [[https://github.com/karthink/popper][popper]].
         "^\\*Flycheck.*\\*$"
         "^\\*Buffer List*\\*$"
         "^\\*LSP Error List*\\*$"
-        "^\\*Dart Run out*\\*$"
         "^magit:.*$"
         "^\\*.*Agenda.*\\*$"))
     :config
-    (setq popper-group-function #'popper-group-by-perspective
+    (setq popper-group-function #'popper-group-by-directory
           popper-mode-line " POP "
-          popper-window-height 20)
+          popper-window-height 15)
     (popper-mode 1)
     (popper-echo-mode 1))
 
