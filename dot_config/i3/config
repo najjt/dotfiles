@@ -52,6 +52,7 @@ default_floating_border pixel 4
 #
 
 set $mod Mod4
+set $alt Mod1
 floating_modifier $mod
 
 # start a terminal
@@ -64,7 +65,7 @@ bindsym Control+Return exec emacsclient -c -n -a '' -e '(select-frame-set-input-
 bindsym Control+Shift+Return exec qutebrowser
 
 # start dmenu
-bindsym $mod+space exec --no-startup-id rofi -show run
+bindsym $alt+space exec --no-startup-id rofi -show run
 
 # kill focused window
 bindsym $mod+w kill
