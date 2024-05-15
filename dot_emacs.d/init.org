@@ -16,7 +16,6 @@
   - [[#package-archives--initialize-package-manager][Package Archives & Initialize Package Manager]]
   - [[#use-package][Use Package]]
   - [[#auto-package-update][Auto Package Update]]
-- [[#exwm][EXWM]]
 - [[#global-functionalities][Global Functionalities]]
   - [[#user-information][User Information]]
   - [[#chezmoi][Chezmoi]]
@@ -324,86 +323,6 @@ Automatically update packages every seven days with [[https://github.com/rranell
     (auto-package-update-hide-results t)
     :config
     (auto-package-update-maybe))
-
-#+end_src
-
-* EXWM
-
-[[https://github.com/emacs-exwm/exwm][EXWM]], the Emacs X Window Manager. Emacs for everything!
-
-#+begin_src emacs-lisp
-
-  (when *sys/linux*
-    (use-package exwm
-      :config
-      ;; start ido mode for ...
-      (ido-mode 1)
-
-      (require 'exwm) ;; load EXWM.
-
-      ;; fix problems with ido
-      (require 'exwm-config)
-      (exwm-config-ido)
-
-      (defun my/exwm-update-class ()
-        (exwm-workspace-rename-buffer exwm-class-name))
-
-      ;; update buffer titles to the application name
-      (add-hook 'exwm-update-class-hook #'my/exwm-update-class)
-
-      ;; set initial number of workspaces
-      (setq exwm-workspace-number 5)
-
-      (setq exwm-input-global-keys
-            '(?\C-x
-              ?\C-u
-              ?\C-h
-              ?\M-x
-              ?\C-\M-j
-              ?\A-\ ))
-
-      ;; window switching
-      (exwm-input-set-key (kbd "A-k") 'evil-window-up)
-      (exwm-input-set-key (kbd "A-j") 'evil-window-down)
-      (exwm-input-set-key (kbd "A-l") 'evil-window-right)
-      (exwm-input-set-key (kbd "A-h") 'evil-window-left)
-
-      ;; workspace switching
-
-      ;; toggle char/line mode
-      (exwm-input-set-key (kbd "A-q") 'exwm-reset)
-
-      (defun launch-terminal ()
-        (interactive)
-        (start-process-shell-command "wezterm" nil "wezterm"))
-
-      (defun launch-browser ()
-        (interactive)
-        (start-process-shell-command "qutebrowser" nil "qutebrowser"))
-
-      (defun launch-application (command)
-        (interactive (list (read-shell-command "$ ")))
-        (start-process-shell-command command nil command))
-
-      (defun lock-screen ()
-        (interactive)
-        (start-process "" nil "/usr/bin/slock"))
-
-      ;; launch terminal
-      (exwm-input-set-key (kbd "A-<return>") 'launch-terminal)
-
-      ;; launch browser
-      (global-unset-key "C-S-<return>")
-      (exwm-input-set-key (kbd "C-S-<return>") 'launch-browser)
-
-      ;; launch application
-      (exwm-input-set-key (kbd "M-SPC")  'launch-application)
-
-      ;; lock screen
-      (exwm-input-set-key (kbd "C-A-q")  'lock-screen)
-
-      ;; enable exwm
-      (exwm-enable)))
 
 #+end_src
 
@@ -1403,9 +1322,9 @@ Contacts in Org Mode with [[https://orgmode.org/worg/org-contrib/org-contacts.ht
 
 #+begin_src emacs-lisp
 
-  ;; (use-package org-contacts
-  ;;   :after org
-  ;;   :custom (org-contacts-files '("~/Documents/notes/org/contacts.org")))
+  (use-package org-contacts
+    :after org
+    :custom (org-contacts-files '("~/Documents/notes/org/contacts.org")))
 
 #+end_src
 
