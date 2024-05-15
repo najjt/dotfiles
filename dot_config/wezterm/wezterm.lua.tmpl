@@ -28,11 +28,13 @@ config.keys = {
             mods = 'CTRL',
             action = act.CloseCurrentTab { confirm = false},
             },
+{{ if eq .chezmoi.os "linux" }}
             {
             key = 'n',
             mods = 'CTRL',
             action = act.SpawnWindow,
             },
+{{ end }}
 }
 
 return config
