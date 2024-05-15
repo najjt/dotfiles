@@ -825,7 +825,11 @@ Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
     (global-set-key (kbd "C-x w") 'elfeed)
     (setq elfeed-feeds
           '("https:/sachachua.com/blog/category/emacs/feed/"
-            "https://systemcrafters.net/rss/news.xml")))
+            "https://systemcrafters.net/rss/news.xml"
+            "https://protesilaos.com/commentary.xml"
+            "https://protesilaos.com/news.xml"
+            "https://www.youtube.com/c/GavinFreeborn"
+            )))
 
 #+end_src
 
