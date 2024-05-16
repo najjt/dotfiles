@@ -29,6 +29,11 @@
   - [[#workspaces][Workspaces]]
   - [[#popup-buffers][Popup Buffers]]
   - [[#dashboard][Dashboard]]
+- [[#appearance][Appearance]]
+  - [[#general-appearance-settings][General Appearance Settings]]
+  - [[#font--icons][Font & Icons]]
+  - [[#themes][Themes]]
+  - [[#centered-buffers][Centered Buffers]]
 - [[#text--languages][Text & Languages]]
   - [[#markdown-mode][Markdown Mode]]
   - [[#spell-checking][Spell Checking]]
@@ -42,11 +47,6 @@
   - [[#counsel-and-ivy][Counsel and Ivy]]
   - [[#helpful][Helpful]]
   - [[#which-key][Which Key]]
-- [[#appearance][Appearance]]
-  - [[#general-appearance-settings][General Appearance Settings]]
-  - [[#font--icons][Font & Icons]]
-  - [[#themes][Themes]]
-  - [[#centered-buffers][Centered Buffers]]
 - [[#programming][Programming]]
   - [[#general-programming-functionalities][General Programming Functionalities]]
   - [[#programming-languages-support][Programming Languages Support]]
@@ -601,6 +601,84 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
 
 #+end_src
 
+* Appearance
+** General Appearance Settings
+
+#+begin_src emacs-lisp
+
+  ;; display right and left fringe
+  (fringe-mode '(8 . 8))
+
+  ;; turn off blinking cursor
+  (blink-cursor-mode 0)
+
+  ;; show column number in status bar
+  (column-number-mode)
+
+  ;; soft-wrap text
+  (global-visual-line-mode t)
+
+  ;; display relative line numbers in the below modes
+  (dolist (hook '(fundamental-mode conf-mode-hook prog-mode-hook text-mode-hook markdown-mode-hook org-mode-hook))
+    (add-hook hook 'display-line-numbers-mode))
+
+  (setq display-line-numbers-type 'relative
+        display-line-numbers-width-start t)
+
+#+end_src
+
+** Font & Icons
+
+#+begin_src emacs-lisp
+
+  (when *sys/linux*
+    (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-13")))
+
+  (when *sys/mac*
+    (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-15")))
+
+#+end_src
+
+*Prerequisite*: Install nerd icons with =M-x nerd-icons-install-fonts=.
+
+#+begin_src emacs-lisp
+
+  (use-package nerd-icons)
+
+#+end_src
+
+** Themes
+
+#+begin_src emacs-lisp
+
+  (use-package standard-themes)
+
+  (use-package modus-themes)
+
+  ;; disable border around modelines
+  (custom-set-faces
+   '(mode-line ((t (:box nil))))
+   '(mode-line-inactive ((t (:box nil)))))
+
+#+end_src
+
+** Centered Buffers
+
+[[https://github.com/mpwang/perfect-margin][perfect-margin]] makes some buffers centered (text buffers).
+
+#+begin_src emacs-lisp
+
+  (use-package perfect-margin
+    :diminish
+    :custom
+    (perfect-margin-visible-width 100)
+    :config
+    (perfect-margin-mode t)
+    (setq perfect-margin-ignore-modes
+          '(dired-mode)))
+
+#+end_src
+
 * Text & Languages
 ** Markdown Mode
 
@@ -969,84 +1047,6 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
   (use-package which-key
     :diminish
     :config (which-key-mode 1))
-
-#+end_src
-
-* Appearance
-** General Appearance Settings
-
-#+begin_src emacs-lisp
-
-  ;; display right and left fringe
-  (fringe-mode '(8 . 8))
-
-  ;; turn off blinking cursor
-  (blink-cursor-mode 0)
-
-  ;; show column number in status bar
-  (column-number-mode)
-
-  ;; soft-wrap text
-  (global-visual-line-mode t)
-
-  ;; display relative line numbers in the below modes
-  (dolist (hook '(fundamental-mode conf-mode-hook prog-mode-hook text-mode-hook markdown-mode-hook org-mode-hook))
-    (add-hook hook 'display-line-numbers-mode))
-
-  (setq display-line-numbers-type 'relative
-        display-line-numbers-width-start t)
-
-#+end_src
-
-** Font & Icons
-
-#+begin_src emacs-lisp
-
-  (when *sys/linux*
-    (add-to-list 'default-frame-alist '(font . "Jetbrains Mono-13")))
-
-  (when *sys/mac*
-    (add-to-list 'default-frame-alist '(font . "Jetbrains Mono-15")))
-
-#+end_src
-
-*Prerequisite*: Install nerd icons with =M-x nerd-icons-install-fonts=.
-
-#+begin_src emacs-lisp
-
-  (use-package nerd-icons)
-
-#+end_src
-
-** Themes
-
-#+begin_src emacs-lisp
-
-  (use-package standard-themes)
-
-  (use-package modus-themes)
-
-  ;; disable border around modelines
-  (custom-set-faces
-   '(mode-line ((t (:box nil))))
-   '(mode-line-inactive ((t (:box nil)))))
-
-#+end_src
-
-** Centered Buffers
-
-[[https://github.com/mpwang/perfect-margin][perfect-margin]] makes some buffers centered (text buffers).
-
-#+begin_src emacs-lisp
-
-  (use-package perfect-margin
-    :diminish
-    :custom
-    (perfect-margin-visible-width 100)
-    :config
-    (perfect-margin-mode t)
-    (setq perfect-margin-ignore-modes
-          '(dired-mode)))
 
 #+end_src
 
