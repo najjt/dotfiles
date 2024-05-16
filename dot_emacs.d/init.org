@@ -16,48 +16,45 @@
   - [[#package-archives--initialize-package-manager][Package Archives & Initialize Package Manager]]
   - [[#use-package][Use Package]]
   - [[#auto-package-update][Auto Package Update]]
-- [[#global-functionalities][Global Functionalities]]
+- [[#general-configurations][General Configurations]]
+  - [[#quality-of-life][Quality of Life]]
   - [[#user-information][User Information]]
-  - [[#chezmoi][Chezmoi]]
+  - [[#history][History]]
+  - [[#smooth-scrolling][Smooth Scrolling]]
   - [[#environment-variables][Environment Variables]]
-  - [[#swiper][Swiper]]
+  - [[#dotfiles-management][Dotfiles Management]]
+  - [[#search-functionality][Search Functionality]]
+  - [[#dired][Dired]]
+  - [[#terminal-emulation][Terminal Emulation]]
+  - [[#workspaces][Workspaces]]
+  - [[#popup-buffers][Popup Buffers]]
+  - [[#dashboard][Dashboard]]
+- [[#text--languages][Text & Languages]]
   - [[#markdown-mode][Markdown Mode]]
   - [[#spell-checking][Spell Checking]]
-  - [[#history][History]]
-  - [[#undo-tree][Undo Tree]]
+  - [[#undo-functionality][Undo Functionality]]
+  - [[#tabs][Tabs]]
+- [[#keybindings][Keybindings]]
   - [[#general][General]]
-  - [[#evil][Evil]]
-  - [[#hydra][Hydra]]
-  - [[#dired][Dired]]
-  - [[#help-functionality][Help Functionality]]
-  - [[#terminal][Terminal]]
-  - [[#smooth-scrolling][Smooth Scrolling]]
-  - [[#perspective][Perspective]]
-- [[#ui-enhancements][UI Enhancements]]
+  - [[#vi-emulation][Vi Emulation]]
+  - [[#command-buffers][Command Buffers]]
+- [[#help-functionality][Help Functionality]]
+  - [[#counsel-and-ivy][Counsel and Ivy]]
+  - [[#helpful][Helpful]]
+  - [[#which-key][Which Key]]
+- [[#appearance][Appearance]]
   - [[#general-appearance-settings][General Appearance Settings]]
   - [[#font--icons][Font & Icons]]
   - [[#themes][Themes]]
-  - [[#popup-buffers][Popup Buffers]]
-  - [[#lines][Lines]]
-  - [[#dashboard][Dashboard]]
   - [[#centered-buffers][Centered Buffers]]
-- [[#general-programming][General Programming]]
-  - [[#prog-mode][Prog Mode]]
-  - [[#dap-mode][DAP Mode]]
-  - [[#comments][Comments]]
-  - [[#match-delimiters][Match Delimiters]]
-  - [[#projectile][Projectile]]
-  - [[#magit][Magit]]
-  - [[#treemacs][Treemacs]]
 - [[#programming][Programming]]
-  - [[#java][Java]]
-  - [[#tex][TeX]]
-- [[#office][Office]]
-  - [[#org][Org]]
+  - [[#general-programming-functionalities][General Programming Functionalities]]
+  - [[#programming-languages-support][Programming Languages Support]]
+- [[#productivity][Productivity]]
+  - [[#org-mode][Org Mode]]
   - [[#calendar][Calendar]]
   - [[#plantuml--graphviz][PlantUML & Graphviz]]
   - [[#pdf-tools][PDF Tools]]
-- [[#miscellaneous][Miscellaneous]]
 - [[#diminish][Diminish]]
 - [[#tangle--reload-on-save][Tangle & Reload On Save]]
 
@@ -325,7 +322,40 @@ Automatically update packages every seven days with [[https://github.com/rranell
 
 #+end_src
 
-* Global Functionalities
+* General Configurations
+** Quality of Life
+
+#+begin_src emacs-lisp
+
+  ;; increase large file warning threshold
+  (setq large-file-warning-threshold 100000000)
+
+  ;; set language environment
+  (set-language-environment "UTF-8")
+
+  ;; clean up unneccesary whitespace on save
+  (add-hook 'before-save-hook 'whitespace-cleanup)
+
+  ;; map yes and no to y and n
+  (fset 'yes-or-no-p 'y-or-n-p)
+
+  ;; disable visual and audible bell
+  (setq ring-bell-function 'ignore)
+
+  ;; automatically reload files when changed
+  (global-auto-revert-mode t)
+
+  ;; suppress auto revert messages
+  (setq auto-revert-verbose nil)
+
+  ;; automatically kill all active processes when closing Emacs
+  (setq confirm-kill-processes nil)
+
+  ;; add a newline automatically at the end of the file upon save
+  (setq require-final-newline t)
+
+#+end_src
+
 ** User Information
 
 #+begin_src emacs-lisp
@@ -334,14 +364,40 @@ Automatically update packages every seven days with [[https://github.com/rranell
   (setq user-mail-address "mlonna@pm.me")
 
 #+end_src
-
-** Chezmoi
-
-I manage my dotfiles with [[https://github.com/tuh8888/chezmoi.el][chezmoi]], and this package provides some useful functions for this.
+** History
 
 #+begin_src emacs-lisp
 
-  (use-package chezmoi)
+  ;; save text entered in minibuffer prompts
+  (setq history-length 25)
+  (savehist-mode 1)
+
+  ;; save cursor position in files
+  (save-place-mode 1)
+
+  ;; remember recently edited files
+  (recentf-mode 1)
+
+  ;; auto reload non-file buffers
+  (setq global-auto-revert-non-file-buffers t)
+
+#+end_src
+
+** Smooth Scrolling
+
+#+begin_src emacs-lisp
+
+  (setq scroll-step 1
+        scroll-margin 1
+        scroll-conservatively 101
+        scroll-up-aggressively 0.01
+        scroll-down-aggressively 0.01
+        auto-window-vscroll nil
+        fast-but-imprecise-scrolling nil
+        mouse-wheel-scroll-amount '(1 ((shift) . 1))
+        mouse-wheel-progressive-speed nil
+        hscroll-step 1
+        hscroll-margin 1)
 
 #+end_src
 
@@ -360,7 +416,17 @@ Get environment variables from your shell with [[https://github.com/purcell/exec
 
 #+end_src
 
-** Swiper
+** Dotfiles Management
+
+I manage my dotfiles with [[https://github.com/tuh8888/chezmoi.el][chezmoi]], and this package provides some useful functions for this.
+
+#+begin_src emacs-lisp
+
+  (use-package chezmoi)
+
+#+end_src
+
+** Search Functionality
 
 [[https://github.com/abo-abo/swiper/tree/master][Swiper]] provides search functionality.
 
@@ -369,7 +435,173 @@ Get environment variables from your shell with [[https://github.com/purcell/exec
   (use-package swiper :diminish)
 
 #+end_src
+** Dired
 
+#+begin_src emacs-lisp
+
+  (use-package dired
+    :ensure nil
+    :commands (dired dired-jump)
+    :hook (dired-mode . (lambda () (dired-hide-details-mode)))
+    :bind ("C-x C-j" . dired-jump)
+    :custom (dired-free-space nil) ; hide free space
+    :config
+    (when *sys/mac*
+      (setq insert-directory-program "gls"))
+
+    ;; group dotfiles and directories
+    (setq dired-listing-switches "-lAX --group-directories-first")
+
+    ;; vim-style navigation
+    (evil-collection-define-key 'normal 'dired-mode-map
+      "h" 'dired-up-directory
+      "l" 'dired-find-file)
+
+    ;; use nerd icons in dired
+    (use-package nerd-icons-dired
+      :diminish
+      :hook (dired-mode . nerd-icons-dired-mode)))
+
+#+end_src
+
+** Terminal Emulation
+
+A better terminal emulation with [[https://github.com/akermu/emacs-libvterm][vterm]], plus multiple vterm buffers with [[https://github.com/suonlight/multi-vterm][multi-vterm]].
+
+#+begin_src emacs-lisp
+
+  (use-package vterm
+    :commands vterm
+    :custom
+    (term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
+    (vterm-shell "zsh")
+    (vterm-max-scrollback 10000)
+    :config
+    ;; open multiple vterm buffers
+    (use-package multi-vterm
+      :bind ("C-x t" . multi-vterm)
+      :config
+      ;; dedicated terminal height of 50 rows
+      (setq multi-vterm-dedicated-window-percent 30)
+      (add-hook 'vterm-mode-hook
+                (lambda ()
+                  (setq-local evil-insert-state-cursor 'box)
+                  (evil-insert-state)))
+    ))
+
+#+end_src
+
+** Workspaces
+
+Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
+
+#+begin_src emacs-lisp
+
+  (use-package perspective
+    :hook (persp-created . dashboard-open)
+    :bind
+    ("C-M-j" . persp-counsel-switch-buffer)
+    ("C-M-b" . persp-switch)
+    :custom
+    (persp-mode-prefix-key (kbd "C-c M-p"))
+    :init
+    (persp-mode))
+
+  (use-package persp-projectile
+    :after perspective)
+
+#+end_src
+
+** Popup Buffers
+
+Popup buffers with [[https://github.com/karthink/popper][popper]].
+
+#+begin_src emacs-lisp
+
+  (use-package popper
+    :bind
+    ("C-å"   . popper-toggle)
+    ("M-å"   . popper-cycle)
+    ("C-M-å" . popper-toggle-type)
+    ("C-x d" . popper-kill-latest-popup)
+    :init
+    (setq popper-reference-buffers
+      '("\\*Messages\\*"
+        "\\*Warnings\\*"
+        "\\*Compile-Log\\*"
+        "^\\*compilation.*\\*$" comint-mode
+        "Output\\*$"
+        help-mode
+        helpful-mode
+        compilation-mode
+        "\\*Async Shell Command\\*"
+        "^\\*eshell.*\\*$" eshell-mode
+        "^\\*shell.*\\*$"  shell-mode
+        "^\\*term.*\\*$"   term-mode
+        "^\\*vterm.*\\*$"  vterm-mode
+        "^\\*ansi-term.*\\*$"  ansi-term-mode
+        "^\\*tex-shell.*\\*$"
+        "^\\*Flycheck.*\\*$"
+        "^\\*Buffer List*\\*$"
+        "^\\*LSP Error List*\\*$"
+        "^magit:.*$"
+        "^\\*.*Agenda.*\\*$"))
+    :config
+    (setq popper-group-function #'popper-group-by-directory
+          popper-mode-line " POP "
+          popper-window-height 15)
+    (popper-mode 1)
+    (popper-echo-mode 1))
+
+#+end_src
+
+** Dashboard
+
+The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package displays a customizable dashboard.
+
+#+begin_src emacs-lisp
+
+  ;; open my custom super agenda
+  (defun my/custom-open-org-agenda ()
+    (interactive)
+    (org-agenda nil "s"))
+
+
+  (use-package dashboard
+    :demand t
+    :diminish (dashboard-mode page-break-lines-mode)
+    :custom-face
+    (dashboard-items-face ((t (:weight normal))))
+    :custom
+    (dashboard-startupify-list '(dashboard-insert-banner
+                                 dashboard-insert-newline
+                                 dashboard-insert-banner-title
+                                 dashboard-insert-init-info
+                                 dashboard-insert-newline
+                                 dashboard-insert-items))
+
+    (dashboard-items '((bookmarks . 7)
+                       (projects . 5)))
+    :config
+    (dashboard-setup-startup-hook)
+
+    (setq dashboard-center-content t
+          dashboard-display-icons-p t
+          dashboard-icon-type 'nerd-icons
+          dashboard-set-file-icons t
+          dashboard-projects-backend 'projectile
+          dashboard-projects-switch-function 'projectile-persp-switch-project))
+
+  ;; hook dashboard-open to creation of new frame
+  (add-hook 'after-make-frame-functions
+            (lambda (frame)
+              (with-selected-frame frame
+                (dashboard-open))))
+
+
+#+end_src
+
+* Text & Languages
 ** Markdown Mode
 
 The [[https://jblevins.org/projects/markdown-mode/][Markdown Mode]] package provides better markdown support.
@@ -405,33 +637,20 @@ To spell check files, I use =flyspell= and =hunspell= in order to spell check in
       (setenv "LC_ALL" "en_US.UTF-8")
       (setq ispell-program-name "hunspell"
             ispell-local-dictionary "sv_SE"
-            ispell-local-dictionary-alist
-            '(("sv_SE" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "sv_SE,en_US") nil utf-8))
             ispell-hunspell-dictionary-alist ispell-local-dictionary-alist
-            ispell-personal-dictionary "~/resources/spelling/.hunspell_personal")))
+            ispell-personal-dictionary "~/resources/spelling/.hunspell_personal"))
+
+    (when *sys/linux*
+      (setq ispell-local-dictionary-alist
+            '(("sv_SE" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "sv_SE,en_US") nil utf-8))))
+
+    (when *sys/mac*
+      (setq ispell-local-dictionary-alist
+            '(("sv" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "sv,en_US") nil utf-8)))))
 
 #+end_src
 
-** History
-
-#+begin_src emacs-lisp
-
-  ;; save text entered in minibuffer prompts
-  (setq history-length 25)
-  (savehist-mode 1)
-
-  ;; save cursor position in files
-  (save-place-mode 1)
-
-  ;; remember recently edited files
-  (recentf-mode 1)
-
-  ;; auto reload non-file buffers
-  (setq global-auto-revert-non-file-buffers t)
-
-#+end_src
-
-** Undo Tree
+** Undo Functionality
 
 [[https://www.emacswiki.org/emacs/UndoTree][Undo Tree]] treats undo history as a branching tree of changes.
 
@@ -448,6 +667,17 @@ To spell check files, I use =flyspell= and =hunspell= in order to spell check in
 
 #+end_src
 
+** Tabs
+
+#+begin_src emacs-lisp
+
+  ;; tabs are four spaces
+  (setq-default tab-width 4
+                indent-tabs-mode nil)
+
+#+end_src
+
+* Keybindings
 ** General
 
 An easier way to set keybindings is with [[https://github.com/noctuid/general.el][general]].
@@ -474,7 +704,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
 
 #+end_src
 
-** Evil
+** Vi Emulation
 
 [[https://github.com/emacs-evil/evil][Evil]] provides Vi emulation for Emacs, as well as surround functionality with [[https://github.com/emacs-evil/evil-surround][evil-surround]].
 
@@ -504,7 +734,8 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
           evil-search-module 'evil-search)
 
     :config
-    (defun my/evil-hook () ; modes to disable evil in
+    ;; modes to disable evil in
+    (defun my/evil-hook ()
       (dolist (mode '(custom-mode
                       eshell-mode
                       git-rebase-mode
@@ -562,7 +793,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
 
 #+end_src
 
-** Hydra
+** Command Buffers
 
 [[https://github.com/abo-abo/hydra][Hydra]] provides temporary command buffers.
 
@@ -662,37 +893,8 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
 
 #+end_src
 
-** Dired
-
-#+begin_src emacs-lisp
-
-  (use-package dired
-    :ensure nil
-    :commands (dired dired-jump)
-    :hook (dired-mode . (lambda () (dired-hide-details-mode)))
-    :bind ("C-x C-j" . dired-jump)
-    :custom (dired-free-space nil) ; hide free space
-    :config
-    (when *sys/mac*
-      (setq insert-directory-program "gls"))
-
-    ;; group dotfiles and directories
-    (setq dired-listing-switches "-lAX --group-directories-first")
-
-    ;; vim-style navigation
-    (evil-collection-define-key 'normal 'dired-mode-map
-      "h" 'dired-up-directory
-      "l" 'dired-find-file)
-
-    ;; use nerd icons in dired
-    (use-package nerd-icons-dired
-      :diminish
-      :hook (dired-mode . nerd-icons-dired-mode)))
-
-#+end_src
-
-** Help Functionality
-*** Counsel and Ivy
+* Help Functionality
+** Counsel and Ivy
 
 [[https://github.com/abo-abo/swiper][Counsel and Ivy]] provide generic completion and enhanced versions of common Emacs commands.
 
@@ -738,7 +940,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
 
 #+end_src
 
-*** Helpful
+** Helpful
 
 A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]].
 
@@ -757,7 +959,7 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
 
 #+end_src
 
-*** Which Key
+** Which Key
 
 [[https://github.com/justbur/emacs-which-key][Which Key]] displays available keybindings in a popup buffer.
 
@@ -770,73 +972,7 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
 
 #+end_src
 
-** Terminal
-
-A better terminal emulation with [[https://github.com/akermu/emacs-libvterm][vterm]], plus multiple vterm buffers with [[https://github.com/suonlight/multi-vterm][multi-vterm]].
-
-#+begin_src emacs-lisp
-
-  (use-package vterm
-    :commands vterm
-    :custom
-    (term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
-    (vterm-shell "zsh")
-    (vterm-max-scrollback 10000)
-    :config
-    ;; open multiple vterm buffers
-    (use-package multi-vterm
-      :bind ("C-x t" . multi-vterm)
-      :config
-      ;; dedicated terminal height of 50 rows
-      (setq multi-vterm-dedicated-window-percent 30)
-      (add-hook 'vterm-mode-hook
-                (lambda ()
-                  (setq-local evil-insert-state-cursor 'box)
-                  (evil-insert-state)))
-    ))
-
-#+end_src
-
-** Smooth Scrolling
-
-#+begin_src emacs-lisp
-
-  (setq scroll-step 1
-        scroll-margin 1
-        scroll-conservatively 101
-        scroll-up-aggressively 0.01
-        scroll-down-aggressively 0.01
-        auto-window-vscroll nil
-        fast-but-imprecise-scrolling nil
-        mouse-wheel-scroll-amount '(1 ((shift) . 1))
-        mouse-wheel-progressive-speed nil
-        hscroll-step 1
-        hscroll-margin 1)
-
-#+end_src
-
-** Perspective
-
-Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
-
-#+begin_src emacs-lisp
-
-  (use-package perspective
-    :hook (persp-created . dashboard-open)
-    :bind
-    ("C-M-j" . persp-counsel-switch-buffer)
-    ("C-M-b" . persp-switch)
-    :custom
-    (persp-mode-prefix-key (kbd "C-c M-p"))
-    :init
-    (persp-mode))
-
-  (use-package persp-projectile
-    :after perspective)
-
-#+end_src
-
-* UI Enhancements
+* Appearance
 ** General Appearance Settings
 
 #+begin_src emacs-lisp
@@ -852,6 +988,13 @@ Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
 
   ;; soft-wrap text
   (global-visual-line-mode t)
+
+  ;; display relative line numbers in the below modes
+  (dolist (hook '(fundamental-mode conf-mode-hook prog-mode-hook text-mode-hook markdown-mode-hook org-mode-hook))
+    (add-hook hook 'display-line-numbers-mode))
+
+  (setq display-line-numbers-type 'relative
+        display-line-numbers-width-start t)
 
 #+end_src
 
@@ -890,109 +1033,6 @@ Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
 
 #+end_src
 
-** Popup Buffers
-
-Popup buffers with [[https://github.com/karthink/popper][popper]].
-
-#+begin_src emacs-lisp
-
-  (use-package popper
-    :bind
-    ("C-å"   . popper-toggle)
-    ("M-å"   . popper-cycle)
-    ("C-M-å" . popper-toggle-type)
-    ("C-x d" . popper-kill-latest-popup)
-    :init
-    (setq popper-reference-buffers
-      '("\\*Messages\\*"
-        "\\*Warnings\\*"
-        "\\*Compile-Log\\*"
-        "^\\*compilation.*\\*$" comint-mode
-        "Output\\*$"
-        help-mode
-        helpful-mode
-        compilation-mode
-        "\\*Async Shell Command\\*"
-        "^\\*eshell.*\\*$" eshell-mode
-        "^\\*shell.*\\*$"  shell-mode
-        "^\\*term.*\\*$"   term-mode
-        "^\\*vterm.*\\*$"  vterm-mode
-        "^\\*ansi-term.*\\*$"  ansi-term-mode
-        "^\\*tex-shell.*\\*$"
-        "^\\*Flycheck.*\\*$"
-        "^\\*Buffer List*\\*$"
-        "^\\*LSP Error List*\\*$"
-        "^magit:.*$"
-        "^\\*.*Agenda.*\\*$"))
-    :config
-    (setq popper-group-function #'popper-group-by-directory
-          popper-mode-line " POP "
-          popper-window-height 15)
-    (popper-mode 1)
-    (popper-echo-mode 1))
-
-#+end_src
-
-** Lines
-
-Turn on relative line numbers for text modes.
-
-#+begin_src emacs-lisp
-
-  (dolist (hook '(fundamental-mode conf-mode-hook prog-mode-hook text-mode-hook markdown-mode-hook org-mode-hook))
-    (add-hook hook 'display-line-numbers-mode))
-
-  (setq display-line-numbers-type 'relative
-        display-line-numbers-width-start t)
-
-#+end_src
-
-** Dashboard
-
-The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package displays a customizable dashboard.
-
-#+begin_src emacs-lisp
-
-  ;; open my custom super agenda
-  (defun my/custom-open-org-agenda ()
-    (interactive)
-    (org-agenda nil "s"))
-
-
-  (use-package dashboard
-    :demand t
-    :diminish (dashboard-mode page-break-lines-mode)
-    :custom-face
-    (dashboard-items-face ((t (:weight normal))))
-    :custom
-    (dashboard-startupify-list '(dashboard-insert-banner
-                                 dashboard-insert-newline
-                                 dashboard-insert-banner-title
-                                 dashboard-insert-init-info
-                                 dashboard-insert-newline
-                                 dashboard-insert-items))
-
-    (dashboard-items '((bookmarks . 7)
-                       (projects . 5)))
-    :config
-    (dashboard-setup-startup-hook)
-
-    (setq dashboard-center-content t
-          dashboard-display-icons-p t
-          dashboard-icon-type 'nerd-icons
-          dashboard-set-file-icons t
-          dashboard-projects-backend 'projectile
-          dashboard-projects-switch-function 'projectile-persp-switch-project))
-
-  ;; hook dashboard-open to creation of new frame
-  (add-hook 'after-make-frame-functions
-            (lambda (frame)
-              (with-selected-frame frame
-                (dashboard-open))))
-
-
-#+end_src
-
 ** Centered Buffers
 
 [[https://github.com/mpwang/perfect-margin][perfect-margin]] makes some buffers centered (text buffers).
@@ -1010,25 +1050,30 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
 
 #+end_src
 
-* General Programming
-** Prog Mode
+* Programming
+** General Programming Functionalities
+*** Prog Mode
 
 #+begin_src emacs-lisp
 
   (use-package prog-mode
     :ensure nil
-    :mode ("\\.edn\\'" "\\.lua\\'"))
+    :mode ("\\.edn\\'" "\\.lua\\'")
+    :config
+    ;; .edn file type support
+    (use-package edn)
+    )
 
 #+end_src
 
-** DAP Mode
+*** DAP Mode
 
 #+begin_src emacs-lisp
 
 
 #+end_src
 
-** Comments
+*** Comments
 
 Nice commenting functionality with [[https://github.com/redguardtoo/evil-nerd-commenter][evil-nerd-commenter]].
 
@@ -1039,7 +1084,7 @@ Nice commenting functionality with [[https://github.com/redguardtoo/evil-nerd-co
 
 #+end_src
 
-** Match Delimiters
+*** Match Delimiters
 
 Match delimiters with [[https://github.com/Fanael/rainbow-delimiters][rainbow-delimiters]].
 
@@ -1050,7 +1095,7 @@ Match delimiters with [[https://github.com/Fanael/rainbow-delimiters][rainbow-de
 
 #+end_src
 
-** Projectile
+*** Project Management
 
 Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]].
 
@@ -1072,7 +1117,7 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
 
 #+end_src
 
-** Magit
+*** Git Interface
 
 [[https://magit.vc/][Magit]]: a complete text-based user interface to Git.
 
@@ -1087,7 +1132,7 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
 #+end_src
 
 #+RESULTS:
-** Treemacs
+*** Treemacs
 
 Treemacs is used by LSP Mode, and here are some settings for it.
 
@@ -1099,14 +1144,14 @@ Treemacs is used by LSP Mode, and here are some settings for it.
 
 #+end_src
 
-* Programming
-** Java
+** Programming Languages Support
+*** Java
 
 #+begin_src emacs-lisp
 
 #+end_src
 
-** TeX
+*** TeX
 
 [[https://www.gnu.org/software/auctex/][AUCTeX]], an extensible package for writing and formatting TeX files. It supports many different TeX macro packages, including AMS-TEX, LaTeX, Texinfo, ConTEXt, and docTEX (dtx files).
 
@@ -1137,8 +1182,8 @@ Treemacs is used by LSP Mode, and here are some settings for it.
 
 #+end_src
 
-* Office
-** Org
+* Productivity
+** Org Mode
 
 I organize my life with [[https://orgmode.org/][Org Mode]]. The following headers all add and modify Org Mode's functionalities.
 
@@ -1414,48 +1459,6 @@ Calendar framework with [[https://github.com/kiwanami/emacs-calfw][calfw]].
     (TeX-view-program-list '(("pdf-tools" "TeX-pdf-tools-sync-view")))
     :config
     (pdf-tools-install))
-
-#+end_src
-
-* Miscellaneous
-
-I didn't know where else to put these.
-
-#+begin_src emacs-lisp
-
-  ;; tabs are four spaces
-  (setq-default tab-width 4
-                indent-tabs-mode nil)
-
-  ;; .edn file type support
-  (use-package edn)
-
-  ;; set language environment
-  (set-language-environment "UTF-8")
-
-  ;; clean up unneccesary whitespace on save
-  (add-hook 'before-save-hook 'whitespace-cleanup)
-
-  ;; map yes and no to y and n
-  (fset 'yes-or-no-p 'y-or-n-p)
-
-  ;; disable visual and audible bell
-  (setq ring-bell-function 'ignore)
-
-  ;; increase large file warning threshold
-  (setq large-file-warning-threshold 100000000)
-
-  ;; automatically reload files when changed
-  (global-auto-revert-mode t)
-
-  ;; suppress auto revert messages
-  (setq auto-revert-verbose nil)
-
-  ;; automatically kill all active processes when closing Emacs
-  (setq confirm-kill-processes nil)
-
-  ;; add a newline automatically at the end of the file upon save
-  (setq require-final-newline t)
 
 #+end_src
 
