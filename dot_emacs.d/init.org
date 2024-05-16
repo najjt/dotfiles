@@ -548,6 +548,18 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     :config
     (global-evil-surround-mode +1))
 
+  ;; enable camelCase motion
+  (use-package evil-little-word
+    :ensure nil
+    :config
+    (define-key evil-normal-state-map (kbd "w") 'evil-forward-little-word-begin)
+    (define-key evil-normal-state-map (kbd "b") 'evil-backward-little-word-begin)
+    (define-key evil-operator-state-map (kbd "w") 'evil-forward-little-word-begin)
+    (define-key evil-operator-state-map (kbd "b") 'evil-backward-little-word-begin)
+    (define-key evil-visual-state-map (kbd "w") 'evil-forward-little-word-begin)
+    (define-key evil-visual-state-map (kbd "b") 'evil-backward-little-word-begin)
+    (define-key evil-visual-state-map (kbd "i w") 'evil-inner-little-word))
+
 #+end_src
 
 ** Hydra
