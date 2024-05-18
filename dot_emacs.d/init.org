@@ -630,10 +630,10 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
 #+begin_src emacs-lisp
 
   (when *sys/linux*
-    (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-13")))
+    (add-to-list 'default-frame-alist '(font . "JetBrains Mono-13")))
 
   (when *sys/mac*
-    (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-15")))
+    (add-to-list 'default-frame-alist '(font . "JetBrains Mono-15")))
 
 #+end_src
 
