@@ -486,8 +486,7 @@ A better terminal emulation with [[https://github.com/akermu/emacs-libvterm][vte
       (add-hook 'vterm-mode-hook
                 (lambda ()
                   (setq-local evil-insert-state-cursor 'box)
-                  (evil-insert-state)))
-    ))
+                  (evil-insert-state)))))
 
 #+end_src
 
@@ -544,8 +543,7 @@ Popup buffers with [[https://github.com/karthink/popper][popper]].
         "^\\*Flycheck.*\\*$"
         "^\\*Buffer List*\\*$"
         "^\\*LSP Error List*\\*$"
-        "^magit:.*$"
-        "^\\*.*Agenda.*\\*$"))
+        "^magit:.*$"))
     :config
     (setq popper-group-function #'popper-group-by-directory
           popper-mode-line " POP "
@@ -639,7 +637,7 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
 
 #+end_src
 
-*Prerequisite*: Install nerd icons with =M-x nerd-icons-install-fonts=.
+Install nerd icons with =M-x nerd-icons-install-fonts=.
 
 #+begin_src emacs-lisp
 
