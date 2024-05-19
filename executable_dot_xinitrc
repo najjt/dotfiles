@@ -20,7 +20,7 @@ kmonad &
 xbanish &
 redshift &
 nm-applet &
-openvpn &
+alttab
 
 # launch wm
 exec i3
