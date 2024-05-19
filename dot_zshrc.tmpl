@@ -1,9 +1,6 @@
 #PS1=" [%F{green}%n@%m%f %1~ %#] $ "
 PS1=" %1~ %F{green}>%f "
-{{ if eq .chezmoi.os "darwin" }}
-# zsh autocomplete
-source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-{{ end }}
+
 # history time stamp format
 HIST_STAMPS="mm/dd/yyyy"
 
@@ -39,9 +36,15 @@ source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # zsh syntax highlighting
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# zsh autocomplete
+source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 {{ else if eq .chezmoi.os "linux" }}
 # restart emacs service
 alias emacsre="systemctl --user restart emacs"
+
+# homebrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # zsh vi mode
 function zvm_config() {
@@ -51,6 +54,9 @@ source $HOME/.config/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # zsh syntax highlighting
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# zsh autocomplete
+source /home/linuxbrew/.linuxbrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 {{ end }}
 # emacs vterm directory tracking shell-side config
 if [[ "$INSIDE_EMACS" = 'vterm' ]] \
