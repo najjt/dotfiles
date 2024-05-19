@@ -20,7 +20,7 @@ kmonad &
 xbanish &
 redshift &
 nm-applet &
-alttab
+alttab &
 
 # launch wm
 exec i3
