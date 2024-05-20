@@ -214,7 +214,9 @@ Set meta key, turn off option key as modifier, set dired to not use ~--dired~ fl
     (setq mac-option-modifier 'none)
     (setq dired-use-ls-dired nil)
     (setq frame-resize-pixelwise t)
-    (add-to-list 'default-frame-alist '(undecorated . t)))
+    (add-to-list 'default-frame-alist '(undecorated . t))
+    (global-set-key (kbd "C-x C-z") 'ns-do-hide-emacs)
+                 )
 
 #+end_src
 
@@ -475,18 +477,18 @@ A better terminal emulation with [[https://github.com/akermu/emacs-libvterm][vte
     :custom
     (term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
     (vterm-shell "zsh")
-    (vterm-max-scrollback 10000)
+    (vterm-max-scrollback 10000))
+
+  ;; open multiple vterm buffers
+  (use-package multi-vterm
+    :bind ("C-x t" . multi-vterm)
     :config
-    ;; open multiple vterm buffers
-    (use-package multi-vterm
-      :bind ("C-x t" . multi-vterm)
-      :config
-      ;; dedicated terminal height of 50 rows
-      (setq multi-vterm-dedicated-window-percent 30)
-      (add-hook 'vterm-mode-hook
-                (lambda ()
-                  (setq-local evil-insert-state-cursor 'box)
-                  (evil-insert-state)))))
+    ;; dedicated terminal height
+    (setq multi-vterm-dedicated-window-percent 30)
+    (add-hook 'vterm-mode-hook
+              (lambda ()
+                (setq-local evil-insert-state-cursor 'box)
+                (evil-insert-state))))
 
 #+end_src
 
