@@ -5,6 +5,9 @@
 # bsp
 exec --no-startup-id ~/.config/i3/i3-alternating-layout/alternating_layouts.py
 
+# alttab
+exec --no-startup-id alttab
+
 # wallpaper
 exec --no-startup-id ~/tools/scripts/rotating_wallpaper.sh
 
