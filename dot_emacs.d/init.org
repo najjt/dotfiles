@@ -1062,7 +1062,8 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
     :config
     ;; .edn file type support
     (use-package edn)
-    )
+    (package-vc-install
+     '(kbd-mode . (:url "https://github.com/kmonad/kbd-mode")))
 
 #+end_src
 
