@@ -3,20 +3,20 @@
 #
 
 # bsp
-exec --no-startup-id ~/.config/i3/i3-alternating-layout/alternating_layouts.py
+exec_always --no-startup-id i3-autolayout autolayout
 
 # alttab
-exec --no-startup-id alttab
+exec_always --no-startup-id alttab
 
 # kmonad
-exec --no-startup-id kmonad ~/.config/kmonad/kmonad.kbd
+exec_always --no-startup-id kmonad ~/.config/kmonad/kmonad.kbd
 
 # wallpaper
-exec --no-startup-id ~/tools/scripts/rotating_wallpaper.sh
+exec_always --no-startup-id ~/tools/scripts/rotating_wallpaper.sh
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex --autostart --environment i3
+exec_always --no-startup-id dex --autostart --environment i3
 
 # lock screen
 exec_always --no-startup-id xss-lock --transfer-sleep-lock -- ~/tools/scripts/lock.sh
