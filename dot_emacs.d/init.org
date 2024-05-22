@@ -215,8 +215,7 @@ Set meta key, turn off option key as modifier, set dired to not use ~--dired~ fl
     (setq dired-use-ls-dired nil)
     (setq frame-resize-pixelwise t)
     (add-to-list 'default-frame-alist '(undecorated . t))
-    (global-set-key (kbd "C-x C-z") 'ns-do-hide-emacs)
-                 )
+    (global-set-key (kbd "C-x C-z") 'ns-do-hide-emacs))
 
 #+end_src
 
@@ -933,18 +932,18 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     "Resizes the window width based on W."
     (interactive (list (if (> (count-windows) 1)
                            (read-number "Set the current window width in [1~9]x10%: ")
-                         (error "You need more than 1 window to execute this function!"))))
+                         (error "You need more than 1 window to execute this function!")))
     (message "%s" w)
-    (window-resize nil (- (truncate (* (/ w 10.0) (frame-width))) (window-total-width)) t))
+    (window-resize nil (- (truncate (* (/ w 10.0) (frame-width))) (window-total-width)) t)))
 
   ;; resizes the window height based on the input
   (defun resize-window-height (h)
     "Resizes the window height based on H."
     (interactive (list (if (> (count-windows) 1)
                            (read-number "Set the current window height in [1~9]x10%: ")
-                         (error "You need more than 1 window to execute this function!"))))
-    (message "%s" h)
-    (window-resize nil (- (truncate (* (/ h 10.0) (frame-height))) (window-total-height)) nil))
+                         (error "You need more than 1 window to execute this function!")))
+                 (message "%s" h)
+                 (window-resize nil (- (truncate (* (/ h 10.0) (frame-height))) (window-total-height)) nil)))
 
   (defun resize-window (width delta)
     "Resize the current window's size.  If WIDTH is non-nil, resize width by some DELTA."
@@ -1060,10 +1059,8 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
     :ensure nil
     :mode ("\\.edn\\'" "\\.lua\\'")
     :config
-    ;; .edn file type support
-    (use-package edn)
     (package-vc-install
-     '(kbd-mode . (:url "https://github.com/kmonad/kbd-mode")))
+     '(kbd-mode . (:url "https://github.com/kmonad/kbd-mode"))))
 
 #+end_src
 
