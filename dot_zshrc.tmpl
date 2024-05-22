@@ -3,10 +3,16 @@ PS1=" %1~ %F{green}>%f "
 
 # history time stamp format
 HIST_STAMPS="mm/dd/yyyy"
+HISTFILE=~/.zsh_history
+SAVEHIST=1000
 
 # zsh vi mode
-ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
-ZVM_INIT_MODE=sourcing
+function zvm_config() {
+  ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+  ZVM_VI_EDITOR=vim
+  ZVM_INIT_MODE=sourcing
+  ZVM_CURSOR_STYLE_ENABLED=true
+}
 
 # source zsh config
 alias sz="source $HOME/.zshrc && source $HOME/.zshenv"
@@ -47,10 +53,7 @@ alias emacsre="systemctl --user restart emacs"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # zsh vi mode
-function zvm_config() {
-  ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
-}
-source $HOME/.config/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+source $HOME/.config/zsh-vi-mode/zsh-vi-mode.zsh
 
 # zsh syntax highlighting
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
