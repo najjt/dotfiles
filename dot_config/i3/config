@@ -51,7 +51,7 @@ default_floating_border pixel 4
 # Keybindings
 #
 
-set $mod Mod4
+set $mod Mod5
 set $alt Mod1
 floating_modifier $mod
 
