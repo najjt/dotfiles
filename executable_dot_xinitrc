@@ -9,6 +9,9 @@ xset r rate 300 50
 # set suspend settings
 xset dpms 120 300
 
+# set keyboard layout to swerty
+setxkbmap se swerty
+
 # disable access control
 xhost +SI:localuser:$USER
 
