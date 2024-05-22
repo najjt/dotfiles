@@ -4,7 +4,7 @@ general {
 }
 
 order += "path_exists VPN"
-order += "memory"
+#order += "memory"
 order += "battery all"
 order += "wireless _first_"
 order += "tztime local"
