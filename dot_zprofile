@@ -1,3 +1,7 @@
+{{ if eq .chezmoi.os "darwin" }}
+export SHELL_SESSIONS_DISABLE=1
+{{ end }}
+{{ if eq .chezmoi.os "linux" }}
 if [ -n "$ZSH_VERSION" ]; then
     # include .zshrc if it exists
     if [ -f "$HOME/.zshrc" ]; then
@@ -19,3 +23,4 @@ fi
 if [[ -z "$DISPLAY" ]]  && [[ $(tty) = /dev/tty1 ]]; then
     exec startx
 fi
+{{ end }}

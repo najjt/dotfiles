@@ -13,7 +13,6 @@ README.md
 .config/kmonad
 .config/sxhkd
 .config/i3*
-.zprofile
 .xinitrc
 .config/dunst
 .config/rofi
