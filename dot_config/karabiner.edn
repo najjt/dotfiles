@@ -59,7 +59,7 @@
                  [:!Oreturn_or_enter "open /Applications/WezTerm.app"]
 
                  ;; open browser
-                 [:!TSreturn_or_enter "open /Applications/qutebrowser.app"]
+                 [:!TSreturn_or_enter "/opt/homebrew/bin/qutebrowser"]
 
                  ;; open emacs
                  [:!Treturn_or_enter "/opt/homebrew/bin/emacsclient -c -n -a '' -e '(select-frame-set-input-focus (selected-frame))'"]]}

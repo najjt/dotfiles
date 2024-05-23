@@ -83,7 +83,7 @@
             }
           },
           "to" : [ {
-            "shell_command" : "open /Applications/qutebrowser.app"
+            "shell_command" : "/opt/homebrew/bin/qutebrowser"
           } ],
           "type" : "basic"
         }, {
