@@ -868,6 +868,15 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     (define-key evil-visual-state-map (kbd "b") 'evil-backward-little-word-begin)
     (define-key evil-visual-state-map (kbd "i w") 'evil-inner-little-word))
 
+  ;; vim keybindings for org mode
+  (use-package evil-org
+    :ensure t
+    :after org
+    :hook (org-mode . (lambda () evil-org-mode))
+    :config
+    (require 'evil-org-agenda)
+    (evil-org-agenda-set-keys))
+
 #+end_src
 
 ** Command Buffers
