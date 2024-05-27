@@ -488,8 +488,8 @@ A better terminal emulation with [[https://github.com/akermu/emacs-libvterm][vte
   ;; open multiple vterm buffers
   (use-package multi-vterm
     :bind
-    ("C-t" . multi-vterm-dedicated-toggle)
-    ("C-x t" . multi-vterm)
+    ("C-x t" . multi-vterm-dedicated-toggle)
+    ("C-x T" . multi-vterm)
     :config
     ;; dedicated terminal height
     (setq multi-vterm-dedicated-window-height-percent 30)
@@ -808,10 +808,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
           ("C-w h" . evil-window-left)
           ("C-w j" . evil-window-down)
           ("C-w k" . evil-window-up)
-          ("C-w l" . evil-window-right)
-
-          ;; unbind C-t (I use it for vterm)
-          ("C-t" . nil))
+          ("C-w l" . evil-window-right))
 
 
     :hook
