@@ -489,7 +489,7 @@ A better terminal emulation with [[https://github.com/akermu/emacs-libvterm][vte
   (use-package multi-vterm
     :bind
     ("C-x t" . multi-vterm-dedicated-toggle)
-    ("C-x T" . multi-vterm)
+    ("C-x C-t" . multi-vterm)
     :config
     ;; dedicated terminal height
     (setq multi-vterm-dedicated-window-height-percent 30)
