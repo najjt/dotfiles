@@ -12,6 +12,7 @@
   - [[#load-path][Load Path]]
   - [[#custom-file][Custom File]]
   - [[#backup-directory][Backup Directory]]
+  - [[#unbind-keys][Unbind keys]]
 - [[#package-management][Package Management]]
   - [[#package-archives--initialize-package-manager][Package Archives & Initialize Package Manager]]
   - [[#use-package][Use Package]]
@@ -267,6 +268,12 @@ Set backup directory location.
     `((".*" ,temporary-file-directory t)))
 
 #+end_src
+** Unbind keys
+
+#+begin_src emacs-lisp
+
+
+#+end_src
 
 * Package Management
 ** Package Archives & Initialize Package Manager
@@ -480,10 +487,12 @@ A better terminal emulation with [[https://github.com/akermu/emacs-libvterm][vte
 
   ;; open multiple vterm buffers
   (use-package multi-vterm
-    :bind ("C-x t" . multi-vterm)
+    :bind
+    ("C-t" . multi-vterm-dedicated-toggle)
+    ("C-x t" . multi-vterm)
     :config
     ;; dedicated terminal height
-    (setq multi-vterm-dedicated-window-percent 30)
+    (setq multi-vterm-dedicated-window-height-percent 30)
     (add-hook 'vterm-mode-hook
               (lambda ()
                 (setq-local evil-insert-state-cursor 'box)
@@ -713,16 +722,17 @@ To spell check files, I use =flyspell= and =hunspell= in order to spell check in
       (setenv "LANG" "en_US.UTF-8")
       (setenv "LC_ALL" "en_US.UTF-8")
       (setq ispell-program-name "hunspell"
-            ispell-local-dictionary "sv_SE"
             ispell-hunspell-dictionary-alist ispell-local-dictionary-alist
             ispell-personal-dictionary "~/resources/spelling/.hunspell_personal"))
 
     (when *sys/linux*
-      (setq ispell-local-dictionary-alist
+      (setq ispell-local-dictionary "sv_SE"
+            ispell-local-dictionary-alist
             '(("sv_SE" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "sv_SE,en_US") nil utf-8))))
 
     (when *sys/mac*
-      (setq ispell-local-dictionary-alist
+      (setq ispell-local-dictionary "sv"
+            ispell-local-dictionary-alist
             '(("sv" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "sv,en_US") nil utf-8)))))
 
 #+end_src
@@ -798,7 +808,11 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
           ("C-w h" . evil-window-left)
           ("C-w j" . evil-window-down)
           ("C-w k" . evil-window-up)
-          ("C-w l" . evil-window-right))
+          ("C-w l" . evil-window-right)
+
+          ;; unbind C-t (I use it for vterm)
+          ("C-t" . nil))
+
 
     :hook
     (evil-mode . my/evil-hook)
@@ -818,6 +832,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
                       git-rebase-mode
                       erc-mode
                       term-mode
+                      vterm-mode
                       ansi-term-mode))
         (add-to-list 'evil-emacs-state-modes mode)))
 
@@ -851,7 +866,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     :config
     (evil-collection-init))
 
-  ;; even even more vim keybindings (adds surround functionality)
+  ;; even more vim keybindings (adds surround functionality)
   (use-package evil-surround
     :config
     (global-evil-surround-mode +1))
@@ -1066,10 +1081,7 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
 
   (use-package prog-mode
     :ensure nil
-    :mode ("\\.edn\\'" "\\.lua\\'")
-    :config
-    (package-vc-install
-     '(kbd-mode . (:url "https://github.com/kmonad/kbd-mode"))))
+    :mode ("\\.edn\\'" "\\.lua\\'"))
 
 #+end_src
 
