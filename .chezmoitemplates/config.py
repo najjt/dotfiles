@@ -41,6 +41,9 @@ config.set('content.cookies.accept', 'all', 'devtools://*')
 config.set('content.images', True, 'chrome-devtools://*')
 config.set('content.images', True, 'devtools://*')
 
+# History
+c.completion.web_history.max_items=100
+
 # Javascript
 config.set('content.javascript.enabled', True, 'chrome-devtools://*')
 config.set('content.javascript.enabled', True, 'devtools://*')
