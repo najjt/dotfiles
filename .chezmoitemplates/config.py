@@ -111,10 +111,17 @@ config.bind(',m', 'spawn mpv {url}')
 config.bind(',M', 'hint links spawn mpv {hint-url}')
 config.bind(',c', 'hint code userscript code_select.py')
 {{ if eq .chezmoi.os "darwin" }}
-config.bind(',j', 'set -u {url} content.javascript.clipboard access')
+config.bind(',j', 'set -u {domain} content.javascript.clipboard access')
 {{ else if eq .chezmoi.os "linux" }}
-config.bind(',j', 'set -u {url} content.javascript.can_access_clipboard true')
+config.bind(',j', 'set -u {domain} content.javascript.can_access_clipboard true')
 {{ end }}
+
+# custom group for code snippets
+c.hints.selectors["code"] = [
+    # Selects all code tags whose direct parent is not a pre tag
+    ":not(pre) > code",
+    "pre"
+]
 
 # Unbind conflicting and uwanted keys
 config.unbind('<Alt+1>')
