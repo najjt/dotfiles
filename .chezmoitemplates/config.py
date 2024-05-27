@@ -112,6 +112,7 @@ config.bind('yo', 'yank inline [[{url}][{title}]]') # Yank with org mode link fo
 config.bind('öd', 'download-open')
 config.bind(',m', 'spawn mpv {url}')
 config.bind(',M', 'hint links spawn mpv {hint-url}')
+config.bind(',b', 'spawn --userscript bitwarden')
 config.bind(',c', 'hint code userscript code_select.py')
 {{ if eq .chezmoi.os "darwin" }}
 config.bind(',j', 'set -u {domain} content.javascript.clipboard access')
