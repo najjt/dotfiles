@@ -14,6 +14,7 @@ export TERMINAL=wezterm
 export EDITOR=emacsclient
 export VISUAL=emacsclient
 export PAGER=cat
+export GPG_TTY=$(tty)
 {{ if eq .chezmoi.os "darwin" }}
 path=(
     /opt/local/sbin
@@ -48,7 +49,6 @@ path=(
     $path
 )
 export PATH="$PATH"
-export GPG_TTY=$(tty)
 
 . "$HOME/.cargo/env"
 {{ end }}
