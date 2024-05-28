@@ -1437,10 +1437,13 @@ Active code blocks in org files with [[https://orgmode.org/worg/org-contrib/babe
       (add-to-list 'gnutls-trustfiles (expand-file-name "~/.config/protonmail/bridge/cert.pem"))
 
       (set-variable 'read-mail-command 'mu4e) ; mu4e default email reader
-      (setq mail-user-agent 'mu4e-user-agent ; mu4e default email client
-            mu4e-view-show-images t
+      (setq mail-user-agent 'mu4e-user-agent  ; mu4e default email client
+            mu4e-view-show-images t           ; show images inline
+            mu4e-view-show-addresses t        ; show addresses, not just names
+            message-kill-buffer-on-exit t     ; don't keep message buffers around
             mu4e-compose-in-new-frame nil
-            mu4e-compose-format-flowed t
+            mu4e-compose-format-flowed t      ; sets soft wrap
+            mu4e-headers-date-format "%Y-%m-%d %H:%M"
             mu4e-html2text-command "pandoc -f html -t plain --columns 78 --strip-comments"
             mu4e-update-interval 300
             mu4e-use-fancy-chars nil)
