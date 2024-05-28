@@ -66,4 +66,4 @@ yabai -m rule --add label="AltTab" app="^AltTab$" title="(General|Controls|Appea
 
 # workarounds for hiding window decorations successfully
 yabai -m rule --add app="^qutebrowser$" role="AXWindow" subrole="AXDialog" manage=on
-yabai -m rule --add app="sioyek$" role="AXWindow" subrole="AXDialog" manage=on
+yabai -m rule --add app="^sioyek$" role="AXWindow" subrole="AXDialog" manage=on
