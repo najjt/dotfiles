@@ -1536,6 +1536,11 @@ Active code blocks in org files with [[https://orgmode.org/worg/org-contrib/babe
      mu4e-hide-index-messages t
      mu4e-index-update-error-warning 'nil))
 
+  ;; allows for using individual faces for columns in email overview
+  (use-package mu4e-column-faces
+    :after mu4e
+    :config (mu4e-column-faces-mode))
+
 #+end_src
 
 ** Calendar
