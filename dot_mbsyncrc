@@ -1,6 +1,6 @@
-IMAPAccount proton
+IMAPAccount Proton
 Host 127.0.0.1
-Port 1143
+PORT 1143
 User mlonna@pm.me
 PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.authinfo.gpg | awk 'FNR == 1 {print $8}'"
 AuthMechs LOGIN
@@ -8,17 +8,17 @@ SSLType STARTTLS
 SSLVersions TLSv1.2
 CertificateFile ~/.config/protonmail/bridge/cert.pem
 
-IMAPStore proton-remote
-Account proton
-
-MaildirStore proton-local
-Path ~/.mail/
-Inbox ~/.mail/Inbox/
+MaildirStore Proton-local
+Path ~/.mail/Proton/
+Inbox ~/.mail/Proton/Inbox
 SubFolders Verbatim
 
-Channel proton
-Far :proton-remote:
-Near :proton-local:
+IMAPStore Proton-remote
+Account Proton
+
+Channel Proton
+Far :Proton-remote:
+Near :Proton-local:
 Patterns *
 CopyArrivalDate yes
 Create Both

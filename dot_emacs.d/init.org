@@ -1144,7 +1144,7 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
     :custom
     (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
     :bind
-    ("C-x m" . magit-status))
+    ("C-x g" . magit-status))
 
 #+end_src
 
@@ -1422,134 +1422,119 @@ Active code blocks in org files with [[https://orgmode.org/worg/org-contrib/babe
 
 [[https://www.emacswiki.org/emacs/mu4e][mu4e]] is an email client for Emacs, based on the mu email indexer/searcher.
 
-*Prerequisites*: See [[https://macowners.club/posts/email-emacs-mu4e-macos/][Email setup in Emacs with Mu4e on macOS]].
-
 #+begin_src emacs-lisp
 
-    (use-package mu4e
-      :ensure nil
-      :defer 30 ; load 30 s after startup
-      :commands (mu4e make-mu4e-context)
-      :bind
-      (:map mu4e-view-mode-map
-        ("e" . mu4e-view-save-attachment))
-      :config
-      (add-to-list 'gnutls-trustfiles (expand-file-name "~/.config/protonmail/bridge/cert.pem"))
+  (use-package mu4e
+    :ensure nil
+    :defer 20 ; load 20 s after startup
+    :commands (mu4e make-mu4e-context)
+    :bind
+    ("C-x m" . mu4e)
 
-      (set-variable 'read-mail-command 'mu4e) ; mu4e default email reader
-      (setq mail-user-agent 'mu4e-user-agent  ; mu4e default email client
-            mu4e-view-show-images t           ; show images inline
-            mu4e-view-show-addresses t        ; show addresses, not just names
-            message-kill-buffer-on-exit t     ; don't keep message buffers around
-            mu4e-compose-in-new-frame nil
-            mu4e-compose-format-flowed t      ; sets soft wrap
-            mu4e-headers-date-format "%Y-%m-%d %H:%M"
-            mu4e-html2text-command "pandoc -f html -t plain --columns 78 --strip-comments"
-            mu4e-update-interval 300
-            mu4e-use-fancy-chars nil)
+    (:map mu4e-view-mode-map
+          ("e" . mu4e-view-save-attachment))
+    :config
+    (add-to-list 'gnutls-trustfiles (expand-file-name "~/.config/protonmail/bridge/cert.pem"))
 
-      (setq
-       ;; User info
-       user-mail-address "mlonna@pm.me"
-       user-full-name  "Martin Lönn Andersson"
+    (setq mail-user-agent 'mu4e-user-agent) ; mu4e default email client
+    (set-variable 'read-mail-command 'mu4e) ; mu4e default email reader
 
-       ;; Maildir setup
-       mu4e-root-maildir "~/.mail"
-       mu4e-attachment-dir "~/Downloads"
-       mu4e-maildir-shortcuts
-       '((:maildir "/Inbox"           :key ?i)
-         (:maildir "/Folders/viktigt" :key ?v)
-         (:maildir "/Folders/orders"  :key ?b))
+    (setq
+     ;; User info
+     user-mail-address "mlonna@pm.me"
+     user-full-name  "Martin Lönn Andersson"
 
-       mu4e-contexts
-       `(,(make-mu4e-context
-           :name "mlonna"
-           :match-func
-           (lambda (msg)
-             (when msg
-               (mu4e-message-contact-field-matches msg
-                                                   :to "mlonna@pm.me")))
-           :vars '((user-mail-address . "mlonna@pm.me" )
-                   (user-full-name . "Martin Lönn Andersson")
-                   (mu4e-drafts-folder . "/Drafts")
-                   (mu4e-sent-folder . "/Sent")
-                   (mu4e-refile-folder . "/Archive")
-                   (mu4e-trash-folder . "/Trash")))
+     ;; Maildir setup
+     mu4e-root-maildir "~/.mail"
+     mu4e-attachment-dir "~/Downloads"
+     mu4e-maildir-shortcuts
+     '((:maildir "/Proton/Inbox"                :key ?i)
+       (:maildir "/Proton/Folders/viktigt"      :key ?v)
+       (:maildir "/Proton/Folders/orders"       :key ?o)
+       (:maildir "/Proton/Folders/kvitton"      :key ?k)
+       (:maildir "/Proton/Folders/interrail 24" :key ?t))
 
-         ,(make-mu4e-context
-           :name "nitramla"
-           :match-func
-           (lambda (msg)
-             (when msg
-               (mu4e-message-contact-field-matches msg
-                                                   :to "nitramla@pm.me")))
-           :vars '((user-mail-address . "nitramla@pm.me")
-                   (user-full-name . "Martin")
-                   (mu4e-drafts-folder . "/Drafts")
-                   (mu4e-sent-folder . "/Sent")
-                   (mu4e-refile-folder . "/Archive")
-                   (mu4e-trash-folder . "/Trash")))
+     mu4e-contexts
+     `(,(make-mu4e-context
+         :name "mlonna"
+         :match-func
+         (lambda (msg)
+           (when msg
+             (mu4e-message-contact-field-matches msg
+                                                 :to "mlonna@pm.me")))
+         :vars '((user-mail-address . "mlonna@pm.me" )
+                 (user-full-name . "Martin Lönn Andersson")
+                 (mu4e-drafts-folder . "/Proton/Drafts")
+                 (mu4e-sent-folder . "/Proton/Sent")
+                 (mu4e-refile-folder . "/Proton/Archive")
+                 (mu4e-trash-folder . "/Proton/Trash")))
 
-         ,(make-mu4e-context
-           :name "hemlg"
-           :match-func
-           (lambda (msg)
-             (when msg
-               (mu4e-message-contact-field-matches msg
-                                                   :to "hemlg@pm.me")))
-           :vars '((user-mail-address . "hemlg@pm.me")
-                   (user-full-name . "Martin")
-                   (mu4e-drafts-folder . "/Drafts")
-                   (mu4e-sent-folder . "/Sent")
-                   (mu4e-refile-folder . "/Archive")
-                   (mu4e-trash-folder . "/Trash")))
+       ,(make-mu4e-context
+         :name "nitramla"
+         :match-func
+         (lambda (msg)
+           (when msg
+             (mu4e-message-contact-field-matches msg
+                                                 :to "nitramla@pm.me")))
+         :vars '((user-mail-address . "nitramla@pm.me")
+                 (user-full-name . "Martin")
+                 (mu4e-drafts-folder . "/Proton/Drafts")
+                 (mu4e-sent-folder . "/Proton/Sent")
+                 (mu4e-refile-folder . "/Proton/Archive")
+                 (mu4e-trash-folder . "/Proton/Trash")))
 
-         ,(make-mu4e-context
-           :name "trshcan"
-           :match-func
-           (lambda (msg)
-             (when msg
-               (mu4e-message-contact-field-matches msg
-                                                   :to "trshcan@pm.me")))
-           :vars '((user-mail-address . "trshcan@pm.me")
-                   (user-full-name . "Martin")
-                   (mu4e-drafts-folder . "/Drafts")
-                   (mu4e-sent-folder . "/Sent")
-                   (mu4e-refile-folder . "/Archive")
-                   (mu4e-trash-folder . "/Trash"))))
+       ,(make-mu4e-context
+         :name "hemlg"
+         :match-func
+         (lambda (msg)
+           (when msg
+             (mu4e-message-contact-field-matches msg
+                                                 :to "hemlg@pm.me")))
+         :vars '((user-mail-address . "hemlg@pm.me")
+                 (user-full-name . "Martin")
+                 (mu4e-drafts-folder . "/Proton/Drafts")
+                 (mu4e-sent-folder . "/Proton/Sent")
+                 (mu4e-refile-folder . "/Proton/Archive")
+                 (mu4e-trash-folder . "/Proton/Trash")))
 
-       ;; start with the first (default) context
-       mu4e-context-policy 'pick-first
-       ;; ask for context if no context matches
-       mu4e-compose-context-policy 'ask
+       ,(make-mu4e-context
+         :name "trshcan"
+         :match-func
+         (lambda (msg)
+           (when msg
+             (mu4e-message-contact-field-matches msg
+                                                 :to "trshcan@pm.me")))
+         :vars '((user-mail-address . "trshcan@pm.me")
+                 (user-full-name . "Martin")
+                 (mu4e-drafts-folder . "/Proton/Drafts")
+                 (mu4e-sent-folder . "/Proton/Sent")
+                 (mu4e-refile-folder . "/Proton/Archive")
+                 (mu4e-trash-folder . "/Proton/Trash"))))
 
-       ;; Fetch mail
-       mu4e-get-mail-command "mbsync -a"
-       mu4e-change-filenames-when-moving t   ; needed for mbsync
-       mu4e-update-interval 120              ; update every 2 minutes
+     ;; start with the first (default) context
+     mu4e-context-policy 'pick-first
+     ;; ask for context if no context matches
+     mu4e-compose-context-policy 'ask
 
-       ;; Send mail
-       message-send-mail-function 'message-send-mail-with-sendmail
-       smtpmail-auth-credentials "~/.authinfo"
-       smtpmail-smtp-server "127.0.0.1"
-       smtpmail-smtp-service 1025
-       smtpmail-stream-type 'starttls
+     ;; Fetch mail
+     mu4e-get-mail-command "mbsync -a"
+     mu4e-change-filenames-when-moving t   ; needed for mbsync
+     mu4e-update-interval 120              ; update every 2 minutes
 
-       ;; Other options
-       mu4e-confirm-quit nil
-       ;; re-flow mail so it's not hard wrapped
-       mu4e-compose-format-flowed t
-       ;; hide annoying retrieving msg in mini buffer
-       mu4e-hide-index-messages t
-       mu4e-index-update-error-warning 'nil))
+     ;; Send mail
+     message-send-mail-function 'message-send-mail-with-sendmail
+     smtpmail-auth-credentials "~/.authinfo"
+     smtpmail-smtp-server "127.0.0.1"
+     smtpmail-smtp-service 1025
+     smtpmail-stream-type 'starttls
 
-    (my/leader-keys
-      "m" '(mu4e :which-key "open mail"))
-
-  (with-eval-after-load "mm-decode"
-    (add-to-list 'mm-discouraged-alternatives "text/html")
-    (add-to-list 'mm-discouraged-alternatives "text/richtext"))
-
+     ;; Other options
+     mu4e-confirm-quit nil
+     ;; re-flow mail so it's not hard wrapped
+     mu4e-compose-format-flowed t
+     ;; hide annoying retrieving msg in mini buffer
+     mu4e-hide-index-messages t
+     mu4e-index-update-error-warning 'nil))
 
 #+end_src
 
