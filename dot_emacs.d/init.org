@@ -12,7 +12,6 @@
   - [[#load-path][Load Path]]
   - [[#custom-file][Custom File]]
   - [[#backup-directory][Backup Directory]]
-  - [[#unbind-keys][Unbind keys]]
 - [[#package-management][Package Management]]
   - [[#package-archives--initialize-package-manager][Package Archives & Initialize Package Manager]]
   - [[#use-package][Use Package]]
@@ -269,13 +268,6 @@ Set backup directory location.
     `((".*" ,temporary-file-directory t)))
 
 #+end_src
-** Unbind keys
-
-#+begin_src emacs-lisp
-
-
-#+end_src
-
 * Package Management
 ** Package Archives & Initialize Package Manager
 
