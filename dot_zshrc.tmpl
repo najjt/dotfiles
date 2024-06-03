@@ -22,6 +22,7 @@ alias home="cd ~"
 alias ec="emacsclient -c -n -a ''"
 
 # other
+alias ec=emacsclient -c -n -a '' -e '(select-frame-set-input-focus (selected-frame))'
 alias x="exit"
 alias ..="cd .."
 alias ls='ls -lh --color=always'
@@ -41,7 +42,7 @@ export PATH="/opt/homebrew/bin:$PATH"
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # zsh syntax highlighting
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # zsh autocomplete
 source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
@@ -49,17 +50,14 @@ source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # restart emacs service
 alias emacsre="systemctl --user restart emacs"
 
-# homebrew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
 # zsh vi mode
-source $HOME/.config/zsh-vi-mode/zsh-vi-mode.zsh
+source /usr/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # zsh syntax highlighting
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # zsh autocomplete
-source /home/linuxbrew/.linuxbrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 {{ end }}
 # emacs vterm directory tracking shell-side config
 if [[ "$INSIDE_EMACS" = 'vterm' ]] \
