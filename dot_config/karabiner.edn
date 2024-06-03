@@ -32,9 +32,9 @@
              :e-mode {:key :e}    ; text navigation
              :r-mode {:key :r}    ; text deletion
              :a-mode {:key :a}    ; hjkl navigation
-             :s-mode {:key :s}    ; punctuation         ? ! : ; ' " ` ~
+;;           :s-mode {:key :s}    ; punctuation         ? ! : ; ' " ` ~
              :d-mode {:key :d}    ; arithmetic          + - * / = % < > #
-             :f-mode {:key :f}    ; delimeters          ( ) [ ] { } and ! ? $
+;;           :f-mode {:key :f}    ; delimeters          ( ) [ ] { } and ! ? $
              :c-mode {:key :c}    ; remaining symbols   ^ | \ _ @
              }
 
