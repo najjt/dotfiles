@@ -522,9 +522,9 @@ Popup buffers with [[https://github.com/karthink/popper][popper]].
 
   (use-package popper
     :bind
-    ("C-å"   . popper-toggle)
-    ("M-å"   . popper-cycle)
-    ("C-M-å" . popper-toggle-type)
+    ("C-0"   . popper-toggle)
+    ("M-p"   . popper-cycle)
+    ("C-M-0" . popper-toggle-type)
     ("C-x d" . popper-kill-latest-popup)
     :init
     (setq popper-reference-buffers
