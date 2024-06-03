@@ -29,6 +29,7 @@
   - [[#workspaces][Workspaces]]
   - [[#popup-buffers][Popup Buffers]]
   - [[#dashboard][Dashboard]]
+  - [[#chezmoi][chezmoi]]
 - [[#appearance][Appearance]]
   - [[#general-appearance-settings][General Appearance Settings]]
   - [[#font--icons][Font & Icons]]
@@ -599,6 +600,15 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
               (with-selected-frame frame
                 (dashboard-open))))
 
+
+#+end_src
+** chezmoi
+
+I manage my dotfiles with [[https://www.chezmoi.io/][chezmoi]], and of course there is an Emacs package for that.
+
+#+begin_src emacs-lisp
+
+  (use-package chezmoi)
 
 #+end_src
 
