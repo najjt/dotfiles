@@ -713,40 +713,35 @@ To spell check files, I use =flyspell= and =hunspell= in order to spell check in
 
 #+begin_src emacs-lisp
 
-  (use-package flyspell
-    :diminish flyspell-mode
-    :hook
-    ((markdown-mode org-mode text-mode) . flyspell-mode)
-    (prog-mode . flyspell-prog-mode)
-    :bind
-    ("C-l" . flyspell-auto-correct-previous-word)
-    :config
-    (with-eval-after-load "ispell"
-      (setenv "LANG" "en_US.UTF-8")
-      (setenv "LC_ALL" "en_US.UTF-8")
+      (use-package flyspell
+        :diminish flyspell-mode
+        :hook
+        ((markdown-mode org-mode text-mode) . flyspell-mode)
+        (prog-mode . flyspell-prog-mode)
+        :bind
+        ("C-l" . flyspell-auto-correct-previous-word)
+        :config
+        (with-eval-after-load "ispell"
+          (setenv "LANG" "en_US.UTF-8")
+          (setenv "LC_ALL" "en_US.UTF-8")
 
-      (setq ispell-program-name "hunspell"
-            ;; you could set `ispell-dictionary` instead but `ispell-local-dictionary' has higher priority
-            ispell-local-dictionary "sv_SE"
-            ispell-local-dictionary-alist '(("sv_SE" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "sv_SE,en_US") nil utf-8)))
-      ;; new variable `ispell-hunspell-dictionary-alist' is defined in Emacs
-      ;; If it's nil, Emacs tries to automatically set up the dictionaries.
-      (when (boundp 'ispell-hunspell-dictionary-alist)
-        (setq ispell-hunspell-dictionary-alist ispell-local-dictionary-alist))))
+          (setq ispell-program-name "hunspell"
+                ispell-personal-dictionary "~/resources/spelling/.hunspell_personal"
+                ispell-local-dictionary "sv_SE"
+                ispell-local-dictionary-alist '(("sv_SE" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "sv_SE,en_US") nil utf-8)))
+          (when (boundp 'ispell-hunspell-dictionary-alist)
+            (setq ispell-hunspell-dictionary-alist ispell-local-dictionary-alist))))
 
-  (defvar *afilename-cmd*
-    '(("~/najjt/resources/spelling/.hunspell_personal" . "chezmoi add ~/najjt/resources/spelling/.hunspell_personal"))
-    "File association list with their respective command.")
 
-  ;; execute a bash command after saving a specific file
-  ;; I use this to add my personal dictionary to chezmoi
-  (defun my/cmd-after-saved-file ()
-    "Execute a command after saved a specific file."
-    (let* ((match (assoc (buffer-file-name) *afilename-cmd*)))
-      (when match
-        (shell-command (cdr match)))))
+  (defun my-run-shell-command ()
+    (shell-command "chezmoi add ~/resources/spelling/.hunspell_personal"))
 
-  (add-hook 'after-save-hook 'my/cmd-after-saved-file)
+  (defun my-flyspell-advice (orig-fun &rest args)
+    (apply orig-fun args)
+    (my-run-shell-command))
+
+  ;; add personal dictionary to chezmoi when adding new word
+  (advice-add 'flyspell-correct-word-before-point :around #'my-flyspell-advice)
 
 #+end_src
 
