@@ -3,7 +3,7 @@
 PERCENTAGE=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
 TIME=$(pmset -g batt | grep -Eo "\d+:\d+" | cut -d% -f1)
 CHARGING=$(pmset -g batt | grep -Eo "\w*charging" | cut -d% -f1)
-LABEL=""
+LABEL="${PERCENTAGE}%"
 
 if [ $PERCENTAGE = "" ]; then
     exit 0
