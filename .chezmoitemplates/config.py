@@ -474,7 +474,11 @@ c.window.transparent = False
 
 # Default zoom level.
 # Type: Perc
+{{ if eq .chezmoi.os "darwin" }}
 c.zoom.default = '125%'
+{{ else if eq .chezmoi.os "linux" }}
+c.zoom.default='100%'
+{{ end }}
 
 # Text color of the completion widget. May be a single color to use for
 # all columns or a list of three colors, one for each column.
@@ -560,11 +564,20 @@ c.fonts.default_family = 'JetBrains Mono'
 # either a float value with a "pt" suffix, or an integer value with a
 # "px" suffix.
 # Type: String
+{{ if eq .chezmoi.os "darwin" }}
 c.fonts.default_size = '15pt'
+{{ else if eq .chezmoi.os "linux" }}
+c.fonts.default_size = '12pt'
+{{ end }}
 
 # Default font size (in pixels) for regular text.
 # Type: Int
+{{ if eq .chezmoi.os "darwin" }}
 c.fonts.web.size.default = 20
+{{ else if eq .chezmoi.os "linux" }}
+c.fonts.web.size.default = 15
+{{ end }}
+
 
 # Bindings for normal mode
 config.bind(',M', 'hint links spawn mpv {hint-url}')
