@@ -1,7 +1,7 @@
 {{ if eq .chezmoi.os "darwin" }}
+# disable zsh session files being written
 export SHELL_SESSIONS_DISABLE=1
-{{ end }}
-{{ if eq .chezmoi.os "linux" }}
+{{ else if eq .chezmoi.os "linux" }}
 if [ -n "$ZSH_VERSION" ]; then
     # include .zshrc if it exists
     if [ -f "$HOME/.zshrc" ]; then
@@ -19,8 +19,6 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# start xorg
-if [[ -z "$DISPLAY" ]]  && [[ $(tty) = /dev/tty1 ]]; then
-    exec startx
-fi
+# start kmonad
+kmonad ~/.config/kmonad/kmonad.kbd &
 {{ end }}
