@@ -1,5 +1,5 @@
 (defcfg
-  input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
+  input  (device-file "/dev/input/by-path/platform-23510c000.spi-cs-0-event-kbd")
   output (uinput-sink "KMonad kbd" "sleep 1")
   cmp-seq ralt
   fallthrough true
@@ -12,9 +12,9 @@
 
   ;; layers
   a (tap-hold-next-release 200 d (layer-toggle arithmetic))
-  p (tap-hold-next-release 200 s (layer-toggle punctuation))
+;;p (tap-hold-next-release 200 s (layer-toggle punctuation))
   c (tap-hold-next-release 200 c (layer-toggle symbols))
-  d (tap-hold-next-release 200 f (layer-toggle delimiters))
+;;d (tap-hold-next-release 200 f (layer-toggle delimiters))
   r (tap-hold-next-release 200 r (layer-toggle deletion))
   e (tap-hold-next-release 200 e (layer-toggle navigation))
   w (tap-hold-next-release 200 w (layer-toggle selection))
