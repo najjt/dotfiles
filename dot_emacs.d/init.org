@@ -201,7 +201,8 @@ Set super key to meta key on Linux.
 #+begin_src emacs-lisp
 
   (when *sys/linux*
-    (setq x-super-keysym 'meta))
+    (setq x-super-keysym 'meta)
+    (add-to-list 'default-frame-alist '(undecorated . t)))
 
 #+end_src
 
