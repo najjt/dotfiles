@@ -196,13 +196,12 @@ These constants are used below for OS-specific settings.
 ** OS-specific Adaptions
 *** Linux
 
-Set super key to meta key on Linux.
+Set super key to alt key on Linux.
 
 #+begin_src emacs-lisp
 
   (when *sys/linux*
-    (setq x-super-keysym 'meta)
-    (add-to-list 'default-frame-alist '(undecorated . t)))
+    (setq x-super-keysym 'alt))
 
 #+end_src
 
@@ -1458,7 +1457,7 @@ Active code blocks in org files with [[https://orgmode.org/worg/org-contrib/babe
      mu4e-maildir-shortcuts
      '((:maildir "/Proton/Inbox"                :key ?i)
        (:maildir "/Proton/Folders/viktigt"      :key ?v)
-       (:maildir "/Proton/Folders/orders"       :key ?o)
+       (:maildir "/Proton/Folders/orders"       :key ?r)
        (:maildir "/Proton/Folders/kvitton"      :key ?k)
        (:maildir "/Proton/Folders/interrail 24" :key ?t))
 
