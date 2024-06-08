@@ -4,3 +4,4 @@ syncthing http://localhost:8384/
 pihole http://192.168.1.48/admin/index.php
 man https://linux.die.net/man/
 vault https://vault.bitwarden.com/#/vault
+mail https://mail.proton.me/u/0/inbox
