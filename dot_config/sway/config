@@ -3,20 +3,26 @@
 #
 
 # bsp
-#exec_always --no-startup-id i3-autolayout autolayout
+# exec_always --no-startup-id i3-autolayout autolayout
 
-# alttab
-#exec_always --no-startup-id alttab
+# alt tab functionality
+# exec_always --no-startup-id alttab
+
+# keyboard layers and reconfigurations
+exec_always --no-startup-id kmonad ~/.config/kmonad/kmonad.kbd
+
+# bluelight filter
+# exec_always --no-startup-id gammastep -O 4500
 
 # wallpaper
-#exec_always --no-startup-id ~/tools/scripts/rotating_wallpaper.sh
+# exec_always --no-startup-id ~/tools/scripts/rotating_wallpaper.sh
 
 #
 # Variables
 #
 
 # modifier keys
-set $mod Mod4
+set $mod Mod4 # logo key
 set $alt Mod1
 
 # terminal
@@ -28,7 +34,7 @@ set $editor emacsclient -c -n -a '' -e '(select-frame-set-input-focus (selected-
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi | xargs swaymsg exec --
+set $menu wofi --show run | xargs swaymsg exec --
 
 #
 # Idle configuration
