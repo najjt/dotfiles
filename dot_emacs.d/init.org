@@ -196,12 +196,13 @@ These constants are used below for OS-specific settings.
 ** OS-specific Adaptions
 *** Linux
 
-Set super key to alt key on Linux.
+Set super key to meta key on Linux.
 
 #+begin_src emacs-lisp
 
   (when *sys/linux*
-    (setq x-super-keysym 'alt))
+    (setq x-super-keysym 'meta)
+    (add-to-list 'default-frame-alist '(undecorated . t)))
 
 #+end_src
 
