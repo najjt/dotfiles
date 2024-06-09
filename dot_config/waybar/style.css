@@ -1,0 +1,27 @@
+* {
+    font-family: "JetBrains Mono";
+    font-size: 12px;
+}
+
+
+window#waybar {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.modules {
+    background-color: #000000;
+    padding: 4px
+}
+
+#workspaces button {
+    padding: 0px 11px 0px 11px;
+    min-width: 1px;
+    color: #888888;
+}
+
+#workspaces button.focused {
+    padding: 0px 11px 0px 11px;
+    background-color: #285577;
+    color: #ffffff;
+}
