@@ -1458,7 +1458,7 @@ Active code blocks in org files with [[https://orgmode.org/worg/org-contrib/babe
      mu4e-maildir-shortcuts
      '((:maildir "/Proton/Inbox"                :key ?i)
        (:maildir "/Proton/Folders/viktigt"      :key ?v)
-       (:maildir "/Proton/Folders/orders"       :key ?o)
+       (:maildir "/Proton/Folders/orders"       :key ?r)
        (:maildir "/Proton/Folders/kvitton"      :key ?k)
        (:maildir "/Proton/Folders/interrail 24" :key ?t))
 
