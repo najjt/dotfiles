@@ -46,15 +46,6 @@ exec nm-applet --indicator
 # Window switching with alt + tab
 # exec_always --no-startup-id alttab
 
-# Keyboard layers and reconfigurations
-exec_always --no-startup-id kmonad ~/.config/kmonad/kmonad.kbd
-
-# Bluelight filter
-# exec_always --no-startup-id gammastep -O 4500
-
-# Wallpaper
-# exec_always --no-startup-id ~/tools/scripts/rotating_wallpaper.sh
-
 #
 # Variables
 #
