@@ -567,7 +567,7 @@ c.fonts.default_family = 'JetBrains Mono'
 {{ if eq .chezmoi.os "darwin" }}
 c.fonts.default_size = '15pt'
 {{ else if eq .chezmoi.os "linux" }}
-c.fonts.default_size = '12pt'
+c.fonts.default_size = '10pt'
 {{ end }}
 
 # Default font size (in pixels) for regular text.
@@ -575,7 +575,7 @@ c.fonts.default_size = '12pt'
 {{ if eq .chezmoi.os "darwin" }}
 c.fonts.web.size.default = 20
 {{ else if eq .chezmoi.os "linux" }}
-c.fonts.web.size.default = 15
+c.fonts.web.size.default = 12
 {{ end }}
 
 
