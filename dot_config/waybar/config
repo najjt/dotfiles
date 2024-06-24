@@ -1,0 +1,61 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top", // Waybar at top layer
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 25, // Waybar height (to be removed for auto height)
+    "spacing": 5, // Gaps between modules (4px)
+
+    // Choose the order of the modules
+    "modules-left": [
+        "sway/workspaces",
+        "sway/window"
+    ],
+
+    "modules-center": [
+    ],
+
+    "modules-right": [
+        "cpu",
+        "memory",
+        "temperature",
+        "battery",
+        "network",
+        "clock",
+        "tray"
+    ],
+
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+
+    "clock": {
+        "format": "| {:%H:%M %a %d %b}"
+    },
+
+    "cpu": {
+        "format": "| CPU: {usage}% ",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "| MEM: {}%"
+    },
+
+    "temperature": {
+        "format": "| TEMP: {temperatureC}°C",
+    },
+
+    "battery": {
+        "format": "| BAT: {capacity}% {time}",
+        "format-charging": "| BAT: {capacity}% (charging)",
+    },
+
+    "network": {
+        "format-wifi": "| {essid} ({signalStrength}%)",
+        "format-ethernet": "| {ipaddr}/{cidr}",
+        "tooltip-format": "| {ifname} via {gwaddr}",
+        "format-linked": "| {ifname} (No IP)",
+        "format-disconnected": "| Disconnected",
+    },
+}

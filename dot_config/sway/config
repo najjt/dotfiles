@@ -2,43 +2,7 @@
 # System
 #
 
-# bsp
-# exec_always --no-startup-id i3-autolayout autolayout
-
-# alt tab functionality
-# exec_always --no-startup-id alttab
-
-# keyboard layers and reconfigurations
-exec_always --no-startup-id kmonad ~/.config/kmonad/kmonad.kbd
-
-# bluelight filter
-# exec_always --no-startup-id gammastep -O 4500
-
-# wallpaper
-# exec_always --no-startup-id ~/tools/scripts/rotating_wallpaper.sh
-
-#
-# Variables
-#
-
-# modifier keys
-set $mod Mod4 # logo key
-set $alt Mod1
-
-# terminal
-set $term alacritty
-
-# editor
-set $editor emacsclient -c -n -a '' -e '(select-frame-set-input-focus (selected-frame))'
-
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-set $menu wofi --show run | xargs swaymsg exec --
-
-#
-# Idle configuration
-#
+## Idle configuration
 
 exec swayidle -w \
           timeout 300 'swaylock -f -c 000000' \
@@ -49,26 +13,62 @@ exec swayidle -w \
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
-#
-# Input configuration
-#
-input "2:14:SynPS/2_Synaptics_TouchPad" {
-    dwt enabled
-    tap enabled
+## Input configuration
+
+# Trackpad
+input "1452:641:Apple_Internal_Keyboard_/_Trackpad" {
+    dwt enabled                 # Disable while typing
+    tap enabled                 # Tap registers as a click
+    accel_profile adaptive      # adaptive/flat cursor acceleration
+    pointer_accel 0             # From -1 to 1: Speed of cursor
     natural_scroll enabled
-    middle_emulation enabled
+    scroll_factor 0.4
+    scroll_method two_finger
+    tap_button_map lmr
 }
 
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
+# Keyboard
+input "1452:641:Apple_Internal_Keyboard_/_Trackpad" {
+    repeat_rate 10
+    repeat_delay 300
+    xkb_layout us,se
+    # switch layout with left shift
+    xkb_options grp:rshift_toggle
+}
+
+## Background processes
+
+# Network manager
+exec_always nm-applet --indicator
+
+# Binary space partitioning
+exec_always autotiling
+
+# Rotating wallpaper
+exec_always ~/tools/scripts/rotating_wallpaper.sh ~/resources/wallpapers 86400
 
 #
-# Defaults
+# Variables
 #
 
-font pango:JetBrains Mono 13
+# Modifier keys
+set $mod Mod1
+set $cmd Mod4
 
-# workspace names
+# Terminal
+set $term alacritty
+
+# Editor
+set $editor emacsclient -c -n -a '' -e '(select-frame-set-input-focus (selected-frame))'
+
+# Browser
+set $browser qutebrowser
+
+# Application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened on the original workspace that the command was run on.
+set $menu wofi --show run | xargs swaymsg exec --
+
+# Workspace names
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -80,6 +80,12 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+#
+# Defaults
+#
+
+font pango:JetBrains Mono 13
+
 focus_follows_mouse no
 
 gaps inner 5px
@@ -88,48 +94,67 @@ gaps outer 5px
 default_border pixel 4
 default_floating_border pixel 4
 
+# GTK
+set $gnome-schema org.gnome.desktop.interface
+set $system_theme 'Arc-Dark'
+set $system_icons 'Numix-Square'
+set $system_dpi_scaling_factor 1.0
+set $cursor_size 25
+set $cursor_theme Adwaita
+
+exec_always {
+  gsettings set $gnome-schema gtk-theme $system_theme
+  gsettings set $gnome-schema icon-theme $system_icons
+  gsettings set $gnome-schema text-scaling-factor $system_dpi_scaling_factor
+  gsettings set $gnome-schema cursor-theme $cursor_theme
+  gsettings set $gnome-schema cursor-size $cursor_size
+}
+
+# Mouse
+seat seat0 xcursor_theme $cursor_theme $cursor_size
+
 #
 # Keybindings
 #
 
-# start a terminal
+# Start a terminal
 bindsym $mod+Return exec $term
 
-# start editor
+# Start editor
 bindsym Control+Return exec $editor
 
-# start browser
+# Start browser
 bindsym Control+Shift+Return exec $browser
 
-# start dmenu
-bindsym $alt+space exec $menu
+# Start application launcher
+bindsym $cmd+space exec $menu
 
-# kill focused window
-bindsym $mod+w kill
+# Kill focused window
+bindsym $cmd+w kill
 
-# change focus
+# Change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# move focused window
+# Move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# enter fullscreen mode for the focused container
+# Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout
+# Change container layout
 bindsym $mod+Control+s layout stacking
 bindsym $mod+Control+a layout toggle split
 
-# toggle tiling / floating
+# Toggle tiling / floating
 bindsym $mod+t floating toggle
 
-# switch to workspace
+# Switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
@@ -141,7 +166,7 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
-# move focused container to workspace
+# Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
@@ -152,30 +177,35 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 
-# reload the configuration file
-bindsym $mod+Control+Shift+r reload
-
-# restart i3
-bindsym $mod+Control+Shift+e restart
-
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-
-# lock screen
-# bindsym ctrl+$mod+q exec i3lock --ignore-empty-password --tiling 2>/dev/null
-
-# resize windows
+# Resize windows
 bindsym $mod+Shift+a resize shrink width 5 px or 5 ppt
 bindsym $mod+Shift+d resize grow width 5 px or 5 ppt
 bindsym $mod+Shift+s resize shrink height 5 px or 5 ppt
 bindsym $mod+Shift+w resize grow height 5 px or 5 ppt
-bindsym $mod+Shift+0 exec i3_balance_workspace
+bindsym $mod+Shift+0 exec sway-balance-workspace
 
+# Reload the configuration file
+bindsym $mod+Control+Shift+r reload
+
+# Restart sway
+bindsym $mod+Control+Shift+e restart
+
+# Exit sway
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+# Lock screen
+bindsym ctrl+$mod+q exec swaylock -f -c 000000
+
+# Volume
 # bindsym XF86AudioRaiseVolume exec ~/tools/scripts/volume_brightness.sh volume_up
 # bindsym XF86AudioLowerVolume exec ~/tools/scripts/volume_brightness.sh volume_down
+
+# Brightness
 # bindsym XF86AudioMute exec  ~/tools/scripts/volume_brightness.sh volume_mute
 # bindsym XF86MonBrightnessUp exec ~/tools/scripts/volume_brightness.sh brightness_up
 # bindsym XF86MonBrightnessDown exec ~/tools/scripts/volume_brightness.sh brightness_down
 
-# bar {
-# }
+# Status bar
+bar {
+    swaybar_command waybar
+}
