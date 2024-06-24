@@ -56,7 +56,7 @@
         {:des "open applications"
          :rules [
                  ;; open terminal
-                 [:!Oreturn_or_enter "open /Applications/WezTerm.app"]
+                 [:!Oreturn_or_enter "open /Applications/Alacritty.app"]
 
                  ;; open browser
                  [:!TSreturn_or_enter "open /Applications/qutebrowser.app"]
