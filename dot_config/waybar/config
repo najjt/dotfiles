@@ -1,9 +1,9 @@
 // -*- mode: jsonc -*-
 {
-    "layer": "top", // Waybar at top layer
-    "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 25, // Waybar height (to be removed for auto height)
-    "spacing": 5, // Gaps between modules (4px)
+    "layer": "top",
+    "position": "bottom",
+    "height": 25,
+    "spacing": 5,
 
     // Choose the order of the modules
     "modules-left": [
@@ -25,37 +25,36 @@
     ],
 
     "tray": {
-        // "icon-size": 21,
         "spacing": 10
     },
 
     "clock": {
-        "format": "| {:%H:%M %a %d %b}"
+        "format": "{:%H:%M %a %d %b}"
     },
 
     "cpu": {
-        "format": "| CPU: {usage}% ",
+        "format": "<span foreground=\"grey\">CPU:</span> {usage}% ",
         "tooltip": false
     },
 
     "memory": {
-        "format": "| MEM: {}%"
+        "format": "<span foreground=\"grey\">MEM:</span> {}%"
     },
 
     "temperature": {
-        "format": "| TEMP: {temperatureC}°C",
+        "format": "<span foreground=\"grey\">TEMP:</span> {temperatureC}°C",
     },
 
     "battery": {
-        "format": "| BAT: {capacity}% {time}",
-        "format-charging": "| BAT: {capacity}% (charging)",
+        "format": "<span foreground=\"grey\">BAT:</span> {capacity}% <span foreground=\"grey\">{time}</span>",
+        "format-charging": "<span foreground=\"grey\">BAT:</span> {capacity}% <span foreground=\"grey\">(charging)</span>",
     },
 
     "network": {
-        "format-wifi": "| {essid} ({signalStrength}%)",
-        "format-ethernet": "| {ipaddr}/{cidr}",
-        "tooltip-format": "| {ifname} via {gwaddr}",
-        "format-linked": "| {ifname} (No IP)",
-        "format-disconnected": "| Disconnected",
+        "format-wifi": "{essid} <span foreground=\"grey\">({signalStrength}%)</span>",
+        "format-ethernet": "{ipaddr}/{cidr}",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "Disconnected",
     },
 }

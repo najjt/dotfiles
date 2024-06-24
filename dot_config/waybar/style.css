@@ -1,5 +1,5 @@
 * {
-    font-family: "JetBrains Mono";
+    font-family: "Terminus (TTF)";
     font-size: 12px;
 }
 
@@ -14,15 +14,14 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 0px 4px 0px 4px;
+    padding: 0px 3px 0px 3px;
     border-radius: 0;
     min-width: 1px;
     color: #888888;
 }
 
 #workspaces button.focused {
-    padding: 0px 4px 0px 4px;
-    background-color: #285577;
-    border-bottom: 2px solid;
+    padding: 0px 3px 0px 3px;
+    background-color: #000000;
     color: #ffffff;
 }
