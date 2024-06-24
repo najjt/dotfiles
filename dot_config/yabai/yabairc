@@ -62,7 +62,6 @@ yabai -m rule --add label="Alfred" app="^Alfred Preferences$" manage=off
 yabai -m rule --add label="Font Book" app="^Font Book$" manage=off
 yabai -m rule --add label="Karabiner" app="^Karabiner-Elements$" manage=off
 yabai -m rule --add label="Anki" app="^Anki$" title="(Add|Browse|Preview)" manage=off
-yabai -m rule --add label="AltTab" app="^AltTab$" title="(General|Controls|Appearance|Policies|Blacklists|About|Acknowledgements)" manage=off
 
 # workarounds for hiding window decorations successfully
 yabai -m rule --add app="^qutebrowser$" role="AXWindow" subrole="AXDialog" manage=on
