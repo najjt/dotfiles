@@ -644,10 +644,10 @@ I manage my dotfiles with [[https://www.chezmoi.io/][chezmoi]], and of course th
 #+begin_src emacs-lisp
 
   (when *sys/linux*
-    (add-to-list 'default-frame-alist '(font . "JetBrains Mono-8")))
+    (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-10")))
 
   (when *sys/mac*
-    (add-to-list 'default-frame-alist '(font . "JetBrains Mono-15")))
+    (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-15")))
 
 #+end_src
 
