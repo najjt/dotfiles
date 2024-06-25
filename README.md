@@ -4,6 +4,6 @@ Welcome to my dotfiles repository! I use [chezmoi](https://www.chezmoi.io/) to m
 * **Terminal**: Alacritty
 * **Editor**: Emacs, see my [literate configuration](dot_emacs.d/init.org)
 * **Browser**: qutebrowser
-* **OS**: Asahi Linux Fedora Remix/macOS
+* **OS**: Fedora Asahi Remix/macOS
 * **WM**: yabai/sway
 * **Statusbar**: Sketchybar/waybar
