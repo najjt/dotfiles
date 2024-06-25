@@ -1,9 +1,9 @@
 Welcome to my dotfiles repository! I use [chezmoi](https://www.chezmoi.io/) to manage them across macOS and Linux. It currently consists of the following components:
 
 * **Shell**: zsh
-* **Terminal**: WezTerm
+* **Terminal**: Alacritty
 * **Editor**: Emacs, see my [literate configuration](dot_emacs.d/init.org)
 * **Browser**: qutebrowser
-* **OS**: macOS/Linux Mint
-* **WM**: yabai/i3
-* **Statusbar**: Sketchybar/i3status
+* **OS**: Fedora Asahi Remix/macOS
+* **WM**: yabai/sway
+* **Statusbar**: Sketchybar/waybar
