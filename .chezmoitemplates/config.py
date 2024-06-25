@@ -575,7 +575,7 @@ c.fonts.default_size = '8pt'
 {{ if eq .chezmoi.os "darwin" }}
 c.fonts.web.size.default = 20
 {{ else if eq .chezmoi.os "linux" }}
-c.fonts.web.size.default = 10
+c.fonts.web.size.default = 12
 {{ end }}
 
 
