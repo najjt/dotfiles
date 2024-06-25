@@ -44,8 +44,11 @@ exec_always nm-applet --indicator
 # Binary space partitioning
 exec_always autotiling
 
+# Notifications
+exec_always mako
+
 # Rotating wallpaper
-exec_always ~/tools/scripts/rotating_wallpaper.sh ~/resources/wallpapers 86400
+exec_always ~/tools/scripts/rotatingwallpaper.sh ~/resources/wallpapers 86400
 
 #
 # Variables
@@ -88,18 +91,18 @@ font pango:JetBrains Mono 13
 
 focus_follows_mouse no
 
-gaps inner 5px
-gaps outer 5px
+gaps inner 2px
+gaps outer 2px
 
-default_border pixel 4
-default_floating_border pixel 4
+default_border pixel 2
+default_floating_border pixel 2
 
 # GTK
 set $gnome-schema org.gnome.desktop.interface
 set $system_theme 'Arc-Dark'
 set $system_icons 'Numix-Square'
 set $system_dpi_scaling_factor 1.0
-set $cursor_size 25
+set $cursor_size 20
 set $cursor_theme Adwaita
 
 exec_always {
