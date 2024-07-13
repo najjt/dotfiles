@@ -47,7 +47,14 @@
 
     "battery": {
         "format": "<span foreground=\"grey\">BAT:</span> {capacity}% <span foreground=\"grey\">{time}</span>",
+        "format-time": "({H}h {M}m)",
         "format-charging": "<span foreground=\"grey\">BAT:</span> {capacity}% <span foreground=\"grey\">(charging)</span>",
+        "format-warning": "<span foreground=\"grey\">BAT:</span> <span foreground=\"yellow\">{capacity}%</span> <span foreground=\"grey\">{time}</span>",
+        "format-critical": "<span foreground=\"grey\">BAT:</span> <span foreground=\"red\">{capacity}%</span> <span foreground=\"grey\">{time}</span>",
+        "states": {
+             "warning": 25,
+             "critical": 10
+         },
     },
 
     "network": {
