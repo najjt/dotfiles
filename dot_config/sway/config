@@ -18,7 +18,6 @@ exec swayidle -w \
 # Trackpad
 input "1452:641:Apple_Internal_Keyboard_/_Trackpad" {
     dwt enabled                 # Disable while typing
-    tap enabled                 # Tap registers as a click
     accel_profile adaptive      # adaptive/flat cursor acceleration
     pointer_accel 0             # From -1 to 1: Speed of cursor
     natural_scroll enabled
