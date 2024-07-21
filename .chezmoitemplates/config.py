@@ -557,7 +557,7 @@ c.colors.tabs.selected.even.bg = '#747474'
 # font setting, it's replaced with the fonts listed here. If set to an
 # empty value, a system-specific monospace default is used.
 # Type: List of Font, or Font
-c.fonts.default_family = 'JetBrains Mono'
+c.fonts.default_family = 'Terminus (TTF)'
 
 # Default font size to use. Whenever "default_size" is used in a font
 # setting, it's replaced with the size listed here. Valid values are
