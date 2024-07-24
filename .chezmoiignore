@@ -7,7 +7,7 @@ README.md
 .config/sioyek
 .qutebrowser/
 .config/borders
-{{ if ne .chezmoi.os "linux" }}
+{{ else if ne .chezmoi.os "linux" }}
 .config/qutebrowser
 .config/kmonad
 .config/sway
