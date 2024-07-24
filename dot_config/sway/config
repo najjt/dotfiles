@@ -4,21 +4,20 @@
 
 ## Idle configuration
 
+# lock screen after 300 seconds of inactivity, then turn off displays after another 60 seconds
+
 exec swayidle -w \
           timeout 300 'swaylock -f -c 000000' \
-          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          timeout 360 'swaymsg "output * dpms off"' \
+                  resume 'swaymsg "output * dpms on"' \
           before-sleep 'swaylock -f -c 000000'
 
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
 
 ## Input configuration
 
 # Trackpad
 input "1452:641:Apple_Internal_Keyboard_/_Trackpad" {
     dwt enabled                 # Disable while typing
-    tap enabled                 # Tap registers as a click
     accel_profile adaptive      # adaptive/flat cursor acceleration
     pointer_accel 0             # From -1 to 1: Speed of cursor
     natural_scroll enabled
@@ -28,12 +27,12 @@ input "1452:641:Apple_Internal_Keyboard_/_Trackpad" {
 }
 
 # Keyboard
-input "1452:641:Apple_Internal_Keyboard_/_Trackpad" {
-    repeat_rate 10
-    repeat_delay 300
+input * {
     xkb_layout us,se
-    # switch layout with left shift
+    xkb_switch_layout next
     xkb_options grp:rshift_toggle
+    repeat_rate 40
+    repeat_delay 200
 }
 
 ## Background processes
@@ -200,13 +199,18 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 bindsym ctrl+$mod+q exec swaylock -f -c 000000
 
 # Volume
-# bindsym XF86AudioRaiseVolume exec ~/tools/scripts/volume_brightness.sh volume_up
-# bindsym XF86AudioLowerVolume exec ~/tools/scripts/volume_brightness.sh volume_down
+bindsym XF86AudioRaiseVolume exec ~/tools/scripts/volume.sh up
+bindsym XF86AudioLowerVolume exec ~/tools/scripts/volume.sh down
+bindsym XF86AudioMute exec  ~/tools/scripts/volume.sh mute
+
+# Media
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl pause
 
 # Brightness
-# bindsym XF86AudioMute exec  ~/tools/scripts/volume_brightness.sh volume_mute
-# bindsym XF86MonBrightnessUp exec ~/tools/scripts/volume_brightness.sh brightness_up
-# bindsym XF86MonBrightnessDown exec ~/tools/scripts/volume_brightness.sh brightness_down
+bindsym XF86MonBrightnessUp exec ~/tools/scripts/brightness.sh up
+bindsym XF86MonBrightnessDown exec ~/tools/scripts/brightness.sh down
 
 # Status bar
 bar {

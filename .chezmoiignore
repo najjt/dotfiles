@@ -7,13 +7,11 @@ README.md
 .config/sioyek
 .qutebrowser/
 .config/borders
-{{ end }}
-{{ if ne .chezmoi.os "linux" }}
+{{ else if ne .chezmoi.os "linux" }}
 .config/qutebrowser
 .config/kmonad
-.config/sxhkd
-.config/i3*
+.config/sway
 .xinitrc
-.config/dunst
 .config/rofi
+.config/mako
 {{ end }}
