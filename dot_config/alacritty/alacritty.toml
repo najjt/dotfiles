@@ -1,6 +1,0 @@
-[window]
-  decorations = 'None'
-
-[font]
-  normal = { family = "Terminus (TTF)", style = "Regular" }
-  size = 10.0
