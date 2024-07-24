@@ -20,8 +20,11 @@ set number
 set relativenumber
 set laststatus=0
 set guicursor+=a:blinkon0
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
 
 " font
 if has("gui_running")
-  set guifont=JetBrains\ Mono:h17
+  set guifont=JetBrains\ Mono:h12
 endif
