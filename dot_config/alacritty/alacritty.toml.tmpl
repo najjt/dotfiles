@@ -1,0 +1,10 @@
+[window]
+  decorations = 'None'
+
+[font]
+  normal = { family = "Terminus (TTF)"}
+{{ if eq .chezmoi.os "linux" }}
+  size = 10.0
+{{ else if eq .chezmoi.os "darwin" }}
+   size = 15.0
+{{ end }}
