@@ -706,24 +706,23 @@ The [[https://jblevins.org/projects/markdown-mode/][Markdown Mode]] package prov
 
 To spell check files, I use =flyspell= and =hunspell= in order to spell check in both Swedish and English.
 
-*Prerequisites*:
-
-1. Install [[https://github.com/hunspell/hunspell][hunspell]].
-2. Install dictionary files.
-3. Create a personal dictionary file, e.g. =~/.hunspell_personal=.
-
 #+begin_src emacs-lisp
 
   (use-package jinx
     :hook
     (((markdown-mode org-mode text-mode) . jinx-mode)
-     (prog-mode . jinx-mode))
+     (prog-mode . jinx-mode)
+     (emacs-startup . my-run-shell-command))
     :custom
     (jinx-camel-modes '(prog-mode))
     :bind (("C-;" . jinx-correct)
            ("C-M-;" . jinx-languages))
     :config
     (setq jinx-languages "en_US"))
+
+  ;; add personal dictionaries to chezmoi (hooked to emacs-startup)
+  (defun my-run-shell-command ()
+    (shell-command "chezmoi add ~/.config/enchant/{en_US.dic,sv.dic}"))
 
 #+end_src
 
