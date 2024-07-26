@@ -714,40 +714,6 @@ To spell check files, I use =flyspell= and =hunspell= in order to spell check in
 
 #+begin_src emacs-lisp
 
-  ;; (use-package flyspell
-  ;;   :diminish flyspell-mode
-  ;;   :hook
-  ;;   ((markdown-mode org-mode text-mode) . flyspell-mode)
-  ;;   (prog-mode . flyspell-prog-mode)
-  ;;   :bind
-  ;;   ("C-l" . flyspell-auto-correct-previous-word)
-  ;;   :config
-  ;;   (with-eval-after-load "ispell"
-  ;;     (setenv "LANG" "en_US.UTF-8")
-  ;;     (setenv "LC_ALL" "en_US.UTF-8")
-
-  ;;     (setq ispell-program-name "hunspell"
-  ;;           ispell-personal-dictionary "~/resources/spelling/.hunspell_personal"
-  ;;           ispell-local-dictionary "sv_SE"
-  ;;           ispell-local-dictionary-alist '(("sv_SE" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "sv_SE,en_US") nil utf-8)))
-  ;;     (when (boundp 'ispell-hunspell-dictionary-alist)
-  ;;       (setq ispell-hunspell-dictionary-alist ispell-local-dictionary-alist))))
-
-
-  ;; (defun my-run-shell-command ()
-  ;;   (shell-command "chezmoi add ~/resources/spelling/.hunspell_personal"))
-
-  ;; (defun my-flyspell-advice (orig-fun &rest args)
-  ;;   (apply orig-fun args)
-  ;;   (my-run-shell-command))
-
-  ;; ;; add personal dictionary to chezmoi when adding new word
-  ;; (advice-add 'flyspell-correct-word-before-point :around #'my-flyspell-advice)
-
-#+end_src
-
-#+begin_src emacs-lisp
-
   (use-package jinx
     :hook
     (((markdown-mode org-mode text-mode) . jinx-mode)
@@ -757,7 +723,7 @@ To spell check files, I use =flyspell= and =hunspell= in order to spell check in
     :bind (("C-;" . jinx-correct)
            ("C-M-;" . jinx-languages))
     :config
-    (setq jinx-languages "sv,en_US"))
+    (setq jinx-languages "en_US"))
 
 #+end_src
 
