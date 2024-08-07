@@ -49,7 +49,7 @@ exec_always autotiling
 exec_always mako
 
 # Rotating wallpaper
-exec_always ~/tools/scripts/rotatingwallpaper.sh
+exec_always ~/scripts/shuffle_wallpaper.sh
 
 #
 # Variables
@@ -201,9 +201,9 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 bindsym ctrl+$mod+q exec swaylock -f -c 000000
 
 # Volume
-bindsym XF86AudioRaiseVolume exec ~/tools/scripts/volume.sh up
-bindsym XF86AudioLowerVolume exec ~/tools/scripts/volume.sh down
-bindsym XF86AudioMute exec  ~/tools/scripts/volume.sh mute
+bindsym XF86AudioRaiseVolume exec ~/scripts/volume.sh +
+bindsym XF86AudioLowerVolume exec ~/scripts/volume.sh -
+bindsym XF86AudioMute exec ~/scripts/volume.sh 0
 
 # Media
 bindsym XF86AudioNext exec playerctl next
@@ -211,8 +211,8 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioPlay exec playerctl pause
 
 # Brightness
-bindsym XF86MonBrightnessUp exec ~/tools/scripts/brightness.sh up
-bindsym XF86MonBrightnessDown exec ~/tools/scripts/brightness.sh down
+bindsym XF86MonBrightnessUp exec ~/scripts/brightness.sh +
+bindsym XF86MonBrightnessDown exec ~/scripts/brightness.sh -
 
 # Status bar
 bar {
