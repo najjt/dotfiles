@@ -1201,7 +1201,7 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
            ("C-c c" . org-capture)
            ("C-c l" . org-store-link))
     :config
-    (setq org-directory "~/Documents/notes/org"
+    (setq org-directory "~/notes/org"
           org-default-notes-file (concat org-directory "/capture.org")
           org-todo-keywords '((sequence "TODO" "NEXT" "|" "DONE"))
           org-tags-column 0
@@ -1262,7 +1262,7 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
           org-agenda-scheduled-leaders '("" "")  ; hide "Scheduled" text
           org-agenda-prefix-format "  %?-12t% s" ; hide category for agenda items
 
-          org-agenda-files '("~/Documents/notes/org")
+          org-agenda-files '("~/notes/org")
           ;; add newline above date heading
           org-agenda-format-date
           (lambda (date)
@@ -1379,7 +1379,7 @@ Contacts in Org Mode with [[https://orgmode.org/worg/org-contrib/org-contacts.ht
 
   (use-package org-contacts
     :after org
-    :custom (org-contacts-files '("~/Documents/notes/org/contacts.org")))
+    :custom (org-contacts-files '("~/notes/org/contacts.org")))
 
 #+end_src
 
