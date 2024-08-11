@@ -1,8 +1,8 @@
 window {
   font-family: "Terminus (TTF)";
   margin: 0px;
-  border: 1px solid rgba(0, 0, 0, 0.9);
-  background-color: rgba(29, 31, 33, 0.95);
+  border: 1px solid rgba(100, 100, 100, 0.9);
+  background-color: rgba(0, 0, 0, 0.95);
   border-radius: 5px;
 }
 
@@ -10,7 +10,7 @@ window {
   margin: 2px;
   border: none;
   color: #f8f8f2;
-  background-color: rgba(55, 59, 65, 0.95);
+  background-color: rgba(0, 0, 0, 0.95);
 }
 
 #inner-box {
@@ -33,7 +33,7 @@ window {
 #text {
   margin: 3px;
   border: none;
-  color: #c5c8c6;
+  color: #FFFFFF;
 }
 
 #entry {
@@ -45,7 +45,7 @@ window {
 }
 
 #entry:selected {
-  background-color: rgba(55, 59, 65, 0.95);
+  background-color: rgba(0, 0, 0, 0.95);
   border-radius: 3px;
   border: none;
 }
