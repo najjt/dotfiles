@@ -270,6 +270,7 @@ Set backup directory location.
     `((".*" ,temporary-file-directory t)))
 
 #+end_src
+
 * Package Management
 ** Package Archives & Initialize Package Manager
 
@@ -357,6 +358,10 @@ Automatically update packages every seven days with [[https://github.com/rranell
   ;; add a newline automatically at the end of the file upon save
   (setq require-final-newline t)
 
+  ;; set default browser
+  (setq browse-url-browser-function 'browse-url-generic
+        browse-url-generic-program "qutebrowser")
+
 #+end_src
 
 ** User Information
@@ -367,6 +372,7 @@ Automatically update packages every seven days with [[https://github.com/rranell
   (setq user-mail-address "mlonna@pm.me")
 
 #+end_src
+
 ** History
 
 #+begin_src emacs-lisp
@@ -438,6 +444,7 @@ I manage my dotfiles with [[https://github.com/tuh8888/chezmoi.el][chezmoi]], an
   (use-package swiper :diminish)
 
 #+end_src
+
 ** Dired
 
 #+begin_src emacs-lisp
@@ -603,6 +610,7 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
 
 
 #+end_src
+
 ** chezmoi
 
 I manage my dotfiles with [[https://www.chezmoi.io/][chezmoi]], and of course there is an Emacs package for that.
@@ -644,7 +652,7 @@ I manage my dotfiles with [[https://www.chezmoi.io/][chezmoi]], and of course th
 #+begin_src emacs-lisp
 
   (when *sys/linux*
-    (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-10")))
+    (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-11")))
 
   (when *sys/mac*
     (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-15")))
@@ -1067,6 +1075,7 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
 
   (use-package prog-mode
     :ensure nil
+    :hook (prog-mode . hs-minor-mode)
     :mode ("\\.edn\\'" "\\.lua\\'"))
 
 #+end_src
@@ -1228,12 +1237,6 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
        :keymaps 'org-mode-map
        "C-c i" 'org-metaright
        "C-c u" 'org-metaleft)))
-
-  ;; change default bullets
-  (use-package org-bullets
-    :after org
-    :custom
-    (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
   (use-package toc-org
     :hook (org-mode . toc-org-mode))
