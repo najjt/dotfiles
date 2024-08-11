@@ -31,6 +31,7 @@ alias wt="curl wttr.in"         # weather forecast
 alias python="python3"
 alias tmc="~/tools/tmc/tmc"
 alias cm="chezmoi"
+
 {{ if eq .chezmoi.os "darwin" }}
 # restart emacs homebrew service
 alias emacsre="brew services restart emacs-plus"
@@ -44,7 +45,7 @@ source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $(brew --prefix)/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # zsh autocomplete
-source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+#source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 {{ else if eq .chezmoi.os "linux" }}
 # restart emacs service
 alias emacsre="systemctl --user restart emacs"
@@ -54,13 +55,17 @@ source /usr/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # zsh syntax highlighting
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# zsh autocomplete
-source /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 {{ end }}
 # emacs vterm directory tracking shell-side config
 if [[ "$INSIDE_EMACS" = 'vterm' ]] \
     && [[ -n ${EMACS_VTERM_PATH} ]] \
     && [[ -f ${EMACS_VTERM_PATH}/etc/emacs-vterm-zsh.sh ]]; then
     source ${EMACS_VTERM_PATH}/etc/emacs-vterm-zsh.sh
+fi
+
+# open man pages with emacs
+if [[ -z ${INSIDE_EMACS+1} ]]; then
+    function man() {
+        emacsclient -a '' -cne "(let ((buf (man \"$1\"))) (delete-other-windows) (switch-to-buffer buf) (evil-local-set-key 'normal \"q\" (lambda () (interactive) (kill-current-buffer) (delete-frame))))" > /dev/null
+    }
 fi
