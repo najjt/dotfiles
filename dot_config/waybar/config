@@ -19,7 +19,7 @@
         "memory",
         "temperature",
         "battery",
-        "network",
+        //"network",
         "clock",
         "tray"
     ],
