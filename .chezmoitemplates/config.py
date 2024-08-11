@@ -1,4 +1,6 @@
 import os
+import subprocess
+from qutebrowser.api import interceptor
 
 {{ if eq .chezmoi.os "darwin" }}
 os.environ['PATH'] = '/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/TeX/texbin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/local/sbin:/opt/local/bin:/usr/local/sicstus4.8.0/bin:/Applications/WezTerm.app/Contents/MacOS:/Users/najjt/Library/Python/3.9/bin:/Users/najjt/Projects/kod/scripts'
@@ -298,6 +300,13 @@ c.hints.scatter = False
 # Type: Dict
 c.hints.selectors = {'all': ['a', 'area', 'textarea', 'select', 'input:not([type="hidden"])', 'button', 'frame', 'iframe', 'img', 'link', 'summary', '[contenteditable]:not([contenteditable="false"])', '[onclick]', '[onmousedown]', '[role="link"]', '[role="option"]', '[role="button"]', '[role="tab"]', '[role="checkbox"]', '[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]', '[role="treeitem"]', '[aria-haspopup]', '[ng-click]', '[ngClick]', '[data-ng-click]', '[x-ng-click]', '[tabindex]:not([tabindex="-1"])'], 'links': ['a[href]', 'area[href]', 'link[href]', '[role="link"][href]'], 'images': ['img'], 'media': ['audio', 'img', 'video'], 'url': ['[src]', '[href]'], 'inputs': ['input[type="text"]', 'input[type="date"]', 'input[type="datetime-local"]', 'input[type="email"]', 'input[type="month"]', 'input[type="number"]', 'input[type="password"]', 'input[type="search"]', 'input[type="tel"]', 'input[type="time"]', 'input[type="url"]', 'input[type="week"]', 'input:not([type])', '[contenteditable]:not([contenteditable="false"])', 'textarea'], 'code': [':not(pre) > code', 'pre']}
 
+# code block hints
+c.hints.selectors["code"] = [
+    # Selects all code tags whose direct parent is not a pre tag
+    ":not(pre) > code",
+    "pre"
+]
+
 # When/how to show the scrollbar.
 # Type: String
 # Valid values:
@@ -567,7 +576,7 @@ c.fonts.default_family = 'Terminus (TTF)'
 {{ if eq .chezmoi.os "darwin" }}
 c.fonts.default_size = '15pt'
 {{ else if eq .chezmoi.os "linux" }}
-c.fonts.default_size = '8pt'
+c.fonts.default_size = '11pt'
 {{ end }}
 
 # Default font size (in pixels) for regular text.
@@ -581,7 +590,7 @@ c.fonts.web.size.default = 12
 
 # Bindings for normal mode
 config.bind(',M', 'hint links spawn mpv {hint-url}')
-config.bind(',b', 'spawn --userscript bitwarden.py')
+config.bind(',b', 'spawn --userscript qute-bitwarden')
 config.bind(',c', 'hint code userscript code_select.py')
 config.bind(',j', 'set -u {domain} content.javascript.clipboard access')
 config.bind(',m', 'spawn mpv {url}')
@@ -613,3 +622,5 @@ config.bind('<Ctrl+f>', 'fake-key <Right>', mode='insert')
 config.bind('<Ctrl+h>', 'fake-key <Backspace>', mode='insert')
 config.bind('<Ctrl+w>', 'fake-key <Alt-backspace>', mode='insert')
 config.bind('<Ctrl+y>', 'insert-text {primary}', mode='insert')
+
+config.bind("v", 'hint links spawn funnel "{hint-url}"')
