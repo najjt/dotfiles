@@ -622,5 +622,3 @@ config.bind('<Ctrl+f>', 'fake-key <Right>', mode='insert')
 config.bind('<Ctrl+h>', 'fake-key <Backspace>', mode='insert')
 config.bind('<Ctrl+w>', 'fake-key <Alt-backspace>', mode='insert')
 config.bind('<Ctrl+y>', 'insert-text {primary}', mode='insert')
-
-config.bind("v", 'hint links spawn funnel "{hint-url}"')
