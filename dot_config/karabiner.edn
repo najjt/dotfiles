@@ -45,11 +45,11 @@
 
  :main [
 
-        {:des "hhkb-specific keybindings"
+        {:des "hhkb specific keybindings"
          :rules [:hhkb-classic
                  [:##left_control :left_control nil {:alone :escape}]]}
 
-        {:des "internal keyboard-specific keybindings"
+        {:des "internal keyboard specific keybindings"
          :rules [:internal-keyboard
                  [:##caps_lock :left_control nil {:alone :escape}]]}
 
