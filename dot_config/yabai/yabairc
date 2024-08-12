@@ -29,11 +29,11 @@ yabai -m config                                          \
                 split_type                  auto         \
                 auto_balance                off          \
                                                          \
-                top_padding                 10           \
-                bottom_padding              10           \
-                left_padding                10           \
-                right_padding               10           \
-                window_gap                  15           \
+                top_padding                 30           \
+                bottom_padding              30           \
+                left_padding                30           \
+                right_padding               30           \
+                window_gap                  30           \
                                                          \
                 window_placement            second_child \
                 window_shadow               off          \
