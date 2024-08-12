@@ -6,4 +6,4 @@ Welcome to my dotfiles repository! I use [chezmoi](https://www.chezmoi.io/) to m
 * **Browser**: qutebrowser
 * **OS**: Fedora Asahi Remix/macOS
 * **WM**: yabai/sway
-* **Statusbar**: Sketchybar/waybar
+* **Statusbar**: SketchyBar/waybar
