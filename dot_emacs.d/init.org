@@ -655,7 +655,7 @@ I manage my dotfiles with [[https://www.chezmoi.io/][chezmoi]], and of course th
     (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-11")))
 
   (when *sys/mac*
-    (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-15")))
+    (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-18")))
 
 #+end_src
 

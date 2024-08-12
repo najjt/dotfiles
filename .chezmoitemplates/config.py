@@ -284,7 +284,7 @@ c.completion.web_history.max_items = 100
 # `{line0}`: Same as `{line}`, but starting from index 0. * `{column0}`:
 # Same as `{column}`, but starting from index 0.
 # Type: ShellCommand
-c.editor.command = ['gvim', '-g', '-f', '{file}', '-c', 'normal {line}G{column0}l']
+c.editor.command = ['emacsclient', '+{line}:{column}', '{file}']
 
 # Scatter hint key chains (like Vimium) or not (like dwb). Ignored for
 # number hints.
@@ -461,7 +461,11 @@ c.url.start_pages = 'about:blank'
 # Hide the window decoration.  This setting requires a restart on
 # Wayland.
 # Type: Bool
+{{ if eq .chezmoi.os "darwin" }}
+c.window.hide_decoration = False
+{{ else if eq .chezmoi.os "linux" }}
 c.window.hide_decoration = True
+{{ end }}
 
 # Format to use for the window title. The same placeholders like for
 # `tabs.title.format` are defined.
@@ -570,7 +574,7 @@ c.fonts.default_family = 'Terminus (TTF)'
 # "px" suffix.
 # Type: String
 {{ if eq .chezmoi.os "darwin" }}
-c.fonts.default_size = '15pt'
+c.fonts.default_size = '18pt'
 {{ else if eq .chezmoi.os "linux" }}
 c.fonts.default_size = '11pt'
 {{ end }}

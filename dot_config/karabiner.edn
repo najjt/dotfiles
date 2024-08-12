@@ -105,7 +105,10 @@
                  ;; --- resizing ---
 
                  ;; toggle window native fullscreen
-                 [:!Of "/opt/homebrew/bin/yabai -m window --toggle zoom-fullscreen"]
+                 [:!Of "/opt/homebrew/bin/yabai -m window --toggle native-fullscreen"]
+
+                 ;; toggle window zoom fullscreen
+                 [:!SOf "/opt/homebrew/bin/yabai -m window --toggle zoom-fullscreen"]
 
                  ;; toggle float and move to center of screen
                  [:!Ot "/opt/homebrew/bin/yabai -m window --toggle float --grid 4:4:1:1:2:2"]
