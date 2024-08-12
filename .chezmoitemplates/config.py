@@ -465,7 +465,11 @@ c.url.start_pages = 'about:blank'
 # Hide the window decoration.  This setting requires a restart on
 # Wayland.
 # Type: Bool
+{{ if eq .chezmoi.os "darwin" }}
+c.window.hide_decoration = False
+{{ else if eq .chezmoi.os "linux" }}
 c.window.hide_decoration = True
+{{ end }}
 
 # Format to use for the window title. The same placeholders like for
 # `tabs.title.format` are defined.
@@ -574,7 +578,7 @@ c.fonts.default_family = 'Terminus (TTF)'
 # "px" suffix.
 # Type: String
 {{ if eq .chezmoi.os "darwin" }}
-c.fonts.default_size = '15pt'
+c.fonts.default_size = '18pt'
 {{ else if eq .chezmoi.os "linux" }}
 c.fonts.default_size = '11pt'
 {{ end }}
