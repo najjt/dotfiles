@@ -94,8 +94,8 @@ font pango:JetBrains Mono 13
 
 focus_follows_mouse no
 
-gaps inner 8px
-gaps outer 8px
+gaps inner 18px
+gaps outer 12px
 
 set $opacity 0.9
 for_window [class=".*"] opacity $opacity
