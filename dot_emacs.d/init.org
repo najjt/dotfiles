@@ -717,6 +717,7 @@ To spell check files, I use =flyspell= and =hunspell= in order to spell check in
 #+begin_src emacs-lisp
 
   (use-package jinx
+    :diminish
     :hook
     (((markdown-mode org-mode text-mode) . jinx-mode)
      (prog-mode . jinx-mode)
