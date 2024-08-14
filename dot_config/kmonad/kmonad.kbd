@@ -1,5 +1,5 @@
 (defcfg
-  input  (device-file "/dev/input/event1")
+  input  (device-file "/dev/input/by-path/platform-23510c000.spi-cs-0-event-kbd")
   output (uinput-sink "KMonad kbd" "sleep 1")
   cmp-seq ralt
   fallthrough true
