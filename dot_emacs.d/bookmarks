@@ -2,28 +2,34 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("notes"
+(("home"
+ (filename . "~/")
+ (front-context-string . "/home/najjt:\n  d")
+ (rear-context-string)
+ (position . 3)
+ (last-modified 26299 17034 26752 49000))
+("chezmoi"
+ (filename . "~/.local/share/chezmoi/")
+ (front-context-string . "  /home/najjt/.l")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 26299 17015 608299 922000))
+("scripts"
+ (filename . "~/scripts/")
+ (front-context-string . "  /home/najjt/sc")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 26299 16964 297665 228000))
+("notes"
  (filename . "~/notes/")
  (front-context-string . ".\n  drwx------+ ")
  (rear-context-string . "84  4 Feb 14:11 ")
  (position . 82)
  (last-modified 26287 31908 856067 224000))
-("chezmoi"
- (filename . "~/.local/share/chezmoi/")
- (front-context-string . ".\n  drwx------@ ")
- (rear-context-string . "16  2 Mar 14:36 ")
- (position . 87)
- (last-modified 26113 33956 802810 0))
 ("init.org"
  (filename . "~/.emacs.d/init.org")
  (front-context-string . "#+TITLE: Emacs C")
  (rear-context-string)
  (position . 1)
  (last-modified 26041 3078 354930 0))
-("home"
- (filename . "~/")
- (front-context-string . ".emacs.d\n  -rw-r")
- (rear-context-string . "08 28 Jan 13:22 ")
- (position . 593)
- (last-modified 26038 18334 159280 0))
 )
