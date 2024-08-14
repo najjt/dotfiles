@@ -284,7 +284,7 @@ c.completion.web_history.max_items = 100
 # `{line0}`: Same as `{line}`, but starting from index 0. * `{column0}`:
 # Same as `{column}`, but starting from index 0.
 # Type: ShellCommand
-c.editor.command = ['emacsclient', '+{line}:{column}', '{file}']
+c.editor.command = ['alacritty', '-e', 'vim', '{file}']
 
 # Scatter hint key chains (like Vimium) or not (like dwb). Ignored for
 # number hints.
