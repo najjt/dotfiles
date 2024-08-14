@@ -2,6 +2,30 @@
 # System
 #
 
+## Background processes
+
+# Binary space partitioning
+exec_always autotiling
+
+# Keyboard modifications
+# exec_always kmonad ~/.config/kmonad/kmonad.kbd
+
+# Network manager
+exec_always nm-applet --indicator
+
+# Audio control
+exec_always pasystray
+
+# Notifications
+exec_always mako
+
+# Rotating wallpaper
+exec_always bash ~/scripts/shuffle_wallpaper.sh
+
+# Battery level notifications
+exec_always bash ~/scripts/battery_notifier.sh
+
+
 ## Idle configuration
 
 # lock screen after 300 seconds of inactivity, then turn off displays after another 30 seconds
@@ -30,26 +54,12 @@ input "1452:641:Apple_Internal_Keyboard_/_Trackpad" {
 
 # Keyboard
 input * {
-    xkb_layout us,se
+    xkb_layout se,us
     xkb_switch_layout next
     xkb_options grp:rshift_toggle
     repeat_rate 40
     repeat_delay 200
 }
-
-## Background processes
-
-# Network manager
-exec_always nm-applet --indicator
-
-# Binary space partitioning
-exec_always autotiling
-
-# Notifications
-exec_always mako
-
-# Rotating wallpaper
-exec_always ~/scripts/shuffle_wallpaper.sh
 
 #
 # Variables
