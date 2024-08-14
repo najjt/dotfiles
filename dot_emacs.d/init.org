@@ -59,6 +59,7 @@
   - [[#pdf-tools][PDF Tools]]
 - [[#diminish][Diminish]]
 - [[#tangle--reload-on-save][Tangle & Reload On Save]]
+- [[#success-notification][Success Notification]]
 
 * Preamble
 
@@ -1616,6 +1617,11 @@ These hooks will ask to tangle all code blocks and reload configuration on save.
 
 ;; Local Variables:
 ;; eval: (add-hook 'after-save-hook (lambda ()(if (y-or-n-p "Reload?")(load-file user-init-file))) nil t)
-;; eval: (add-hook 'after-save-hook (lambda ()(if (y-or-n-p "Tangle?")(org-babel-tangle))) nil t)
-;; jinx-languages: "sv en_US"
-;; End:
+;; eval: (add-hook 'after-save-hook (lambda ()(if (y-or-n-p "
+* Success Notification
+
+Send a notification on successfully loading Emacs.
+
+#+begin_src emacs-lisp
+  (shell-command "notify-send 'Emacs Loaded'")
+#+end_src
