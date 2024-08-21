@@ -80,8 +80,7 @@ set $cmd Mod4
 set $term alacritty
 
 # Editor
-set $editor emacsclient -c -n -a '' -e '(select-frame-set-input-focus (selected-frame))'
-
+set $editor emacsclient -c -n
 # Browser
 set $browser qutebrowser
 
