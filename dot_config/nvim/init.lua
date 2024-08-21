@@ -10,6 +10,9 @@ vim.g.have_nerd_font = false
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 
+-- Automatically change working directory
+vim.opt.autochdir = true
+
 -- Make relative line numbers default
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -108,6 +111,11 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- Move on visual lines unless a count is involved
+local expr = { silent = true, expr = true, remap = false }
+vim.keymap.set('', 'j', "(v:count == 0 ? 'gj' : 'j')", expr)
+vim.keymap.set('', 'k', "(v:count == 0 ? 'gk' : 'k')", expr)
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -740,32 +748,30 @@ require('lazy').setup {
         org_agenda_files = '~/notes/org/*',
         org_default_notes_file = '~/notes/org/capture.org',
       }
+    end,
+  },
+  { -- Magit-inspired git interface
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- required
+      'sindrets/diffview.nvim', -- optional - Diff integration
 
-      -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option
-      -- add ~org~ to ignore_install
-      -- require('nvim-treesitter.configs').setup({
-      --   ensure_installed = 'all',
-      --   ignore_install = { 'org' },
-      -- })
-    end,
+      -- Only one of these is needed, not both.
+      'nvim-telescope/telescope.nvim', -- optional
+    },
+    config = true,
   },
-  { -- Bookmarks
-    'yuriescl/minimal-bookmarks',
+  { -- File explorer
+    'stevearc/oil.nvim',
+    opts = {},
+    dependencies = { { 'echasnovski/mini.icons', opts = {} } },
+
     config = function()
-      vim.api.nvim_set_keymap('n', '<leader>bb', ':MinimalBookmarksToggle<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<leader>be', ':MinimalBookmarksEdit<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<leader>ba', ':MinimalBookmarksAdd<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<leader>bi', ':MinimalBookmarksInsert<CR>', { noremap = true, silent = true })
-    end,
-  },
-  {
-    'kelly-lin/ranger.nvim',
-    config = function()
-      require('ranger-nvim').setup {
-        replace_netrw = true,
-        enable_cmds = true,
+      require('oil').setup {
+        view_options = {
+          show_hidden = true,
+        },
       }
-      vim.keymap.set('n', '<leader>R', '<cmd>Ranger<CR>')
     end,
   },
 
