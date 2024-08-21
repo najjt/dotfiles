@@ -695,6 +695,7 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
 
   (use-package circadian
     :config
+    (setq circadian-verbose t)
     (setq circadian-themes '(("7:00" . standard-light)
                              ("19:30" . modus-vivendi)))
     (circadian-setup))
