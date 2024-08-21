@@ -15,6 +15,7 @@
     ],
 
     "modules-right": [
+        "sway/language",
         "cpu",
         "memory",
         "temperature",
@@ -23,6 +24,8 @@
         "clock",
         "tray"
     ],
+
+    "sway/language": {},
 
     "tray": {
         "spacing": 5,
