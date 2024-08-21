@@ -1144,6 +1144,7 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
 
 #+end_src
 *** Git Interface
+
 [[https://magit.vc/][Magit]]: a complete text-based user interface to Git.
 
 #+begin_src emacs-lisp
