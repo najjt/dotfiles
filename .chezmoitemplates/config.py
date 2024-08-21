@@ -275,7 +275,7 @@ config.set('content.register_protocol_handler', True, 'https://mail.proton.me#ma
 # Number of URLs to show in the web history. 0: no history / -1:
 # unlimited
 # Type: Int
-c.completion.web_history.max_items = 100
+c.completion.web_history.max_items = -1
 
 # Editor (and arguments) to use for the `edit-*` commands. The following
 # placeholders are defined:  * `{file}`: Filename of the file to be
@@ -284,7 +284,8 @@ c.completion.web_history.max_items = 100
 # `{line0}`: Same as `{line}`, but starting from index 0. * `{column0}`:
 # Same as `{column}`, but starting from index 0.
 # Type: ShellCommand
-c.editor.command = ['alacritty', '-e', 'vim', '{file}']
+# c.editor.command = ['emacsclient', '-c', '+{line}:{column}', '{file}']
+c.editor.command = ["emacsclient", "-c", "{file}"]
 
 # Scatter hint key chains (like Vimium) or not (like dwb). Ignored for
 # number hints.
@@ -588,8 +589,7 @@ c.fonts.web.size.default = 12
 {{ end }}
 
 
-# Bindings for normal mode
-config.bind(';', 'cmd-set-text :')
+# Keybindings for normal mode
 config.bind(',M', 'hint links spawn mpv {hint-url}')
 config.bind(',b', 'spawn --userscript qute-bitwarden')
 config.bind(',c', 'hint code userscript code_select.py')
@@ -613,7 +613,7 @@ config.bind('k', 'scroll-px 0 -200')
 config.bind('yo', 'yank inline [[{url}][{title}]]')
 config.bind('ed', 'download-open')
 
-# Bindings for insert mode
+# Keybindings for insert mode
 config.bind('<Ctrl+a>', 'fake-key <Home>', mode='insert')
 config.bind('<Ctrl+d>', 'fake-key <Delete>', mode='insert')
 config.bind('<Ctrl+e>', 'fake-key <End>', mode='insert')
