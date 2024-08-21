@@ -29,7 +29,6 @@
   - [[#workspaces][Workspaces]]
   - [[#popup-buffers][Popup Buffers]]
   - [[#dashboard][Dashboard]]
-  - [[#chezmoi][chezmoi]]
 - [[#appearance][Appearance]]
   - [[#general-appearance-settings][General Appearance Settings]]
   - [[#font--icons][Font & Icons]]
@@ -618,16 +617,6 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
 
 #+end_src
 
-** chezmoi
-
-I manage my dotfiles with [[https://www.chezmoi.io/][chezmoi]], and of course there is an Emacs package for that.
-
-#+begin_src emacs-lisp
-
-  (use-package chezmoi)
-
-#+end_src
-
 * Appearance
 ** General Appearance Settings
 
@@ -681,6 +670,8 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
   (use-package standard-themes)
 
   (use-package modus-themes)
+
+  (use-package solarized-theme)
 
   ;; disable border around modelines
   (custom-set-faces
