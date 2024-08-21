@@ -4,14 +4,11 @@ README.md
 .config/yabai
 .config/sketchybar
 .config/karabiner*
-.config/sioyek
 .qutebrowser/
-.config/borders
 {{ else if ne .chezmoi.os "linux" }}
 .config/qutebrowser
 .config/kmonad
 .config/sway
-.xinitrc
 .config/rofi
 .config/mako
 {{ end }}
