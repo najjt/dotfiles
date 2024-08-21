@@ -589,6 +589,7 @@ c.fonts.web.size.default = 12
 
 
 # Bindings for normal mode
+config.bind(';', 'cmd-set-text :')
 config.bind(',M', 'hint links spawn mpv {hint-url}')
 config.bind(',b', 'spawn --userscript qute-bitwarden')
 config.bind(',c', 'hint code userscript code_select.py')
@@ -605,9 +606,7 @@ config.unbind('<Alt+8>')
 config.unbind('<Alt+9>')
 config.bind('<Ctrl+h>', 'cmd-set-text -s :help')
 config.bind('<Ctrl+p>', 'open -p')
-config.bind('<Ctrl+s>', 'cmd-set-text /')
 config.unbind('<Ctrl+w>')
-config.bind('<Meta+x>', 'cmd-set-text :')
 config.bind('eu', 'edit-url')
 config.bind('j', 'scroll-px 0 200')
 config.bind('k', 'scroll-px 0 -200')
