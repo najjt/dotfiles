@@ -120,8 +120,8 @@ Run Emacs as a [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Emacs
 
 #+begin_src emacs-lisp :tangle ./early-init.el
 
-  (require 'server)
-  (if (not (server-running-p)) (server-start))
+  ;; (require 'server)
+  ;; (if (not (server-running-p)) (server-start))
 
 #+end_src
 
@@ -427,7 +427,9 @@ Get environment variables from your shell with [[https://github.com/purcell/exec
     ;; which environment variables to import
     (dolist (var '("LANG" "LC_ALL"))
       (add-to-list 'exec-path-from-shell-variables var))
-    (exec-path-from-shell-initialize))
+    ;; initialize when Emacs is launched as a daemon
+    (when (daemonp)
+      (exec-path-from-shell-initialize)))
 
 #+end_src
 
