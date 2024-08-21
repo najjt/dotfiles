@@ -30,7 +30,8 @@
     },
 
     "clock": {
-        "format": "{:%H:%M %a %d %b}"
+        "format": "{:%H:%M %a %d %b}",
+        "tooltip": false
     },
 
     "cpu": {
@@ -44,6 +45,7 @@
 
     "temperature": {
         "format": "<span foreground=\"grey\">TEMP:</span> {temperatureC}°C",
+        "tooltip": false
     },
 
     "battery": {
@@ -56,6 +58,7 @@
              "warning": 25,
              "critical": 10
          },
+        "tooltip": false
     },
 
     "network": {
