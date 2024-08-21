@@ -1214,7 +1214,7 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
            ("C-c l" . org-store-link))
     :config
     (setq org-directory "~/notes/org"
-          org-default-notes-file (concat org-directory "/capture.org")
+          org-default-notes-file (concat org-directory "/refile.org")
           org-todo-keywords '((sequence "TODO" "NEXT" "|" "DONE"))
           org-tags-column 0
           org-startup-folded t
