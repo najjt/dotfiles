@@ -58,8 +58,8 @@
   - [[#plantuml--graphviz][PlantUML & Graphviz]]
   - [[#pdf-tools][PDF Tools]]
 - [[#diminish][Diminish]]
-- [[#tangle--reload-on-save][Tangle & Reload On Save]]
 - [[#success-notification][Success Notification]]
+- [[#tangle--reload-on-save][Tangle & Reload On Save]]
 
 * Preamble
 
@@ -134,6 +134,12 @@ The =*Warnings*= buffer sometimes pops up unnecessarily and intrusively, so I lo
 
   (setq warning-minimum-level :error)
 
+#+end_src
+*** Set window dimensions
+
+#+begin_src emacs-lisp
+  (add-to-list 'default-frame-alist '(height . 25)) ;; Vertical frame size
+  (add-to-list 'default-frame-alist '(width . 52)) ;; Horizontal frame size
 #+end_src
 
 ** Garbage Collection
@@ -653,10 +659,10 @@ I manage my dotfiles with [[https://www.chezmoi.io/][chezmoi]], and of course th
 #+begin_src emacs-lisp
 
   (when *sys/linux*
-    (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-11")))
+    (add-to-list 'default-frame-alist '(font . "Terminess Nerd Font-11")))
 
   (when *sys/mac*
-    (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-18")))
+    (add-to-list 'default-frame-alist '(font . "Terminess Nerd Font-18")))
 
 #+end_src
 
@@ -680,6 +686,20 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
   (custom-set-faces
    '(mode-line ((t (:box nil))))
    '(mode-line-inactive ((t (:box nil)))))
+
+#+end_src
+
+*** Switch theme at sunset/sunrise
+
+#+begin_src emacs-lisp
+
+  (use-package circadian
+    :config
+    ;; (setq calendar-latitude 59.329323)
+    ;; (setq calendar-longitude 18.068581)
+    (setq circadian-themes '(("7:00" . standard-light)
+                             ("19:30" . modus-vivendi)))
+    (circadian-setup))
 
 #+end_src
 
@@ -1081,13 +1101,6 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
 
 #+end_src
 
-*** DAP Mode
-
-#+begin_src emacs-lisp
-
-
-#+end_src
-
 *** Comments
 
 Nice commenting functionality with [[https://github.com/redguardtoo/evil-nerd-commenter][evil-nerd-commenter]].
@@ -1131,8 +1144,8 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
       :config (counsel-projectile-mode 1)))
 
 #+end_src
-
-*** Git Interface
+*** Git
+**** Git Interface
 
 [[https://magit.vc/][Magit]]: a complete text-based user interface to Git.
 
@@ -1146,7 +1159,28 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
 
 #+end_src
 
-#+RESULTS:
+**** Diff highlight
+
+Highlight uncommitted changes in the fringe.
+
+#+begin_src emacs-lisp
+
+  (use-package git-gutter
+    :diminish
+    :hook (prog-mode . git-gutter-mode)
+    :config
+    (setq git-gutter:update-interval 0.02))
+
+  (use-package git-gutter-fringe
+    :diminish
+    :config
+    (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
+    (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
+    (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
+
+
+#+end_src
+
 *** Treemacs
 
 Treemacs is used by LSP Mode, and here are some settings for it.
@@ -1611,17 +1645,19 @@ Calendar framework with [[https://github.com/kiwanami/emacs-calfw][calfw]].
 
 #+end_src
 
+* Success Notification
+
+Send a notification on successfully loading Emacs.
+
+#+begin_src emacs-lisp
+  (shell-command "notify-send 'Emacs Successfully Loaded'")
+#+end_src
+
 * Tangle & Reload On Save
 
 These hooks will ask to tangle all code blocks and reload configuration on save.
 
 ;; Local Variables:
 ;; eval: (add-hook 'after-save-hook (lambda ()(if (y-or-n-p "Reload?")(load-file user-init-file))) nil t)
-;; eval: (add-hook 'after-save-hook (lambda ()(if (y-or-n-p "
-* Success Notification
-
-Send a notification on successfully loading Emacs.
-
-#+begin_src emacs-lisp
-  (shell-command "notify-send 'Emacs Loaded'")
-#+end_src
+;; eval: (add-hook 'after-save-hook (lambda ()(if (y-or-n-p "Tangle?")(org-babel-tangle))) nil t)
+;; End:
