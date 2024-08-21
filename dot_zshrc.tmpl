@@ -19,7 +19,7 @@ alias sz="source $HOME/.zshrc && source $HOME/.zshenv"
 
 # open files/dirs
 alias home="cd ~"
-alias ec="emacsclient -c -n -a ''"
+alias ec="emacsclient -c"
 alias nv="nvim"
 
 # other
@@ -66,3 +66,9 @@ eval "$(starship init zsh)"
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 {{ end }}
+# open man pages with emacs
+if [[ -z ${INSIDE_EMACS+1} ]]; then
+    function man() {
+        emacsclient -a '' -cne "(let ((buf (man \"$1\"))) (delete-other-windows) (switch-to-buffer buf) (evil-local-set-key 'normal \"q\" (lambda () (interactive) (kill-current-buffer) (delete-frame))))" > /dev/null
+    }
+fi
