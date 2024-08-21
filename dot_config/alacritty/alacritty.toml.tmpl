@@ -2,9 +2,13 @@
   decorations = 'None'
 
 [font]
-  normal = { family = "Terminus (TTF)"}
+  normal = { family = "Terminess Nerd Font Mono"}
 {{ if eq .chezmoi.os "linux" }}
-  size = 11.0
+  size = 12.0
 {{ else if eq .chezmoi.os "darwin" }}
    size = 20.0
 {{ end }}
+
+[colors.primary]
+
+background = "#000000"
