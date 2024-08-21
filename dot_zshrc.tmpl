@@ -32,7 +32,6 @@ alias wt="curl wttr.in"         # weather forecast
 alias python="python3"
 alias tmc="~/tools/tmc/tmc"
 alias cm="chezmoi"
-
 {{ if eq .chezmoi.os "darwin" }}
 # restart emacs homebrew service
 alias emacsre="brew services restart emacs-plus"
@@ -59,12 +58,14 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ghc
 [ -f "/home/najjt/.ghcup/env" ] && . "/home/najjt/.ghcup/env" # ghcup-env%
+{{ end }}
 
 # theme
 eval "$(starship init zsh)"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+<<<<<<< HEAD
 {{ end }}
 # open man pages with emacs
 if [[ -z ${INSIDE_EMACS+1} ]]; then
@@ -72,3 +73,5 @@ if [[ -z ${INSIDE_EMACS+1} ]]; then
         emacsclient -a '' -cne "(let ((buf (man \"$1\"))) (delete-other-windows) (switch-to-buffer buf) (evil-local-set-key 'normal \"q\" (lambda () (interactive) (kill-current-buffer) (delete-frame))))" > /dev/null
     }
 fi
+=======
+>>>>>>> origin/main
