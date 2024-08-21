@@ -671,12 +671,20 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
 
   (use-package modus-themes)
 
-  (use-package solarized-theme)
+  (use-package solarized-theme
+    :config
+    (setq solarized-distinct-fringe-background t
+          solarized-use-variable-pitch nil
+          solarized-height-minus-1 1.0
+          solarized-height-plus-1 1.0
+          solarized-height-plus-2 1.0
+          solarized-height-plus-3 1.0
+          solarized-height-plus-4 1.0))
 
-  ;; disable border around modelines
-  (custom-set-faces
-   '(mode-line ((t (:box nil))))
-   '(mode-line-inactive ((t (:box nil)))))
+    ;; disable border around modelines
+    (custom-set-faces
+     '(mode-line ((t (:box nil))))
+     '(mode-line-inactive ((t (:box nil)))))
 
 #+end_src
 
@@ -923,6 +931,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
   (defhydra hydra-theme (:timeout 4)
     "choose theme"
     ("l" (my/enable-theme 'standard-light) "standard-light")
+    ("s" (my/enable-theme 'solarized-light) "solarized-light")
     ("v" (my/enable-theme 'modus-vivendi) "modus-vivendi")
     ("f" nil "finished" :exit t))
 
