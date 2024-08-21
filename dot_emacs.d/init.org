@@ -695,8 +695,6 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
 
   (use-package circadian
     :config
-    ;; (setq calendar-latitude 59.329323)
-    ;; (setq calendar-longitude 18.068581)
     (setq circadian-themes '(("7:00" . standard-light)
                              ("19:30" . modus-vivendi)))
     (circadian-setup))
@@ -1144,9 +1142,7 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
       :config (counsel-projectile-mode 1)))
 
 #+end_src
-*** Git
-**** Git Interface
-
+*** Git Interface
 [[https://magit.vc/][Magit]]: a complete text-based user interface to Git.
 
 #+begin_src emacs-lisp
@@ -1156,28 +1152,6 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
     (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
     :bind
     ("C-x g" . magit-status))
-
-#+end_src
-
-**** Diff highlight
-
-Highlight uncommitted changes in the fringe.
-
-#+begin_src emacs-lisp
-
-  (use-package git-gutter
-    :diminish
-    :hook (prog-mode . git-gutter-mode)
-    :config
-    (setq git-gutter:update-interval 0.02))
-
-  (use-package git-gutter-fringe
-    :diminish
-    :config
-    (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
-    (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
-    (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
-
 
 #+end_src
 
