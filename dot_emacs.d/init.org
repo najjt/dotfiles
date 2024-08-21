@@ -667,24 +667,14 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
 
 #+begin_src emacs-lisp
 
-  (use-package standard-themes)
-
   (use-package modus-themes)
 
-  (use-package solarized-theme
-    :config
-    (setq solarized-distinct-fringe-background t
-          solarized-use-variable-pitch nil
-          solarized-height-minus-1 1.0
-          solarized-height-plus-1 1.0
-          solarized-height-plus-2 1.0
-          solarized-height-plus-3 1.0
-          solarized-height-plus-4 1.0))
+  (use-package ef-themes)
 
-    ;; disable border around modelines
-    (custom-set-faces
-     '(mode-line ((t (:box nil))))
-     '(mode-line-inactive ((t (:box nil)))))
+  ;; disable border around modelines
+  (custom-set-faces
+   '(mode-line ((t (:box nil))))
+   '(mode-line-inactive ((t (:box nil)))))
 
 #+end_src
 
@@ -695,7 +685,7 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
   (use-package circadian
     :config
     (setq circadian-verbose t)
-    (setq circadian-themes '(("7:00" . standard-light)
+    (setq circadian-themes '(("7:00" . ef-melissa-light)
                              ("19:30" . modus-vivendi)))
     (circadian-setup))
 
@@ -931,7 +921,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
   (defhydra hydra-theme (:timeout 4)
     "choose theme"
     ("l" (my/enable-theme 'standard-light) "standard-light")
-    ("s" (my/enable-theme 'solarized-light) "solarized-light")
+    ("e" (my/enable-theme 'ef-melissa-light) "ef-melissa-light")
     ("v" (my/enable-theme 'modus-vivendi) "modus-vivendi")
     ("f" nil "finished" :exit t))
 
