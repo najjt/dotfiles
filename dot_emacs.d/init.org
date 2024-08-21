@@ -680,19 +680,6 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
 
 #+end_src
 
-*** Switch theme at sunset/sunrise
-
-#+begin_src emacs-lisp
-
-  (use-package circadian
-    :config
-    (setq circadian-verbose t)
-    (setq circadian-themes '(("7:00" . ef-melissa-light)
-                             ("19:30" . modus-vivendi)))
-    (circadian-setup))
-
-#+end_src
-
 ** Centered Buffers
 
 [[https://github.com/mpwang/perfect-margin][perfect-margin]] makes some buffers centered (text buffers).
