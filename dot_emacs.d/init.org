@@ -702,7 +702,7 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
   (use-package perfect-margin
     :diminish
     :custom
-    (perfect-margin-visible-width 120)
+    (perfect-margin-visible-width 100)
     :config
     (perfect-margin-mode t)
     (setq perfect-margin-ignore-modes
