@@ -1275,6 +1275,8 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
                           (org-super-agenda-groups
                            '((:name "Schedule"
                                     :time-grid t)
+                             (:name "Vanor"
+                                    :habit t)
                              (:name "Overdue"
                                     :deadline past
                                     :scheduled past)
@@ -1282,8 +1284,8 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
                                     :and (:category "studier" :scheduled today)
                                     :and (:category "studier" :deadline today))
                              (:name "Privat"
-                                    :and (:category ("privat" "refile" "computer") :scheduled today)
-                                    :and (:category ("privat" "refile" "computer") :deadline today))
+                                    :and (:category ("privat" "capture" "computer") :scheduled today)
+                                    :and (:category ("privat" "capture" "computer") :deadline today))
                              (:name "Upcoming Deadlines"
                                     :deadline future)
                              (:discard (:anything t))))))
@@ -1338,11 +1340,17 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
        ("n" "Note" entry (file "")
         "* %?\n %i\n")
 
-       ("w" "Web" entry (file "")
-        "* %i\n%U\n\n")
-
        ("e" "Calendar event" entry (file "calendar.org")
         "* %?\n %^t")
+
+       ("b" "Book" entry (file+headline "backlog.org" "Books")
+        "* %?\n %i\n")
+
+       ("m" "Movie" entry (file+headline "backlog.org" "Movies")
+        "* %?\n %i\n")
+
+       ("w" "Web" entry (file+headline "backlog.org" "Web")
+        "* %i\n%U\n\n")
 
        ("c" "Contact" entry (file "")
         "* %?
