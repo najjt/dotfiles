@@ -62,7 +62,7 @@
                  [:!TSreturn_or_enter "open /Applications/qutebrowser.app"]
 
                  ;; open emacs
-                 [:!Treturn_or_enter "/opt/homebrew/bin/emacsclient -c -n -a '' -e '(select-frame-set-input-focus (selected-frame))'"]]}
+                 [:!Treturn_or_enter "/opt/homebrew/bin/emacsclient -c -n -e '(select-frame-set-input-focus (selected-frame))'"]]}
 
 
         {:des "yabai keybindings"
