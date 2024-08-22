@@ -46,7 +46,20 @@ path=(
     /home/najjt/Applications
     /home/najjt/.cargo/bin
     /home/najjt/bin
+    /usr/local/texlive/2024/bin/aarch64-linux
     $path
 )
 export PATH="$PATH"
+
+export manpath=(
+    /usr/local/texlive/2024/texmf-dist/doc/man
+    $manpath
+)
+export MANPATH="$MANPATH"
+
+export infopath=(
+    /usr/local/texlive/2024/texmf-dist/doc/info
+    $infopath
+)
+export INFOPATH="$INFOPATH"
 {{ end }}
