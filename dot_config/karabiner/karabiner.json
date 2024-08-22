@@ -94,7 +94,7 @@
             }
           },
           "to" : [ {
-            "shell_command" : "/opt/homebrew/bin/emacsclient -c -n -a '' -e '(select-frame-set-input-focus (selected-frame))'"
+            "shell_command" : "/opt/homebrew/bin/emacsclient -c -n -e '(select-frame-set-input-focus (selected-frame))'"
           } ],
           "type" : "basic"
         } ]
