@@ -54,6 +54,7 @@
   - [[#org-mode][Org Mode]]
   - [[#mail][Mail]]
   - [[#calendar][Calendar]]
+  - [[#tex][TeX]]
   - [[#plantuml--graphviz][PlantUML & Graphviz]]
   - [[#pdf-tools][PDF Tools]]
 - [[#diminish][Diminish]]
@@ -1155,37 +1156,6 @@ Treemacs is used by LSP Mode, and here are some settings for it.
 
 #+end_src
 
-*** TeX
-
-[[https://www.gnu.org/software/auctex/][AUCTeX]], an extensible package for writing and formatting TeX files. It supports many different TeX macro packages, including AMS-TEX, LaTeX, Texinfo, ConTEXt, and docTEX (dtx files).
-
-*Prerequisite*: Install [[https://www.tug.org/texlive/quickinstall.html][TeX Live]].
-
-#+begin_src emacs-lisp
-
-  (use-package tex
-    :ensure auctex
-    :defer t
-    :custom
-    (TeX-auto-save t)
-    (TeX-parse-self t)
-    (TeX-master nil)
-    ;; to use pdfview with auctex
-    (TeX-view-program-selection '((output-pdf "pdf-tools"))
-                               TeX-source-correlate-start-server t)
-    (TeX-view-program-list '(("pdf-tools" "TeX-pdf-tools-sync-view")))
-    (TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
-    :hook
-    (LaTeX-mode . (lambda ()
-                    (turn-on-reftex)
-                    (reftex-isearch-minor-mode)
-                    (setq reftex-plug-into-AUCTeX t
-                          TeX-PDF-mode t
-                          TeX-source-correlate-method 'synctex
-                          TeX-source-correlate-start-server t))))
-
-#+end_src
-
 * Productivity
 ** Org Mode
 
@@ -1550,6 +1520,28 @@ Calendar framework with [[https://github.com/kiwanami/emacs-calfw][calfw]].
 
 #+end_src
 
+** TeX
+
+[[https://www.gnu.org/software/auctex/][AUCTeX]], an extensible package for writing and formatting TeX files. It supports many different TeX macro packages, including AMS-TEX, LaTeX, Texinfo, ConTEXt, and docTEX (dtx files).
+
+*Prerequisite*: Install [[https://www.tug.org/texlive/quickinstall.html][TeX Live]].
+
+#+begin_src emacs-lisp
+
+  (use-package tex
+    :ensure auctex
+    :defer t
+    :custom
+    (TeX-auto-save t)
+    (TeX-parse-self t)
+    (TeX-master nil)
+    ;; to use pdfview with auctex
+    (TeX-view-program-selection '((output-pdf "PDF Tools"))
+                                TeX-source-correlate-start-server t)
+    (TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
+
+#+end_src
+
 ** PlantUML & Graphviz
 
 [[https://github.com/skuro/plantuml-mode][PlantUML Mode]], a major mode for editing PlantUML sources.
@@ -1575,10 +1567,7 @@ Calendar framework with [[https://github.com/kiwanami/emacs-calfw][calfw]].
 #+begin_src emacs-lisp
 
   (use-package pdf-tools
-    :mode "\\.pdf\\'"
-    :custom
-    (TeX-view-program-selection '((output-pdf "pdf-tools")))
-    (TeX-view-program-list '(("pdf-tools" "TeX-pdf-tools-sync-view")))
+    :mode ("\\.pdf\\'" . pdf-view-mode)
     :config
     (pdf-tools-install))
 
