@@ -425,6 +425,8 @@ Get environment variables from your shell with [[https://github.com/purcell/exec
 
   (use-package exec-path-from-shell
     :config
+    ;; don't start an interactive shell
+    (setq exec-path-from-shell-arguments nil)
     ;; which environment variables to import
     (dolist (var '("LANG" "LC_ALL"))
       (add-to-list 'exec-path-from-shell-variables var))
