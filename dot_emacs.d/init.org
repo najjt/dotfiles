@@ -568,8 +568,7 @@ Popup buffers with [[https://github.com/karthink/popper][popper]].
         "^\\*LSP Error List*\\*$"
         "^magit:.*$"))
     :config
-    (setq popper-group-function #'popper-group-by-directory
-          popper-mode-line " POP "
+    (setq popper-mode-line " POP "
           popper-window-height 15)
     (popper-mode 1)
     (popper-echo-mode 1))
@@ -781,9 +780,13 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
       :prefix ","
       :global-prefix ",")
 
-    ;; make esc quit prompts
+    ;; make <escape> quit prompts
     (general-define-key
      "<escape>" 'keyboard-escape-quit)
+
+    ;; clear search highlights with <C-x <escape>>
+    (general-define-key
+     "C-x <escape>" 'evil-ex-nohighlight)
 
     ;; increase/decrease text size
     (general-define-key
