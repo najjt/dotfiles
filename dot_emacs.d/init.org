@@ -633,6 +633,9 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
   ;; turn off blinking cursor
   (blink-cursor-mode 0)
 
+  ;; highlight current line
+  (hl-line-mode 1)
+
   ;; show column number in status bar
   (column-number-mode)
 
