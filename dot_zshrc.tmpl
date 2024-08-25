@@ -28,6 +28,7 @@ alias ..="cd .."
 alias ls='ls -lh --color=always'
 alias pwdc="pwd | pbcopy"       # copies current working directory to system clipboard
 alias pi="ssh pi@192.168.1.48"  # ssh to raspberry pi
+alias pist="ssh -N -L 9090:127.0.0.1:8384 pi@192.168.1.48" # port forward port 9090 to be able to use syncthing admin gui on other machine
 alias wt="curl wttr.in"         # weather forecast
 alias python="python3"
 alias tmc="~/tools/tmc/tmc"
@@ -48,7 +49,7 @@ source $(brew --prefix)/opt/zsh-syntax-highlighting/share/zsh-syntax-highlightin
 #source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 {{ else if eq .chezmoi.os "linux" }}
 # restart emacs service
-alias emacsre="systemctl --user restart emacs"
+alias ecre="systemctl --user restart emacs"
 
 # zsh vi mode
 source /usr/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
