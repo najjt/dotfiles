@@ -453,7 +453,12 @@ c.url.default_page = 'about:blank'
 # the search engine name to the search term, e.g. `:open google
 # qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://www.google.com/search?q={}'}
+c.url.searchengines = {'DEFAULT': 'https://www.google.com/search?q={}',
+                       'aw':      'https://wiki.archlinux.org/?search={}',
+                       'm':       'https://die.net/search/?q={}',
+                       'w':       'https://en.wikipedia.org/?search={}',
+                       'wt':      'https://en.wiktionary.org/?search={}',
+                       'et':      'https://etymonline.com/index.php?search={}'}
 
 # Page(s) to open at the start.
 # Type: List of FuzzyUrl, or FuzzyUrl
@@ -588,13 +593,15 @@ c.fonts.web.size.default = 20
 c.fonts.web.size.default = 12
 {{ end }}
 
-
+#
 # Keybindings for normal mode
-config.bind(',M', 'hint links spawn mpv {hint-url}')
-config.bind(',b', 'spawn --userscript qute-bitwarden')
-config.bind(',c', 'hint code userscript code_select.py')
-config.bind(',j', 'set -u {domain} content.javascript.clipboard access')
-config.bind(',m', 'spawn mpv {url}')
+#
+
+# Emacs keybindings
+config.bind('<Meta+x>', 'cmd-set-text :')
+config.bind('<Ctrl+s>', 'cmd-set-text /')
+
+# Unbind keys used in my window manager
 config.unbind('<Alt+1>')
 config.unbind('<Alt+2>')
 config.unbind('<Alt+3>')
@@ -604,20 +611,40 @@ config.unbind('<Alt+6>')
 config.unbind('<Alt+7>')
 config.unbind('<Alt+8>')
 config.unbind('<Alt+9>')
-config.bind('<Ctrl+h>', 'cmd-set-text -s :help')
-config.bind('<Ctrl+p>', 'open -p')
+
+# Unbind <CTRL-w>
 config.unbind('<Ctrl+w>')
+
+# Allow clipboard access for current site
+config.bind(',j', 'set -u {domain} content.javascript.clipboard access')
+
+# Help shortcut
+config.bind('<Ctrl+h>', 'cmd-set-text -s :help')
+
+# Open new window in private browsing mode
+config.bind('<Ctrl+p>', 'open -p')
+
+# Edit url
 config.bind('eu', 'edit-url')
-config.bind('j', 'scroll-px 0 200')
-config.bind('k', 'scroll-px 0 -200')
-config.bind('yo', 'yank inline [[{url}][{title}]]')
+
+# Open download
 config.bind('ed', 'download-open')
 
-# Keybindings for insert mode
-config.bind('<Ctrl+a>', 'fake-key <Home>', mode='insert')
-config.bind('<Ctrl+d>', 'fake-key <Delete>', mode='insert')
-config.bind('<Ctrl+e>', 'fake-key <End>', mode='insert')
-config.bind('<Ctrl+f>', 'fake-key <Right>', mode='insert')
-config.bind('<Ctrl+h>', 'fake-key <Backspace>', mode='insert')
-config.bind('<Ctrl+w>', 'fake-key <Alt-backspace>', mode='insert')
-config.bind('<Ctrl+y>', 'insert-text {primary}', mode='insert')
+# Set scroll amount
+config.bind('j', 'scroll-px 0 200')
+config.bind('k', 'scroll-px 0 -200')
+
+# Yank to Org Mode link format
+config.bind('yo', 'yank inline [[{url}][{title}]]')
+
+## Userscripts
+
+# mpv
+config.bind(',M', 'hint links spawn mpv {hint-url}')
+config.bind(',m', 'spawn mpv {url}')
+
+# Bitwarden
+config.bind(',b', 'spawn --userscript qute-bitwarden')
+
+# Code select
+config.bind(',c', 'hint code userscript code_select.py')
