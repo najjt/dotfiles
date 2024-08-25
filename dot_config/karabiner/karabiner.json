@@ -357,7 +357,7 @@
           "from" : {
             "key_code" : "f",
             "modifiers" : {
-              "mandatory" : [ "left_option" ]
+              "mandatory" : [ "left_option", "left_shift" ]
             }
           },
           "to" : [ {
@@ -368,7 +368,7 @@
           "from" : {
             "key_code" : "f",
             "modifiers" : {
-              "mandatory" : [ "left_option", "left_shift" ]
+              "mandatory" : [ "left_option" ]
             }
           },
           "to" : [ {
