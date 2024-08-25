@@ -548,27 +548,15 @@ Dired, Emacs' built-in file explorer, with vim-style navigation and nerd icons.
       (setq insert-directory-program "gls"))
 
     ;; Group dotfiles and directories
-    (setq dired-listing-switches "-lAX --group-directories-first")
+    (setq dired-listing-switches "-la --group-directories-first")
 
     ;; No infinite dired buffers!
     (setq dired-kill-when-opening-new-dired-buffer t))
-
-  ;; vim-style navigation
- ; (evil-define-key 'normal 'dired-mode-map
-  ; "h" 'dired-up-directory
-  ; "l" 'dired-find-file)
 
   ;; Use nerd icons in dired
   (use-package nerd-icons-dired
     :diminish
     :hook (dired-mode . nerd-icons-dired-mode))
-
-#+end_src
-
-#+begin_src emacs-lisp
-
-    (use-package ranger
-      :bind ("C-x r" . ranger))
 
 #+end_src
 
