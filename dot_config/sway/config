@@ -5,7 +5,10 @@
 ## Background processes
 
 # Keyboard modifications
-exec_always ~/.cabal/bin/kmonad ~/.config/kmonad/kmonad.kbd
+# exec_always ~/.cabal/bin/kmonad ~/.config/kmonad/kmonad.kbd
+
+# Rotating wallpaper
+# exec_always ~/scripts/shuffle_wallpaper.sh
 
 # Binary space partitioning
 exec_always ~/.local/bin/autotiling
@@ -22,18 +25,11 @@ exec_always blueman-applet
 # Notifications
 exec_always mako
 
-# Rotating wallpaper
-exec_always ~/scripts/shuffle_wallpaper.sh
-
-# Battery level notifications
-#exec_always ~/scripts/battery_notifier.sh
-
 
 ## Idle configuration
 
 # Lock screen after 300 seconds of inactivity, then turn off displays after another 30 seconds. Lock if laptop lid is closed.
 
-set $lock 'swaylock -f -c 000000'
 bindswitch --reload --locked lid:on exec $lock
 
 exec swayidle -w                                                                  \
@@ -91,6 +87,12 @@ set $browser qutebrowser
 # set $menu fuzzel -b 000000dd -t ffffffdd -f 'Terminus (TTF)' | xargs swaymsg exec --
 set $menu rofi -show combi -modes combi -combi-modes "window,drun,run" | xargs swaymsg exec --
 
+# Clipboard manager
+set $clip clipse
+
+# Lock command
+set $lock 'swaylock -f -c 000000'
+
 # Workspace names
 set $ws1 "1"
 set $ws2 "2"
@@ -117,7 +119,7 @@ set $opacity 0.9
 for_window [class=".*"] opacity $opacity
 for_window [app_id=".*"] opacity $opacity
 
-default_border pixel 2
+default_border pixel 3
 default_floating_border pixel 2
 
 # GTK
@@ -154,6 +156,8 @@ bindsym Control+Shift+Return exec $browser
 
 # Start application launcher
 bindsym $cmd+space exec $menu
+
+bindsym $mod+c exec $clip
 
 # Kill focused window
 bindsym $cmd+w kill
@@ -215,6 +219,16 @@ bindsym $mod+Shift+d resize grow width 5 px or 5 ppt
 bindsym $mod+Shift+s resize shrink height 5 px or 5 ppt
 bindsym $mod+Shift+w resize grow height 5 px or 5 ppt
 bindsym $mod+Shift+0 exec sway-balance-workspace
+
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+p move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+Shift+p scratchpad show
 
 # Reload the configuration file
 bindsym $mod+Control+Shift+r reload
