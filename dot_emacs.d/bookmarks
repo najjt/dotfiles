@@ -2,7 +2,13 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("scripts"
+(("computer.org"
+ (filename . "~/notes/misc/computer.org")
+ (front-context-string . "Emacs\n** TODO Im")
+ (rear-context-string . "*** cron job?\n* ")
+ (position . 351)
+ (last-modified 26315 5110 516964 793000))
+("scripts"
  (filename . "~/scripts/")
  (front-context-string . "battery_notifier")
  (rear-context-string . "29 Aug 13 13:27 ")
