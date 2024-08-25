@@ -1,14 +1,22 @@
-#+TITLE: Emacs Config
 #+AUTHOR: Martin Lönn Andersson
+#+TITLE: Emacs Config
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el
 
-* Contents :toc:
+* Contents :toc@5@gh:
 - [[#preamble][Preamble]]
 - [[#startup][Startup]]
   - [[#early-init][Early Init]]
+    - [[#defer-garbage-collection][Defer Garbage Collection]]
+    - [[#disable-package-enable-at-startup][Disable =package-enable-at-startup=]]
+    - [[#unset-file-name-handler-alist][Unset =file-name-handler-alist=]]
+    - [[#hide-ui-elements][Hide UI Elements]]
+    - [[#emacs-server][Emacs Server]]
+    - [[#suppress-warnings-buffer][Suppress Warnings Buffer]]
   - [[#garbage-collection][Garbage Collection]]
   - [[#define-constants][Define Constants]]
   - [[#os-specific-adaptions][OS-specific Adaptions]]
+    - [[#linux][Linux]]
+    - [[#mac][Mac]]
   - [[#load-path][Load Path]]
   - [[#custom-file][Custom File]]
   - [[#backup-directory][Backup Directory]]
@@ -19,8 +27,13 @@
 - [[#general-configurations][General Configurations]]
   - [[#user-information][User Information]]
   - [[#quality-of-life][Quality of Life]]
+    - [[#miscellaneous-options][Miscellaneous Options]]
+    - [[#counsel-and-ivy][Counsel and Ivy]]
+    - [[#history][History]]
+    - [[#environment-variables][Environment Variables]]
+    - [[#sudo-edit][Sudo Edit]]
   - [[#dotfiles-management][Dotfiles Management]]
-  - [[#dired][Dired]]
+  - [[#file-explorer][File Explorer]]
   - [[#terminal-emulation][Terminal Emulation]]
   - [[#workspaces][Workspaces]]
   - [[#popup-buffers][Popup Buffers]]
@@ -29,7 +42,6 @@
   - [[#general-appearance-settings][General Appearance Settings]]
   - [[#font--icons][Font & Icons]]
   - [[#themes][Themes]]
-  - [[#centered-buffers][Centered Buffers]]
 - [[#text--languages][Text & Languages]]
   - [[#markdown-mode][Markdown Mode]]
   - [[#spell-checking][Spell Checking]]
@@ -39,14 +51,32 @@
   - [[#general][General]]
   - [[#vi-emulation][Vi Emulation]]
   - [[#command-buffers][Command Buffers]]
+    - [[#basic-configuration][Basic Configuration]]
+    - [[#choose-theme][Choose Theme]]
+    - [[#resize-window][Resize Window]]
 - [[#help-functionality][Help Functionality]]
   - [[#helpful][Helpful]]
   - [[#which-key][Which Key]]
 - [[#programming][Programming]]
   - [[#general-programming-functionalities][General Programming Functionalities]]
+    - [[#prog-mode][Prog Mode]]
+    - [[#completions][Completions]]
+    - [[#comments][Comments]]
+    - [[#match-delimiters][Match Delimiters]]
+    - [[#project-management][Project Management]]
+    - [[#git-interface][Git Interface]]
+    - [[#treemacs][Treemacs]]
   - [[#programming-languages-support][Programming Languages Support]]
+    - [[#java][Java]]
 - [[#productivity][Productivity]]
   - [[#org-mode][Org Mode]]
+    - [[#basic-configuration-1][Basic Configuration]]
+    - [[#org-agenda][Org Agenda]]
+      - [[#basic-configuration-2][Basic Configuration]]
+      - [[#org-super-agenda][Org Super Agenda]]
+    - [[#org-capture][Org Capture]]
+    - [[#org-contacts][Org Contacts]]
+    - [[#org-babel][Org Babel]]
   - [[#mail][Mail]]
   - [[#calendar][Calendar]]
   - [[#tex][TeX]]
@@ -380,12 +410,20 @@ Automatically update packages every seven days with [[https://github.com/rranell
   (setopt switch-to-buffer-obey-display-actions t)
 
   ;; Smooth scrolling
-  (pixel-scroll-precision-mode)
+  (setq scroll-step 1
+        scroll-margin 1
+        scroll-conservatively 101
+        scroll-up-aggressively 0.01
+        scroll-down-aggressively 0.01
+        auto-window-vscroll nil
+        fast-but-imprecise-scrolling nil
+        mouse-wheel-scroll-amount '(1 ((shift) . 1))
+        mouse-wheel-progressive-speed nil
+        hscroll-step 1
+        hscroll-margin 1)
 
-  ;; Marginalia: annotations for minibuffer
-  (use-package marginalia
-    :config
-    (marginalia-mode))
+  ;; Don't open a new window for ediff
+  (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 #+end_src
 
@@ -395,7 +433,7 @@ Automatically update packages every seven days with [[https://github.com/rranell
 
 #+begin_src emacs-lisp
 
-  ;; helpful ui additions
+  ;; Helpful ui additions
   (use-package counsel
     :diminish
     :bind
@@ -417,10 +455,10 @@ Automatically update packages every seven days with [[https://github.com/rranell
 
     :config
     (ivy-mode 1)
-    ;; hide "^" from ivy minibuffer
+    ;; Hide "^" from ivy minibuffer
     (setq ivy-initial-inputs-alist nil))
 
-  ;; helpful information for functions in minibuffers
+  ;; Helpful information for functions in minibuffers
   (use-package ivy-rich
     :init
     (ivy-rich-mode 1))
@@ -428,7 +466,7 @@ Automatically update packages every seven days with [[https://github.com/rranell
   ;; command history for ivy
   (use-package prescient)
 
-  ;; ivy integration for prescient
+  ;; Ivy integration for prescient
   (use-package ivy-prescient
     :init
     (ivy-prescient-mode 1))
@@ -471,6 +509,17 @@ Get environment variables from your shell with [[https://github.com/purcell/exec
     (exec-path-from-shell-initialize))
 
 #+end_src
+*** Sudo Edit
+
+Edit files with sudo privileges with [[https://github.com/nflath/sudo-edit/tree/74eb1e6986461baed9a9269566ff838530b4379b][sudo-edit]].
+
+#+begin_src emacs-lisp
+
+  (use-package sudo-edit
+    :config
+    (global-set-key (kbd "C-c C-r") 'sudo-edit))
+
+#+end_src
 
 ** Dotfiles Management
 
@@ -482,7 +531,9 @@ I manage my dotfiles with [[https://github.com/tuh8888/chezmoi.el][chezmoi]], an
 
 #+end_src
 
-** Dired
+** File Explorer
+
+Dired, Emacs' built-in file explorer, with vim-style navigation and nerd icons.
 
 #+begin_src emacs-lisp
 
@@ -499,15 +550,18 @@ I manage my dotfiles with [[https://github.com/tuh8888/chezmoi.el][chezmoi]], an
     ;; Group dotfiles and directories
     (setq dired-listing-switches "-lAX --group-directories-first")
 
-    ;; vim-style navigation
-    (evil-collection-define-key 'normal 'dired-mode-map
-      "h" 'dired-up-directory
-      "l" 'dired-find-file)
+    ;; No infinite dired buffers!
+    (setq dired-kill-when-opening-new-dired-buffer t))
 
-    ;; Use nerd icons in dired
-    (use-package nerd-icons-dired
-      :diminish
-      :hook (dired-mode . nerd-icons-dired-mode)))
+  ;; vim-style navigation
+ ; (evil-collection-define-key 'normal 'dired-mode-map
+  ;  "h" 'dired-up-directory
+   ; "l" 'dired-find-file)
+
+  ;; Use nerd icons in dired
+  (use-package nerd-icons-dired
+    :diminish
+    :hook (dired-mode . nerd-icons-dired-mode))
 
 #+end_src
 
@@ -652,7 +706,8 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
   (blink-cursor-mode 0)
 
   ;; Highlight current line
-  (global-hl-line-mode 1)
+  (let ((hl-line-hooks '(text-mode-hook prog-mode-hook)))
+    (mapc (lambda (hook) (add-hook hook 'hl-line-mode)) hl-line-hooks))
 
   ;; Show column number in status bar
   (column-number-mode)
@@ -704,23 +759,6 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
 
 #+end_src
 
-** Centered Buffers
-
-[[https://github.com/mpwang/perfect-margin][perfect-margin]] makes some buffers centered (text buffers).
-
-#+begin_src emacs-lisp
-
-  (use-package perfect-margin
-    :diminish
-    :custom
-    (perfect-margin-visible-width 100)
-    :config
-    ;; (perfect-margin-mode t)
-    (setq perfect-margin-ignore-modes
-          '(dired-mode)))
-
-#+end_src
-
 * Text & Languages
 ** Markdown Mode
 
@@ -749,7 +787,7 @@ To spell check files, I use =flyspell= and =hunspell= in order to spell check in
     :bind (("C-;" . jinx-correct)
            ("C-M-;" . jinx-languages))
     :config
-    (setq jinx-languages "en_US,sv"))
+    (setq jinx-languages "sv en_US"))
 
   ;; Add personal dictionaries to chezmoi (hooked to emacs-startup)
   (defun my-run-shell-command ()
@@ -1230,18 +1268,18 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
     :pin nongnu
     :ensure org-contrib ; Needed for org-contacts
     :bind (("C-c a" . org-agenda)
-           ("C-c c" . org-capture)
-           ("C-c l" . org-store-link))
+       ("C-c c" . org-capture)
+       ("C-c l" . org-store-link))
     :config
     (setq org-directory "~/notes/org"
-          org-default-notes-file (concat org-directory "/refile.org")
-          org-todo-keywords '((sequence "TODO" "NEXT" "|" "DONE"))
-          org-tags-column 0
-          org-startup-folded t
-          org-export-backends '(md org ascii html icalendar latex odt rss)
-          org-ellipsis " ▾"
-          org-blank-before-new-entry (quote ((heading . nil)
-                                             (plain-list-item . nil))))
+      org-default-notes-file (concat org-directory "/refile.org")
+      org-todo-keywords '((sequence "TODO" "NEXT" "|" "DONE"))
+      org-tags-column 0
+      org-startup-folded t
+      org-export-backends '(md org ascii html icalendar latex odt rss)
+      org-ellipsis " ▾"
+      org-blank-before-new-entry (quote ((heading . nil)
+                                     (plain-list-item . nil))))
 
     ;; Make only first org heading be bold
     (custom-set-faces
@@ -1261,6 +1299,7 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
        "C-c i" 'org-metaright
        "C-c u" 'org-metaleft)))
 
+  ;; Generate a table of contents
   (use-package toc-org
     :hook (org-mode . toc-org-mode))
 
@@ -1269,6 +1308,8 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
 *** Org Agenda
 
 [[https://orgmode.org/manual/Agenda-Views.html][Org Agenda]] is a buffer for displaying your org todo items.
+
+**** Basic Configuration
 
 #+begin_src emacs-lisp
 
@@ -1437,6 +1478,7 @@ Active code blocks in org files with [[https://orgmode.org/worg/org-contrib/babe
           ("q" . "quote")))
 
 #+end_src
+
 ** Mail
 
 [[https://www.emacswiki.org/emacs/mu4e][mu4e]] is an email client for Emacs, based on the mu email indexer/searcher.
