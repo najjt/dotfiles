@@ -14,16 +14,12 @@
   - [[#backup-directory][Backup Directory]]
 - [[#package-management][Package Management]]
   - [[#package-archives--initialize-package-manager][Package Archives & Initialize Package Manager]]
-  - [[#use-package][Use Package]]
-  - [[#auto-package-update][Auto Package Update]]
+  - [[#use-package][use-package]]
+  - [[#automatically-update-packages][Automatically Update Packages]]
 - [[#general-configurations][General Configurations]]
-  - [[#quality-of-life][Quality of Life]]
   - [[#user-information][User Information]]
-  - [[#history][History]]
-  - [[#smooth-scrolling][Smooth Scrolling]]
-  - [[#environment-variables][Environment Variables]]
+  - [[#quality-of-life][Quality of Life]]
   - [[#dotfiles-management][Dotfiles Management]]
-  - [[#search-functionality][Search Functionality]]
   - [[#dired][Dired]]
   - [[#terminal-emulation][Terminal Emulation]]
   - [[#workspaces][Workspaces]]
@@ -44,7 +40,6 @@
   - [[#vi-emulation][Vi Emulation]]
   - [[#command-buffers][Command Buffers]]
 - [[#help-functionality][Help Functionality]]
-  - [[#counsel-and-ivy][Counsel and Ivy]]
   - [[#helpful][Helpful]]
   - [[#which-key][Which Key]]
 - [[#programming][Programming]]
@@ -63,9 +58,11 @@
 
 * Preamble
 
-Welcome to my Emacs configuration. This is a literate configuration, meaning code and prose are intertwined in order to provide clear documentation. [[https://orgmode.org/worg/org-contrib/babel/][Org Babel]] makes this possible in =org= files, like this one.
+Welcome to my Emacs configuration. This is a literate configuration, meaning code and prose are intertwined in order to provide clear documentation. [[https://orgmode.org/worg/org-contrib/babel/][Org Babel]] makes this possible in =.org= files, like this one.
 
-This setup is heavily inspired by [[https://github.com/MatthewZMD/.emacs.d][Matthew Zeng's Emacs setup]].
+Inspirations:
+- [[https://github.com/MatthewZMD/.emacs.d][Matthew Zeng's Emacs setup]]
+- [[https://codeberg.org/ashton314/emacs-bedrock][emacs-bedrock]]
 
 * Startup
 ** Early Init
@@ -121,25 +118,22 @@ Run Emacs as a [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Emacs
 
 #+begin_src emacs-lisp :tangle ./early-init.el
 
-  ;; (require 'server)
-  ;; (if (not (server-running-p)) (server-start))
+  (require 'server)
+  (if (not (server-running-p)) (server-start))
 
 #+end_src
 
 *** Suppress Warnings Buffer
 
-The =*Warnings*= buffer sometimes pops up unnecessarily and intrusively, so I lower the severity level for warnings to errors.
+The =*Warnings*= buffer sometimes pops up unnecessarily and intrusively, so I increase the severity level for warnings to errors.
 
 #+begin_src emacs-lisp
 
   (setq warning-minimum-level :error)
+  (setq byte-compile-warnings '(not obsolete))
+  (setq warning-suppress-log-types '((comp) (bytecomp)))
+  (setq native-comp-async-report-warnings-errors 'silent)
 
-#+end_src
-*** Set window dimensions
-
-#+begin_src emacs-lisp
-  (add-to-list 'default-frame-alist '(height . 25)) ;; Vertical frame size
-  (add-to-list 'default-frame-alist '(width . 52)) ;; Horizontal frame size
 #+end_src
 
 ** Garbage Collection
@@ -150,7 +144,7 @@ If you experience freezing, decrease this amount, if you experience stuttering, 
 
 #+begin_src emacs-lisp
 
-  (defvar better-gc-cons-threshold 4294967269; 512mb
+  (defvar better-gc-cons-threshold 4294967269 ; 512mb
     "The default value to use for `gc-cons-threshold'.
 
   If you experience freezing, decrease this.  If you experience stuttering, increase this.")
@@ -297,13 +291,13 @@ Set package archives and initialize the package manager.
 
 #+end_src
 
-** Use Package
+** use-package
 
 A nicer way to set up packages is with [[https://github.com/jwiegley/use-package][use-package]]. Make sure =use-package= is installed, refresh package contents, always ensure packages are installed and turn on verbose logging.
 
 #+begin_src emacs-lisp
 
-  ;; ensure use-package is installed
+  ;; Ensure use-package is installed
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
@@ -315,7 +309,7 @@ A nicer way to set up packages is with [[https://github.com/jwiegley/use-package
 
 #+end_src
 
-** Auto Package Update
+** Automatically Update Packages
 
 Automatically update packages every seven days with [[https://github.com/rranelli/auto-package-update.el][auto-package-update]].
 
@@ -324,7 +318,7 @@ Automatically update packages every seven days with [[https://github.com/rranell
   (use-package auto-package-update
     :if (not (daemonp))
     :custom
-    (auto-package-update-interval 7) ;; in days
+    (auto-package-update-interval 7) ;; In days
     (auto-package-update-prompt-before-update t)
     (auto-package-update-delete-old-versions t)
     (auto-package-update-hide-results t)
@@ -334,43 +328,6 @@ Automatically update packages every seven days with [[https://github.com/rranell
 #+end_src
 
 * General Configurations
-** Quality of Life
-
-#+begin_src emacs-lisp
-
-  ;; increase large file warning threshold
-  (setq large-file-warning-threshold 100000000)
-
-  ;; set language environment
-  (set-language-environment "UTF-8")
-
-  ;; clean up unneccesary whitespace on save
-  (add-hook 'before-save-hook 'whitespace-cleanup)
-
-  ;; map yes and no to y and n
-  (fset 'yes-or-no-p 'y-or-n-p)
-
-  ;; disable visual and audible bell
-  (setq ring-bell-function 'ignore)
-
-  ;; automatically reload files when changed
-  (global-auto-revert-mode t)
-
-  ;; suppress auto revert messages
-  (setq auto-revert-verbose nil)
-
-  ;; automatically kill all active processes when closing Emacs
-  (setq confirm-kill-processes nil)
-
-  ;; add a newline automatically at the end of the file upon save
-  (setq require-final-newline t)
-
-  ;; set default browser
-  (setq browse-url-browser-function 'browse-url-generic
-        browse-url-generic-program "qutebrowser")
-
-#+end_src
-
 ** User Information
 
 #+begin_src emacs-lisp
@@ -380,44 +337,124 @@ Automatically update packages every seven days with [[https://github.com/rranell
 
 #+end_src
 
-** History
+** Quality of Life
+*** Miscellaneous Options
 
 #+begin_src emacs-lisp
 
-  ;; save text entered in minibuffer prompts
+  ;; Increase large file warning threshold
+  (setq large-file-warning-threshold 100000000)
+
+  ;; Set language environment
+  (set-language-environment "UTF-8")
+
+  ;; Clean up unneccesary whitespace on save
+  (add-hook 'before-save-hook 'whitespace-cleanup)
+
+  ;; Map yes and no to y and n
+  (fset 'yes-or-no-p 'y-or-n-p)
+
+  ;; Disable visual and audible bell
+  (setq ring-bell-function 'ignore)
+
+  ;; Automatically reread files when changed
+  (setopt auto-revert-avoid-polling t)
+  (setopt auto-revert-interval 5)
+  (setopt auto-revert-check-vc-info t)
+  (global-auto-revert-mode t)
+
+  ;; Suppress auto revert messages
+  (setq auto-revert-verbose nil)
+
+  ;; Automatically kill all active processes when closing Emacs
+  (setq confirm-kill-processes nil)
+
+  ;; Add a newline automatically at the end of the file upon save
+  (setq require-final-newline t)
+
+  ;; Set default browser
+  (setq browse-url-browser-function 'browse-url-generic
+        browse-url-generic-program "qutebrowser")
+
+  ;; Make switching buffers more consistent
+  (setopt switch-to-buffer-obey-display-actions t)
+
+  ;; Smooth scrolling
+  (pixel-scroll-precision-mode)
+
+  ;; Marginalia: annotations for minibuffer
+  (use-package marginalia
+    :config
+    (marginalia-mode))
+
+#+end_src
+
+*** Counsel and Ivy
+
+[[https://github.com/abo-abo/swiper][Counsel and Ivy]] provide generic completion and enhanced versions of common Emacs commands.
+
+#+begin_src emacs-lisp
+
+  ;; helpful ui additions
+  (use-package counsel
+    :diminish
+    :bind
+    ("M-x" . counsel-M-x)
+    ("C-S-j" . counsel-switch-buffer)
+    ("C-x C-f" . counsel-find-file)
+
+    :config
+    (counsel-mode +1))
+
+  (use-package ivy
+    :diminish
+    :bind
+    ("C-s" . swiper)
+    (:map ivy-switch-buffer-map
+          ("C-d" . ivy-switch-buffer-kill))
+    (:map ivy-reverse-i-search-map
+          ("C-d" . ivy-reverse-i-search-kill))
+
+    :config
+    (ivy-mode 1)
+    ;; hide "^" from ivy minibuffer
+    (setq ivy-initial-inputs-alist nil))
+
+  ;; helpful information for functions in minibuffers
+  (use-package ivy-rich
+    :init
+    (ivy-rich-mode 1))
+
+  ;; command history for ivy
+  (use-package prescient)
+
+  ;; ivy integration for prescient
+  (use-package ivy-prescient
+    :init
+    (ivy-prescient-mode 1))
+
+#+end_src
+
+*** History
+
+#+begin_src emacs-lisp
+
+  ;; Save text entered in minibuffer prompts
   (setq history-length 25)
   (savehist-mode 1)
 
-  ;; save cursor position in files
+  ;; Save cursor position in files
   (save-place-mode 1)
 
-  ;; remember recently edited files
+  ;; Remember recently edited files
   (recentf-mode 1)
 
-  ;; auto reload non-file buffers
+  ;; Auto reload non-file buffers
   (setq global-auto-revert-non-file-buffers t)
 
 #+end_src
 
-** Smooth Scrolling
-
-#+begin_src emacs-lisp
-
-  (setq scroll-step 1
-        scroll-margin 1
-        scroll-conservatively 101
-        scroll-up-aggressively 0.01
-        scroll-down-aggressively 0.01
-        auto-window-vscroll nil
-        fast-but-imprecise-scrolling nil
-        mouse-wheel-scroll-amount '(1 ((shift) . 1))
-        mouse-wheel-progressive-speed nil
-        hscroll-step 1
-        hscroll-margin 1)
-
-#+end_src
-
-** Environment Variables
+*** Environment Variables
 
 Get environment variables from your shell with [[https://github.com/purcell/exec-path-from-shell][exec-path-from-shell]].
 
@@ -425,14 +462,13 @@ Get environment variables from your shell with [[https://github.com/purcell/exec
 
   (use-package exec-path-from-shell
     :config
-    ;; don't start an interactive shell
+    ;; Don't start an interactive shell
     (setq exec-path-from-shell-arguments nil)
-    ;; which environment variables to import
+    ;; Which environment variables to import
     (dolist (var '("LANG" "LC_ALL"))
       (add-to-list 'exec-path-from-shell-variables var))
-    ;; initialize when Emacs is launched as a daemon
-    (when (daemonp)
-      (exec-path-from-shell-initialize)))
+    ;; Initialize when Emacs is launched as a daemon
+    (exec-path-from-shell-initialize))
 
 #+end_src
 
@@ -446,16 +482,6 @@ I manage my dotfiles with [[https://github.com/tuh8888/chezmoi.el][chezmoi]], an
 
 #+end_src
 
-** Search Functionality
-
-[[https://github.com/abo-abo/swiper/tree/master][Swiper]] provides search functionality.
-
-#+begin_src emacs-lisp
-
-  (use-package swiper :diminish)
-
-#+end_src
-
 ** Dired
 
 #+begin_src emacs-lisp
@@ -465,12 +491,12 @@ I manage my dotfiles with [[https://github.com/tuh8888/chezmoi.el][chezmoi]], an
     :commands (dired dired-jump)
     :hook (dired-mode . (lambda () (dired-hide-details-mode)))
     :bind ("C-x C-j" . dired-jump)
-    :custom (dired-free-space nil) ; hide free space
+    :custom (dired-free-space nil) ; Hide free space
     :config
     (when *sys/mac*
       (setq insert-directory-program "gls"))
 
-    ;; group dotfiles and directories
+    ;; Group dotfiles and directories
     (setq dired-listing-switches "-lAX --group-directories-first")
 
     ;; vim-style navigation
@@ -478,7 +504,7 @@ I manage my dotfiles with [[https://github.com/tuh8888/chezmoi.el][chezmoi]], an
       "h" 'dired-up-directory
       "l" 'dired-find-file)
 
-    ;; use nerd icons in dired
+    ;; Use nerd icons in dired
     (use-package nerd-icons-dired
       :diminish
       :hook (dired-mode . nerd-icons-dired-mode)))
@@ -498,13 +524,13 @@ A better terminal emulation with [[https://github.com/akermu/emacs-libvterm][vte
     (vterm-shell "zsh")
     (vterm-max-scrollback 10000))
 
-  ;; open multiple vterm buffers
+  ;; Open multiple vterm buffers
   (use-package multi-vterm
     :bind
     ("C-x t" . multi-vterm-dedicated-toggle)
     ("C-x C-t" . multi-vterm)
     :config
-    ;; dedicated terminal height
+    ;; Dedicated terminal height
     (setq multi-vterm-dedicated-window-height-percent 30)
     (add-hook 'vterm-mode-hook
               (lambda ()
@@ -581,12 +607,6 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
 
 #+begin_src emacs-lisp
 
-  ;; open my custom super agenda
-  (defun my/custom-open-org-agenda ()
-    (interactive)
-    (org-agenda nil "s"))
-
-
   (use-package dashboard
     :demand t
     :diminish (dashboard-mode page-break-lines-mode)
@@ -612,12 +632,11 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
           dashboard-projects-backend 'projectile
           dashboard-projects-switch-function 'projectile-persp-switch-project))
 
-  ;; hook dashboard-open to creation of new frame
+  ;; Hook dashboard-open to creation of new frame
   (add-hook 'after-make-frame-functions
             (lambda (frame)
               (with-selected-frame frame
                 (dashboard-open))))
-
 
 #+end_src
 
@@ -626,22 +645,22 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
 
 #+begin_src emacs-lisp
 
-  ;; display right and left fringe
+  ;; Display right and left fringe
   (fringe-mode '(8 . 8))
 
-  ;; turn off blinking cursor
+  ;; Turn off blinking cursor
   (blink-cursor-mode 0)
 
-  ;; highlight current line
-  (hl-line-mode 1)
+  ;; Highlight current line
+  (global-hl-line-mode 1)
 
-  ;; show column number in status bar
+  ;; Show column number in status bar
   (column-number-mode)
 
-  ;; soft-wrap text
+  ;; Soft-wrap text
   (global-visual-line-mode t)
 
-  ;; display relative line numbers in the below modes
+  ;; Display relative line numbers in the below modes
   (dolist (hook '(fundamental-mode conf-mode-hook prog-mode-hook text-mode-hook markdown-mode-hook org-mode-hook))
     (add-hook hook 'display-line-numbers-mode))
 
@@ -678,7 +697,7 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
 
   (use-package ef-themes)
 
-  ;; disable border around modelines
+  ;; Disable border around modelines
   (custom-set-faces
    '(mode-line ((t (:box nil))))
    '(mode-line-inactive ((t (:box nil)))))
@@ -696,7 +715,7 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
     :custom
     (perfect-margin-visible-width 100)
     :config
-    (perfect-margin-mode t)
+    ;; (perfect-margin-mode t)
     (setq perfect-margin-ignore-modes
           '(dired-mode)))
 
@@ -730,9 +749,9 @@ To spell check files, I use =flyspell= and =hunspell= in order to spell check in
     :bind (("C-;" . jinx-correct)
            ("C-M-;" . jinx-languages))
     :config
-    (setq jinx-languages "en_US"))
+    (setq jinx-languages "en_US,sv"))
 
-  ;; add personal dictionaries to chezmoi (hooked to emacs-startup)
+  ;; Add personal dictionaries to chezmoi (hooked to emacs-startup)
   (defun my-run-shell-command ()
     (shell-command "chezmoi add ~/.config/enchant/{en_US.dic,sv.dic}"))
 
@@ -759,7 +778,7 @@ To spell check files, I use =flyspell= and =hunspell= in order to spell check in
 
 #+begin_src emacs-lisp
 
-  ;; tabs are four spaces
+  ;; Tabs are four spaces
   (setq-default tab-width 4
                 indent-tabs-mode nil)
 
@@ -774,21 +793,21 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
 
   (use-package general
     :config
-    ;; leader key for hydras
+    ;; Leader key for hydras
     (general-create-definer my/leader-keys
       :keymaps '(normal visual emacs)
       :prefix ","
       :global-prefix ",")
 
-    ;; make <escape> quit prompts
+    ;; Make <escape> quit prompts
     (general-define-key
      "<escape>" 'keyboard-escape-quit)
 
-    ;; clear search highlights with <C-x <escape>>
+    ;; Clear search highlights with <C-x <escape>>
     (general-define-key
      "C-x <escape>" 'evil-ex-nohighlight)
 
-    ;; increase/decrease text size
+    ;; Increase/decrease text size
     (general-define-key
      "C-=" #'text-scale-increase
      "C-+" #'text-scale-increase
@@ -808,7 +827,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     :bind
     ("C-z" . evil-local-mode)
 
-    ;; window navigation
+    ;; Window navigation
     (:map evil-normal-state-map
           ("C-w h" . evil-window-left)
           ("C-w j" . evil-window-down)
@@ -827,7 +846,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
           evil-search-module 'evil-search)
 
     :config
-    ;; modes to disable evil in
+    ;; Modes to disable evil in
     (defun my/evil-hook ()
       (dolist (mode '(custom-mode
                       eshell-mode
@@ -838,10 +857,10 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
                       ansi-term-mode))
         (add-to-list 'evil-emacs-state-modes mode)))
 
-    ;; turn on evil mode
+    ;; Turn on evil mode
     (evil-mode +1)
 
-    ;; move on visual lines unless a count is involved
+    ;; Move on visual lines unless a count is involved
     (with-eval-after-load 'evil
       (evil-define-motion evil-next-line (count)
         "Move the cursor COUNT screen lines down."
@@ -858,22 +877,22 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     :custom
     (evil-undo-system 'undo-tree)
 
-    ;; horizontal movement crosses lines
+    ;; Horizontal movement crosses lines
     (evil-cross-lines t))
 
-  ;; more vim keybindings (in non-file buffers)
+  ;; More vim keybindings (in non-file buffers)
   (use-package evil-collection
     :after evil
     :diminish evil-collection-unimpaired-mode
     :config
     (evil-collection-init))
 
-  ;; even more vim keybindings (adds surround functionality)
+  ;; Even more vim keybindings (adds surround functionality)
   (use-package evil-surround
     :config
     (global-evil-surround-mode +1))
 
-  ;; enable camelCase motion
+  ;; Enable camelCase motion
   (use-package evil-little-word
     :ensure nil
     :config
@@ -887,7 +906,6 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
 
   ;; vim keybindings for org mode
   (use-package evil-org
-    :ensure t
     :after org
     :hook (org-mode . (lambda () evil-org-mode))
     :config
@@ -899,6 +917,8 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
 ** Command Buffers
 
 [[https://github.com/abo-abo/hydra][Hydra]] provides temporary command buffers.
+
+*** Basic Configuration
 
 #+begin_src emacs-lisp
 
@@ -954,7 +974,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     ("l" (window-width-increase) "increase width")
     ("f" nil "finished" :exit t))
 
-  ;; resizes the window width based on the input
+  ;; Resizes the window width based on the input
   (defun resize-window-width (w)
     "Resizes the window width based on W."
     (interactive (list (if (> (count-windows) 1)
@@ -963,7 +983,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     (message "%s" w)
     (window-resize nil (- (truncate (* (/ w 10.0) (frame-width))) (window-total-width)) t)))
 
-  ;; resizes the window height based on the input
+  ;; Resizes the window height based on the input
   (defun resize-window-height (h)
     "Resizes the window height based on H."
     (interactive (list (if (> (count-windows) 1)
@@ -978,7 +998,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
         (window-resize nil delta width)
       (error "You need more than 1 window to execute this function!")))
 
-  ;; shorcuts for window resize width and height
+  ;; Shorcuts for window resize width and height
   (defun window-width-increase ()
     (interactive)
     (resize-window t 5))
@@ -998,59 +1018,13 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
 #+end_src
 
 * Help Functionality
-** Counsel and Ivy
-
-[[https://github.com/abo-abo/swiper][Counsel and Ivy]] provide generic completion and enhanced versions of common Emacs commands.
-
-#+begin_src emacs-lisp
-
-  ;; helpful ui additions
-  (use-package counsel
-    :diminish
-    :bind
-    ("M-x" . counsel-M-x)
-    ("C-S-j" . counsel-switch-buffer)
-    ("C-x C-f" . counsel-find-file)
-
-    :config
-    (counsel-mode +1))
-
-  (use-package ivy
-    :diminish
-    :bind
-    ("C-s" . swiper)
-    (:map ivy-switch-buffer-map
-          ("C-d" . ivy-switch-buffer-kill))
-    (:map ivy-reverse-i-search-map
-          ("C-d" . ivy-reverse-i-search-kill))
-
-    :config
-    (ivy-mode 1)
-    ;; hide "^" from ivy minibuffer
-    (setq ivy-initial-inputs-alist nil))
-
-  ;; helpful information for functions in minibuffers
-  (use-package ivy-rich
-    :init
-    (ivy-rich-mode 1))
-
-  ;; command history for ivy
-  (use-package prescient)
-
-  ;; ivy integration for prescient
-  (use-package ivy-prescient
-    :init
-    (ivy-prescient-mode 1))
-
-#+end_src
-
 ** Helpful
 
 A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]].
 
 #+begin_src emacs-lisp
 
-  ;; more detailed help pages
+  ;; More detailed help pages
   (use-package helpful
     :custom
     (counsel-describe-function-function #'helpful-callable)
@@ -1069,7 +1043,7 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
 
 #+begin_src emacs-lisp
 
-  ;; display help for next command keystroke
+  ;; Display help for next command keystroke
   (use-package which-key
     :diminish
     :config (which-key-mode 1))
@@ -1085,6 +1059,84 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
   (use-package prog-mode
     :ensure nil
     :mode ("\\.edn\\'" "\\.lua\\'"))
+
+#+end_src
+
+*** Completions
+
+[[https://github.com/minad/corfu][Corfu]] enhances in-buffer completion with a small completion popup.
+
+#+begin_src emacs-lisp
+
+  ;; Popup completion-at-point
+  (use-package corfu
+    :init
+    (global-corfu-mode)
+    :bind
+    (:map corfu-map
+          ("SPC" . corfu-insert-separator)
+          ("C-n" . corfu-next)
+          ("C-p" . corfu-previous)))
+
+  ;; Part of corfu
+  (use-package corfu-popupinfo
+    :after corfu
+    :ensure nil
+    :hook (corfu-mode . corfu-popupinfo-mode)
+    :custom
+    (corfu-popupinfo-delay '(0.25 . 0.1))
+    (corfu-popupinfo-hide nil)
+    :config
+    (corfu-popupinfo-mode))
+
+  ;; Make corfu popup come up in terminal overlay
+  (use-package corfu-terminal
+    :if (not (display-graphic-p))
+    :config
+    (corfu-terminal-mode))
+
+  ;; Pretty icons for corfu
+  (use-package kind-icon
+    :if (display-graphic-p)
+    :after corfu
+    :config
+    (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
+  ;; Orderless: powerful completion style
+  (use-package orderless
+    :config
+    (setq completion-styles '(orderless)))
+
+  ;; Use the minibuffer whilst in the minibuffer
+  (setopt enable-recursive-minibuffers t)
+
+  ;; TAB cycles candidates
+  (setopt completion-cycle-threshold 1)
+
+  ;; Show annotations
+  (setopt completions-detailed t)
+
+  ;; When I hit TAB, try to complete, otherwise, indent
+  (setopt tab-always-indent 'complete)
+
+  ;; Different styles to match input to candidates
+  (setopt completion-styles '(basic initials substring))
+
+  ;; Open completion always; `lazy' another option
+  (setopt completion-auto-help 'always)
+
+  ;; This is arbitrary
+  (setopt completions-max-height 20)
+
+  (setopt completions-detailed t)
+  (setopt completions-format 'one-column)
+  (setopt completions-group t)
+
+  ;; Much more eager
+  (setopt completion-auto-select 'second-tab)
+
+  ;; TAB acts more like how it does in the shell
+  (keymap-set minibuffer-mode-map "TAB" 'minibuffer-complete)
 
 #+end_src
 
@@ -1131,6 +1183,7 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
       :config (counsel-projectile-mode 1)))
 
 #+end_src
+
 *** Git Interface
 
 [[https://magit.vc/][Magit]]: a complete text-based user interface to Git.
@@ -1151,7 +1204,7 @@ Treemacs is used by LSP Mode, and here are some settings for it.
 
 #+begin_src emacs-lisp
 
-  ;; reduce default icon size
+  ;; Reduce default icon size
   (with-eval-after-load 'treemacs
     (treemacs-resize-icons 15))
 
@@ -1169,11 +1222,13 @@ Treemacs is used by LSP Mode, and here are some settings for it.
 
 I organize my life with [[https://orgmode.org/][Org Mode]]. The following headers all add and modify Org Mode's functionalities.
 
+*** Basic Configuration
+
 #+begin_src emacs-lisp
 
   (use-package org
     :pin nongnu
-    :ensure org-contrib ; needed for org-contacts
+    :ensure org-contrib ; Needed for org-contacts
     :bind (("C-c a" . org-agenda)
            ("C-c c" . org-capture)
            ("C-c l" . org-store-link))
@@ -1188,7 +1243,7 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
           org-blank-before-new-entry (quote ((heading . nil)
                                              (plain-list-item . nil))))
 
-    ;; make only first org heading be bold
+    ;; Make only first org heading be bold
     (custom-set-faces
      '(org-level-1 ((t (:inherit outline-1 :weight bold))))
      '(org-level-2 ((t (:inherit outline-2 :weight normal))))
@@ -1199,7 +1254,7 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
      '(org-level-7 ((t (:inherit outline-7 :weight normal))))
      '(org-level-8 ((t (:inherit outline-8 :weight normal)))))
 
-    ;; remap org indentation keys
+    ;; Remap org indentation keys
     (with-eval-after-load 'org
       (general-define-key
        :keymaps 'org-mode-map
@@ -1230,16 +1285,16 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
           org-agenda-todo-list-sublevels t
           ;; org element cache often produced errors, so I disabled it
           org-element-use-cache nil
-          org-agenda-scheduled-leaders '("" "")  ; hide "Scheduled" text
-          org-agenda-prefix-format "  %?-12t% s" ; hide category for agenda items
+          org-agenda-scheduled-leaders '("" "")  ; Hide "Scheduled" text
+          org-agenda-prefix-format "  %?-12t% s" ; Hide category for agenda items
 
           org-agenda-files '("~/notes/org")
-          ;; add newline above date heading
+          ;; Add newline above date heading
           org-agenda-format-date
           (lambda (date)
             (concat "\n" (org-agenda-format-date-aligned date)))
 
-          ;; time grid settings
+          ;; Time grid settings
           org-agenda-time-grid
           '((daily today require-timed remove-match)
             (800 1000 1200 1400 1600 1800 2000)
@@ -1273,7 +1328,7 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
                                      :priority>= "C")
                               (:discard (:anything t))))))))))
 
-    ;; date heading settings
+    ;; Date heading settings
     (custom-set-faces
      '(org-agenda-date ((t (:height 1.0 :weight bold :background nil))))
      '(org-agenda-date-today ((t (:height 1.3 :weight bold :background nil :underline nil))))))
@@ -1291,6 +1346,11 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
     :config
     (org-super-agenda-mode 1))
 
+  ;; Open my custom super agenda
+  (defun my/custom-open-org-agenda ()
+    (interactive)
+    (org-agenda nil "s"))
+
 #+end_src
 
 *** Org Capture
@@ -1303,7 +1363,7 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
     :ensure nil
     :after org
     :config
-    ;; don't save org capture bookmarks
+    ;; Don't save org capture bookmarks
     (setq org-bookmark-names-plist nil
           org-capture-bookmark nil)
     :custom
@@ -1368,7 +1428,7 @@ Active code blocks in org files with [[https://orgmode.org/worg/org-contrib/babe
   (setq org-confirm-babel-evaluate nil)
   (org-babel-tangle-file "~/.emacs.d/init.org")
 
-  ;; block templates
+  ;; Block templates
   (setq org-structure-template-alist
         '(("l" . "src emacs-lisp")
           ("j" . "src java")
@@ -1385,7 +1445,7 @@ Active code blocks in org files with [[https://orgmode.org/worg/org-contrib/babe
 
   (use-package mu4e
     :ensure nil
-    :defer 20 ; load 20 s after startup
+    :defer 20 ; Load 20 s after startup
     :commands (mu4e make-mu4e-context)
     :bind
     ("C-x m" . mu4e)
@@ -1470,15 +1530,16 @@ Active code blocks in org files with [[https://orgmode.org/worg/org-contrib/babe
                  (mu4e-refile-folder . "/Proton/Archive")
                  (mu4e-trash-folder . "/Proton/Trash"))))
 
-     ;; start with the first (default) context
+     ;; Start with the first (default) context
      mu4e-context-policy 'pick-first
-     ;; ask for context if no context matches
+
+     ;; Ask for context if no context matches
      mu4e-compose-context-policy 'ask
 
      ;; Fetch mail
      mu4e-get-mail-command "mbsync -a"
-     mu4e-change-filenames-when-moving t   ; needed for mbsync
-     mu4e-update-interval 120              ; update every 2 minutes
+     mu4e-change-filenames-when-moving t   ; Needed for mbsync
+     mu4e-update-interval 120              ; Update every 2 minutes
 
      ;; Send mail
      message-send-mail-function 'message-send-mail-with-sendmail
@@ -1489,13 +1550,15 @@ Active code blocks in org files with [[https://orgmode.org/worg/org-contrib/babe
 
      ;; Other options
      mu4e-confirm-quit nil
-     ;; re-flow mail so it's not hard wrapped
+
+     ;; Re-flow mail so it's not hard wrapped
      mu4e-compose-format-flowed t
-     ;; hide annoying retrieving msg in mini buffer
+
+     ;; Hide annoying retrieving msg in mini buffer
      mu4e-hide-index-messages t
      mu4e-index-update-error-warning 'nil))
 
-  ;; allows for using individual faces for columns in email overview
+  ;; Allows for using individual faces for columns in email overview
   (use-package mu4e-column-faces
     :after mu4e
     :config (mu4e-column-faces-mode))
@@ -1510,14 +1573,14 @@ Calendar framework with [[https://github.com/kiwanami/emacs-calfw][calfw]].
 
   (use-package calfw
     :config
-    ;; use swedish calendar
+    ;; Use Swedish calendar
     (load "sv-kalender"))
 
-  ;; integrate calfw with org
+  ;; Integrate calfw with org
   (use-package calfw-org
     :after calfw)
 
-  ;; open calendar with two weeks view
+  ;; Open calendar with two weeks view
   (defun my/custom-open-calendar ()
     (interactive)
     (cfw:open-calendar-buffer
@@ -1543,7 +1606,7 @@ Calendar framework with [[https://github.com/kiwanami/emacs-calfw][calfw]].
     (TeX-auto-save t)
     (TeX-parse-self t)
     (TeX-master nil)
-    ;; to use pdfview with auctex
+    ;; To use pdfview with auctex
     (TeX-view-program-selection '((output-pdf "PDF Tools"))
                                 TeX-source-correlate-start-server t)
     (TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
