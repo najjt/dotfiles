@@ -554,9 +554,9 @@ Dired, Emacs' built-in file explorer, with vim-style navigation and nerd icons.
     (setq dired-kill-when-opening-new-dired-buffer t))
 
   ;; vim-style navigation
- ; (evil-collection-define-key 'normal 'dired-mode-map
-  ;  "h" 'dired-up-directory
-   ; "l" 'dired-find-file)
+  (evil-define-key 'normal 'dired-mode-map
+   "h" 'dired-up-directory
+   "l" 'dired-find-file)
 
   ;; Use nerd icons in dired
   (use-package nerd-icons-dired
