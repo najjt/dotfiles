@@ -644,7 +644,11 @@ config.bind(',M', 'hint links spawn mpv {hint-url}')
 config.bind(',m', 'spawn mpv {url}')
 
 # Bitwarden
-config.bind(',b', 'spawn --userscript qute-bitwarden')
+{{ if eq .chezmoi.os "darwin" }}
+config.bind(',b', 'spawn --userscript bitwarden.sh')
+{{ else if eq .chezmoi.os "linux" }}
+config.bind(',b', 'spawn --userscript qute-bitwarden.sh')
+{{ end }}
 
 # Code select
 config.bind(',c', 'hint code userscript code_select.py')
