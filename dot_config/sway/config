@@ -5,10 +5,10 @@
 ## Background processes
 
 # Keyboard modifications
-# exec_always ~/.cabal/bin/kmonad ~/.config/kmonad/kmonad.kbd
+exec_always ~/.cabal/bin/kmonad ~/.config/kmonad/kmonad.kbd
 
 # Rotating wallpaper
-# exec_always ~/scripts/shuffle_wallpaper.sh
+exec_always ~/scripts/shuffle_wallpaper.sh
 
 # Binary space partitioning
 exec_always ~/.local/bin/autotiling
