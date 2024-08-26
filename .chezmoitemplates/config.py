@@ -490,7 +490,7 @@ c.window.transparent = False
 # Default zoom level.
 # Type: Perc
 {{ if eq .chezmoi.os "darwin" }}
-c.zoom.default = '125%'
+c.zoom.default = '110%'
 {{ else if eq .chezmoi.os "linux" }}
 c.zoom.default='100%'
 {{ end }}
@@ -588,7 +588,7 @@ c.fonts.default_size = '11pt'
 # Default font size (in pixels) for regular text.
 # Type: Int
 {{ if eq .chezmoi.os "darwin" }}
-c.fonts.web.size.default = 20
+c.fonts.web.size.default = 12
 {{ else if eq .chezmoi.os "linux" }}
 c.fonts.web.size.default = 12
 {{ end }}
