@@ -1353,8 +1353,8 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
                                     :and (:category "studier" :scheduled today)
                                     :and (:category "studier" :deadline today))
                              (:name "Privat"
-                                    :and (:category ("privat" "capture" "computer") :scheduled today)
-                                    :and (:category ("privat" "capture" "computer") :deadline today))
+                                    :and (:category ("privat" "refile" "phone_refile" "computer") :scheduled today)
+                                    :and (:category ("privat" "refile" "phone_refile" "computer") :deadline today))
                              (:name "Upcoming Deadlines"
                                     :deadline future)
                              (:discard (:anything t))))))
