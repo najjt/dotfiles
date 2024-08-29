@@ -652,3 +652,6 @@ config.bind(',b', 'spawn --userscript qute-bitwarden.sh')
 
 # Code select
 config.bind(',c', 'hint code userscript code_select.py')
+
+# Set window title
+c.window.title_format = '{current_title} - qutebrowser'
