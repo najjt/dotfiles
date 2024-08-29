@@ -35,7 +35,6 @@
   - [[#dotfiles-management][Dotfiles Management]]
   - [[#file-explorer][File Explorer]]
   - [[#terminal-emulation][Terminal Emulation]]
-  - [[#workspaces][Workspaces]]
   - [[#popup-buffers][Popup Buffers]]
   - [[#dashboard][Dashboard]]
 - [[#appearance][Appearance]]
@@ -436,7 +435,7 @@ Automatically update packages every seven days with [[https://github.com/rranell
     :diminish
     :bind
     ("M-x" . counsel-M-x)
-    ("C-S-j" . counsel-switch-buffer)
+    ("C-M-j" . counsel-switch-buffer)
     ("C-x C-f" . counsel-find-file)
 
     :config
@@ -445,7 +444,7 @@ Automatically update packages every seven days with [[https://github.com/rranell
   (use-package ivy
     :diminish
     :bind
-    ;; ("C-s" . swiper)
+    ("C-s" . swiper)
     (:map ivy-switch-buffer-map
           ("C-d" . ivy-switch-buffer-kill))
     (:map ivy-reverse-i-search-map
@@ -514,6 +513,7 @@ Edit files with sudo privileges with [[https://github.com/nflath/sudo-edit/tree/
 #+begin_src emacs-lisp
 
   (use-package sudo-edit
+    :diminish
     :config
     (global-set-key (kbd "C-c C-r") 'sudo-edit))
 
@@ -587,27 +587,6 @@ A better terminal emulation with [[https://github.com/akermu/emacs-libvterm][vte
 
 #+end_src
 
-** Workspaces
-
-Workspaces: [[https://github.com/nex3/perspective-el][perspective]].
-
-#+begin_src emacs-lisp
-
-  (use-package perspective
-    :hook (persp-created . dashboard-open)
-    :bind
-    ("C-M-j" . persp-counsel-switch-buffer)
-    ("C-M-b" . persp-switch)
-    :custom
-    (persp-mode-prefix-key (kbd "C-c M-p"))
-    :init
-    (persp-mode))
-
-  (use-package persp-projectile
-    :after perspective)
-
-#+end_src
-
 ** Popup Buffers
 
 Popup buffers with [[https://github.com/karthink/popper][popper]].
@@ -678,7 +657,7 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
           dashboard-icon-type 'nerd-icons
           dashboard-set-file-icons t
           dashboard-projects-backend 'projectile
-          dashboard-projects-switch-function 'projectile-persp-switch-project))
+          dashboard-projects-switch-function 'projectile-switch-project))
 
   ;; Hook dashboard-open to creation of new frame
   (add-hook 'after-make-frame-functions
