@@ -255,7 +255,7 @@ Set meta key, turn off option key as modifier, set dired to not use ~--dired~ fl
 
 ** Load Path
 
-Set load path to include =./elisp= folder and ensure theme is remembered by loading =custom.el=.
+Set load path to include =./elisp= folder.
 
 #+begin_src emacs-lisp
 
@@ -273,8 +273,6 @@ Set load path to include =./elisp= folder and ensure theme is remembered by load
           (add-to-list 'load-path name)))))))
 
   (update-to-load-path (expand-file-name "elisp" user-emacs-directory))
-
-  (load-file "~/.emacs.d/custom.el")
 
 #+end_src
 
@@ -447,7 +445,7 @@ Automatically update packages every seven days with [[https://github.com/rranell
   (use-package ivy
     :diminish
     :bind
-    ("C-s" . swiper)
+    ;; ("C-s" . swiper)
     (:map ivy-switch-buffer-map
           ("C-d" . ivy-switch-buffer-kill))
     (:map ivy-reverse-i-search-map
@@ -527,7 +525,8 @@ I manage my dotfiles with [[https://github.com/tuh8888/chezmoi.el][chezmoi]], an
 
 #+begin_src emacs-lisp
 
-  (use-package chezmoi)
+    (use-package chezmoi
+      :bind ("C-x c w" . chezmoi-write))
 
 #+end_src
 
@@ -867,7 +866,6 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
           ("C-w k" . evil-window-up)
           ("C-w l" . evil-window-right))
 
-
     :hook
     (evil-mode . my/evil-hook)
 
@@ -875,10 +873,10 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     (setq evil-want-integration t
           evil-want-keybinding nil
           evil-want-C-u-scroll t
-          evil-want-C-i-jump nil
-          evil-search-module 'evil-search)
+          evil-want-C-i-jump nil)
 
     :config
+
     ;; Modes to disable evil in
     (defun my/evil-hook ()
       (dolist (mode '(custom-mode
@@ -967,6 +965,8 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
 
 *** Choose Theme
 
+Open a temporary buffer to choose a new theme (and disable all other themes).
+
 #+begin_src emacs-lisp
 
   (defhydra hydra-theme (:timeout 4)
@@ -996,6 +996,8 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
 #+end_src
 
 *** Resize Window
+
+Open a temporary buffer to resize the current window.
 
 #+begin_src emacs-lisp
 
@@ -1128,12 +1130,8 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
     :config
     (corfu-terminal-mode))
 
-  ;; Pretty icons for corfu
-  (use-package kind-icon
-    :if (display-graphic-p)
-    :after corfu
-    :config
-    (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+  ;; Nerd icons for corfu
+  (use-package nerd-icons-corfu)
 
   ;; Orderless: powerful completion style
   (use-package orderless
