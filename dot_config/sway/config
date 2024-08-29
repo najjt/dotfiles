@@ -4,10 +4,10 @@
 
 ## Background processes
 
-# Keyboard modifications
-exec_always ~/.cabal/bin/kmonad ~/.config/kmonad/kmonad.kbd
+# Clipboard manager listener
+exec wl-paste --watch cliphist store
 
-# Rotating wallpaper
+# Shuffle wallpaper
 exec_always ~/scripts/shuffle_wallpaper.sh
 
 # Binary space partitioning
@@ -83,15 +83,17 @@ set $browser qutebrowser
 
 # Application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened on the original workspace that the command was run on.
-# set $menu wofi --show run | xargs swaymsg exec --
-# set $menu fuzzel -b 000000dd -t ffffffdd -f 'Terminus (TTF)' | xargs swaymsg exec --
 set $menu rofi -show combi -modes combi -combi-modes "window,drun,run" | xargs swaymsg exec --
 
 # Clipboard manager
-set $clip clipse
+# set $clip alacritty -e sh -c "swaymsg floating enable, move position center; swaymsg resize set 80ppt 80ppt && clipse"
+set $clip cliphist list | rofi -dmenu | cliphist decode | wl-copy
 
 # Lock command
 set $lock 'swaylock -f -c 000000'
+
+# Move windows with $mod + left mouse button, resize with $mod + right mouse button
+floating_modifier $mod normal
 
 # Workspace names
 set $ws1 "1"
@@ -109,11 +111,11 @@ set $ws10 "10"
 # Defaults
 #
 
-font pango:JetBrains Mono 13
+font pango:Terminus (TTF) 13
 
 focus_follows_mouse no
 
-gaps inner 40
+# gaps inner 40
 
 set $opacity 0.9
 for_window [class=".*"] opacity $opacity
@@ -157,6 +159,7 @@ bindsym Control+Shift+Return exec $browser
 # Start application launcher
 bindsym $cmd+space exec $menu
 
+# Start clipboard manager
 bindsym $mod+c exec $clip
 
 # Kill focused window
