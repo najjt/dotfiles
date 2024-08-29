@@ -1,5 +1,6 @@
 README.md
 .DS_STORE
+screenshot.jpeg
 {{ if ne .chezmoi.os "darwin" }}
 .config/yabai
 .config/sketchybar
@@ -11,4 +12,5 @@ README.md
 .config/sway
 .config/rofi
 .config/mako
+.config/waybar
 {{ end }}
