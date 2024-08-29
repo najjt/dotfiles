@@ -7,3 +7,5 @@ Welcome to my dotfiles repository! I use [chezmoi](https://www.chezmoi.io/) to m
 * **OS**: Fedora Asahi Remix/macOS
 * **WM**: yabai/sway
 * **Statusbar**: SketchyBar/waybar
+
+![screenshot](screenshot.jpeg)
