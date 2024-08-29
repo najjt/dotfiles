@@ -1,5 +1,9 @@
 [window]
+{{ if eq .chezmoi.os "linux" }}
   decorations = 'None'
+{{ else if eq .chezmoi.os "darwin" }}
+  decorations = 'Transparent'
+{{ end }}
 
 [font]
   normal = { family = "Terminess Nerd Font Mono"}
