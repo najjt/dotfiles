@@ -492,7 +492,7 @@ c.window.transparent = False
 {{ if eq .chezmoi.os "darwin" }}
 c.zoom.default = '110%'
 {{ else if eq .chezmoi.os "linux" }}
-c.zoom.default='100%'
+c.zoom.default='110%'
 {{ end }}
 
 # Text color of the completion widget. May be a single color to use for
