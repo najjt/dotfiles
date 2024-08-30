@@ -86,8 +86,7 @@ set $browser qutebrowser
 set $menu rofi -show combi -modes combi -combi-modes "window,drun,run" | xargs swaymsg exec --
 
 # Clipboard manager
-# set $clip alacritty -e sh -c "swaymsg floating enable, move position center; swaymsg resize set 80ppt 80ppt && clipse"
-set $clip cliphist list | rofi -dmenu | cliphist decode | wl-copy
+set $clip cliphist list | rofi -dmenu -P "Clipboard" | cliphist decode | wl-copy
 
 # Lock command
 set $lock 'swaylock -f -c 000000'
