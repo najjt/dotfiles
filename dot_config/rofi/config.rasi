@@ -1,4 +1,4 @@
-@theme "dmenu"
+@theme "default"
 
 * {
 font: "Terminus (TTF) 10";
