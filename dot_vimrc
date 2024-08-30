@@ -1,4 +1,4 @@
-" general
+" General
 set copyindent
 set breakindent
 set expandtab
@@ -6,7 +6,7 @@ set tabstop=8
 set softtabstop=0
 set viminfo=
 
-" remaps
+" Remaps
 inoremap <C-g> <esc>
 vnoremap <C-g> <esc>
 nnoremap <Space> i_<Esc>r
@@ -14,7 +14,7 @@ nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 nnoremap ö :
 
-" --- visual ---
+" --- Visual ---
 syntax on
 set number
 set relativenumber
@@ -23,8 +23,3 @@ set guicursor+=a:blinkon0
 set guioptions-=m
 set guioptions-=T
 set guioptions-=r
-
-" font
-if has("gui_running")
-  set guifont=JetBrains\ Mono:h12
-endif

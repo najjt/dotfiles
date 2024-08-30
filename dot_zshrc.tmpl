@@ -1,7 +1,7 @@
 #PS1=" [%F{green}%n@%m%f %1~ %#] $ "
 PS1=" %1~ %F{green}>%f "
 
-# history time stamp format
+# History time stamp format
 HIST_STAMPS="mm/dd/yyyy"
 HISTFILE=~/.zsh_history
 SAVEHIST=1000
@@ -14,29 +14,29 @@ function zvm_config() {
   ZVM_CURSOR_STYLE_ENABLED=true
 }
 
-# source zsh config
+# Source zsh config
 alias sz="source $HOME/.zshrc && source $HOME/.zshenv"
 
-# open files/dirs
+# Open files/dirs
 alias home="cd ~"
 alias ec="emacsclient -c -n"
 alias nv="nvim"
 
-# other
+# Other
 alias x="exit"
 alias ..="cd .."
 alias shutdown="sudo shutdown -h now"
 alias ls='ls -lh --color=always'
-alias pwdc="pwd | pbcopy"       # copies current working directory to system clipboard
+alias pwdc="pwd | pbcopy"       # Copies current working directory to system clipboard
 alias pi="ssh pi@192.168.1.48"  # ssh to raspberry pi
-alias pist="ssh -N -L 9090:127.0.0.1:8384 pi@192.168.1.48" # port forward port 9090 to be able to use syncthing admin gui on other machine
-alias wt="curl wttr.in"         # weather forecast
+alias pist="ssh -N -L 9090:127.0.0.1:8384 pi@192.168.1.48" # Port forward port 9090 to be able to use syncthing admin gui on other machine
+alias wt="curl wttr.in"         # Weather forecast
 alias python="python3"
 alias tmc="~/tools/tmc/tmc"
 alias cm="chezmoi"
 alias dnf="sudo dnf"
 {{ if eq .chezmoi.os "darwin" }}
-# restart emacs homebrew service
+# Restart emacs homebrew service
 alias ecre="brew services restart emacs-plus"
 
 export PATH="/opt/homebrew/bin:$PATH"
@@ -50,7 +50,7 @@ source $(brew --prefix)/opt/zsh-syntax-highlighting/share/zsh-syntax-highlightin
 # zsh autocomplete
 #source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 {{ else if eq .chezmoi.os "linux" }}
-# restart emacs service
+# Restart emacs service
 alias ecre="systemctl --user restart emacs"
 
 # zsh vi mode
@@ -62,13 +62,13 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # ghc
 [ -f "/home/najjt/.ghcup/env" ] && . "/home/najjt/.ghcup/env" # ghcup-env%
 {{ end }}
-# theme
+# Theme
 eval "$(starship init zsh)"
 
 # Set up fzf keybindings and fuzzy completion
 source <(fzf --zsh)
 
-# open man pages with emacs
+# Open man pages with emacs
 if [[ -z ${INSIDE_EMACS+1} ]]; then
     function man() {
         emacsclient -a '' -cne "(let ((buf (man \"$1\"))) (delete-other-windows) (switch-to-buffer buf) (evil-local-set-key 'normal \"q\" (lambda () (interactive) (kill-current-buffer) (delete-frame))))" > /dev/null

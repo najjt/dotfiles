@@ -1,14 +1,14 @@
-# xdg
+# XDG
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-# lang & locale
+# Language & locale
 export LANG="en_US.UTF-8"
 export LC_ALL="en_IE.UTF-8"
 
-# default programs
+# Default programs
 export BROWSER=qutebrowser
 export TERMINAL=alacritty
 export EDITOR=emacsclient
@@ -31,11 +31,11 @@ path=(
 )
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
-# jupyter
+# Jupyter
 export JUPYTER_PATH=/opt/homebrew/share/jupyter
 export JUPYTER_CONFIG_PATH=/opt/homebrew/etc/jupyter
 
-# java
+# Java
 #export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home"
 {{ else if eq .chezmoi.os "linux" }}
