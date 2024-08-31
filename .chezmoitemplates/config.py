@@ -458,7 +458,8 @@ c.url.searchengines = {'DEFAULT': 'https://www.google.com/search?q={}',
                        'm':       'https://die.net/search/?q={}',
                        'w':       'https://en.wikipedia.org/?search={}',
                        'wt':      'https://en.wiktionary.org/?search={}',
-                       'et':      'https://etymonline.com/index.php?search={}'}
+                       'et':      'https://etymonline.com/index.php?search={}',
+                       'l':       'https://letterboxd.com/search/{}'}
 
 # Page(s) to open at the start.
 # Type: List of FuzzyUrl, or FuzzyUrl
