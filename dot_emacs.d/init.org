@@ -1,6 +1,6 @@
-#+AUTHOR: Martin Lönn Andersson
-#+TITLE: Emacs Config
-#+PROPERTY: header-args:emacs-lisp :tangle ./init.el
+#+author: Martin Lönn Andersson
+#+title: Emacs Configuration
+#+property: header-args:emacs-lisp :tangle ./init.el
 
 * Contents :toc@5@gh:
 - [[#preamble][Preamble]]
@@ -431,12 +431,11 @@ Automatically update packages every seven days with [[https://github.com/rranell
 
 #+begin_src emacs-lisp
 
-  ;; Helpful ui additions
   (use-package counsel
     :diminish
     :bind
     ("M-x" . counsel-M-x)
-    ("C-x b" . counsel-ibuffer)
+    ("C-x C-b" . counsel-ibuffer)
     ("C-x C-f" . counsel-find-file)
 
     :config
@@ -685,7 +684,7 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
   (blink-cursor-mode 0)
 
   ;; Highlight current line
-  (let ((hl-line-hooks '(text-mode-hook prog-mode-hook)))
+  (let ((hl-line-hooks '(text-mode-hook prog-mode-hook ibuffer-mode-hook)))
     (mapc (lambda (hook) (add-hook hook 'hl-line-mode)) hl-line-hooks))
 
   ;; Show column number in status bar
