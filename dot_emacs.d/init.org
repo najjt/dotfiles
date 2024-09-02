@@ -42,7 +42,6 @@
   - [[#font--icons][Font & Icons]]
   - [[#themes][Themes]]
 - [[#text--languages][Text & Languages]]
-  - [[#markdown-mode][Markdown Mode]]
   - [[#spell-checking][Spell Checking]]
   - [[#undo-functionality][Undo Functionality]]
   - [[#tabs][Tabs]]
@@ -58,15 +57,17 @@
   - [[#which-key][Which Key]]
 - [[#programming][Programming]]
   - [[#general-programming-functionalities][General Programming Functionalities]]
-    - [[#prog-mode][Prog Mode]]
+    - [[#treesitter][Treesitter]]
+    - [[#eglot][Eglot]]
     - [[#completions][Completions]]
     - [[#comments][Comments]]
     - [[#match-delimiters][Match Delimiters]]
     - [[#project-management][Project Management]]
     - [[#git-interface][Git Interface]]
-    - [[#treemacs][Treemacs]]
+    - [[#git-diff][Git Diff]]
   - [[#programming-languages-support][Programming Languages Support]]
     - [[#java][Java]]
+    - [[#common-file-types][Common File Types]]
 - [[#productivity][Productivity]]
   - [[#org-mode][Org Mode]]
     - [[#basic-configuration-1][Basic Configuration]]
@@ -435,7 +436,7 @@ Automatically update packages every seven days with [[https://github.com/rranell
     :diminish
     :bind
     ("M-x" . counsel-M-x)
-    ("C-M-j" . counsel-switch-buffer)
+    ("C-x b" . counsel-ibuffer)
     ("C-x C-f" . counsel-find-file)
 
     :config
@@ -720,6 +721,10 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
 
   (use-package nerd-icons)
 
+  ;; Use nerd icons in ibuffer
+  (use-package nerd-icons-ibuffer
+    :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+
 #+end_src
 
 ** Themes
@@ -738,16 +743,6 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
 #+end_src
 
 * Text & Languages
-** Markdown Mode
-
-The [[https://jblevins.org/projects/markdown-mode/][Markdown Mode]] package provides better markdown support.
-
-#+begin_src emacs-lisp
-
-  (use-package markdown-mode :defer t)
-
-#+end_src
-
 ** Spell Checking
 
 To spell check files, I use =flyspell= and =hunspell= in order to spell check in both Swedish and English.
@@ -1071,13 +1066,55 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
 
 * Programming
 ** General Programming Functionalities
-*** Prog Mode
+*** Treesitter
 
 #+begin_src emacs-lisp
 
-  (use-package prog-mode
+  (use-package emacs
+    :config
+    ;; Tell Emacs to prefer the treesitter mode
+    ;; You'll want to run the command `M-x treesit-install-language-grammar' before editing.
+    (setq major-mode-remap-alist
+          '((yaml-mode . yaml-ts-mode)
+            (bash-mode . bash-ts-mode)
+            (js2-mode . js-ts-mode)
+            (typescript-mode . typescript-ts-mode)
+            (json-mode . json-ts-mode)
+            (css-mode . css-ts-mode)
+            (java-mode . java-ts-mode)
+            (python-mode . python-ts-mode)))
+    :hook
+    ;; Auto parenthesis matching
+    ((prog-mode . electric-pair-mode)))
+
+#+end_src
+
+*** Eglot
+
+[[https://www.masteringemacs.org/article/seamlessly-merge-multiple-documentation-sources-eldoc][The built-in LSP client for Emacs]].
+
+#+begin_src emacs-lisp
+
+  (use-package eglot
     :ensure nil
-    :mode ("\\.edn\\'" "\\.lua\\'"))
+    ;; Configure hooks to automatically turn-on eglot for selected modes
+    :hook
+    (((python-mode java-mode tex-mode) . eglot))
+
+    :custom
+    (eglot-send-changes-idle-time 0.1)
+    (eglot-extend-to-xref t)     ; activate Eglot in referenced non-project files
+
+    (eglot-events-buffer-size 0) ; No event buffers (Lsp server logs)
+    (eglot-autoshutdown t)       ; Shutdown unused servers.
+    (eglot-report-progress nil)  ; Disable lsp server logs (Don't show lsp messages at the bottom, java)
+
+    :config
+    (fset #'jsonrpc--log-event #'ignore)  ; massive perf boost---don't log every event
+    ;; Sometimes you need to tell Eglot where to find the language server
+                                          ; (add-to-list 'eglot-server-programs
+                                          ;              '(haskell-mode . ("haskell-language-server-wrapper" "--lsp")))
+    )
 
 #+end_src
 
@@ -1212,23 +1249,32 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
     ("C-x g" . magit-status))
 
 #+end_src
-
-*** Treemacs
-
-Treemacs is used by LSP Mode, and here are some settings for it.
+*** Git Diff
 
 #+begin_src emacs-lisp
 
-  ;; Reduce default icon size
-  (with-eval-after-load 'treemacs
-    (treemacs-resize-icons 15))
+  (use-package diff-hl
+    :hook ((dired-mode         . diff-hl-dired-mode-unless-remote)
+           (magit-pre-refresh  . diff-hl-magit-pre-refresh)
+           (magit-post-refresh . diff-hl-magit-post-refresh))
+    :init (global-diff-hl-mode))
 
 #+end_src
-
 ** Programming Languages Support
 *** Java
 
 #+begin_src emacs-lisp
+
+#+end_src
+*** Common File Types
+
+#+begin_src emacs-lisp
+
+  (use-package yaml-mode)
+
+  (use-package json-mode)
+
+  (use-package markdown-mode)
 
 #+end_src
 
