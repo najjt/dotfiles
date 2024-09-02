@@ -435,7 +435,7 @@ Automatically update packages every seven days with [[https://github.com/rranell
     :diminish
     :bind
     ("M-x" . counsel-M-x)
-    ("C-x C-b" . counsel-ibuffer)
+    ("C-x C-b" . counsel-switch-buffer)
     ("C-x C-f" . counsel-find-file)
 
     :config
@@ -639,36 +639,35 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
 
 #+begin_src emacs-lisp
 
-  (use-package dashboard
-    :demand t
-    :diminish (dashboard-mode page-break-lines-mode)
-    :custom-face
-    (dashboard-items-face ((t (:weight normal))))
-    :custom
-    (dashboard-startupify-list '(dashboard-insert-banner
-                                 dashboard-insert-newline
-                                 dashboard-insert-banner-title
-                                 dashboard-insert-init-info
-                                 dashboard-insert-newline
-                                 dashboard-insert-items))
+    (use-package dashboard
+      :demand t
+      :diminish (dashboard-mode page-break-lines-mode)
+      :custom-face
+      (dashboard-items-face ((t (:weight normal))))
+      :custom
+      (dashboard-startupify-list '(dashboard-insert-banner
+                                   dashboard-insert-newline
+                                   dashboard-insert-banner-title
+                                   dashboard-insert-init-info
+                                   dashboard-insert-newline
+                                   dashboard-insert-items))
 
-    (dashboard-items '((bookmarks . 7)
-                       (projects . 5)))
-    :config
-    (dashboard-setup-startup-hook)
+      (dashboard-items '((bookmarks . 7)
+                         (projects . 5)))
+      :config
+      (dashboard-setup-startup-hook)
 
-    (setq dashboard-center-content t
-          dashboard-display-icons-p t
-          dashboard-icon-type 'nerd-icons
-          dashboard-set-file-icons t
-          dashboard-projects-backend 'projectile
-          dashboard-projects-switch-function 'projectile-switch-project))
+      (setq dashboard-center-content t
+            dashboard-display-icons-p t
+            dashboard-icon-type 'nerd-icons
+            dashboard-set-file-icons t
+            dashboard-projects-backend 'projectile))
 
-  ;; Hook dashboard-open to creation of new frame
-  (add-hook 'after-make-frame-functions
-            (lambda (frame)
-              (with-selected-frame frame
-                (dashboard-open))))
+    ;; Hook dashboard-open to creation of new frame
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (with-selected-frame frame
+                  (dashboard-open))))
 
 #+end_src
 
@@ -1069,22 +1068,15 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
 
 #+begin_src emacs-lisp
 
-  (use-package emacs
-    :config
-    ;; Tell Emacs to prefer the treesitter mode
-    ;; You'll want to run the command `M-x treesit-install-language-grammar' before editing.
-    (setq major-mode-remap-alist
-          '((yaml-mode . yaml-ts-mode)
-            (bash-mode . bash-ts-mode)
-            (js2-mode . js-ts-mode)
-            (typescript-mode . typescript-ts-mode)
-            (json-mode . json-ts-mode)
-            (css-mode . css-ts-mode)
-            (java-mode . java-ts-mode)
-            (python-mode . python-ts-mode)))
-    :hook
-    ;; Auto parenthesis matching
-    ((prog-mode . electric-pair-mode)))
+  ;; (setq major-mode-remap-alist
+  ;;       '((yaml-mode . yaml-ts-mode)
+  ;;         (bash-mode . bash-ts-mode)
+  ;;         (js2-mode . js-ts-mode)
+  ;;         (typescript-mode . typescript-ts-mode)
+  ;;         (json-mode . json-ts-mode)
+  ;;         (css-mode . css-ts-mode)
+  ;;         (java-mode . java-ts-mode)
+  ;;         (python-mode . python-ts-mode)))
 
 #+end_src
 
@@ -1094,26 +1086,22 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
 
 #+begin_src emacs-lisp
 
-  (use-package eglot
-    :ensure nil
-    ;; Configure hooks to automatically turn-on eglot for selected modes
-    :hook
-    (((python-mode java-mode tex-mode) . eglot))
+  ;; (use-package eglot
+  ;;   :ensure nil
+  ;;   :hook
+  ;;   (((python-mode java-mode tex-mode) . eglot))
 
-    :custom
-    (eglot-send-changes-idle-time 0.1)
-    (eglot-extend-to-xref t)     ; activate Eglot in referenced non-project files
+  ;;   :custom
+  ;;   (eglot-send-changes-idle-time 0.1)
+  ;;   (eglot-extend-to-xref t)             ; activate Eglot in referenced non-project files
 
-    (eglot-events-buffer-size 0) ; No event buffers (Lsp server logs)
-    (eglot-autoshutdown t)       ; Shutdown unused servers.
-    (eglot-report-progress nil)  ; Disable lsp server logs (Don't show lsp messages at the bottom, java)
+  ;;   (eglot-events-buffer-size 0)         ; No event buffers (Lsp server logs)
+  ;;   (eglot-autoshutdown t)               ; Shutdown unused servers.
+  ;;   (eglot-report-progress nil)          ; Disable lsp server logs (Don't show lsp messages at the bottom, java)
 
-    :config
-    (fset #'jsonrpc--log-event #'ignore)  ; massive perf boost---don't log every event
-    ;; Sometimes you need to tell Eglot where to find the language server
-                                          ; (add-to-list 'eglot-server-programs
-                                          ;              '(haskell-mode . ("haskell-language-server-wrapper" "--lsp")))
-    )
+  ;;   :config
+  ;;   (fset #'jsonrpc--log-event #'ignore) ; massive perf boost---don't log every event
+  ;;   )
 
 #+end_src
 
@@ -1204,12 +1192,12 @@ Nice commenting functionality with [[https://github.com/redguardtoo/evil-nerd-co
 
 *** Match Delimiters
 
-Match delimiters with [[https://github.com/Fanael/rainbow-delimiters][rainbow-delimiters]].
+Match delimiters with [[https://github.com/Fanael/rainbow-delimiters][rainbow-delimiters]] and electric-pair-mode.
 
 #+begin_src emacs-lisp
 
   (use-package rainbow-delimiters
-    :hook (prog-mode . (lambda () (rainbow-delimiters-mode))))
+    :hook (prog-mode . (rainbow-delimiters-mode)))
 
 #+end_src
 
@@ -1248,6 +1236,7 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
     ("C-x g" . magit-status))
 
 #+end_src
+
 *** Git Diff
 
 #+begin_src emacs-lisp
@@ -1259,12 +1248,18 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
     :init (global-diff-hl-mode))
 
 #+end_src
+
 ** Programming Languages Support
 *** Java
 
+Java support for eglot: [[https://github.com/yveszoundi/eglot-java][eglot-java]].
+
 #+begin_src emacs-lisp
 
+  (use-package eglot-java)
+
 #+end_src
+
 *** Common File Types
 
 #+begin_src emacs-lisp
