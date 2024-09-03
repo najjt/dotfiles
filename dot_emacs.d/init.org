@@ -724,8 +724,8 @@ To spell check files, I use =flyspell= and =hunspell= in order to spell check in
      (emacs-startup . my-run-shell-command))
     :custom
     (jinx-camel-modes '(prog-mode))
-    :bind (("C-;" . jinx-correct)
-           ("C-M-;" . jinx-languages))
+    :bind (("C-," . jinx-correct)
+           ("C-M-," . jinx-languages))
     :config
     (setq jinx-languages "sv en_US"))
 
