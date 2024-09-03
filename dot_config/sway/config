@@ -25,7 +25,6 @@ exec_always blueman-applet
 # Notifications
 exec_always mako
 
-
 ## Idle configuration
 
 # Lock screen after 300 seconds of inactivity, then turn off displays after another 30 seconds. Lock if laptop lid is closed.
@@ -59,7 +58,7 @@ input "1452:641:Apple_Internal_Keyboard_/_Trackpad" {
 input * {
     xkb_layout se,us
     xkb_switch_layout next
-    xkb_options grp:rshift_toggle
+    xkb_options grp:ctrl_space_toggle
     repeat_rate 40
     repeat_delay 200
 }
@@ -119,13 +118,13 @@ font pango:Terminus (TTF) 13
 
 focus_follows_mouse no
 
-# gaps inner 40
+gaps inner 10
 
-set $opacity 0.9
-for_window [class=".*"] opacity $opacity
-for_window [app_id=".*"] opacity $opacity
+# set $opacity 0.9
+# for_window [class=".*"] opacity $opacity
+# for_window [app_id=".*"] opacity $opacity
 
-default_border pixel 3
+default_border pixel 2
 default_floating_border pixel 2
 
 
