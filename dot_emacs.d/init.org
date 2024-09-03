@@ -1042,8 +1042,7 @@ Eglot: the built-in LSP client for Emacs.
   (use-package eglot
     :ensure nil
     :hook
-    (((python-mode java-mode tex-mode) . eglot))
-
+    ((python-mode java-mode tex-mode) . eglot-ensure)
     :custom
     (eglot-send-changes-idle-time 0.1)
     (eglot-extend-to-xref t)             ; activate Eglot in referenced non-project files
@@ -1053,7 +1052,10 @@ Eglot: the built-in LSP client for Emacs.
     (eglot-report-progress nil)          ; Disable lsp server logs (Don't show lsp messages at the bottom, java)
 
     :config
-    (fset #'jsonrpc--log-event #'ignore) ; massive perf boost---don't log every event
+    (fset #'jsonrpc--log-event #'ignore) ; Massive performance boost; don't log every event
+
+    (add-to-list 'eglot-server-programs
+                 `(lua-mode . ("PATH_TO_THE_LSP_FOLDER/bin/lua-language-server" "-lsp"))) ;; Adds our lua lsp server to eglot's server list
     )
 
 #+end_src
@@ -1138,6 +1140,7 @@ Match delimiters with [[https://sr.ht/~tsdh/highlight-parentheses.el/][highlight
 #+begin_src emacs-lisp
 
   (use-package highlight-parentheses
+    :diminish
     :hook (prog-mode . (lambda ()
                          (highlight-parentheses-mode)
                          (electric-pair-mode)
@@ -1370,15 +1373,6 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
 
        ("e" "Calendar event" entry (file "calendar.org")
         "* %?\n %^t")
-
-       ("b" "Book" entry (file+headline "backlog.org" "Books")
-        "* %?\n %i\n")
-
-       ("m" "Movie" entry (file+headline "backlog.org" "Movies")
-        "* %?\n %i\n")
-
-       ("w" "Web" entry (file+headline "backlog.org" "Web")
-        "* %i\n%U\n\n")
 
        ("c" "Contact" entry (file "")
         "* %?
@@ -1623,12 +1617,15 @@ Calendar framework with [[https://github.com/kiwanami/emacs-calfw][calfw]].
 #+begin_src emacs-lisp
 
   (use-package diminish
-    :diminish visual-line-mode
-    :diminish centered-window-mode
-    :diminish eldoc-mode
-    :diminish evil-collection-unimpaired-mode
-    :diminish org-indent-mode
-    :diminish abbrev-mode)
+    :diminish (
+               visual-line-mode
+               centered-window-mode
+               eldoc-mode
+               evil-collection-unimpaired-mode
+               org-indent-mode
+               abbrev-mode
+               )
+    )
 
 #+end_src
 
