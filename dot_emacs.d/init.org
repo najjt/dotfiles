@@ -89,7 +89,6 @@ Welcome to my Emacs configuration. This is a literate configuration, meaning cod
 Inspirations:
 - [[https://github.com/MatthewZMD/.emacs.d][Matthew Zeng's Emacs setup]]
 - [[https://codeberg.org/ashton314/emacs-bedrock][emacs-bedrock]]
-
 * Startup
 ** Early Init
 *** Defer Garbage Collection
@@ -933,11 +932,11 @@ Open a temporary buffer to choose a new theme (and disable all other themes).
     (customize-save-variable 'my-chosen-theme theme))
 
   ;; Remember last used theme between sessions
-  (add-hook 'after-init-hook
-            (lambda ()
-              (if (boundp 'my-chosen-theme)
-                  (my/enable-theme my-chosen-theme)
-                (my/enable-theme 'modus-vivendi))))
+  ;; (add-hook 'after-init-hook
+  ;;           (lambda ()
+  ;;             (if (boundp 'my-chosen-theme)
+  ;;                 (my/enable-theme my-chosen-theme)
+  ;;               (my/enable-theme 'modus-vivendi))))
 
 #+end_src
 
@@ -1085,7 +1084,6 @@ Remap programming language modes to their treesitter equivalent modes.
 
   ;; Popup completion-at-point
   (use-package corfu
-    :defer t
     :init
     (global-corfu-mode)
     :bind
@@ -1135,13 +1133,17 @@ Nice commenting functionality with [[https://github.com/redguardtoo/evil-nerd-co
 
 *** Match Delimiters
 
-Match delimiters with [[https://github.com/Fanael/rainbow-delimiters][rainbow-delimiters]] and electric-pair-mode.
+Match delimiters with [[https://sr.ht/~tsdh/highlight-parentheses.el/][highlight-parentheses]] and electric-pair-mode.
 
 #+begin_src emacs-lisp
 
-  (use-package rainbow-delimiters
-    :defer t
-    :hook (prog-mode . (rainbow-delimiters-mode electric-pair-mode)))
+  (use-package highlight-parentheses
+    :hook (prog-mode . (lambda ()
+                         (highlight-parentheses-mode)
+                         (electric-pair-mode)
+                         )
+                     )
+    )
 
 #+end_src
 
@@ -1228,7 +1230,6 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
       org-tags-column 0
       org-startup-folded t
       org-export-backends '(md org ascii html icalendar latex odt rss)
-      org-ellipsis " ▾"
       org-blank-before-new-entry (quote ((heading . nil)
                                      (plain-list-item . nil))))
 
@@ -1314,17 +1315,13 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
                                     :category "calendar")
                              (:name "Upcoming Deadlines"
                                     :deadline future)
-                             (:discard (:anything t))))))
-              (alltodo "" ((org-agenda-overriding-header "")
-                           (org-super-agenda-groups
-                            '((:name "Priority Items"
-                                     :priority>= "C")
-                              (:discard (:anything t))))))))))
+                             (:discard (:anything t))))))))))
 
     ;; Date heading settings
     (custom-set-faces
      '(org-agenda-date ((t (:height 1.0 :weight bold :background nil))))
-     '(org-agenda-date-today ((t (:height 1.3 :weight bold :background nil :underline nil))))))
+     '(org-agenda-date-today ((t (:height 1.3 :weight bold :background nil :underline nil)))))
+    )
 
 #+end_src
 
@@ -1336,7 +1333,6 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
 
   (use-package org-super-agenda
     :after org-agenda
-    :defer t
     :config
     (org-super-agenda-mode 1))
 
@@ -1553,11 +1549,6 @@ Active code blocks in org files with [[https://orgmode.org/worg/org-contrib/babe
      ;; Hide annoying retrieving msg in mini buffer
      mu4e-hide-index-messages t
      mu4e-index-update-error-warning 'nil))
-
-  ;; Allows for using individual faces for columns in email overview
-  (use-package mu4e-column-faces
-    :after mu4e
-    :config (mu4e-column-faces-mode))
 
 #+end_src
 
