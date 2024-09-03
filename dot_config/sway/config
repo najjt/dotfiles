@@ -37,7 +37,7 @@ exec swayidle -w                                                                
           timeout 330 'swaymsg "output * dpms off"'                               \
                   resume 'swaymsg "output * dpms on"'                             \
           timeout 30 'if pgrep swaylock; then swaymsg "output * dpms off"; fi'    \
-                  resume 'if pgrep swaylock; then swaymsg "output * dpms on"; fi' \
+                  resume 'if pgrep swaylock; then swaymsg "output* dpms on"; fi' \
           before-sleep $lock                                                      \
           lock $lock
 
@@ -63,6 +63,11 @@ input * {
     repeat_rate 40
     repeat_delay 200
 }
+
+## Output Configuration
+
+output * scale 2.0 adaptive_sync on
+
 
 #
 # Variables
@@ -123,24 +128,6 @@ for_window [app_id=".*"] opacity $opacity
 default_border pixel 3
 default_floating_border pixel 2
 
-# GTK
-set $gnome-schema org.gnome.desktop.interface
-set $system_theme 'Arc-Dark'
-set $system_icons 'Numix-Square'
-set $system_dpi_scaling_factor 1.0
-set $cursor_size 20
-set $cursor_theme Adwaita
-
-exec_always {
-  gsettings set $gnome-schema gtk-theme $system_theme
-  gsettings set $gnome-schema icon-theme $system_icons
-  gsettings set $gnome-schema text-scaling-factor $system_dpi_scaling_factor
-  gsettings set $gnome-schema cursor-theme $cursor_theme
-  gsettings set $gnome-schema cursor-size $cursor_size
-}
-
-# Mouse
-seat seat0 xcursor_theme $cursor_theme $cursor_size
 
 #
 # Keybindings
