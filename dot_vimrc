@@ -7,12 +7,10 @@ set softtabstop=0
 set viminfo=
 
 " Remaps
-inoremap <C-g> <esc>
-vnoremap <C-g> <esc>
 nnoremap <Space> i_<Esc>r
 nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
-nnoremap ö :
+nnoremap ; :
 
 " --- Visual ---
 syntax on
