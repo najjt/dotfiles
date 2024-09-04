@@ -668,7 +668,7 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
     (add-hook hook 'display-line-numbers-mode))
 
   ;; Highlight current line
-  (let ((hl-line-hooks '(text-mode-hook prog-mode-hook)))
+  (let ((hl-line-hooks '(text-mode-hook prog-mode-hook dired-mode-hook)))
     (mapc (lambda (hook) (add-hook hook 'hl-line-mode)) hl-line-hooks))
 
   ;; Make keybindings in minibuffer look like other text
