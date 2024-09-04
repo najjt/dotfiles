@@ -671,6 +671,14 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
   (let ((hl-line-hooks '(text-mode-hook prog-mode-hook)))
     (mapc (lambda (hook) (add-hook hook 'hl-line-mode)) hl-line-hooks))
 
+  ;; Make keybindings in minibuffer look like other text
+  (set-face-attribute 'help-key-binding nil
+                      :box nil
+                      :foreground nil
+                      :background nil
+                      :inherit nil
+                      )
+
 #+end_src
 
 ** Font & Icons
@@ -702,6 +710,9 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
 #+begin_src emacs-lisp
 
   (use-package modus-themes
+    :defer t)
+
+  (use-package standard-themes
     :defer t)
 
   (use-package ef-themes
@@ -1025,7 +1036,6 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
 
   ;; Display help for next command keystroke
   (use-package which-key
-    :defer t
     :diminish
     :config (which-key-mode 1))
 
