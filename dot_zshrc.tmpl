@@ -38,24 +38,21 @@ alias tmc="~/tools/tmc/tmc"
 alias cm="chezmoi"
 alias dnf="sudo dnf"
 {{ if eq .chezmoi.os "darwin" }}
-alias ecre="brew services restart emacs-plus"              # Restart emacs service
+alias ecre="brew services restart emacs-plus"              # Restart Emacs service
 
 export PATH="/opt/homebrew/bin:$PATH"
 
 #
-# Zsh plugins
+# Plugins
 #
 
-# Zsh vi mode
+# Vi mode
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
-# Zsh syntax highlighting
+# Syntax highlighting
 source $(brew --prefix)/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Zsh autocomplete
-#source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 {{ else if eq .chezmoi.os "linux" }}
-alias ecre="systemctl --user restart emacs"                # Restart emacs service
+alias ecre="systemctl --user restart emacs"                # Restart Emacs service
 
 # Connect/disconnect to Wireguard
 alias wiup="wg-quick up got82-adb"
@@ -85,9 +82,12 @@ eval "$(starship init zsh)"
 # Set up fzf keybindings and fuzzy completion
 source <(fzf --zsh)
 
-# Open man pages with emacs
+# Open man pages with Emacs
 if [[ -z ${INSIDE_EMACS+1} ]]; then
     function man() {
         emacsclient -a '' -cne "(let ((buf (man \"$1\"))) (delete-other-windows) (switch-to-buffer buf) (evil-local-set-key 'normal \"q\" (lambda () (interactive) (kill-current-buffer) (delete-frame))))" > /dev/null
     }
 fi
+
+# Start Emacs server
+if ! ps -e -o args | grep -i "emacs" | grep "daemon"; then;
