@@ -232,7 +232,11 @@ Set meta key, turn off option key as modifier, set dired to not use ~--dired~ fl
     (setq mac-option-modifier 'none)
     (setq frame-resize-pixelwise t)
     ;; (add-to-list 'default-frame-alist '(undecorated . t))
-    (global-set-key (kbd "C-x C-z") 'ns-do-hide-emacs))
+    (global-set-key (kbd "C-x C-z") 'ns-do-hide-emacs)
+    ;; Start server if it isn't running
+    (load "server")
+    (unless (server-running-p)
+      (server-start)))
 
 #+end_src
 
