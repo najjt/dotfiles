@@ -7,10 +7,10 @@
 )
 
 (defalias
-  ;; tap for esc, hold for ctrl
+  ;; Tap for esc, hold for ctrl
   ec (tap-hold-next-release 200 esc lctl)
 
-  ;; layers
+  ;; Layers
   a (tap-hold-next-release 200 d (layer-toggle arithmetic))
 ;;p (tap-hold-next-release 200 s (layer-toggle punctuation))
   c (tap-hold-next-release 200 c (layer-toggle symbols))
@@ -20,15 +20,15 @@
   w (tap-hold-next-release 200 w (layer-toggle selection))
   v (tap-hold-next-release 200 a (layer-toggle vi))
 
-  ;;  aliases for deletion
+  ;;  Aliases for deletion
   cb C-bspc
   scb S-C-bspc
 
-  ;; aliases for navigation
+  ;; Aliases for navigation
   cl C-left
   cr C-right
 
-  ;; aliases for selection
+  ;; Aliases for selection
   scl S-C-left
   scr S-C-right
   sl S-left
