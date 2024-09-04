@@ -438,7 +438,7 @@ A nicer way to set up packages is with [[https://github.com/jwiegley/use-package
   (savehist-mode 1)
 
   ;; Save cursor position in files
-  (save-place-mode 1)
+  ;; (save-place-mode 1)
 
   ;; Remember recently edited files
   (recentf-mode 1)
@@ -735,8 +735,8 @@ To spell check files, I use =flyspell= and =hunspell= in order to spell check in
      (emacs-startup . my-run-shell-command))
     :custom
     (jinx-camel-modes '(prog-mode))
-    :bind (("C-," . jinx-correct)
-           ("C-M-," . jinx-languages))
+    :bind (("C-i" . jinx-correct)
+           ("C-M-i" . jinx-languages))
     :config
     (setq jinx-languages "sv en_US"))
 
@@ -943,11 +943,11 @@ Open a temporary buffer to choose a new theme (and disable all other themes).
     (customize-save-variable 'my-chosen-theme theme))
 
   ;; Remember last used theme between sessions
-  ;; (add-hook 'after-init-hook
-  ;;           (lambda ()
-  ;;             (if (boundp 'my-chosen-theme)
-  ;;                 (my/enable-theme my-chosen-theme)
-  ;;               (my/enable-theme 'modus-vivendi))))
+  (add-hook 'after-init-hook
+            (lambda ()
+              (if (boundp 'my-chosen-theme)
+                  (my/enable-theme my-chosen-theme)
+                (my/enable-theme 'modus-vivendi))))
 
 #+end_src
 
