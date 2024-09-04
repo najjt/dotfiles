@@ -4,7 +4,7 @@ screenshot.jpeg
 {{ if ne .chezmoi.os "darwin" }}
 .config/yabai
 .config/sketchybar
-.config/karabiner*
+.config/karabiner.edn
 .qutebrowser/
 {{ else if ne .chezmoi.os "linux" }}
 .config/qutebrowser
