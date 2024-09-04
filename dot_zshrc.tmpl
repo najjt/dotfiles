@@ -88,6 +88,3 @@ if [[ -z ${INSIDE_EMACS+1} ]]; then
         emacsclient -a '' -cne "(let ((buf (man \"$1\"))) (delete-other-windows) (switch-to-buffer buf) (evil-local-set-key 'normal \"q\" (lambda () (interactive) (kill-current-buffer) (delete-frame))))" > /dev/null
     }
 fi
-
-# Start Emacs server
-if ! ps -e -o args | grep -i "emacs" | grep "daemon"; then;
