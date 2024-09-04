@@ -1,4 +1,3 @@
-#PS1=" [%F{green}%n@%m%f %1~ %#] $ "
 PS1=" %1~ %F{green}>%f "
 
 # History time stamp format
@@ -13,6 +12,10 @@ function zvm_config() {
   ZVM_INIT_MODE=sourcing
   ZVM_CURSOR_STYLE_ENABLED=true
 }
+
+#
+#  Aliases
+#
 
 # Source zsh config
 alias sz="source $HOME/.zshrc && source $HOME/.zshenv"
@@ -35,33 +38,43 @@ alias tmc="~/tools/tmc/tmc"
 alias cm="chezmoi"
 alias dnf="sudo dnf"
 {{ if eq .chezmoi.os "darwin" }}
-# Restart emacs homebrew service
-alias ecre="brew services restart emacs-plus"
+alias ecre="brew services restart emacs-plus"              # Restart emacs service
 
 export PATH="/opt/homebrew/bin:$PATH"
 
-# zsh vi mode
+#
+# Zsh plugins
+#
+
+# Zsh vi mode
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
-# zsh syntax highlighting
+# Zsh syntax highlighting
 source $(brew --prefix)/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# zsh autocomplete
+# Zsh autocomplete
 #source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 {{ else if eq .chezmoi.os "linux" }}
-# Restart emacs service
-alias ecre="systemctl --user restart emacs"
+alias ecre="systemctl --user restart emacs"                # Restart emacs service
 
 # Connect/disconnect to Wireguard
 alias wiup="wg-quick up got82-adb"
 alias wido="wg-quick down got82-adb"
 alias wire="systemctl restart wg-quick@got82-adb"
 
-# zsh vi mode
+#
+# Plugins
+#
+
+# Vi mode
 source /usr/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
-# zsh syntax highlighting
+# Syntax highlighting
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+#
+# Other
+#
 
 # ghc
 [ -f "/home/najjt/.ghcup/env" ] && . "/home/najjt/.ghcup/env" # ghcup-env%
