@@ -120,9 +120,9 @@ focus_follows_mouse no
 
 gaps inner 10
 
-# set $opacity 0.9
-# for_window [class=".*"] opacity $opacity
-# for_window [app_id=".*"] opacity $opacity
+set $opacity 0.95
+for_window [class=".*"] opacity $opacity
+for_window [app_id=".*"] opacity $opacity
 
 default_border pixel 2
 default_floating_border pixel 2
