@@ -5,7 +5,7 @@
 ## Background processes
 
 # Clipboard manager listener
-exec wl-paste --watch cliphist store
+exec wl-paste --watch cliphist store --expire-duration 3600
 
 # Shuffle wallpaper
 exec_always ~/scripts/shuffle_wallpaper.sh
@@ -90,7 +90,7 @@ set $browser qutebrowser
 set $menu rofi -show combi -modes combi -combi-modes "window,drun,run" | xargs swaymsg exec --
 
 # Clipboard manager
-set $clip cliphist list | rofi -dmenu -P "Clipboard" | cliphist decode | wl-copy
+set $clip cliphist list --expire-duration 3600 | rofi -dmenu -P "Clipboard" | cliphist decode | wl-copy
 
 # Lock command
 set $lock 'swaylock -f -c 000000'
