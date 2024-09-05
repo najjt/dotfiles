@@ -687,10 +687,10 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
 #+begin_src emacs-lisp
 
   (when *sys/linux*
-    (add-to-list 'default-frame-alist '(font . "Terminess Nerd Font-11")))
+    (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-11")))
 
   (when *sys/mac*
-    (add-to-list 'default-frame-alist '(font . "Terminess Nerd Font-18")))
+    (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-18")))
 
 #+end_src
 
@@ -1247,7 +1247,7 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
           org-startup-folded t
           org-refile-targets (quote (("backlog.org"          :maxlevel   . 3)
                                      ("../misc/computer.org" :maxlevel   . 3)
-                                     ("../misc/album.org"    :level      . 1)
+                                     ("../misc/album.org"    :level      . 0)
                                      ("privat.org"           :maxlevel   . 3)
                                      ("studier.org"          :maxlevel   . 3)))
           org-outline-path-complete-in-steps nil ; Refile in a single go
