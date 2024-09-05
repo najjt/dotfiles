@@ -830,7 +830,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
             evil-want-C-i-jump nil)
 
       :config
-      (setq evil-undo-system 'undo-redo)
+      (evil-set-undo-system 'undo-redo)
 
       ;; Modes to disable evil in
       (defun my/evil-hook ()
