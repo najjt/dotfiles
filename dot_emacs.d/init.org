@@ -40,6 +40,7 @@
   - [[#font--icons][Font & Icons]]
   - [[#themes][Themes]]
 - [[#text--languages][Text & Languages]]
+  - [[#wrap-text][Wrap Text]]
   - [[#spell-checking][Spell Checking]]
   - [[#undo-functionality][Undo Functionality]]
   - [[#tabs][Tabs]]
@@ -654,9 +655,6 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
   ;; Show column number in status bar
   (column-number-mode)
 
-  ;; Soft-wrap text
-  (global-visual-line-mode t)
-
   ;; Disable border around modelines
   (custom-set-faces
    '(mode-line ((t (:box nil))))
@@ -723,6 +721,18 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
 #+end_src
 
 * Text & Languages
+** Wrap Text
+
+Wrap long lines at the =fill-column= length.
+
+#+begin_src emacs-lisp
+
+  (add-hook 'text-mode-hook #'auto-fill-mode)
+
+  (setq-default fill-column 80)
+
+#+end_src
+
 ** Spell Checking
 
 To spell check files, I use =flyspell= and =hunspell= in order to spell check in both Swedish and English.
@@ -887,6 +897,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     :hook (org-mode . evil-org-mode)
     :diminish
     :config
+    (require 'evil-org-agenda)
     (evil-org-agenda-set-keys))
 
 #+end_src
