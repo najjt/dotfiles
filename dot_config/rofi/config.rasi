@@ -1,5 +1,5 @@
-@theme "default"
-
-* {
+configuration {
 font: "Terminus (TTF) 10";
 }
+
+@theme "theme.rasi"
