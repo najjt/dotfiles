@@ -729,7 +729,7 @@ Wrap long lines at the =fill-column= length.
 
   (add-hook 'text-mode-hook #'auto-fill-mode)
 
-  (setq-default fill-column 80)
+  (setq-default fill-column 72)
 
 #+end_src
 
@@ -1627,8 +1627,7 @@ Calendar framework with [[https://github.com/kiwanami/emacs-calfw][calfw]].
 #+begin_src emacs-lisp
 
   (use-package diminish
-    :diminish (
-               visual-line-mode
+    :diminish (auto-fill-mode
                centered-window-mode
                eldoc-mode
                evil-collection-unimpaired-mode
