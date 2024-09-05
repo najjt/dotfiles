@@ -1,0 +1,106 @@
+/* najjt rofi theme */
+
+* {
+    background:                      #000000;
+    bordercolor:                     #ffffff;
+    separatorcolor:                  #ffffff;
+    normal-background:               #000000;
+    normal-foreground:               #ffffff;  /* White text for unselected items */
+    selected-normal-background:      #ffffff;
+    selected-normal-foreground:      #000000;  /* Black text for selected items */
+    active-background:               #ffffff;
+    active-foreground:               #000000;
+    urgent-background:               #000000;  /* Assuming no urgent state needs a different color */
+    urgent-foreground:               #ffffff;  /* White text for urgent items */
+    foreground:                      @normal-foreground;
+}
+
+* {
+    spacing:    2;
+    border-color: @foreground;
+    background-color: transparent;
+}
+
+#window {
+    border:     1;
+    padding:    5;
+    background-color: @background;
+}
+
+#mainbox {
+    border:  0;
+    padding: 0;
+}
+
+#message {
+    border:  1px dash 0px 0px ;
+    padding: 2px 0px 0px ;
+    border-color: @separatorcolor;
+}
+
+#textbox {
+    text-color: @bordercolor;
+}
+
+#listview {
+    border-color: @separatorcolor;
+    fixed-height: 0;
+    border:       2px dash 0px 0px ;
+    padding:      2px 0px 0px ;
+}
+
+#element {
+    border: 0;
+}
+
+#element normal.normal {
+    text-color: @normal-foreground;      /* White text for unselected items */
+    background-color: @normal-background;  /* Black background for unselected items */
+}
+
+#element normal.urgent {
+    text-color: @urgent-foreground;      /* White text for urgent items */
+    background-color: @urgent-background;  /* Black background for urgent items */
+}
+
+#element normal.active {
+    text-color: @active-foreground;      /* Black text for active items */
+    background-color: @active-background;  /* White background for active items */
+}
+
+#element selected.normal {
+    text-color: @selected-normal-foreground;  /* Black text for selected items */
+    background-color: @selected-normal-background;  /* White background for selected items */
+}
+
+#element selected.urgent {
+    text-color: @urgent-foreground;      /* White text for urgent items */
+    background-color: @urgent-background;  /* Black background for urgent items */
+}
+
+#element selected.active {
+    text-color: @selected-normal-foreground;  /* Black text for selected active items */
+    background-color: @selected-normal-background;  /* White background for selected active items */
+}
+
+#scrollbar {
+    border:  0;
+    width: 4px;
+    padding: 0;
+    handle-color: @normal-foreground;
+}
+
+#sidebar {
+    border:       2px dash 0px 0px ;
+    border-color: @separatorcolor;
+}
+
+#button selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+
+#inputbar, case-indicator, entry, prompt, button {
+    spacing: 0;
+    text-color:      @bordercolor;
+}
