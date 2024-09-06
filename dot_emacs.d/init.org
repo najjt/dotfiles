@@ -1567,14 +1567,12 @@ Calendar framework with [[https://github.com/kiwanami/emacs-calfw][calfw]].
 #+begin_src emacs-lisp
 
   (use-package calfw
-    :defer t
     :config
     ;; Use Swedish calendar
     (load "sv-kalender"))
 
   ;; Integrate calfw with org
   (use-package calfw-org
-    :defer t
     :after calfw)
 
   ;; Open calendar with two weeks view
