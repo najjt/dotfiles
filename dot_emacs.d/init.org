@@ -1245,11 +1245,12 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
           org-todo-keywords '((sequence "TODO" "NEXT" "|" "DONE"))
           org-tags-column 0
           org-startup-folded t
-          org-refile-targets (quote (("backlog.org"          :maxlevel   . 3)
-                                     ("../misc/computer.org" :maxlevel   . 3)
-                                     ("../misc/album.org"    :level      . 0)
-                                     ("privat.org"           :maxlevel   . 3)
-                                     ("studier.org"          :maxlevel   . 3)))
+          org-refile-targets (quote (("backlog.org"             :maxlevel   . 3)
+                                     ("../misc/computer.org"    :maxlevel   . 3)
+                                     ("../misc/inköpslista.org" :maxlevel   . 1)
+                                     ("../misc/album.org"       :level      . 0)
+                                     ("privat.org"              :maxlevel   . 3)
+                                     ("studier.org"             :maxlevel   . 3)))
           org-outline-path-complete-in-steps nil ; Refile in a single go
           org-refile-use-outline-path t          ; Show full paths for refiling
           org-blank-before-new-entry (quote ((heading . nil)
