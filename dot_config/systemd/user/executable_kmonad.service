@@ -1,0 +1,13 @@
+[Unit]
+Description=KMonad for Laptop Keyboard
+StartLimitIntervalSec=1 min
+StartLimitBurst=3
+
+[Service]
+ExecStart=/usr/local/bin/kmonad /home/najjt/.config/kmonad/kmonad.kbd
+Restart=always
+RestartSec=5
+StandardOutput=null
+
+[Install]
+WantedBy=default.target
