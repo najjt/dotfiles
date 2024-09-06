@@ -26,10 +26,11 @@
   - [[#user-information][User Information]]
   - [[#quality-of-life][Quality of Life]]
     - [[#miscellaneous-options][Miscellaneous Options]]
-    - [[#counsel-and-ivy][Counsel and Ivy]]
+    - [[#completions][Completions]]
     - [[#history][History]]
     - [[#environment-variables][Environment Variables]]
     - [[#sudo-edit][Sudo Edit]]
+  - [[#embark][Embark]]
   - [[#dotfiles-management][Dotfiles Management]]
   - [[#file-explorer][File Explorer]]
   - [[#terminal-emulation][Terminal Emulation]]
@@ -58,7 +59,7 @@
   - [[#general-programming-functionalities][General Programming Functionalities]]
     - [[#eglot][Eglot]]
     - [[#treesitter][Treesitter]]
-    - [[#completions][Completions]]
+    - [[#completions-1][Completions]]
     - [[#comments][Comments]]
     - [[#match-delimiters][Match Delimiters]]
     - [[#project-management][Project Management]]
@@ -395,46 +396,30 @@ A collection of settings I did not know where else to put.
 
 #+end_src
 
-*** Counsel and Ivy
+*** Completions
 
-[[https://github.com/abo-abo/swiper][Counsel and Ivy]] provide generic completion and enhanced versions of common Emacs commands.
+[[https://github.com/minad/vertico][Vertico]] provides a performant and minimalistic vertical completion UI.
+
+[[https://github.com/minad/consult][Consult]] provides search and navigation commands based on the Emacs
+completion function completing-read.
 
 #+begin_src emacs-lisp
 
-  (use-package counsel
-    :diminish
-    :bind
-    ("M-x"     . counsel-M-x)
-    ("C-x b"   . counsel-switch-buffer)
-    ("C-x C-f" . counsel-find-file)
-    :config
-    (counsel-mode 1))
-
-  (use-package ivy
-    :diminish
-    :bind
-    ("C-s" . swiper)
-    (:map ivy-switch-buffer-map
-          ("C-d" . ivy-switch-buffer-kill))
-    (:map ivy-reverse-i-search-map
-          ("C-d" . ivy-reverse-i-search-kill))
-    :config
-    (ivy-mode 1)
-    ;; Hide "^" from ivy minibuffer
-    (setq ivy-initial-inputs-alist nil))
-
-  ;; Helpful information for functions in minibuffers
-  (use-package ivy-rich
+  (use-package vertico
     :init
-    (ivy-rich-mode 1))
+    (vertico-mode))
 
-  ;; command history for Ivy
-  (use-package prescient)
+  (use-package consult
+    :config
+    (global-set-key [remap switch-to-buffer] 'consult-buffer)
+    (global-set-key [remap switch-to-buffer-other-window] 'consult-buffer-other-window)
+    (global-set-key [remap switch-to-buffer-other-frame] 'consult-buffer-other-frame)
+    (global-set-key [remap goto-line] 'consult-goto-line))
 
-  ;; Ivy integration for prescient
-  (use-package ivy-prescient
-    :init
-    (ivy-prescient-mode 1))
+  ;; Annotations for the minibuffer
+  (use-package marginalia
+    :config
+    (marginalia-mode 1))
 
 #+end_src
 
@@ -487,6 +472,21 @@ Edit files with sudo privileges with [[https://github.com/nflath/sudo-edit/tree/
     :diminish
     :config
     (global-set-key (kbd "C-c C-r") 'sudo-edit))
+
+#+end_src
+
+** Embark
+
+[[https://github.com/oantolin/embark/][Embark]] provides commands to run based on the current context.
+
+#+begin_src emacs-lisp
+
+  (use-package embark
+    :bind ("C-c a" . embark-act))
+
+  (use-package embark-consult
+    :after embark
+    :hook (embark-collect-mode-hook . embark-consult-preview-minor-mode))
 
 #+end_src
 
@@ -1096,7 +1096,6 @@ Remap programming language modes to their treesitter equivalent modes.
 
 #+begin_src emacs-lisp
 
-  ;; Popup completion-at-point
   (use-package corfu
     :init
     (global-corfu-mode)
@@ -1122,14 +1121,6 @@ Remap programming language modes to their treesitter equivalent modes.
     :if (not (display-graphic-p))
     :config
     (corfu-terminal-mode))
-
-  ;; Nerd icons for corfu
-  (use-package nerd-icons-corfu)
-
-  ;; Orderless: powerful completion style
-  (use-package orderless
-    :config
-    (setq completion-styles '(orderless)))
 
 #+end_src
 
