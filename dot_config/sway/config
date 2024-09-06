@@ -58,7 +58,7 @@ input "1452:641:Apple_Internal_Keyboard_/_Trackpad" {
 input * {
     xkb_layout se,us
     xkb_switch_layout next
-    xkb_options grp:ctrl_space_toggle
+    xkb_options grp:rshift_toggle
     repeat_rate 40
     repeat_delay 200
 }
