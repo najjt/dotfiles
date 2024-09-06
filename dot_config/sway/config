@@ -247,6 +247,9 @@ bindsym XF86AudioPlay exec playerctl pause
 bindsym XF86MonBrightnessUp exec ~/scripts/brightness.sh +
 bindsym XF86MonBrightnessDown exec ~/scripts/brightness.sh -
 
+# Take a screenshot
+bindsym $mod+Shift+u exec grim ~/Pictures/screenshot-$(date +'%Y-%m-%d_%H-%M-%S').png && notify-send "Screenshot taken"
+
 # Status bar
 bar {
     swaybar_command waybar
