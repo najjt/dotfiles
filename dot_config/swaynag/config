@@ -1,0 +1,8 @@
+font=Terminus (TTF) 12
+[warning]
+background=000000
+text=FFFFFF
+border-bottom=FFFFFF
+button-background=717171
+button-text=FFFFFF
+border=000000
