@@ -1336,7 +1336,7 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
           "← now")
 
     (setq org-agenda-custom-commands
-          '(("s" "Super agenda"
+          '(("d" "Day agenda"
              ((agenda "" ((org-agenda-span 'day)
                           (org-super-agenda-groups
                            '((:name "Schedule"
@@ -1355,7 +1355,9 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
                                     :category "calendar")
                              (:name "Upcoming Deadlines"
                                     :deadline future)
-                             (:discard (:anything t))))))))))
+                             (:discard (:anything t))))))))
+            ("w" "Week agenda"
+             ((agenda "" ((org-agenda-span 'week)))))))
 
     ;; Date heading settings
     (custom-set-faces
@@ -1372,13 +1374,7 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
 
   (use-package org-super-agenda
     :after org-agenda
-    :config
-    (org-super-agenda-mode 1))
-
-  ;; Open my custom super agenda
-  (defun my/custom-open-org-agenda ()
-    (interactive)
-    (org-agenda nil "s"))
+    :hook (org-agenda-mode . org-super-agenda-mode))
 
 #+end_src
 
