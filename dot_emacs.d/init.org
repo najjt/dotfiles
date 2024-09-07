@@ -482,7 +482,7 @@ Edit files with sudo privileges with [[https://github.com/nflath/sudo-edit/tree/
 #+begin_src emacs-lisp
 
   (use-package embark
-    :bind ("C-c a" . embark-act))
+    :bind ("M-;" . embark-act))
 
   (use-package embark-consult
     :after embark
