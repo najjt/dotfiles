@@ -514,9 +514,14 @@ Dired, Emacs' built-in file explorer, with vim-style navigation and nerd icons.
 
   (use-package dired
     :ensure nil
-    :hook (dired-mode . dired-hide-details-mode)
-    :bind ("C-x C-j" . dired-jump)
-    :custom (dired-free-space nil) ; Hide free space
+    :hook (dired-mode . (lambda ()
+                          (dired-hide-details-mode) ; Hide details by default
+                          (dired-omit-mode)))       ; Hide hidden files
+    :bind (("C-x C-j" . dired-jump)
+           :map evil-normal-state-map
+           ("z d" . dired-hide-details-mode)        ; Toggle details
+           ("z h" . dired-omit-mode))               ; Toggle details
+    :custom (dired-free-space nil)                  ; Hide free space
     :config
     (when *sys/mac*
       ;; Set directory program to gls on macOS
@@ -526,8 +531,15 @@ Dired, Emacs' built-in file explorer, with vim-style navigation and nerd icons.
       ;; Don't use --dired flag with ls on macOS
       (setq dired-use-ls-dired nil))
 
-    ;; Group dotfiles and directories
+    ;; Show hidden files, sort directories first
     (setq dired-listing-switches "-la --group-directories-first -v")
+
+    ;; What files to hide in dired-omit-mode
+    (setq dired-omit-files
+          (rx (or (seq bol (? ".") "#")         ; emacs autosave files
+                  (seq bol "." (not (any "."))) ; dot-files
+                  (seq "~" eol)                 ; backup-files
+                  )))
 
     ;; No infinite dired buffers!
     (setq dired-kill-when-opening-new-dired-buffer t))
