@@ -4,8 +4,11 @@
 
 ## Background processes
 
+# Emacs daemon
+exec_always emacs --daemon
+
 # Clipboard manager listener
-exec wl-paste --watch cliphist store -max-items 100
+exec_always wl-paste --watch cliphist store -max-items 100
 
 # Shuffle wallpaper
 exec_always ~/scripts/shuffle_wallpaper.sh
