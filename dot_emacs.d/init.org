@@ -1127,6 +1127,11 @@ Remap programming language modes to their treesitter equivalent modes.
     :config
     (corfu-terminal-mode))
 
+  ;; Nerd icons for corfu
+  (use-package nerd-icons-corfu
+    :config
+    (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+
 #+end_src
 
 *** Comments
