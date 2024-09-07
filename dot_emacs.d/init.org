@@ -416,6 +416,11 @@ completion function completing-read.
     (global-set-key [remap switch-to-buffer-other-frame] 'consult-buffer-other-frame)
     (global-set-key [remap goto-line] 'consult-goto-line))
 
+  ;; Better completion style
+  (use-package orderless
+    :config
+    (setq completion-styles '(orderless)))
+
   ;; Annotations for the minibuffer
   (use-package marginalia
     :config
