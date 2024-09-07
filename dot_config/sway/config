@@ -101,9 +101,6 @@ set $clip cliphist list -max-items 100 | rofi -dmenu -P "Clipboard" | cliphist d
 # Lock command
 set $lock 'swaylock -f -c 000000'
 
-# Move windows with $mod + left mouse button, resize with $mod + right mouse button
-floating_modifier $mod normal
-
 # Workspace names
 set $ws1 "1"
 set $ws2 "2"
@@ -184,6 +181,9 @@ bindsym $mod+v splitv
 # Toggle horizontal layout
 bindsym $mod+b splith
 
+# Move windows with $mod + left mouse button, resize with $mod + right mouse button
+floating_modifier $mod normal
+
 # Switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -230,8 +230,41 @@ bindsym $mod+Control+Shift+r reload
 # Restart sway
 bindsym $mod+Control+Shift+e restart
 
-# Exit sway
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+# swaynagmode (keyboard bindings for swaynag)
+# https://github.com/b0o/swaynagmode
+set {
+    $nag         exec ~/.local/bin/swaynagmode
+    $nag_exit    $nag --exit
+    $nag_confirm $nag --confirm
+    $nag_select  $nag --select
+}
+
+mode "nag" {
+  bindsym {
+    Ctrl+d    mode "default"
+
+    q         $nag_exit
+
+    Return    $nag_confirm
+
+    Tab       $nag_select prev
+    Shift+Tab $nag_select next
+
+    Left      $nag_select next
+    Right     $nag_select prev
+
+    Up        $nag_select next
+    Down      $nag_select prev
+  }
+}
+
+bindsym {
+  $mod+Shift+e $nag -t "warning" -m "Exit Sway?" -b "Exit" "swaymsg exit" -b "Reload" "swaymsg reload"
+}
+
+# -R is recommended for swaynag_command so that, upon a syntax error in your sway config, the
+# 'Reload Sway' option will be initially selected instead of the 'Exit Sway' option
+swaynag_command $nag -R
 
 # Lock screen
 bindsym ctrl+$mod+q exec swaylock -f -c 000000
