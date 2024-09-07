@@ -171,66 +171,6 @@ config.set('content.images', True, 'chrome-devtools://*')
 # Type: Bool
 config.set('content.images', True, 'devtools://*')
 
-# Allow JavaScript to read from or write to the clipboard. With
-# QtWebEngine, writing the clipboard as response to a user interaction
-# is always allowed.
-# Type: String
-# Valid values:
-#   - none: Disable access to clipboard.
-#   - access: Allow reading from and writing to the clipboard.
-#   - access-paste: Allow accessing the clipboard and pasting clipboard content.
-config.set('content.javascript.clipboard', 'access', 'dsv.su.se')
-
-# Allow JavaScript to read from or write to the clipboard. With
-# QtWebEngine, writing the clipboard as response to a user interaction
-# is always allowed.
-# Type: String
-# Valid values:
-#   - none: Disable access to clipboard.
-#   - access: Allow reading from and writing to the clipboard.
-#   - access-paste: Allow accessing the clipboard and pasting clipboard content.
-config.set('content.javascript.clipboard', 'access', 'nextilearn.dsv.su.se')
-
-# Allow JavaScript to read from or write to the clipboard. With
-# QtWebEngine, writing the clipboard as response to a user interaction
-# is always allowed.
-# Type: String
-# Valid values:
-#   - none: Disable access to clipboard.
-#   - access: Allow reading from and writing to the clipboard.
-#   - access-paste: Allow accessing the clipboard and pasting clipboard content.
-config.set('content.javascript.clipboard', 'access', 'nextilearn.se')
-
-# Allow JavaScript to read from or write to the clipboard. With
-# QtWebEngine, writing the clipboard as response to a user interaction
-# is always allowed.
-# Type: String
-# Valid values:
-#   - none: Disable access to clipboard.
-#   - access: Allow reading from and writing to the clipboard.
-#   - access-paste: Allow accessing the clipboard and pasting clipboard content.
-config.set('content.javascript.clipboard', 'access', 'sonofatailor.com')
-
-# Allow JavaScript to read from or write to the clipboard. With
-# QtWebEngine, writing the clipboard as response to a user interaction
-# is always allowed.
-# Type: String
-# Valid values:
-#   - none: Disable access to clipboard.
-#   - access: Allow reading from and writing to the clipboard.
-#   - access-paste: Allow accessing the clipboard and pasting clipboard content.
-config.set('content.javascript.clipboard', 'access', 'chat.openai.com')
-
-# Allow JavaScript to read from or write to the clipboard. With
-# QtWebEngine, writing the clipboard as response to a user interaction
-# is always allowed.
-# Type: String
-# Valid values:
-#   - none: Disable access to clipboard.
-#   - access: Allow reading from and writing to the clipboard.
-#   - access-paste: Allow accessing the clipboard and pasting clipboard content.
-config.set('content.javascript.clipboard', 'access', 'github.com')
-
 # Enable JavaScript.
 # Type: Bool
 config.set('content.javascript.enabled', True, 'chrome-devtools://*')
@@ -656,3 +596,6 @@ config.bind(',c', 'hint code userscript code_select.py')
 
 # Set window title
 c.window.title_format = '{current_title} - qutebrowser'
+
+# Enable dark mode
+config.set('colors.webpage.darkmode.enabled', True)

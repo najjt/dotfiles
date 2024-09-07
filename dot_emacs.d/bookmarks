@@ -10,10 +10,10 @@
  (last-modified 26329 40703 882732 605000))
 ("computer.org"
  (filename . "~/notes/misc/computer.org")
- (front-context-string . "t up computer ba")
+ (front-context-string . "* General\n** TOD")
  (rear-context-string)
- (position . 10)
- (last-modified 26328 11835 606335 856000))
+ (position . 1)
+ (last-modified 26329 57770 101402 997000))
 ("scripts"
  (filename . "~/scripts/")
  (front-context-string . "  /home/najjt/sc")
