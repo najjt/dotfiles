@@ -13,4 +13,5 @@ screenshot.jpeg
 .config/rofi
 .config/mako
 .config/waybar
+.config/systemd
 {{ end }}
