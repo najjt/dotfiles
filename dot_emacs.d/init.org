@@ -48,7 +48,7 @@
 - [[#keybindings][Keybindings]]
   - [[#general][General]]
   - [[#vi-emulation][Vi Emulation]]
-  - [[#command-buffers][Command Buffers]]
+  - [[#hydra][Hydra]]
     - [[#basic-configuration][Basic Configuration]]
     - [[#choose-theme][Choose Theme]]
     - [[#resize-window][Resize Window]]
@@ -920,7 +920,7 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
 
 #+end_src
 
-** Command Buffers
+** Hydra
 
 [[https://github.com/abo-abo/hydra][Hydra]] provides temporary command buffers.
 
@@ -932,9 +932,9 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     :config
     (my/leader-keys
       "t" '(hydra-theme/body        :which-key "Choose [t]heme")
-      "r" '(hydra-window/body       :which-key "[r]esize window")
-      "a" '(org-agenda              :which-key "open org [a]genda")
-      "c" '(my/custom-open-calendar :which-key "open [c]alendar")))
+      "r" '(hydra-window/body       :which-key "[R]esize window")
+      "a" '(org-agenda              :which-key "Open Org [a]genda")
+      "c" '(my/custom-open-calendar :which-key "Open [c]alendar")))
 
 #+end_src
 
