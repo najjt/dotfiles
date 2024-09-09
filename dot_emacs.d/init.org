@@ -63,7 +63,6 @@
     - [[#completions-1][Completions]]
     - [[#comments][Comments]]
     - [[#match-delimiters][Match Delimiters]]
-    - [[#project-management][Project Management]]
     - [[#git-interface][Git Interface]]
   - [[#programming-languages-support][Programming Languages Support]]
     - [[#java][Java]]
@@ -124,6 +123,11 @@ Every file opened and loaded by Emacs will run through this list to check for a 
 
   (defvar file-name-handler-alist-original file-name-handler-alist)
   (setq file-name-handler-alist nil)
+
+  ;; Restore original file-name-handler-alist after initialization
+  (add-hook 'after-init-hook
+            (lambda ()
+              (setq file-name-handler-alist file-name-handler-alist-original)))
 
 #+end_src
 
@@ -624,7 +628,7 @@ Popup buffers with [[https://github.com/karthink/popper][popper]].
 
 ** Dashboard
 
-The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package displays a customizable dashboard.
+The [[https://github.com/emacs-dashboard/emacs-dashboard][Emacs Dashboard]] package displays a customizable dashboard.
 
 #+begin_src emacs-lisp
 
@@ -650,7 +654,7 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Dashboard]] package di
           dashboard-display-icons-p t
           dashboard-icon-type 'nerd-icons
           dashboard-set-file-icons t
-          dashboard-projects-backend 'projectile))
+          dashboard-projects-backend 'project-el))
 
   ;; Hook dashboard-open to creation of new frame
   (add-hook 'after-make-frame-functions
@@ -1080,15 +1084,15 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
 #+begin_src emacs-lisp
 
   (use-package helpful
-    :defer t
-    :custom
-    (counsel-describe-function-function #'helpful-callable)
-    (counsel-describe-variable-function #'helpful-variable)
-    :bind
-    ([remap describe-function] . counsel-describe-function)
-    ([remap describe-command] . helpful-command)
-    ([remap describe-variable] . counsel-describe-variable)
-    ([remap describe-key] . helpful-key))
+    :config
+    ;; Note that the built-in `describe-function' includes both functions
+    ;; and macros. `helpful-function' is functions only, so we provide
+    ;; `helpful-callable' as a drop-in replacement.
+    (global-set-key (kbd "C-h f") #'helpful-callable)
+
+    (global-set-key (kbd "C-h v") #'helpful-variable)
+    (global-set-key (kbd "C-h k") #'helpful-key)
+    (global-set-key (kbd "C-h x") #'helpful-command))
 
 #+end_src
 
@@ -1214,28 +1218,6 @@ Match delimiters with [[https://sr.ht/~tsdh/highlight-parentheses.el/][highlight
     :hook (prog-mode . (lambda ()
                          (highlight-parentheses-mode)
                          (electric-pair-mode))))
-
-#+end_src
-
-*** Project Management
-
-Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]].
-
-#+begin_src emacs-lisp
-
-  (use-package projectile
-    :defer t
-    :diminish
-    :bind-keymap
-    ("C-c p" . projectile-command-map)
-    :init
-    (setq projectile-switch-project-action #'projectile-dired)
-    :config
-    (projectile-mode 1)
-    (setq projectile-track-known-projects-automatically nil)
-
-    (use-package counsel-projectile
-      :config (counsel-projectile-mode 1)))
 
 #+end_src
 
