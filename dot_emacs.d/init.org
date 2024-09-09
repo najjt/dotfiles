@@ -52,6 +52,7 @@
     - [[#basic-configuration][Basic Configuration]]
     - [[#choose-theme][Choose Theme]]
     - [[#resize-window][Resize Window]]
+    - [[#eglot-commands][Eglot Commands]]
 - [[#help-functionality][Help Functionality]]
   - [[#helpful][Helpful]]
   - [[#which-key][Which Key]]
@@ -799,7 +800,6 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     ;; Leader key for hydras
     (general-create-definer my/leader-keys
       :keymaps '(normal visual emacs)
-      ;; I use below prefixes together with Hydra
       :prefix ","
       :global-prefix ",")
 
@@ -825,89 +825,89 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
 
 #+begin_src emacs-lisp
 
-    (use-package evil
-      :diminish
-      :demand t
-      :bind
-      ("C-z" . evil-local-mode) ; Toggle evil mode
+  (use-package evil
+    :diminish
+    :demand t
+    :bind
+    ("C-z" . evil-local-mode) ; Toggle evil mode
 
-      ;; Window navigation
-      (:map evil-normal-state-map
-            ("C-w h" . evil-window-left)
-            ("C-w j" . evil-window-down)
-            ("C-w k" . evil-window-up)
-            ("C-w l" . evil-window-right))
+    ;; Window navigation
+    (:map evil-normal-state-map
+          ("C-w h" . evil-window-left)
+          ("C-w j" . evil-window-down)
+          ("C-w k" . evil-window-up)
+          ("C-w l" . evil-window-right))
 
-      :hook (evil-mode . my/evil-hook)
+    :hook (evil-mode . my/evil-hook)
 
-      :init
-      (setq evil-want-integration t
-            evil-want-keybinding nil
-            evil-want-C-u-scroll t
-            evil-want-C-i-jump nil)
+    :init
+    (setq evil-want-integration t
+          evil-want-keybinding nil
+          evil-want-C-u-scroll t
+          evil-want-C-i-jump nil)
 
-      :config
-      (evil-set-undo-system 'undo-redo)
+    :config
+    (evil-set-undo-system 'undo-redo)
 
-      ;; Modes to disable evil in
-      (defun my/evil-hook ()
-        (dolist (mode '(custom-mode
-                        eshell-mode
-                        git-rebase-mode
-                        erc-mode
-                        term-mode
-                        vterm-mode
-                        ansi-term-mode))
-          (add-to-list 'evil-emacs-state-modes mode)))
+    ;; Modes to disable evil in
+    (defun my/evil-hook ()
+      (dolist (mode '(custom-mode
+                      eshell-mode
+                      git-rebase-mode
+                      erc-mode
+                      term-mode
+                      vterm-mode
+                      ansi-term-mode))
+        (add-to-list 'evil-emacs-state-modes mode)))
 
-      ;; Turn on evil mode
-      (evil-mode 1)
+    ;; Turn on evil mode
+    (evil-mode 1)
 
-      ;; Move on visual lines unless a count is involved
-      (with-eval-after-load 'evil
-        (evil-define-motion evil-next-line (count)
-          "Move the cursor COUNT screen lines down."
-          :type line
-          (let ((line-move-visual (unless count t)))
-            (evil-line-move (or count 1))))
+    ;; Move on visual lines unless a count is involved
+    (with-eval-after-load 'evil
+      (evil-define-motion evil-next-line (count)
+        "Move the cursor COUNT screen lines down."
+        :type line
+        (let ((line-move-visual (unless count t)))
+          (evil-line-move (or count 1))))
 
-        (evil-define-motion evil-previous-line (count)
-          "Move the cursor COUNT lines up."
-          :type line
-          (let ((line-move-visual (unless count t)))
-            (evil-line-move (- (or count 1))))))
+      (evil-define-motion evil-previous-line (count)
+        "Move the cursor COUNT lines up."
+        :type line
+        (let ((line-move-visual (unless count t)))
+          (evil-line-move (- (or count 1))))))
 
-      :custom
-      ;; Horizontal movement crosses lines
-      (evil-cross-lines t))
+    :custom
+    ;; Horizontal movement crosses lines
+    (evil-cross-lines t))
 
-    ;; More vim keybindings (in non-file buffers)
-    (use-package evil-collection
-      :after evil
-      :diminish evil-collection-unimpaired-mode
-      :config
-      (evil-collection-init)
-      ;; vim-style navigation in dired
-      (evil-collection-define-key 'normal 'dired-mode-map
-        "h" 'dired-up-directory
-        "l" 'dired-find-file))
+  ;; More vim keybindings (in non-file buffers)
+  (use-package evil-collection
+    :after evil
+    :diminish evil-collection-unimpaired-mode
+    :config
+    (evil-collection-init)
+    ;; vim-style navigation in dired
+    (evil-collection-define-key 'normal 'dired-mode-map
+      "h" 'dired-up-directory
+      "l" 'dired-find-file))
 
-    ;; Even more vim keybindings (adds surround functionality)
-    (use-package evil-surround
-      :config
-      (global-evil-surround-mode 1))
+  ;; Even more vim keybindings (adds surround functionality)
+  (use-package evil-surround
+    :config
+    (global-evil-surround-mode 1))
 
-    ;; Enable camelCase motion
-    (use-package evil-little-word
-      :ensure nil
-      :config
-      (define-key evil-normal-state-map    (kbd "w")   'evil-forward-little-word-begin)
-      (define-key evil-normal-state-map    (kbd "b")   'evil-backward-little-word-begin)
-      (define-key evil-operator-state-map  (kbd "w")   'evil-forward-little-word-begin)
-      (define-key evil-operator-state-map  (kbd "b")   'evil-backward-little-word-begin)
-      (define-key evil-visual-state-map    (kbd "w")   'evil-forward-little-word-begin)
-      (define-key evil-visual-state-map    (kbd "b")   'evil-backward-little-word-begin)
-      (define-key evil-visual-state-map    (kbd "i w") 'evil-inner-little-word))
+  ;; Enable camelCase motion
+  (use-package evil-little-word
+    :ensure nil
+    :config
+    (define-key evil-normal-state-map    (kbd "w")   'evil-forward-little-word-begin)
+    (define-key evil-normal-state-map    (kbd "b")   'evil-backward-little-word-begin)
+    (define-key evil-operator-state-map  (kbd "w")   'evil-forward-little-word-begin)
+    (define-key evil-operator-state-map  (kbd "b")   'evil-backward-little-word-begin)
+    (define-key evil-visual-state-map    (kbd "w")   'evil-forward-little-word-begin)
+    (define-key evil-visual-state-map    (kbd "b")   'evil-backward-little-word-begin)
+    (define-key evil-visual-state-map    (kbd "i w") 'evil-inner-little-word))
 
   ;; vim keybindings for org mode
   (use-package evil-org
@@ -929,12 +929,12 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
 #+begin_src emacs-lisp
 
   (use-package hydra
-    :config
-    (my/leader-keys
-      "t" '(hydra-theme/body        :which-key "Choose [t]heme")
-      "r" '(hydra-window/body       :which-key "[R]esize window")
-      "a" '(org-agenda              :which-key "Open Org [a]genda")
-      "c" '(my/custom-open-calendar :which-key "Open [c]alendar")))
+      :config
+      (my/leader-keys
+        "t" '(hydra-theme/body        :which-key "Choose [t]heme")
+        "r" '(hydra-window/body       :which-key "[R]esize window")
+        "c" '(my/custom-open-calendar :which-key "Open [c]alendar")
+        "e" '(hydra-eglot/body        :which-key "[E]glot commands")))
 
 #+end_src
 
@@ -945,11 +945,18 @@ Open a temporary buffer to choose a new theme (and disable all other themes).
 #+begin_src emacs-lisp
 
   (defhydra hydra-theme (:timeout 4)
-    "choose theme"
-    ("l" (my/enable-theme 'standard-light) "standard-light")
-    ("e" (my/enable-theme 'ef-melissa-light) "ef-melissa-light")
-    ("v" (my/enable-theme 'modus-vivendi) "modus-vivendi")
-    ("f" nil "finished" :exit t))
+    "
+  Choose theme
+  ------------
+  [_l_] Standard Light
+  [_e_] EF Melissa Light
+  [_v_] Modus Vivendi
+  [_f_] Finished
+  "
+    ("l" (my/enable-theme 'standard-light) nil)
+    ("e" (my/enable-theme 'ef-melissa-light) nil)
+    ("v" (my/enable-theme 'modus-vivendi) nil)
+    ("f" nil nil :exit t))
 
   (defun my/disable-all-themes ()
     "Disable all active themes."
@@ -978,12 +985,20 @@ Open a temporary buffer to resize the current window.
 #+begin_src emacs-lisp
 
   (defhydra hydra-window (:timeout 4)
-    "resize window"
-    ("h" (window-width-decrease) "decrease width")
-    ("j" (window-height-increase) "increase height")
-    ("k" (window-height-decrease) "decrease height")
-    ("l" (window-width-increase) "increase width")
-    ("f" nil "finished" :exit t))
+    "
+  Resize window
+  ---------------------
+  [_h_] Decrease width
+  [_j_] Increase height
+  [_k_] Decrease height
+  [_l_] Increase width
+  [_f_] Finished
+    "
+    ("h" (window-width-decrease)  nil)
+    ("j" (window-height-increase) nil)
+    ("k" (window-height-decrease) nil)
+    ("l" (window-width-increase)  nil)
+    ("f" nil nil :exit t))
 
   ;; Resizes the window width based on the input
   (defun resize-window-width (w)
@@ -1025,6 +1040,35 @@ Open a temporary buffer to resize the current window.
   (defun window-height-decrease ()
     (interactive)
     (resize-window nil -5))
+
+#+end_src
+
+*** Eglot Commands
+
+Open a temporary buffer to run Eglot commands.
+
+#+begin_src emacs-lisp
+
+  (defhydra hydra-eglot (:timeout 4)
+    "
+  Eglot commands
+  -----------------------------
+  [_c_] Reconnect to LSP server
+  [_f_] Format buffer
+  [_r_] Rename symbol
+  [_a_] Code actions
+  [_d_] Find definition
+  [_i_] Find implementation
+  [_t_] Find type definition
+  [_q_] Quit"
+    ("c" eglot-reconnect nil)
+    ("f" eglot-format nil)
+    ("r" eglot-rename nil)
+    ("a" eglot-code-actions nil)
+    ("d" eglot-find-declaration nil)
+    ("i" eglot-find-implementation nil)
+    ("t" eglot-find-typeDefinition nil)
+    ("q" nil nil :exit t))
 
 #+end_src
 
@@ -1072,20 +1116,21 @@ Eglot: the built-in LSP client for Emacs.
   (use-package eglot
     :ensure nil
     :hook
-    ((python-mode java-mode tex-mode) . eglot-ensure)
+    ((python-ts-mode java-ts-mode tex-mode) . eglot-ensure)
     :custom
     (eglot-send-changes-idle-time 0.1)
     (eglot-extend-to-xref t)             ; activate Eglot in referenced non-project files
 
     (eglot-events-buffer-size 0)         ; No event buffers (Lsp server logs)
-    (eglot-autoshutdown t)               ; Shutdown unused servers.
+    (eglot-autoshutdown t)               ; Shut down unused servers.
     (eglot-report-progress nil)          ; Disable lsp server logs (Don't show lsp messages at the bottom, java)
 
     :config
     (fset #'jsonrpc--log-event #'ignore) ; Massive performance boost; don't log every event
 
+    ;; LSP Servers
     (add-to-list 'eglot-server-programs
-                 `(lua-mode . ("PATH_TO_THE_LSP_FOLDER/bin/lua-language-server" "-lsp"))))
+                 `(java-ts-mode . ("/home/najjt/.emacs.d/share/eclipse.jdt.ls/bin/jdtls" "-configuration" "config_linux_arm" "-lsp"))))
 
 #+end_src
 
@@ -1181,7 +1226,6 @@ Keep track of projects with [[https://github.com/bbatsov/projectile][Projectile]
   (use-package projectile
     :defer t
     :diminish
-    :custom (projectile-completion-system 'ivy)
     :bind-keymap
     ("C-c p" . projectile-command-map)
     :init
