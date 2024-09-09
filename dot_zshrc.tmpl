@@ -1,5 +1,10 @@
 PS1=" %1~ %F{green}>%f "
 
+# Delete to previous slash,
+# useful for editing paths
+autoload -U select-word-style
+select-word-style bash
+
 # History time stamp format
 HIST_STAMPS="mm/dd/yyyy"
 HISTFILE=~/.zsh_history
