@@ -507,7 +507,7 @@ I manage my dotfiles with [[https://github.com/tuh8888/chezmoi.el][chezmoi]], an
 #+begin_src emacs-lisp
 
     (use-package chezmoi
-      :bind ("C-x c w" . chezmoi-write))
+      :bind ("C-c w" . chezmoi-write))
 
 #+end_src
 
@@ -571,8 +571,8 @@ A better terminal emulation with [[https://github.com/akermu/emacs-libvterm][vte
   ;; Open multiple vterm buffers
   (use-package multi-vterm
     :bind
-    ("C-x t" . multi-vterm-dedicated-toggle)
-    ("C-x C-t" . multi-vterm)
+    ("C-c t" . multi-vterm-dedicated-toggle)
+    ("C-c C-t" . multi-vterm)
     :config
     ;; Dedicated terminal height
     (setq multi-vterm-dedicated-window-height-percent 30)
@@ -594,7 +594,7 @@ Popup buffers with [[https://github.com/karthink/popper][popper]].
     ("C-0"   . popper-toggle)
     ("M-p"   . popper-cycle)
     ("C-M-0" . popper-toggle-type)
-    ("C-x d" . popper-kill-latest-popup)
+    ("C-c d" . popper-kill-latest-popup)
     :init
     (setq popper-reference-buffers
           '("\\*Messages\\*"
@@ -810,10 +810,6 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
     ;; Make <escape> quit prompts
     (general-define-key
      "<escape>" 'keyboard-escape-quit)
-
-    ;; Clear search highlights with <C-x <escape>>
-    (general-define-key
-     "C-x <escape>" 'evil-ex-nohighlight)
 
     ;; Increase/decrease text size
     (general-define-key
@@ -1232,7 +1228,7 @@ Match delimiters with [[https://sr.ht/~tsdh/highlight-parentheses.el/][highlight
     :custom
     (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
     :bind
-    ("C-x g" . magit-status))
+    ("C-c g" . magit-status))
 
 #+end_src
 
@@ -1492,7 +1488,7 @@ Active code blocks in org files with [[https://orgmode.org/worg/org-contrib/babe
     :defer 20 ; Load 20 s after startup
     :commands (mu4e make-mu4e-context)
     :bind
-    ("C-x m" . mu4e)
+    ("C-c m" . mu4e)
 
     (:map mu4e-view-mode-map
           ("e" . mu4e-view-save-attachment))
