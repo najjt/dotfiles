@@ -26,16 +26,6 @@
 
     "sway/language": {},
 
-    "tray": {
-        "spacing": 5,
-        "icon-size": 18
-    },
-
-    "clock": {
-        "format": "{:%H:%M %a %d %b}",
-        "tooltip": false
-    },
-
     "cpu": {
         "format": "<span foreground=\"grey\">CPU:</span> {usage}% ",
         "tooltip": false
@@ -57,9 +47,19 @@
         "format-warning": "<span foreground=\"grey\">BAT:</span> <span foreground=\"yellow\">{capacity}%</span> <span foreground=\"grey\">{time}</span>",
         "format-critical": "<span foreground=\"grey\">BAT:</span> <span foreground=\"red\">{capacity}%</span> <span foreground=\"grey\">{time}</span>",
         "states": {
-             "warning": 25,
+             "warning": 30,
              "critical": 10
          },
         "tooltip": false
+    },
+
+    "clock": {
+        "format": "{:%H:%M %a %d %b}",
+        "tooltip": false
+    },
+
+    "tray": {
+        "spacing": 5,
+        "icon-size": 18
     },
 }
