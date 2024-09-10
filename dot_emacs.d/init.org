@@ -807,6 +807,10 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
       :prefix ","
       :global-prefix ",")
 
+    (general-define-key
+     :keymaps '(normal visual emacs)
+     "," 'hydra-main/body)
+
     ;; Make <escape> quit prompts
     (general-define-key
      "<escape>" 'keyboard-escape-quit)
@@ -929,12 +933,22 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
 #+begin_src emacs-lisp
 
   (use-package hydra
-      :config
-      (my/leader-keys
-        "t" '(hydra-theme/body        :which-key "Choose [t]heme")
-        "r" '(hydra-window/body       :which-key "[R]esize window")
-        "c" '(my/custom-open-calendar :which-key "Open [c]alendar")
-        "e" '(hydra-eglot/body        :which-key "[E]glot commands")))
+    :config
+
+    (defhydra hydra-main (:timeout 4)
+      "
+  Main Menu
+  -----------------------------
+  [_t_] Choose [T]heme
+  [_r_] [R]esize Window
+  [_c_] Open [C]alendar
+  [_e_] Eglot Commands
+  [_q_] Quit"
+      ("t" hydra-theme/body nil :exit t)
+      ("r" hydra-window/body nil :exit t)
+      ("c" my/custom-open-calendar nil :exit t)
+      ("e" hydra-eglot/body nil :exit t)
+      ("q" nil nil :exit t)))
 
 #+end_src
 
@@ -947,7 +961,7 @@ Open a temporary buffer to choose a new theme (and disable all other themes).
   (defhydra hydra-theme (:timeout 4)
     "
   Choose theme
-  ------------
+  -----------------------------
   [_l_] Standard Light
   [_e_] EF Melissa Light
   [_v_] Modus Vivendi
@@ -987,7 +1001,7 @@ Open a temporary buffer to resize the current window.
   (defhydra hydra-window (:timeout 4)
     "
   Resize window
-  ---------------------
+  -----------------------------
   [_h_] Decrease width
   [_j_] Increase height
   [_k_] Decrease height
