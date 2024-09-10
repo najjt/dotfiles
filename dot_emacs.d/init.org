@@ -939,9 +939,9 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
       "
   Main Menu
   -----------------------------
-  [_t_] Choose [T]heme
-  [_r_] [R]esize Window
-  [_c_] Open [C]alendar
+  [_t_] Choose Theme
+  [_r_] Resize Window
+  [_c_] Open Calendar
   [_e_] Eglot Commands
   [_q_] Quit"
       ("t" hydra-theme/body nil :exit t)
@@ -1063,26 +1063,23 @@ Open a temporary buffer to run Eglot commands.
 
 #+begin_src emacs-lisp
 
-  (defhydra hydra-eglot (:timeout 4)
-    "
-  Eglot commands
-  -----------------------------
-  [_c_] Reconnect to LSP server
-  [_f_] Format buffer
-  [_r_] Rename symbol
-  [_a_] Code actions
-  [_d_] Find definition
-  [_i_] Find implementation
-  [_t_] Find type definition
-  [_q_] Quit"
-    ("c" eglot-reconnect nil)
-    ("f" eglot-format nil)
-    ("r" eglot-rename nil)
-    ("a" eglot-code-actions nil)
-    ("d" eglot-find-declaration nil)
-    ("i" eglot-find-implementation nil)
-    ("t" eglot-find-typeDefinition nil)
-    ("q" nil nil :exit t))
+      (defhydra hydra-eglot (:exit t :timeout 4)
+        "
+      ^Buffer^               ^Server^           ^Symbol^
+      ^^^^^^----------------------------------------------------------
+      [_f_] Format buffer    [_c_] Reconnect    [_r_] Rename symbol
+      [_a_] Code actions     ^ ^                [_d_] Definition
+                             ^ ^ ^ ^            [_i_] Implementation
+                             ^ ^ ^ ^            [_t_] Type definition
+      [_q_] Quit"
+        ("c" eglot-reconnect nil)
+        ("f" eglot-format nil)
+        ("r" eglot-rename nil)
+        ("a" eglot-code-actions nil)
+        ("d" eglot-find-declaration nil)
+        ("i" eglot-find-implementation nil)
+        ("t" eglot-find-typeDefinition nil)
+        ("q" nil nil :exit t))
 
 #+end_src
 
