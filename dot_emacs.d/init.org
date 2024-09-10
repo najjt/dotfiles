@@ -801,12 +801,8 @@ An easier way to set keybindings is with [[https://github.com/noctuid/general.el
 
   (use-package general
     :config
-    ;; Leader key for hydras
-    (general-create-definer my/leader-keys
-      :keymaps '(normal visual emacs)
-      :prefix ","
-      :global-prefix ",")
 
+    ;; Open Hydra main menu
     (general-define-key
      :keymaps '(normal visual emacs)
      "," 'hydra-main/body)
@@ -958,29 +954,37 @@ Open a temporary buffer to choose a new theme (and disable all other themes).
 
 #+begin_src emacs-lisp
 
-  (defhydra hydra-theme (:timeout 4)
+    (defhydra hydra-theme (:timeout 4)
+      "
+    Choose theme
+    -----------------------------
+    [_l_] Standard Light
+    [_e_] EF Melissa Light
+    [_v_] Modus Vivendi
+    [_f_] Finished
     "
-  Choose theme
-  -----------------------------
-  [_l_] Standard Light
-  [_e_] EF Melissa Light
-  [_v_] Modus Vivendi
-  [_f_] Finished
-  "
-    ("l" (my/enable-theme 'standard-light) nil)
-    ("e" (my/enable-theme 'ef-melissa-light) nil)
-    ("v" (my/enable-theme 'modus-vivendi) nil)
-    ("f" nil nil :exit t))
+      ("l" (my/enable-theme 'standard-light) nil)
+      ("e" (my/enable-theme 'ef-melissa-light) nil)
+      ("v" (my/enable-theme 'modus-vivendi) nil)
+      ("f" nil nil :exit t))
 
   (defun my/disable-all-themes ()
-    "Disable all active themes."
-    (dolist (theme custom-enabled-themes)
-      (disable-theme theme)))
+      "Disable all active themes."
+      (dolist (theme custom-enabled-themes)
+        (disable-theme theme)))
 
   (defun my/enable-theme (theme)
     "Enable the specified THEME and disable all other themes."
     (my/disable-all-themes)
     (load-theme theme t)
+    (customize-save-variable 'my-chosen-theme theme))
+
+  (defun my/enable-theme-interactive (theme)
+    "Interactively enable the specified THEME and disable all other themes."
+    (interactive
+     (list (completing-read "Choose theme: " (mapcar #'symbol-name (custom-available-themes)))))
+    (my/disable-all-themes)
+    (load-theme (intern theme) t)
     (customize-save-variable 'my-chosen-theme theme))
 
   ;; Remember last used theme between sessions
@@ -1626,8 +1630,8 @@ Calendar framework with [[https://github.com/kiwanami/emacs-calfw][calfw]].
   (use-package calfw-org
     :after calfw)
 
-  ;; Open calendar with two weeks view
   (defun my/custom-open-calendar ()
+    "Open calendar with two weeks view"
     (interactive)
     (cfw:open-calendar-buffer
      :contents-sources
