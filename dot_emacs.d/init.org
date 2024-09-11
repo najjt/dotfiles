@@ -957,24 +957,23 @@ Open a temporary buffer to choose a new theme (and disable all other themes).
 
 #+begin_src emacs-lisp
 
-    (defhydra hydra-theme (:timeout 4)
-      "
-    Choose theme
-    -----------------------------
-    [_l_] Standard Light
-    [_e_] EF Melissa Light
-    [_v_] Modus Vivendi
-    [_f_] Finished
+  (defhydra hydra-theme (:timeout 4)
     "
-      ("l" (my/enable-theme 'standard-light) nil)
-      ("e" (my/enable-theme 'ef-melissa-light) nil)
-      ("v" (my/enable-theme 'modus-vivendi) nil)
-      ("f" nil nil :exit t))
+  Choose theme
+  -----------------------------
+  [_l_] Standard Light
+  [_e_] EF Melissa Light
+  [_v_] Modus Vivendi
+  [_q_] Quit"
+    ("l" (my/enable-theme 'standard-light) nil)
+    ("e" (my/enable-theme 'ef-melissa-light) nil)
+    ("v" (my/enable-theme 'modus-vivendi) nil)
+    ("q" nil nil :exit t))
 
   (defun my/disable-all-themes ()
-      "Disable all active themes."
-      (dolist (theme custom-enabled-themes)
-        (disable-theme theme)))
+    "Disable all active themes."
+    (dolist (theme custom-enabled-themes)
+      (disable-theme theme)))
 
   (defun my/enable-theme (theme)
     "Enable the specified THEME and disable all other themes."
@@ -1013,13 +1012,12 @@ Open a temporary buffer to resize the current window.
   [_j_] Increase height
   [_k_] Decrease height
   [_l_] Increase width
-  [_f_] Finished
-    "
+  [_q_] Quit"
     ("h" (window-width-decrease)  nil)
     ("j" (window-height-increase) nil)
     ("k" (window-height-decrease) nil)
     ("l" (window-width-increase)  nil)
-    ("f" nil nil :exit t))
+    ("q" nil nil :exit t))
 
   ;; Resizes the window width based on the input
   (defun resize-window-width (w)
@@ -1070,23 +1068,23 @@ Open a temporary buffer to run Eglot commands.
 
 #+begin_src emacs-lisp
 
-      (defhydra hydra-eglot (:exit t :timeout 4)
-        "
-      ^Buffer^               ^Server^           ^Symbol^
-      ^^^^^^----------------------------------------------------------
-      [_f_] Format buffer    [_c_] Reconnect    [_r_] Rename symbol
-      [_a_] Code actions     ^ ^                [_d_] Definition
-                             ^ ^ ^ ^            [_i_] Implementation
-                             ^ ^ ^ ^            [_t_] Type definition
-      [_q_] Quit"
-        ("c" eglot-reconnect nil)
-        ("f" eglot-format nil)
-        ("r" eglot-rename nil)
-        ("a" eglot-code-actions nil)
-        ("d" eglot-find-declaration nil)
-        ("i" eglot-find-implementation nil)
-        ("t" eglot-find-typeDefinition nil)
-        ("q" nil nil :exit t))
+  (defhydra hydra-eglot (:exit t :timeout 4)
+    "
+  ^Buffer^               ^Server^           ^Symbol^
+  ^^^^^^----------------------------------------------------------
+  [_f_] Format buffer    [_c_] Reconnect    [_r_] Rename symbol
+  [_a_] Code actions     ^ ^                [_d_] Definition
+                         ^ ^ ^ ^            [_i_] Implementation
+                         ^ ^ ^ ^            [_t_] Type definition
+  [_q_] Quit"
+    ("c" eglot-reconnect nil)
+    ("f" eglot-format nil)
+    ("r" eglot-rename nil)
+    ("a" eglot-code-actions nil)
+    ("d" eglot-find-declaration nil)
+    ("i" eglot-find-implementation nil)
+    ("t" eglot-find-typeDefinition nil)
+    ("q" nil nil :exit t))
 
 #+end_src
 
