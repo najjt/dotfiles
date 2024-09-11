@@ -19,10 +19,10 @@ exec_always ~/.local/bin/autotiling
 # Network manager system tray icon
 exec_always nm-applet --indicator
 
-# Audio system tray icon
+# Audio system tray item
 exec_always ~/scripts/pasystray.sh
 
-# Bluetooth system tray icon
+# Bluetooth system tray item
 exec_always blueman-applet
 
 # Notifications
@@ -47,7 +47,7 @@ exec swayidle -w                                                                
 ## Input configuration
 
 # Trackpad
-input "1452:641:Apple_Internal_Keyboard_/_Trackpad" {
+input type:trackpad {
     dwt enabled                 # Disable while typing
     accel_profile adaptive      # Adaptive/flat cursor acceleration
     pointer_accel 0             # From -1 to 1: Speed of cursor
@@ -61,13 +61,14 @@ input "1452:641:Apple_Internal_Keyboard_/_Trackpad" {
 seat seat0 hide_cursor 3000
 
 # Keyboard
-input * {
+input type:keyboard {
     xkb_layout us,se
     xkb_switch_layout next
     xkb_options grp:rshift_toggle
     repeat_rate 40
     repeat_delay 200
 }
+
 
 ## Output Configuration
 
@@ -113,8 +114,9 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+
 #
-# Defaults
+# Appearance
 #
 
 font pango:Terminus (TTF) Medium 13
@@ -135,6 +137,8 @@ default_floating_border pixel 2
 # Keybindings
 #
 
+## Launch applications
+
 # Start a terminal
 bindsym $mod+Return exec $term
 
@@ -150,51 +154,27 @@ bindsym $cmd+space exec $menu
 # Start clipboard manager
 bindsym $mod+c exec $clip
 
+## Window management
+
 # Kill focused window
 bindsym $cmd+w kill
 
-# Change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# Change container layout
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+t floating toggle
+
+# Move windows with $mod + left mouse button, resize with $mod + right mouse button
+floating_modifier $mod normal
 
 # Move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# Enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# Change container layout
-bindsym $mod+Control+s layout stacking
-bindsym $mod+Control+a layout toggle split
-
-# Toggle tiling / floating
-bindsym $mod+t floating toggle
-
-# Toggle vertical layout
-bindsym $mod+v splitv
-
-# Toggle horizontal layout
-bindsym $mod+b splith
-
-# Move windows with $mod + left mouse button, resize with $mod + right mouse button
-floating_modifier $mod normal
-
-# Switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -208,11 +188,55 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 
 # Resize windows
-bindsym $mod+Shift+a resize shrink width 5 px or 5 ppt
-bindsym $mod+Shift+d resize grow width 5 px or 5 ppt
-bindsym $mod+Shift+s resize shrink height 5 px or 5 ppt
-bindsym $mod+Shift+w resize grow height 5 px or 5 ppt
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym h resize shrink width 10px
+    bindsym j resize grow height 10px
+    bindsym k resize shrink height 10px
+    bindsym l resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Balance size of windows
 bindsym $mod+Shift+0 exec sway-balance-workspace
+
+## Focus
+
+# Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+## Scratchpad
 
 # Sway has a "scratchpad", which is a bag of holding for windows.
 # You can send windows there and get them back later.
@@ -224,47 +248,16 @@ bindsym $mod+p move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+Shift+p scratchpad show
 
+## Basics
+
 # Reload the configuration file
 bindsym $mod+Control+Shift+r reload
 
 # Restart sway
 bindsym $mod+Control+Shift+e restart
 
-# swaynagmode (keyboard bindings for swaynag)
-# https://github.com/b0o/swaynagmode
-set {
-    $nag         exec ~/.local/bin/swaynagmode
-    $nag_exit    $nag --exit
-    $nag_confirm $nag --confirm
-    $nag_select  $nag --select
-}
-
-mode "nag" {
-  bindsym {
-    Ctrl+d    mode "default"
-
-    q         $nag_exit
-
-    Return    $nag_confirm
-
-    Tab       $nag_select prev
-    Shift+Tab $nag_select next
-
-    Left      $nag_select next
-    Right     $nag_select prev
-
-    Up        $nag_select next
-    Down      $nag_select prev
-  }
-}
-
-bindsym {
-  $mod+Shift+e $nag -t "warning" -m "Exit Sway?" -b "Exit" "swaymsg exit" -b "Reload" "swaymsg reload"
-}
-
-# -R is recommended for swaynag_command so that, upon a syntax error in your sway config, the
-# 'Reload Sway' option will be initially selected instead of the 'Exit Sway' option
-swaynag_command $nag -R
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
 # Lock screen
 bindsym ctrl+$mod+q exec swaylock -f -c 000000
@@ -283,10 +276,13 @@ bindsym XF86AudioPlay exec playerctl pause
 bindsym XF86MonBrightnessUp exec ~/scripts/brightness.sh +
 bindsym XF86MonBrightnessDown exec ~/scripts/brightness.sh -
 
-# Take a screenshot
-bindsym $mod+Shift+u exec grim && notify-send "Screenshot taken"
+# Take a screenshot of the whole screen
+bindsym $mod+u exec grim && notify-send "Screenshot taken"
 
-# Status bar
+# Take a screenshot of a selected part
+bindsym $mod+Shift+u exec grim -g "$(slurp -d)" && notify-send "Screenshot taken"
+
+## Status bar
 bar {
     swaybar_command waybar
 }
