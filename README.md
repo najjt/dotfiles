@@ -8,4 +8,4 @@ Welcome to my dotfiles repository! I use [chezmoi](https://www.chezmoi.io/) to m
 * **WM**: yabai/sway
 * **Statusbar**: SketchyBar/waybar
 
-![screenshot](screenshot.jpeg)
+![screenshot](screenshot.png)

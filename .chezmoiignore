@@ -1,6 +1,6 @@
 README.md
 .DS_STORE
-screenshot.jpeg
+screenshot.png
 {{ if ne .chezmoi.os "darwin" }}
 .config/yabai
 .config/sketchybar
