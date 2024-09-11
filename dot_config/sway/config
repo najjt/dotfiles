@@ -62,7 +62,7 @@ seat seat0 hide_cursor 3000
 
 # Keyboard
 input * {
-    xkb_layout se,us
+    xkb_layout us,se
     xkb_switch_layout next
     xkb_options grp:rshift_toggle
     repeat_rate 40
@@ -284,7 +284,7 @@ bindsym XF86MonBrightnessUp exec ~/scripts/brightness.sh +
 bindsym XF86MonBrightnessDown exec ~/scripts/brightness.sh -
 
 # Take a screenshot
-bindsym $mod+Shift+u exec grim ~/Pictures/screenshot-$(date +'%Y-%m-%d_%H-%M-%S').png && notify-send "Screenshot taken"
+bindsym $mod+Shift+u exec grim && notify-send "Screenshot taken"
 
 # Status bar
 bar {
