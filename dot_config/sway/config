@@ -11,7 +11,7 @@ exec_always emacs --daemon
 exec_always wl-paste --watch cliphist store -max-items 100
 
 # Shuffle wallpaper
-exec_always ~/scripts/shuffle_wallpaper.sh
+# exec_always ~/scripts/shuffle_wallpaper.sh
 
 # Binary space partitioning
 exec_always ~/.local/bin/autotiling
@@ -72,7 +72,7 @@ input type:keyboard {
 
 ## Output Configuration
 
-output * scale 2.0 adaptive_sync on
+output * scale 2.0 adaptive_sync on background ~/Pictures/wallpapers-fantasy/FJAnE9xXEAEbjbr fill
 
 
 #
@@ -258,7 +258,6 @@ bindsym $mod+Control+Shift+e restart
 
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-
 # Lock screen
 bindsym ctrl+$mod+q exec swaylock -f -c 000000
 
