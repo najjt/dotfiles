@@ -509,7 +509,7 @@ I manage my dotfiles with [[https://github.com/tuh8888/chezmoi.el][chezmoi]], an
   (use-package chezmoi
     :bind ("C-c w" . chezmoi-write)
     :config
-    (add-hook 'org-babel-post-tangle-hook #'chezmoi-write))
+    (add-hook 'org-babel-post-tangle-hook 'chezmoi-write))
 
 #+end_src
 
@@ -634,36 +634,37 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Emacs Dashboard]] pack
 
 #+begin_src emacs-lisp
 
-    (use-package dashboard
-      :demand t
-      :diminish (dashboard-mode page-break-lines-mode)
-      :custom-face
-      (dashboard-items-face ((t (:weight normal))))
-      :custom
-      (dashboard-startupify-list '(dashboard-insert-banner
-                                   dashboard-insert-newline
-                                   dashboard-insert-banner-title
-                                   dashboard-insert-init-info
-                                   dashboard-insert-newline
-                                   dashboard-insert-items))
+  (use-package dashboard
+    :demand t
+    :diminish (dashboard-mode page-break-lines-mode)
+    :custom-face
+    (dashboard-items-face ((t (:weight normal))))
+    :custom
+    (dashboard-startupify-list '(dashboard-insert-banner
+                                 dashboard-insert-newline
+                                 dashboard-insert-banner-title
+                                 dashboard-insert-init-info
+                                 dashboard-insert-newline
+                                 dashboard-insert-items))
 
-      (dashboard-items '((bookmarks . 7)
-                         ;; (projects . 5)
-                         ))
-      :config
-      (dashboard-setup-startup-hook)
+    (dashboard-items '((bookmarks . 7)
+                       (projects . 5)
+                       ))
+    :config
+    (dashboard-setup-startup-hook)
 
-      (setq dashboard-center-content t
-            dashboard-display-icons-p t
-            dashboard-icon-type 'nerd-icons
-            dashboard-set-file-icons t
-            dashboard-projects-backend 'project-el))
+    (setq dashboard-center-content t
+          dashboard-display-icons-p t
+          dashboard-icon-type 'nerd-icons
+          dashboard-set-file-icons t
+          dashboard-projects-backend 'project-el
+          dashboard-startup-banner 3))
 
-    ;; Hook dashboard-open to creation of new frame
-    (add-hook 'after-make-frame-functions
-              (lambda (frame)
-                (with-selected-frame frame
-                  (dashboard-open))))
+  ;; Hook dashboard-open to creation of new frame
+  (add-hook 'after-make-frame-functions
+            (lambda (frame)
+              (with-selected-frame frame
+                (dashboard-open))))
 
 #+end_src
 
