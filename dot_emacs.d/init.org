@@ -1300,7 +1300,6 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
           org-refile-targets (quote (("backlog.org"             :maxlevel   . 2)
                                      ("../misc/computer.org"    :maxlevel   . 1)
                                      ("../misc/inköpslista.org" :maxlevel   . 1)
-                                     ("../misc/album.org"       :level      . 0)
                                      ("privat.org"              :maxlevel   . 2)
                                      ("studier.org"             :maxlevel   . 2)))
           org-outline-path-complete-in-steps nil ; Refile in a single go
