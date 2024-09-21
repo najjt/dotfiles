@@ -399,6 +399,21 @@ A collection of settings I did not know where else to put.
   ;; Don't open a new window for ediff
   (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
+  ;; Automatically switch focus to new window when it is created
+  (defun split-and-follow-horizontally ()
+    (interactive)
+    (split-window-below)
+    (balance-windows)
+    (other-window 1))
+  (global-set-key (kbd "C-x 2") 'split-and-follow-horizontally)
+
+  (defun split-and-follow-vertically ()
+    (interactive)
+    (split-window-right)
+    (balance-windows)
+    (other-window 1))
+  (global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
+
 #+end_src
 
 *** Completions
@@ -752,13 +767,11 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
 * Text & Languages
 ** Wrap Text
 
-Wrap long lines at the =fill-column= length.
+Wrap long lines softly.
 
 #+begin_src emacs-lisp
 
-  (add-hook 'text-mode-hook #'auto-fill-mode)
-
-  (setq-default fill-column 72)
+  (global-visual-line-mode 1)
 
 #+end_src
 
