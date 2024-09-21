@@ -271,9 +271,13 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioPlay exec playerctl pause
 
-# Brightness
+# Screen brightness
 bindsym XF86MonBrightnessUp exec ~/scripts/brightness.sh +
 bindsym XF86MonBrightnessDown exec ~/scripts/brightness.sh -
+
+# Keyboard backlight
+bindsym $mod+Shift+b exec ~/scripts/kbd_backlight.sh +
+bindsym $cmd+Shift+b exec ~/scripts/kbd_backlight.sh -
 
 # Take a screenshot of the whole screen
 bindsym $mod+u exec grim && notify-send "Screenshot taken"
