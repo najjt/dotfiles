@@ -528,7 +528,9 @@ Dired, Emacs' built-in file explorer, with vim-style navigation and nerd icons.
            :map evil-normal-state-map
            ("z d" . dired-hide-details-mode)        ; Toggle details
            ("z h" . dired-omit-mode))               ; Toggle details
-    :custom (dired-free-space nil)                  ; Hide free space
+    :custom
+    (dired-free-space nil)                          ; Hide free space
+    (dired-omit-verbose nil)                        ; Hide message when omitting files
     :config
     (when *sys/mac*
       ;; Set directory program to gls on macOS
