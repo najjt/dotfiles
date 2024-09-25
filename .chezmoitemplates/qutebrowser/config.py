@@ -431,7 +431,7 @@ c.window.transparent = False
 # Default zoom level.
 # Type: Perc
 {{ if eq .chezmoi.os "darwin" }}
-c.zoom.default = '110%'
+c.zoom.default = '125%'
 {{ else if eq .chezmoi.os "linux" }}
 c.zoom.default='110%'
 {{ end }}

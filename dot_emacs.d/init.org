@@ -733,7 +733,7 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Emacs Dashboard]] pack
     (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-11")))
 
   (when *sys/mac*
-    (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-18")))
+    (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-20")))
 
 #+end_src
 
