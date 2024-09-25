@@ -5,4 +5,6 @@ pihole http://192.168.1.48/admin/index.php
 vault https://vault.bitwarden.com/#/vault
 mail https://mail.proton.me/u/0/inbox
 syncthing pi https://localhost:9090/
-mygateway https://mygateway.dmu.ac.uk/students/login?ReturnUrl=%2F
+mydmu https://my.dmu.ac.uk/campusm/home#select-profile
+learningzone https://learningzone.dmu.ac.uk/d2l/home
+library https://library.dmu.ac.uk/DMU
