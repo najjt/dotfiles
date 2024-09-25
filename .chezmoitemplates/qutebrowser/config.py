@@ -597,5 +597,5 @@ config.bind(',c', 'hint code userscript code_select.py')
 # Set window title
 c.window.title_format = '{current_title} - qutebrowser'
 
-# Enable dark mode
-config.set('colors.webpage.darkmode.enabled', True)
+# Request dark mode
+config.set('colors.webpage.preferred_color_scheme', 'dark')
