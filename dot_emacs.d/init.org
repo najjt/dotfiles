@@ -517,14 +517,13 @@ Edit files with sudo privileges with [[https://github.com/nflath/sudo-edit/tree/
 
 ** Dotfiles Management
 
-I manage my dotfiles with [[https://github.com/tuh8888/chezmoi.el][chezmoi]], and this package provides some useful functions for this.
+I manage my dotfiles with [[https://github.com/tuh8888/chezmoi.el][chezmoi]], and the [[https://github.com/tuh8888/chezmoi.el][chezmoi Emacs package]] provides some useful functions for this.
 
 #+begin_src emacs-lisp
 
   (use-package chezmoi
-    :bind ("C-c w" . chezmoi-write)
-    :config
-    (add-hook 'org-babel-post-tangle-hook 'chezmoi-write))
+    :bind (("C-c C s" . chezmoi-write)
+           ("C-c C f" . chezmoi-find)))
 
 #+end_src
 
@@ -733,7 +732,7 @@ The [[https://github.com/emacs-dashboard/emacs-dashboard][Emacs Dashboard]] pack
     (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-11")))
 
   (when *sys/mac*
-    (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-20")))
+    (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-18")))
 
 #+end_src
 
