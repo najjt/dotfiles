@@ -523,7 +523,9 @@ I manage my dotfiles with [[https://github.com/tuh8888/chezmoi.el][chezmoi]], an
 
   (use-package chezmoi
     :bind (("C-c C s" . chezmoi-write)
-           ("C-c C f" . chezmoi-find)))
+           ("C-c C f" . chezmoi-find))
+    :config
+    (require 'chezmoi-cape))
 
 #+end_src
 
@@ -1224,7 +1226,6 @@ Remap programming language modes to their treesitter equivalent modes.
   (use-package cape
     :init
     ;; chezmoi completions
-    (require 'chezmoi-cape)
     (add-to-list 'completion-at-point-functions #'chezmoi-capf)
     ;; Elisp completions inside Org or Markdown code blocks
     (add-hook 'completion-at-point-functions #'cape-elisp-block))
@@ -1709,6 +1710,7 @@ Calendar framework with [[https://github.com/kiwanami/emacs-calfw][calfw]].
 
   (use-package diminish
     :diminish (auto-fill-function
+               visual-line-mode
                centered-window-mode
                eldoc-mode
                evil-collection-unimpaired-mode
