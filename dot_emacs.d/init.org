@@ -1224,6 +1224,7 @@ Remap programming language modes to their treesitter equivalent modes.
   (use-package cape
     :init
     ;; chezmoi completions
+    (require 'chezmoi-cape)
     (add-to-list 'completion-at-point-functions #'chezmoi-capf)
     ;; Elisp completions inside Org or Markdown code blocks
     (add-hook 'completion-at-point-functions #'cape-elisp-block))
