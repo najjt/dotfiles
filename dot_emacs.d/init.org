@@ -1220,6 +1220,14 @@ Remap programming language modes to their treesitter equivalent modes.
     :config
     (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
+  ;; Completion extensions
+  (use-package cape
+    :init
+    ;; chezmoi completions
+    (add-to-list 'completion-at-point-functions #'chezmoi-capf)
+    ;; Elisp completions inside Org or Markdown code blocks
+    (add-hook 'completion-at-point-functions #'cape-elisp-block))
+
 #+end_src
 
 *** Comments
