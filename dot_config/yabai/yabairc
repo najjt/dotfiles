@@ -19,12 +19,12 @@ yabai -m signal --add event=window_focused \
       action="sketchybar --trigger window_focus &> /dev/null"
 
 # clean up empty spaces with no windows on them
-yabai -m signal --add event=space_changed \
-      action="sh ~/.config/yabai/scripts/destroy_empty_spaces.sh && sketchybar --trigger space_change"
+#yabai -m signal --add event=space_changed \
+#      action="sh ~/.config/yabai/scripts/destroy_empty_spaces.sh && sketchybar --trigger space_change"
 
 # defaults
 yabai -m config                                          \
-                layout                      bsp          \
+                layout                      float        \
                 split_ratio                 0.50         \
                 split_type                  auto         \
                 auto_balance                off          \
