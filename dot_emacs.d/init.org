@@ -35,7 +35,6 @@
   - [[#file-explorer][File Explorer]]
   - [[#terminal-emulation][Terminal Emulation]]
   - [[#popup-buffers][Popup Buffers]]
-  - [[#dashboard][Dashboard]]
 - [[#appearance][Appearance]]
   - [[#general-appearance-settings][General Appearance Settings]]
   - [[#font--icons][Font & Icons]]
@@ -137,8 +136,7 @@ Disable them here before they've been initialized.
 
 #+begin_src emacs-lisp :tangle ./early-init.el
 
-(setq inhibit-startup-message t
-      initial-scratch-message nil)
+(setq initial-scratch-message nil)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -645,46 +643,6 @@ Popup buffers with [[https://github.com/karthink/popper][popper]].
         popper-group-function #'popper-group-by-directory)
   (popper-mode 1)
   (popper-echo-mode 1))
-
-#+end_src
-
-** Dashboard
-
-The [[https://github.com/emacs-dashboard/emacs-dashboard][Emacs Dashboard]] package displays a customizable dashboard.
-
-#+begin_src emacs-lisp
-
-(use-package dashboard
-  :demand t
-  :diminish (dashboard-mode page-break-lines-mode)
-  :custom-face
-  (dashboard-items-face ((t (:weight normal))))
-  :custom
-  (dashboard-startupify-list '(dashboard-insert-banner
-                               dashboard-insert-newline
-                               dashboard-insert-banner-title
-                               dashboard-insert-init-info
-                               dashboard-insert-newline
-                               dashboard-insert-items))
-
-  (dashboard-items '((bookmarks . 7)
-                     (projects . 5)
-                     ))
-  :config
-  (dashboard-setup-startup-hook)
-
-  (setq dashboard-center-content t
-        dashboard-display-icons-p t
-        dashboard-icon-type 'nerd-icons
-        dashboard-set-file-icons t
-        dashboard-projects-backend 'project-el
-        dashboard-startup-banner 3))
-
-;; Hook dashboard-open to creation of new frame
-(add-hook 'after-make-frame-functions
-          (lambda (frame)
-            (with-selected-frame frame
-              (dashboard-open))))
 
 #+end_src
 
