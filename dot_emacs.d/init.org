@@ -728,11 +728,13 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
 * Text & Languages
 ** Wrap Text
 
-Wrap long lines softly.
+Turn on automatic line breaking and set the default column beyond which
+automatic line-wrapping should happen.
 
 #+begin_src emacs-lisp
 
-(global-visual-line-mode 1)
+(setq-default auto-fill-function 'do-auto-fill)
+(setq-default fill-column 72)
 
 #+end_src
 
@@ -1668,7 +1670,6 @@ Calendar framework with [[https://github.com/kiwanami/emacs-calfw][calfw]].
 
 (use-package diminish
   :diminish (auto-fill-function
-             visual-line-mode
              centered-window-mode
              eldoc-mode
              evil-collection-unimpaired-mode
