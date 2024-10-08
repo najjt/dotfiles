@@ -70,8 +70,6 @@
   - [[#org-mode][Org Mode]]
     - [[#basic-configuration-1][Basic Configuration]]
     - [[#org-agenda][Org Agenda]]
-      - [[#basic-configuration-2][Basic Configuration]]
-      - [[#org-super-agenda][Org Super Agenda]]
     - [[#org-capture][Org Capture]]
     - [[#org-contacts][Org Contacts]]
     - [[#org-babel][Org Babel]]
@@ -1324,8 +1322,6 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
 
 [[https://orgmode.org/manual/Agenda-Views.html][Org Agenda]] is a buffer for displaying your org todo items.
 
-**** Basic Configuration
-
 #+begin_src emacs-lisp
 
 (use-package org-agenda
@@ -1358,45 +1354,13 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
         "← now")
 
   (setq org-agenda-custom-commands
-        '(("d" "Day agenda"
-           ((agenda "" ((org-agenda-span 'day)
-                        (org-super-agenda-groups
-                         '((:name "Schedule"
-                                  :time-grid t)
-                           (:name "Vanor"
-                                  :habit t)
-                           (:name "Overdue"
-                                  :deadline past
-                                  :scheduled past)
-                           (:name "Studier"
-                                  :and (:category "studier" :scheduled today)
-                                  :and (:category "studier" :deadline today))
-                           (:name "Privat"
-                                  :and (:category ("privat" "refile" "phone_refile" "computer") :scheduled today)
-                                  :and (:category ("privat" "refile" "phone_refile" "computer") :deadline today)
-                                  :category "calendar")
-                           (:name "Upcoming Deadlines"
-                                  :deadline future)
-                           (:discard (:anything t))))))))
-          ("w" "Week agenda"
+        '(("w" "Week agenda"
            ((agenda "" ((org-agenda-span 'week)))))))
 
   ;; Date heading settings
   (custom-set-faces
    '(org-agenda-date ((t (:height 1.0 :weight bold :background "unspecified"))))
    '(org-agenda-date-today ((t (:height 1.3 :weight bold :background "unspecified" :underline nil))))))
-
-#+end_src
-
-**** Org Super Agenda
-
-[[https://github.com/alphapapa/org-super-agenda][Org Super Agenda]] filters and groups agenda items, making for a cleaner look.
-
-#+begin_src emacs-lisp
-
-(use-package org-super-agenda
-  :after org-agenda
-  :hook (org-agenda-mode . org-super-agenda-mode))
 
 #+end_src
 
