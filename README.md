@@ -2,10 +2,6 @@ Welcome to my dotfiles repository! I use [chezmoi](https://www.chezmoi.io/) to m
 
 * **Shell**: zsh
 * **Terminal**: Alacritty
-* **Editor**: Emacs, see my [literate configuration](dot_emacs.d/init.org)
+* **Editor**: neovim
 * **Browser**: qutebrowser
-* **OS**: Fedora Asahi Remix/macOS
-* **WM**: yabai/sway
-* **Statusbar**: SketchyBar/waybar
-
-![screenshot](screenshot.png)
+* **WM**: yabai
