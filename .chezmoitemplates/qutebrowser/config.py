@@ -538,10 +538,6 @@ c.fonts.web.size.default = 12
 # Keybindings for normal mode
 #
 
-# Emacs keybindings
-config.bind('<Meta+x>', 'cmd-set-text :')
-config.bind('<Ctrl+s>', 'cmd-set-text /')
-
 # Unbind keys used in my window manager
 config.unbind('<Alt+1>')
 config.unbind('<Alt+2>')
