@@ -2,13 +2,7 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("network_security"
- (filename . "~/Documents/kurser/network_security/")
- (front-context-string . ".\n  drwxr-xr-x. ")
- (rear-context-string . "70 Sep 30 12:39 ")
- (position . 97)
- (last-modified 26362 36456 451223 725000))
-("Documents"
+(("Documents"
  (filename . "~/Documents/")
  (front-context-string . "  /home/najjt/Do")
  (rear-context-string)
@@ -20,28 +14,10 @@
  (rear-context-string)
  (position . 1)
  (last-modified 26329 57770 101402 997000))
-("scripts"
- (filename . "~/scripts/")
- (front-context-string . "  /home/najjt/sc")
- (rear-context-string)
- (position . 1)
- (last-modified 26328 11898 38717 562000))
 ("notes"
  (filename . "~/notes/")
  (front-context-string . "  /home/najjt/no")
  (rear-context-string)
  (position . 1)
  (last-modified 26328 11891 908741 903000))
-("chezmoi"
- (filename . "~/.local/share/chezmoi/")
- (front-context-string . "  /home/najjt/.l")
- (rear-context-string)
- (position . 1)
- (last-modified 26328 11903 622506 113000))
-("init.org"
- (filename . "~/.emacs.d/init.org")
- (front-context-string . "#+author: Martin")
- (rear-context-string)
- (position . 1)
- (last-modified 26328 11855 493561 997000))
 )
