@@ -82,10 +82,3 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 {{ end }}
 # Set up fzf keybindings and fuzzy completion
 source <(fzf --zsh)
-
-# Open man pages with Emacs
-if [[ -z ${INSIDE_EMACS+1} ]]; then
-    function man() {
-        emacsclient -a '' -cne "(let ((buf (man \"$1\"))) (delete-other-windows) (switch-to-buffer buf) (evil-local-set-key 'normal \"q\" (lambda () (interactive) (kill-current-buffer) (delete-frame))))" > /dev/null
-    }
-fi
