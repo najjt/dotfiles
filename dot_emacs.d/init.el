@@ -90,9 +90,6 @@
  use-package-always-ensure t
  use-package-verbose t)
 
-(setq user-full-name "Martin Lönn Andersson")
-(setq user-mail-address "mlonna@pm.me")
-
 ;; Increase large file warning threshold
 (setq large-file-warning-threshold 100000000)
 
@@ -154,6 +151,14 @@
   (balance-windows)
   (other-window 1))
 (global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
+
+(defun my-display-org-agenda-in-new-frame (frame)
+  "Display the Org agenda for today in new frames."
+  (with-selected-frame frame
+    (when (display-graphic-p)  ;; Ensure it's a graphical frame
+      (org-agenda nil "a"))))  ;; "a" is the default key for agenda view
+
+(add-hook 'after-make-frame-functions #'my-display-org-agenda-in-new-frame)
 
 (use-package vertico
   :init
@@ -534,22 +539,6 @@
   :after org
   :defer t
   :custom (org-contacts-files '("~/notes/org/contacts.org")))
-
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (java . t)))
-
-(setq org-confirm-babel-evaluate nil)
-(org-babel-tangle-file "~/.emacs.d/init.org")
-
-;; Block templates
-(setq org-structure-template-alist
-      '(("l" . "src emacs-lisp")
-        ("j" . "src java")
-        ("s" . "src")
-        ("e" . "example")
-        ("q" . "quote")))
 
 (use-package calfw
   :config
