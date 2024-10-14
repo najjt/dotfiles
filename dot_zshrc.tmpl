@@ -28,7 +28,6 @@ alias sz="source $HOME/.zshrc && source $HOME/.zshenv"
 # Open files/dirs
 alias home="cd ~"
 alias ec="emacsclient -c -n"
-alias nv="nvim"
 alias ra="ranger"
 
 # Other
@@ -41,7 +40,6 @@ alias pist="ssh -N -L 9090:127.0.0.1:8384 pi@192.168.1.48" # Port forward port 9
 alias wt="curl wttr.in"                                    # Weather forecast
 alias python="python3"
 alias cm="chezmoi"
-alias dnf="sudo dnf"
 {{ if eq .chezmoi.os "darwin" }}
 alias ecre="brew services restart emacs-plus"              # Restart Emacs service
 
