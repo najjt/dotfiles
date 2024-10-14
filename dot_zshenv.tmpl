@@ -11,13 +11,11 @@ export LC_ALL="en_IE.UTF-8"
 # Default programs
 export BROWSER=qutebrowser
 export TERMINAL=alacritty
-export EDITOR=nvim
-export PAGER=cat
+export EDITOR=emacsclient
+export PAGER=less
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export GPG_TTY=$(tty)
 
-# Read manpages in neovim
-export MANPAGER='nvim +Man!'
-export MANWIDTH=999
 {{ if eq .chezmoi.os "darwin" }}
 path=(
     /opt/local/sbin
