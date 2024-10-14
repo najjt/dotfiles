@@ -9,7 +9,7 @@ screenshot.png
 {{ else if ne .chezmoi.os "linux" }}
 .config/qutebrowser
 .config/kmonad
-.config/sway
+.config/sway*
 .config/rofi
 .config/mako
 .config/waybar
