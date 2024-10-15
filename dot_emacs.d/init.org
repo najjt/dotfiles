@@ -26,11 +26,11 @@
 - [[#general-configurations][General Configurations]]
   - [[#user-information][User Information]]
   - [[#quality-of-life][Quality of Life]]
-    - [[#miscellaneous-options][Miscellaneous Options]]
     - [[#completions][Completions]]
     - [[#history][History]]
     - [[#environment-variables][Environment Variables]]
     - [[#sudo-edit][Sudo Edit]]
+    - [[#miscellaneous-options][Miscellaneous Options]]
   - [[#embark][Embark]]
   - [[#dotfiles-management][Dotfiles Management]]
   - [[#file-explorer][File Explorer]]
@@ -41,6 +41,7 @@
   - [[#font--icons][Font & Icons]]
   - [[#themes][Themes]]
 - [[#text--languages][Text & Languages]]
+  - [[#set-language-environment][Set Language Environment]]
   - [[#wrap-text][Wrap Text]]
   - [[#spell-checking][Spell Checking]]
   - [[#undo-functionality][Undo Functionality]]
@@ -347,76 +348,6 @@ Set name and email address.
 #+end_src
 
 ** Quality of Life
-*** Miscellaneous Options
-
-A collection of settings I did not know where else to put.
-
-#+begin_src emacs-lisp
-
-;; Increase large file warning threshold
-(setq large-file-warning-threshold 100000000)
-
-;; Set language environment
-(set-language-environment "UTF-8")
-
-;; Clean up unneccesary whitespace on save
-(add-hook 'before-save-hook 'whitespace-cleanup)
-
-;; Map yes and no to y and n
-(fset 'yes-or-no-p 'y-or-n-p)
-
-;; Disable visual and audible bell
-(setq ring-bell-function 'ignore)
-
-;; Suppress auto revert messages
-(setq auto-revert-verbose nil)
-
-;; Automatically kill all active processes when closing Emacs
-(setq confirm-kill-processes nil)
-
-;; Add a newline automatically at the end of the file upon save
-(setq require-final-newline t)
-
-;; Set default browser
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "qutebrowser")
-
-;; Make switching buffers more consistent
-(setopt switch-to-buffer-obey-display-actions t)
-
-;; Smooth scrolling
-(setq scroll-step 1
-      scroll-margin 1
-      scroll-conservatively 101
-      scroll-up-aggressively 0.01
-      scroll-down-aggressively 0.01
-      auto-window-vscroll nil
-      fast-but-imprecise-scrolling nil
-      mouse-wheel-scroll-amount '(1 ((shift) . 1))
-      mouse-wheel-progressive-speed nil
-      hscroll-step 1
-      hscroll-margin 1)
-
-;; Don't open a new window for ediff
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
-
-;; Automatically switch focus to new window when it is created
-(defun split-and-follow-horizontally ()
-  (interactive)
-  (split-window-below)
-  (balance-windows)
-  (other-window 1))
-(global-set-key (kbd "C-x 2") 'split-and-follow-horizontally)
-
-(defun split-and-follow-vertically ()
-  (interactive)
-  (split-window-right)
-  (balance-windows)
-  (other-window 1))
-(global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
-
-#+end_src
-
 *** Completions
 
 [[https://github.com/minad/vertico][Vertico]] provides a performant and minimalistic vertical completion UI.
@@ -499,6 +430,73 @@ Edit files with sudo privileges with [[https://github.com/nflath/sudo-edit/tree/
   :diminish
   :config
   (global-set-key (kbd "C-c C-r") 'sudo-edit))
+
+#+end_src
+
+*** Miscellaneous Options
+
+A collection of settings I did not know where else to put.
+
+#+begin_src emacs-lisp
+
+;; Increase large file warning threshold
+(setq large-file-warning-threshold 100000000)
+
+;; Clean up unneccesary whitespace on save
+(add-hook 'before-save-hook 'whitespace-cleanup)
+
+;; Map yes and no to y and n
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; Disable visual and audible bell
+(setq ring-bell-function 'ignore)
+
+;; Suppress auto revert messages
+(setq auto-revert-verbose nil)
+
+;; Automatically kill all active processes when closing Emacs
+(setq confirm-kill-processes nil)
+
+;; Add a newline automatically at the end of the file upon save
+(setq require-final-newline t)
+
+;; Set default browser
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "qutebrowser")
+
+;; Make switching buffers more consistent
+(setopt switch-to-buffer-obey-display-actions t)
+
+;; Smooth scrolling
+(setq scroll-step 1
+      scroll-margin 1
+      scroll-conservatively 101
+      scroll-up-aggressively 0.01
+      scroll-down-aggressively 0.01
+      auto-window-vscroll nil
+      fast-but-imprecise-scrolling nil
+      mouse-wheel-scroll-amount '(1 ((shift) . 1))
+      mouse-wheel-progressive-speed nil
+      hscroll-step 1
+      hscroll-margin 1)
+
+;; Don't open a new window for ediff
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+;; Automatically switch focus to new window when it is created
+(defun split-and-follow-horizontally ()
+  (interactive)
+  (split-window-below)
+  (balance-windows)
+  (other-window 1))
+(global-set-key (kbd "C-x 2") 'split-and-follow-horizontally)
+
+(defun split-and-follow-vertically ()
+  (interactive)
+  (split-window-right)
+  (balance-windows)
+  (other-window 1))
+(global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
 
 #+end_src
 
@@ -729,6 +727,14 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
 #+end_src
 
 * Text & Languages
+** Set Language Environment
+
+#+begin_src emacs-lisp
+
+(set-language-environment "UTF-8")
+
+#+end_src
+
 ** Wrap Text
 
 Turn on automatic line breaking and set the default column beyond which
