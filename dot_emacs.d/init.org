@@ -58,7 +58,6 @@
   - [[#which-key][Which Key]]
 - [[#programming][Programming]]
   - [[#general-programming-functionalities][General Programming Functionalities]]
-    - [[#eglot][Eglot]]
     - [[#treesitter][Treesitter]]
     - [[#completions-1][Completions]]
     - [[#comments][Comments]]
@@ -1105,33 +1104,6 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
 
 * Programming
 ** General Programming Functionalities
-*** Eglot
-
-Eglot: the built-in LSP client for Emacs.
-
-#+begin_src emacs-lisp
-
-(use-package eglot
-  :ensure nil
-  :hook
-  ((python-ts-mode java-ts-mode tex-mode) . eglot-ensure)
-  :custom
-  (eglot-send-changes-idle-time 0.1)
-  (eglot-extend-to-xref t)             ; activate Eglot in referenced non-project files
-
-  (eglot-events-buffer-size 0)         ; No event buffers (Lsp server logs)
-  (eglot-autoshutdown t)               ; Shut down unused servers.
-  (eglot-report-progress nil)          ; Disable lsp server logs (Don't show lsp messages at the bottom, java)
-
-  :config
-  (fset #'jsonrpc--log-event #'ignore) ; Massive performance boost; don't log every event
-
-  ;; LSP Servers
-  (add-to-list 'eglot-server-programs
-               `(java-ts-mode . ("/home/najjt/.emacs.d/share/eclipse.jdt.ls/bin/jdtls" "-configuration" "config_linux_arm" "-lsp"))))
-
-#+end_src
-
 *** Treesitter
 
 Remap programming language modes to their treesitter equivalent modes.
