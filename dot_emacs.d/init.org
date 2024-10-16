@@ -413,7 +413,7 @@ Get environment variables from your shell with [[https://github.com/purcell/exec
   ;; Don't start an interactive shell (improves startup time)
   (setq exec-path-from-shell-arguments nil)
   ;; Which environment variables to import
-  (dolist (var '("LANG" "LC_ALL"))
+  (dolist (var '("LANG" "LC_ALL" "PATH"))
     (add-to-list 'exec-path-from-shell-variables var))
   (exec-path-from-shell-initialize))
 
@@ -695,7 +695,7 @@ Popup buffers with [[https://github.com/karthink/popper][popper]].
   (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-11")))
 
 (when *sys/mac*
-  (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-18")))
+  (add-to-list 'default-frame-alist '(font . "Iosevka-18")))
 
 #+end_src
 
@@ -718,11 +718,12 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
 (use-package modus-themes
   :defer t)
 
-(use-package standard-themes
-  :defer t)
-
 (use-package ef-themes
   :defer t)
+
+(use-package spaceway-theme
+  :ensure nil
+  :load-path "elisp/spaceway/")
 
 #+end_src
 
@@ -948,11 +949,11 @@ Open a temporary buffer to choose a new theme (and disable all other themes).
   "
   Choose theme
   -----------------------------
-  [_l_] Standard Light
+  [_s_] Spaceway
   [_e_] EF Melissa Light
   [_v_] Modus Vivendi
   [_q_] Quit"
-  ("l" (my/enable-theme 'standard-light) nil)
+  ("s" (my/enable-theme 'spaceway) nil)
   ("e" (my/enable-theme 'ef-melissa-light) nil)
   ("v" (my/enable-theme 'modus-vivendi) nil)
   ("q" nil nil :exit t))
@@ -1589,10 +1590,14 @@ Calendar framework with [[https://github.com/kiwanami/emacs-calfw][calfw]].
   (TeX-auto-save t)
   (TeX-parse-self t)
   (TeX-master nil)
+  (TeX-PDF-mode t)
+  :config
   ;; To use pdfview with auctex
-  (TeX-view-program-selection '((output-pdf "PDF Tools"))
-                              TeX-source-correlate-start-server t)
-  (TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
+  (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+        TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
+        TeX-source-correlate-start-server t)
+  (add-hook 'TeX-after-compilation-finished-functions
+            #'TeX-revert-document-buffer))
 
 #+end_src
 
