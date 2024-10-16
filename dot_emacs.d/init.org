@@ -59,17 +59,20 @@
   - [[#which-key][Which Key]]
 - [[#programming][Programming]]
   - [[#general-programming-functionalities][General Programming Functionalities]]
-    - [[#treesitter][Treesitter]]
+    - [[#lsp][LSP]]
+      - [[#basic-configuration-1][Basic Configuration]]
+      - [[#lsp-treemacs][lsp-treemacs]]
+      - [[#lsp-ui][lsp-ui]]
     - [[#completions-1][Completions]]
     - [[#comments][Comments]]
     - [[#match-delimiters][Match Delimiters]]
     - [[#git-interface][Git Interface]]
   - [[#programming-languages-support][Programming Languages Support]]
     - [[#java][Java]]
-    - [[#common-file-types][Common File Types]]
+  - [[#common-file-types][Common File Types]]
 - [[#productivity][Productivity]]
   - [[#org-mode][Org Mode]]
-    - [[#basic-configuration-1][Basic Configuration]]
+    - [[#basic-configuration-2][Basic Configuration]]
     - [[#org-agenda][Org Agenda]]
     - [[#org-capture][Org Capture]]
     - [[#org-contacts][Org Contacts]]
@@ -1111,68 +1114,77 @@ A more detailed help buffer with [[https://github.com/Wilfred/helpful][helpful]]
 
 * Programming
 ** General Programming Functionalities
-*** Treesitter
-
-Remap programming language modes to their treesitter equivalent modes.
+*** LSP
+**** Basic Configuration
 
 #+begin_src emacs-lisp
 
-(setq major-mode-remap-alist
-      '((yaml-mode . yaml-ts-mode)
-        (bash-mode . bash-ts-mode)
-        (js2-mode . js-ts-mode)
-        (typescript-mode . typescript-ts-mode)
-        (json-mode . json-ts-mode)
-        (css-mode . css-ts-mode)
-        (java-mode . java-ts-mode)
-        (python-mode . python-ts-mode)))
+;; Set breadcrumb format
+(defun my/lsp-mode-setup ()
+  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+  (lsp-headerline-breadcrumb-mode))
+
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :hook (lsp-mode . my/lsp-mode-setup)
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :config
+  (lsp-enable-which-key-integration t))
+
+#+end_src
+**** lsp-treemacs
+
+[[https://github.com/emacs-lsp/lsp-treemacs][lsp-treemacs]] provides tree views for different aspects of your code,
+like symbols in a file, references of a symbol, or diagnostic messages.
+
+#+begin_src emacs-lisp
+
+(use-package lsp-treemacs
+  :after lsp)
+
+#+end_src
+
+**** lsp-ui
+
+[[https://emacs-lsp.github.io/lsp-ui/][lsp-ui]] adds a set of UI enhancements for LSP mode.
+
+#+begin_src emacs-lisp
+
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :custom
+  (lsp-ui-doc-position 'bottom))
 
 #+end_src
 
 *** Completions
 
-[[https://github.com/minad/corfu][Corfu]] enhances in-buffer completion with a small completion popup.
+[[http://company-mode.github.io/][Company]] enhances in-buffer completion with a small completion popup.
+
+[[https://github.com/sebastiencs/company-box][company-box]] further enhances the look with icons.
 
 #+begin_src emacs-lisp
 
-(use-package corfu
-  :init
-  (global-corfu-mode)
-  :bind
-  (:map corfu-map
-        ("SPC" . corfu-insert-separator)
-        ("C-n" . corfu-next)
-        ("C-p" . corfu-previous)))
-
-;; Part of corfu
-(use-package corfu-popupinfo
-  :after corfu
-  :ensure nil
-  :hook (corfu-mode . corfu-popupinfo-mode)
+(use-package company
+  :after lsp-mode
+  :hook (lsp-mode . company-mode)
+  :bind (:map company-active-map
+         ("<tab>" . company-complete-selection))
+        (:map lsp-mode-map
+         ("<tab>" . company-indent-or-complete-common))
   :custom
-  (corfu-popupinfo-delay '(0.25 . 0.1))
-  (corfu-popupinfo-hide nil)
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0)
   :config
-  (corfu-popupinfo-mode))
-
-;; Make corfu popup come up in terminal overlay
-(use-package corfu-terminal
-  :if (not (display-graphic-p))
-  :config
-  (corfu-terminal-mode))
-
-;; Nerd icons for corfu
-(use-package nerd-icons-corfu
-  :config
-  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
-
-;; Completion extensions
-(use-package cape
-  :init
   ;; chezmoi completions
-  ;; (add-to-list 'completion-at-point-functions #'chezmoi-capf)
-  ;; Elisp completions inside Org or Markdown code blocks
-  (add-hook 'completion-at-point-functions #'cape-elisp-block))
+  (require 'chezmoi-company)
+  (add-hook 'chezmoi-mode-hook #'(lambda () (if chezmoi-mode
+                                                (add-to-list 'company-backends 'chezmoi-company-backend)
+                                              (delete 'chezmoi-company-backend 'company-backends)))))
+
+(use-package company-box
+  :hook (company-mode . company-box-mode))
 
 #+end_src
 
@@ -1220,15 +1232,16 @@ Match delimiters with [[https://sr.ht/~tsdh/highlight-parentheses.el/][highlight
 ** Programming Languages Support
 *** Java
 
-Java support for eglot: [[https://github.com/yveszoundi/eglot-java][eglot-java]].
+Installs the language server for Java to use with LSP mode.
 
 #+begin_src emacs-lisp
 
-(use-package eglot-java)
+(use-package lsp-java
+  :hook (java-mode . lsp-deferred))
 
 #+end_src
 
-*** Common File Types
+** Common File Types
 
 #+begin_src emacs-lisp
 
@@ -1254,11 +1267,11 @@ I organize my life with [[https://orgmode.org/][Org Mode]]. The following header
 #+begin_src emacs-lisp
 
 (use-package org
-  :pin nongnu
-  :ensure org-contrib ; Needed for org-contacts
+  :ensure nil
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
          ("C-c l" . org-store-link))
+  :hook (org-mode . (lambda () (setq tab-width 8)))
   :config
 
   ;; Basic settings
@@ -1397,6 +1410,7 @@ Contacts in Org Mode with [[https://orgmode.org/worg/org-contrib/org-contacts.ht
 
 (use-package org-contacts
   :after org
+  :pin melpa
   :defer t
   :custom (org-contacts-files '("~/notes/org/contacts.org")))
 
