@@ -724,10 +724,6 @@ Install nerd icons with =M-x nerd-icons-install-fonts=.
 (use-package ef-themes
   :defer t)
 
-(use-package spaceway-theme
-  :ensure nil
-  :load-path "elisp/spaceway/")
-
 #+end_src
 
 * Text & Languages
