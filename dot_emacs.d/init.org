@@ -1,6 +1,6 @@
 #+title: Emacs Configuration
 #+author: Martin Lönn Andersson
-#+property: header-args:emacs-lisp :lexical t :tangle ./init.el
+#+property: header-args :emacs-lisp :lexical t :tangle ./init.el
 
 * Contents :toc@5@gh:
 - [[#preamble][Preamble]]
@@ -293,7 +293,7 @@ Set backup directory location.
 
 ** Start Server
 
-#+begin_src
+#+begin_src emacs-lisp
 
 (load "server")
 (unless (server-running-p)
