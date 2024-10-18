@@ -138,4 +138,23 @@
         ("e" . "example")
         ("q" . "quote")))
 
+;; Calendar framework
+(use-package calfw
+  :config
+  ;; Use Swedish calendar
+  (load "packages/sv-kalender"))
+
+;; Integrate calfw with org
+(use-package calfw-org
+  :after calfw)
+
+(defun my/custom-open-calendar ()
+  "Open calendar with two weeks view"
+  (interactive)
+  (cfw:open-calendar-buffer
+   :contents-sources
+   (list
+    (cfw:org-create-source "medium purple"))
+   :view 'two-weeks))
+
 (provide 'ml-org)
