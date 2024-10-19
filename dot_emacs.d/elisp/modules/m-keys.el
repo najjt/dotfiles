@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package general
   :config
 
@@ -100,4 +102,4 @@
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
 
-(provide 'm-evil)
+(provide 'm-keys)
