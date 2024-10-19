@@ -37,4 +37,4 @@
   :diminish
   :hook (dired-mode . nerd-icons-dired-mode))
 
-(provide 'ml-dired)
+(provide 'm-dired)

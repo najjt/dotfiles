@@ -52,4 +52,4 @@
              org-indent-mode
              abbrev-mode))
 
-(provide 'ml-qol)
+(provide 'm-qol)

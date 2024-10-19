@@ -4,4 +4,4 @@
   :config
   (pdf-tools-install))
 
-(provide 'ml-pdf)
+(provide 'm-pdf)

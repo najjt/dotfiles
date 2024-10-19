@@ -1,3 +1,105 @@
+;; Display right and left fringe
+(fringe-mode '(8 . 8))
+
+;; Turn off blinking cursor
+(blink-cursor-mode 0)
+
+;; Show column number in status bar
+(column-number-mode)
+
+;; Disable border around modelines
+(custom-set-faces
+ '(mode-line ((t (:box nil))))
+ '(mode-line-inactive ((t (:box nil)))))
+
+;; Make line numbers relative
+(setq display-line-numbers-type 'relative
+      display-line-numbers-width-start t)
+
+;; Display relative line numbers in the below modes
+(dolist (hook '(fundamental-mode conf-mode-hook prog-mode-hook text-mode-hook markdown-mode-hook org-mode-hook))
+  (add-hook hook 'display-line-numbers-mode))
+
+;; Highlight current line
+(let ((hl-line-hooks '(text-mode-hook prog-mode-hook dired-mode-hook Man-mode-hook conf-mode-hook)))
+  (mapc (lambda (hook) (add-hook hook 'hl-line-mode)) hl-line-hooks))
+
+;; Make keybindings in minibuffer look like other text
+(set-face-attribute 'help-key-binding nil
+                    :box nil
+                    :foreground "unspecified"
+                    :background "unspecified"
+                    :inherit nil)
+
+(when *sys/linux*
+  (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-11")))
+
+(when *sys/mac*
+  (add-to-list 'default-frame-alist '(font . "Iosevka-18")))
+
+(use-package nerd-icons)
+
+;; Use nerd icons in ibuffer
+(use-package nerd-icons-ibuffer
+  :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+
+(use-package modus-themes
+  :defer t)
+
+(use-package ef-themes
+  :defer t)
+
+;; Popup buffers
+(use-package popper
+  :bind
+  ("C-0"   . popper-toggle)
+  ("M-p"   . popper-cycle)
+  ("C-M-0" . popper-toggle-type)
+  ("C-c d" . popper-kill-latest-popup)
+  :init
+  (setq popper-reference-buffers
+        '("\\*Messages\\*"
+          "\\*Warnings\\*"
+          "\\*Compile-Log\\*"
+          "^\\*compilation.*\\*$"
+          "Output\\*$"
+          "\\*Async Shell Command\\*"
+          "^\\*tex-shell.*\\*$"
+          "^\\*Flycheck.*\\*$"
+          "^\\*Buffer List*\\*$"
+          "^\\*LSP Error List*\\*$"
+          magit-mode
+          comint-mode
+          eshell-mode
+          shell-mode
+          term-mode
+          vterm-mode
+          ansi-term-mode
+          help-mode
+          helpful-mode
+          compilation-mode))
+  :config
+  (setq popper-mode-line " POP " ; Let it breathe a bit
+        popper-window-height 15
+        popper-group-function #'popper-group-by-directory)
+  (popper-mode 1)
+  (popper-echo-mode 1))
+
+;; Automatically switch focus to new window when it is created
+(defun split-and-follow-horizontally ()
+  (interactive)
+  (split-window-below)
+  (balance-windows)
+  (other-window 1))
+(global-set-key (kbd "C-x 2") 'split-and-follow-horizontally)
+
+(defun split-and-follow-vertically ()
+  (interactive)
+  (split-window-right)
+  (balance-windows)
+  (other-window 1))
+(global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
+
 (use-package hydra
   :config
 
@@ -113,4 +215,27 @@
   (interactive)
   (resize-window nil -5))
 
-(provide 'ml-hydra)
+(set-language-environment "UTF-8")
+
+;; Automatic line breaking
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(setq-default fill-column 72)
+
+;; Spell checking
+(use-package jinx
+  :diminish
+  :hook (((markdown-mode org-mode text-mode) . jinx-mode))
+  :bind ("C-c s" . jinx-correct)
+  :config
+  (setq jinx-languages "sv en_US"))
+
+;; Undo functionality
+(use-package vundo)
+
+;; Tabs are four spaces
+(setq-default tab-width 4 indent-tabs-mode nil)
+
+;; Enable word motions on snake_case, kebab-case, camelCase
+(global-subword-mode 1)
+
+(provide 'm-ui)

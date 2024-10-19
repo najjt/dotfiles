@@ -17,4 +17,4 @@
               (setq-local evil-insert-state-cursor 'box)
               (evil-insert-state))))
 
-(provide 'ml-term)
+(provide 'm-term)

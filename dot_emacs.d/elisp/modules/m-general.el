@@ -50,4 +50,4 @@
   :bind (("C-c C s" . chezmoi-write)
          ("C-c C f" . chezmoi-find)))
 
-(provide 'ml-general)
+(provide 'm-general)

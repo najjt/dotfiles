@@ -1,3 +1,24 @@
+(use-package general
+  :config
+
+  ;; Open Hydra main menu
+  (general-define-key
+   :keymaps '(normal visual emacs)
+   "," 'hydra-main/body)
+
+  ;; Make <escape> quit prompts
+  (general-define-key
+   "<escape>" 'keyboard-escape-quit)
+
+  ;; Increase/decrease text size
+  (general-define-key
+   "C-=" #'text-scale-increase
+   "C-+" #'text-scale-increase
+   "C--" #'text-scale-decrease))
+
+(provide 'ml-keys)
+
+;; vi emulation
 (use-package evil
   :diminish
   :demand t
@@ -70,18 +91,6 @@
   :config
   (global-evil-surround-mode 1))
 
-;; Enable camelCase motion
-(use-package evil-little-word
-  :ensure nil
-  :config
-  (define-key evil-normal-state-map    (kbd "w")   'evil-forward-little-word-begin)
-  (define-key evil-normal-state-map    (kbd "b")   'evil-backward-little-word-begin)
-  (define-key evil-operator-state-map  (kbd "w")   'evil-forward-little-word-begin)
-  (define-key evil-operator-state-map  (kbd "b")   'evil-backward-little-word-begin)
-  (define-key evil-visual-state-map    (kbd "w")   'evil-forward-little-word-begin)
-  (define-key evil-visual-state-map    (kbd "b")   'evil-backward-little-word-begin)
-  (define-key evil-visual-state-map    (kbd "i w") 'evil-inner-little-word))
-
 ;; vim keybindings for org mode
 (use-package evil-org
   :after org
@@ -91,4 +100,4 @@
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
 
-(provide 'ml-evil)
+(provide 'm-evil)

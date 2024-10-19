@@ -157,4 +157,4 @@
     (cfw:org-create-source "medium purple"))
    :view 'two-weeks))
 
-(provide 'ml-org)
+(provide 'm-org)
