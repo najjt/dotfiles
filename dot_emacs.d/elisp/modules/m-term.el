@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package vterm
   :custom
   (term-prompt-regexp "^[^#$%>\n]*[#$%>] *")

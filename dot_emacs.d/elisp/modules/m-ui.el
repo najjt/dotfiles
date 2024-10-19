@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; Display right and left fringe
 (fringe-mode '(8 . 8))
 

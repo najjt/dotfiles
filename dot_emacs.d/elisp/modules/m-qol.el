@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; Quality of Life Settings
 
 ;; Increase large file warning threshold

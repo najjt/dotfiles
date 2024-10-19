@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; Show completions in a vertical UI
 (use-package vertico
   :init
