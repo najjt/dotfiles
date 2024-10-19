@@ -52,6 +52,7 @@
              eldoc-mode
              evil-collection-unimpaired-mode
              org-indent-mode
-             abbrev-mode))
+             abbrev-mode
+             subword-mode))
 
 (provide 'm-qol)
