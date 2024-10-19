@@ -2,16 +2,34 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org"
- (filename . "~/notes/org/")
- (front-context-string . ".\n  drwxr-xr-x 1")
- (rear-context-string . "88 Oct 13 16:30 ")
- (position . 73)
- (last-modified 26379 59393 342240 0))
-("init.el"
- (filename . "~/.emacs.d/init.el")
- (front-context-string . "(defvar better-g")
+(("computer.org"
+ (filename . "~/notes/misc/computer.org")
+ (front-context-string . "* General\n** TOD")
  (rear-context-string)
  (position . 1)
- (last-modified 26379 59381 6459 0))
+ (last-modified 26384 7180 868500 0))
+("Documents"
+ (filename . "~/Documents/")
+ (front-context-string . ".\n  drwxr-x---+ ")
+ (rear-context-string . "20 Oct 14 21:26 ")
+ (position . 74)
+ (last-modified 26382 51295 225127 0))
+("chezmoi"
+ (filename . "~/.local/share/chezmoi/")
+ (front-context-string . ".\n  drwx------ 1")
+ (rear-context-string . "12 Oct 14 21:42 ")
+ (position . 87)
+ (last-modified 26381 33985 756091 0))
+("notes"
+ (filename . "~/notes/")
+ (front-context-string . ".\n  drwxr-x---+ ")
+ (rear-context-string . "52 Oct 14 21:46 ")
+ (position . 70)
+ (last-modified 26381 33924 629936 0))
+("network_security"
+ (filename . "~/Documents/kurser/network_security/")
+ (front-context-string . ".\n  drwx------ 1")
+ (rear-context-string . "56 Oct  6 22:28 ")
+ (position . 98)
+ (last-modified 26381 33736 490971 0))
 )
