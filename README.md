@@ -2,6 +2,6 @@ Welcome to my dotfiles repository! I use [chezmoi](https://www.chezmoi.io/) to m
 
 * **Shell**: zsh
 * **Terminal**: Alacritty
-* **Editor**: neovim
+* **Editor**: Emacs
 * **Browser**: qutebrowser
 * **WM**: yabai
