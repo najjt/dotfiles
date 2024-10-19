@@ -1,7 +1,10 @@
 ;; -*- lexical-binding: t; -*-
 
 ;; Add configuration modules to load path
-(add-to-list 'load-path '"~/.emacs.d/elisp/")
+(add-to-list 'load-path '"~/.emacs.d/elisp/modules")
+
+;; Add packages to load path
+(add-to-list 'load-path '"~/.emacs.d/elisp/packages")
 
 ;; Load modules
 (require 'm-startup)
