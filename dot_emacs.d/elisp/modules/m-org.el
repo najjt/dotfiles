@@ -144,7 +144,7 @@
 (use-package calfw
   :config
   ;; Use Swedish calendar
-  (load "packages/sv-kalender"))
+  (load "sv-kalender"))
 
 ;; Integrate calfw with org
 (use-package calfw-org
