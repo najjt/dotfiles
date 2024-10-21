@@ -130,7 +130,6 @@
    (java . t)))
 
 (setq org-confirm-babel-evaluate nil)
-(org-babel-tangle-file "~/.emacs.d/init.org")
 
 ;; Block templates
 (setq org-structure-template-alist
