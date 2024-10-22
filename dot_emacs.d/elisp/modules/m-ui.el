@@ -37,7 +37,7 @@
   (add-to-list 'default-frame-alist '(font . "Terminus (TTF)-11")))
 
 (when *sys/mac*
-  (add-to-list 'default-frame-alist '(font . "Monaco-16")))
+  (add-to-list 'default-frame-alist '(font . "Iosevka-17")))
 
 (use-package nerd-icons)
 
