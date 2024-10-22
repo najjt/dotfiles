@@ -50,4 +50,7 @@
   :bind (("C-c C s" . chezmoi-write)
          ("C-c C f" . chezmoi-find)))
 
+(use-package markdown-mode
+  :defer t)
+
 (provide 'm-general)
