@@ -1,0 +1,41 @@
+#!/usr/bin/env sh
+
+# scripting addition
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa && sh ~/.config/yabai/scripts/update_script_add.sh"
+
+# defaults
+yabai -m config                                          \
+                layout                      float        \
+                split_ratio                 0.50         \
+                split_type                  auto         \
+                auto_balance                off          \
+                                                         \
+                top_padding                 15           \
+                bottom_padding              15           \
+                left_padding                15           \
+                right_padding               15           \
+                window_gap                  15           \
+                                                         \
+                window_placement            second_child \
+                window_shadow               off          \
+
+# rules
+yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add label="System Settings" app="^System Settings$" manage=off
+yabai -m rule --add label="App Store" app="^App Store$" manage=off
+yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
+yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
+yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
+yabai -m rule --add label="Software Update" title="^Software Update$" manage=off
+yabai -m rule --add label="About This Mac" app="^System Information$" manage=off
+yabai -m rule --add label="Bitwarden" app="^Bitwarden$" manage=off
+yabai -m rule --add label="OVPN" app="^OVPN$" manage=off
+yabai -m rule --add label="Installer" app="^Installer$" manage=off
+yabai -m rule --add label="Spotify" app="^Spotify$" manage=off
+yabai -m rule --add label="Proton Mail Bridge" app="^Proton Mail Bridge$" manage=off
+yabai -m rule --add label="mpv" app="^mpv$" manage=off
+yabai -m rule --add label="Teams" app="^Microsoft Teams (work or school)$" manage=off
+yabai -m rule --add label="Font Book" app="^Font Book$" manage=off
+yabai -m rule --add label="Karabiner" app="^Karabiner-Elements$" manage=off
+yabai -m rule --add label="Anki" app="^Anki$" title="(Add|Browse|Preview)" manage=off
