@@ -100,14 +100,4 @@
 ;; Don't open a new window for ediff
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
-;; Hide minor modes in modeline
-(use-package diminish
-  :diminish (auto-fill-function
-             centered-window-mode
-             eldoc-mode
-             evil-collection-unimpaired-mode
-             org-indent-mode
-             abbrev-mode
-             subword-mode))
-
 (provide 'm-general)
