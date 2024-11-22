@@ -545,12 +545,6 @@ config.bind('eu', 'edit-url')
 # Open download
 config.bind('ed', 'download-open')
 
-# Set scroll amount
-config.bind('j', 'scroll-px 0 200')
-config.bind('k', 'scroll-px 0 -200')
-config.bind('<Ctrl+d>', 'scroll-px 0 400')
-config.bind('<Ctrl+u>', 'scroll-px 0 -400')
-
 # Yank to Org Mode link format
 config.bind('yo', 'yank inline [[{url}][{title}]]')
 
