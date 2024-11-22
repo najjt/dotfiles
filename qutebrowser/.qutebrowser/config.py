@@ -421,7 +421,7 @@ c.colors.completion.odd.bg = '#000000'
 
 # Background color of the completion widget for even rows.
 # Type: QssColor
-c.colors.completion.even.bg = '#000000'
+c.colors.completion.even.bg = '#1f1f1f'
 
 # Foreground color of completion widget category headers.
 # Type: QtColor
