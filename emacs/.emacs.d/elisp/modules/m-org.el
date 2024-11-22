@@ -40,7 +40,10 @@
    '(org-level-5 ((t (:inherit outline-5 :weight normal))))
    '(org-level-6 ((t (:inherit outline-6 :weight normal))))
    '(org-level-7 ((t (:inherit outline-7 :weight normal))))
-   '(org-level-8 ((t (:inherit outline-8 :weight normal))))))
+   '(org-level-8 ((t (:inherit outline-8 :weight normal)))))
+
+  ;; Activate the habit module for org mode
+  (add-to-list 'org-modules 'org-habit t))
 
 ;; Generate a table of contents
 (use-package toc-org
