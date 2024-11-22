@@ -26,31 +26,130 @@
 ;; !! | mandatory command + control + optional + shift (hyper)
 ;; ## | optional any
 
-{
- :simlayers {
+{:simlayers {
              :w-mode {:key :w}    ; text selection
              :e-mode {:key :e}    ; text navigation
              :r-mode {:key :r}    ; text deletion
              :a-mode {:key :a}    ; hjkl navigation
-;;           :s-mode {:key :s}    ; punctuation         ? ! : ; ' " ` ~
+             :s-mode {:key :s}    ; punctuation         ? ! : ; ' " ` ~
              :d-mode {:key :d}    ; arithmetic          + - * / = % < > #
-;;           :f-mode {:key :f}    ; delimeters          ( ) [ ] { } and ! ? $
+             :f-mode {:key :f}    ; delimeters          ( ) [ ] { } and ! ? $
              :c-mode {:key :c}    ; remaining symbols   ^ | \ _ @
              }
 
  :devices {
-           :hhkb-classic [{:product_id 32 :vendor_id 1278}]
+           :external-keyboard [{:product_id 32 :vendor_id 1278}]
            :internal-keyboard [{:product_id 641 :vendor_id 1452}]
            }
 
  :main [
 
-        {:des "hhkb specific keybindings"
+        {:des "w-layer for text selection"
+         :rules [:w-mode
+                  [:##u :!Sleft_arrow]                  ; e + u         select one character to the left
+                  [:##i :!Sright_arrow]                 ; e + i         select one character to the right
+                  [:##j :!SOleft_arrow]                 ; e + j         select one word to the left
+                  [:##k :!SOright_arrow]                ; e + k         select one word to the right
+                  [:##h :!SCleft_arrow]                 ; e + h         select to beginning of line
+                  [:##l :!SCright_arrow]                ; e + l         select to end of line
+                ]
+         }
+
+        {:des "e-layer for text navigation"
+         :rules [:e-mode
+                  [:##h :!Cleft_arrow]                  ; e + h         move to beginning of line
+                  [:##j :!Oleft_arrow]                  ; e + j         move left one word
+                  [:##k :!Oright_arrow]                 ; e + k         move right one word
+                  [:##l :!Cright_arrow]                 ; e + l         move to end of line
+                ]
+         }
+
+        {:des "r-layer for text deletion"
+         :rules [:r-mode
+                  [:##u :delete_or_backspace]           ; r + u         delete one character backwards
+                  [:##i :delete_forward]                ; r + i         delete one character forwards
+                  [:##h :!Cdelete_or_backspace]         ; r + h         delete to beginning of line
+                  [:##j :!Odelete_or_backspace]         ; r + j         delete word backwards
+                  [:##k :!Odelete_forward]              ; r + k         delete word forwards
+                  [:##l :!Cdelete_forward]              ; r + l         delete to end of line
+                ]
+         }
+
+        {:des "a-layer for hjkl movement"
+         :rules [:a-mode
+                  [:##h :left_arrow]                    ; a + h         left
+                  [:##j :down_arrow]                    ; a + j         down
+                  [:##k :up_arrow]                      ; a + k         up
+                  [:##l :right_arrow]                   ; a + l         right
+                ]
+         }
+
+        {:des "s-layer for punctuation"
+         :rules [:s-mode
+                 [:##u :!Oquote]                        ; s + u        '
+                 [:##i :!SOquote]                       ; s + i        "
+                 [:##o :grave_accent_and_tilde]         ; s + o        `
+
+                 [:##j :comma]                          ; s + j        ,
+                 [:##k :period]                         ; s + k        .
+                 [:##l :!S7]                            ; s + l        &
+
+                 [:##m :!Osemicolon]                    ; s + m        ;
+                 [:##comma :!SOsemicolon]               ; s + ,        :
+                 [:##period :!Sgrave_accent_and_tilde]  ; s + .        ~
+                ]
+         }
+
+        {:des "d-layer for arithmetic symbols"
+         :rules [:d-mode
+                  [:##u :!Scomma]                       ; d + u        <
+                  [:##i :!Speriod]                      ; d + i        >
+                  [:##o :!S3]                           ; d + o        #
+
+                  [:##j :!Sequal_sign]                  ; d + j        +
+                  [:##k :hyphen]                        ; d + k        -
+                  [:##l :equal_sign]                    ; d + l        =
+
+                  [:##m :!S8]                           ; d + m        *
+                  [:##comma :slash]                     ; d + ,        /
+                  [:##period :!S5]                      ; d + .        %
+                ]
+         }
+
+        {:des "f-layer for delimeters and ! ? $"
+         :rules [:f-mode
+                 [:##u :!SOopen_bracket]                ; f + u         {
+                 [:##i :!SOclose_bracket]               ; f + i         }
+                 [:##o :!S1]                            ; f + o         !
+
+                 [:##j :!S9]                            ; f + j         (
+                 [:##k :!S0]                            ; f + k         )
+                 [:##l :!Sslash]                        ; f + l         ?
+
+                 [:##m :!Oopen_bracket]                 ; f + m         [
+                 [:##comma :!Oclose_bracket]            ; f + ,         ]
+                 [:##period :!S4]                       ; f + .         $
+                ]
+         }
+
+        {:des "c-layer for remaining symbols ^ | \\ _ @"
+         :rules [:c-mode
+                 [:##u :!S6]                            ; c + u        ^
+                 [:##j :!Sbackslash]                    ; c + j        |
+                 [:##k :!S2]                            ; c + k        @
+                 [:##m :backslash]                      ; c + m        \
+                 [:##comma :!Shyphen]                   ; c + ,        _
+                ]
+        }
+
+        {:des "external keyboard keybindings"
          :rules [:hhkb-classic
+                 ;; tap caps for escape, hold for control
                  [:##left_control :left_control nil {:alone :escape}]]}
 
-        {:des "internal keyboard specific keybindings"
+        {:des "internal keyboard keybindings"
          :rules [:internal-keyboard
+                 ;; tap caps for escape, hold for control
                  [:##caps_lock :left_control nil {:alone :escape}]]}
 
         {:des "open applications"
@@ -67,7 +166,6 @@
                  ;; open emacs popup frame with org capture
                  [:!TOc "/opt/homebrew/bin/emacsclient -e '(prot-window-popup-org-capture)'"]
                  ]}
-
 
         {:des "yabai keybindings"
          :rules [
@@ -156,112 +254,5 @@
                  [:!OCz "/opt/homebrew/bin/yabai -m window --display prev && /opt/homebrew/bin/yabai -m display --focus prev"]
                  [:!OCc "/opt/homebrew/bin/yabai -m window --display next && /opt/homebrew/bin/yabai -m display --focus next"]
                  ]}
-
-        {:des "w-layer for text selection"
-         :rules [:w-mode
-                  [:##u :!Sleft_arrow]                  ; e -> u        shift+left
-                  [:##i :!Sright_arrow]                 ; e -> i        shift+right
-                  [:##j :!SOleft_arrow]                 ; e -> j        shift+opt+left
-                  [:##k :!SOright_arrow]                ; e -> k        shift+opt+right
-                  [:##h :!SCleft_arrow]                 ; e -> h        shift+cmd+left
-                  [:##l :!SCright_arrow]                ; e -> l        shift+cmd+right
-                ]
-         }
-
-        {:des "e-layer for text navigation"
-         :rules [:e-mode
-                  [:##u :left_arrow]                    ; e -> u         left
-                  [:##i :right_arrow]                   ; e -> i         right
-
-                  [:##h :!Cleft_arrow]                  ; e -> h         cmd+left
-                  [:##j :!Oleft_arrow]                  ; e -> j         opt+left
-                  [:##k :!Oright_arrow]                 ; e -> k         opt+right
-                  [:##l :!Cright_arrow]                 ; e -> l         cmd+right
-
-                  [:n :return_or_enter]                 ; e -> n         enter
-                  [:m :return_or_enter]                 ; e -> m         enter
-                ]
-         }
-
-        {:des "r-layer for text deletion"
-         :rules [:r-mode
-                  [:##u :delete_or_backspace]           ; r -> j          delete word backwards
-                  [:##i :delete_forward]                ; r -> j          delete word backwards
-
-                  [:##h :!Cdelete_or_backspace]         ; r -> h          delete to beginning of line
-                  [:##j :!Odelete_or_backspace]         ; r -> j          delete word backwards
-                  [:##k :!Odelete_forward]              ; r -> k          delete word forwards
-                  [:##l :!Cdelete_forward]              ; r -> l          delete to end of line
-                ]
-         }
-
-        {:des "a-layer for hjkl movement"
-         :rules [:a-mode
-                  [:##h :left_arrow]                    ; a -> h        left
-                  [:##j :down_arrow]                    ; a -> j        down
-                  [:##k :up_arrow]                      ; a -> k        up
-                  [:##l :right_arrow]                   ; a -> l        right
-                ]
-         }
-
-        {:des "s-layer for punctuation"
-         :rules [:s-mode
-                 [:##u :!Oquote]                        ; s -> u        '
-                 [:##i :!SOquote]                       ; s -> i        "
-                 [:##o :grave_accent_and_tilde]         ; s -> o        `
-
-                 [:##j :comma]                          ; s -> j        ,
-                 [:##k :period]                         ; s -> k        .
-                 [:##l :!S7]                            ; s -> l        &
-
-                 [:##m :!Osemicolon]                    ; s -> m        ;
-                 [:##comma :!SOsemicolon]               ; s -> ,        :
-                 [:##period :!Sgrave_accent_and_tilde]  ; s -> .        ~
-                ]
-         }
-
-        {:des "d-layer for arithmetic symbols"
-         :rules [:d-mode
-                  [:##u :!Scomma]                       ; d -> u        <
-                  [:##i :!Speriod]                      ; d -> i        >
-                  [:##o :!S3]                           ; d -> o        #
-
-                  [:##j :!Sequal_sign]                  ; d -> j        +
-                  [:##k :hyphen]                        ; d -> k        -
-                  [:##l :equal_sign]                    ; d -> l        =
-
-                  [:##m :!S8]                           ; d -> m        *
-                  [:##comma :slash]                     ; d -> ,        /
-                  [:##period :!S5]                      ; d -> .        %
-                ]
-         }
-
-        {:des "f-layer for delimeters and ! ? $"
-         :rules [:f-mode
-                 [:##u :!SOopen_bracket]                ; f -> u         {
-                 [:##i :!SOclose_bracket]               ; f -> i         }
-                 [:##o :!S1]                            ; f -> o         !
-
-                 [:##j :!S9]                            ; f -> j         (
-                 [:##k :!S0]                            ; f -> k         )
-                 [:##l :!Sslash]                        ; f -> l         ?
-
-                 [:##m :!Oopen_bracket]                 ; f -> m         [
-                 [:##comma :!Oclose_bracket]            ; f -> ,         ]
-                 [:##period :!S4]                       ; f -> .         $
-                ]
-         }
-
-        {:des "c-layer for remaining symbols ^ | \\ _ @"
-         :rules [:c-mode
-                 [:##u :!S6]                            ; c -> u        ^
-
-                 [:##j :!Sbackslash]                    ; c -> j        |
-                 [:##k :!S2]                            ; c -> k        @
-
-                 [:##m :backslash]                      ; c -> m        \
-                 [:##comma :!Shyphen]                   ; c -> ,        _
-                ]
-        }
  ]
 }
