@@ -47,11 +47,6 @@
   :after embark
   :hook (embark-collect-mode-hook . embark-consult-preview-minor-mode))
 
-;; Dotfiles management
-(use-package chezmoi
-  :bind (("C-c C s" . chezmoi-write)
-         ("C-c C f" . chezmoi-find)))
-
 ;; More markdown support
 (use-package markdown-mode
   :defer t)

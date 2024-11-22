@@ -28,20 +28,14 @@
 ;; Completions
 (use-package company
   :after lsp-mode
-  :hook ((lsp-mode chezmoi-mode). company-mode)
+  :hook ((lsp-mode). company-mode)
   :bind (:map company-active-map
          ("<tab>" . company-complete-selection))
         (:map lsp-mode-map
          ("<tab>" . company-indent-or-complete-common))
   :custom
   (company-minimum-prefix-length 1)
-  (company-idle-delay 0.0)
-  :config
-  ;; chezmoi completions
-  (require 'chezmoi-company)
-  (add-hook 'chezmoi-mode-hook #'(lambda () (if chezmoi-mode
-                                                (add-to-list 'company-backends 'chezmoi-company-backend)
-                                              (delete 'chezmoi-company-backend 'company-backends)))))
+  (company-idle-delay 0.0))
 
 ;; UI enhancements for company
 (use-package company-box
