@@ -66,11 +66,6 @@
 (setq lock-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-;; Start the Emacs server if it isn't already running
-(load "server")
-(unless (server-running-p)
-    (server-start))
-
 ;; Set package archives
 (setq package-archives
       '(("melpa" . "https://melpa.org/packages/")
