@@ -1,7 +1,7 @@
 [window]
   decorations = 'Buttonless'
 [font]
-  normal = { family = "Terminus (TTF)"}
-  size = 20.0
+  normal = { family = "Hack"}
+  size = 16.0
 [colors.primary]
    background = "#000000"
