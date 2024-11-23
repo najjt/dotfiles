@@ -36,7 +36,7 @@
                     :background "unspecified"
                     :inherit nil)
 
-(add-to-list 'default-frame-alist '(font . "Terminus (TTF)-18"))
+(add-to-list 'default-frame-alist '(font . "Hack-16"))
 
 (use-package modus-themes
   :defer t)
