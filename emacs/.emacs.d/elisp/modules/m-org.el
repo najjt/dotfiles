@@ -11,12 +11,10 @@
   (setq org-directory "~/notes/org"
         org-default-notes-file (concat org-directory "/refile.org")
         org-todo-keywords '((sequence "TODO" "|" "DONE"))
-        org-refile-targets (quote (("../misc/computer.org"    :maxlevel   . 1)
-                                   ("../misc/inköpslista.org" :maxlevel   . 1)
+        org-refile-targets (quote (("personal.org"            :maxlevel   . 2)
                                    ("backlog.org"             :maxlevel   . 2)
-                                   ("privat.org"              :maxlevel   . 2)
-                                   ("studier.org"             :maxlevel   . 2)
-                                   ("calendar.org"            :maxlevel   . 1))))
+                                   ("calendar.org"            :maxlevel   . 1)
+                                   ("../misc/computer.org"    :maxlevel   . 1))))
 
   ;; Refile settings
   (setq org-refile-use-outline-path 'file      ; Refile between files
