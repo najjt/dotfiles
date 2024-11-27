@@ -85,8 +85,8 @@
 (setopt switch-to-buffer-obey-display-actions t)
 
 ;; Smooth scrolling
-(setq scroll-step 1
-      scroll-margin 1
+(setq scroll-step 10
+      scroll-margin 10
       scroll-conservatively 101
       scroll-up-aggressively 0.01
       scroll-down-aggressively 0.01
@@ -94,8 +94,8 @@
       fast-but-imprecise-scrolling nil
       mouse-wheel-scroll-amount '(1 ((shift) . 1))
       mouse-wheel-progressive-speed nil
-      hscroll-step 1
-      hscroll-margin 1)
+      hscroll-step 3
+      hscroll-margin 3)
 
 ;; Don't open a new window for ediff
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
