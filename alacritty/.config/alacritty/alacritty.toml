@@ -1,7 +1,7 @@
 [window]
   decorations = 'Buttonless'
 [font]
-  normal = { family = "Hack"}
+  normal = { family = "Liberation Mono"}
   size = 16.0
 [colors.primary]
    background = "#000000"
