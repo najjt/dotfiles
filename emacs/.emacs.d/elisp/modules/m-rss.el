@@ -1,8 +1,10 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package elfeed
-  :bind ("C-c w" . elfeed)
-  :hook (elfeed-search-mode . elfeed-update)
+  :bind ("C-c w" . (lambda ()
+                     (interactive)
+                     (elfeed)
+                     (elfeed-update)))
   :config
   (setq elfeed-feeds
         '(;; Prot's commentary on life
