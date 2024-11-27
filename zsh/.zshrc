@@ -69,11 +69,9 @@ fi
 # Source zsh config
 alias sz="source $HOME/.zshrc && source $HOME/.zshenv"
 
-# File navigation
+# Navigation
 alias home="cd ~"
 alias ..="cd .."
-alias ra="ranger"
-
 alias pf="fzf --preview 'bat --color=always {}' --preview-window '~3'"
 
 ## Colorize the grep command output for ease of use
@@ -95,7 +93,6 @@ alias diff='colordiff'
 alias x="exit"
 alias ls='ls -lh --color=always'
 alias python="python3"
-alias cm="chezmoi"
 
 # Pi
 alias pi="ssh pi@192.168.1.48"                             # ssh to raspberry pi
