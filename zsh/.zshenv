@@ -16,13 +16,12 @@ export PAGER=less
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export GPG_TTY=$(tty)
 
-
+# Path
 path=(
     /opt/local/sbin
     /opt/local/bin
     /usr/local/bin
     /usr/bin
-    /usr/local/sicstus4.8.0/bin
     /Users/najjt/Library/Python/3.9/bin
     /opt/homebrew/bin:/opt/homebrew/sbin
     /Library/TeX/texbin
@@ -37,4 +36,3 @@ export JUPYTER_CONFIG_PATH=/opt/homebrew/etc/jupyter
 # Java
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home"
 #export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home"
-
