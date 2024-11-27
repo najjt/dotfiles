@@ -213,6 +213,7 @@
              evil-collection-unimpaired-mode
              org-indent-mode
              abbrev-mode
-             subword-mode))
+             subword-mode
+             flymake-mode))
 
 (provide 'm-ui)
