@@ -8,7 +8,6 @@
 
 ;; Load modules
 (require 'm-startup)
-(require 'm-ui)
 (require 'm-dev)
 (require 'm-dired)
 (require 'm-help)
@@ -21,6 +20,7 @@
 (require 'm-text)
 (require 'm-global-popup)
 (require 'm-general)
+(require 'm-ui)
 
 (defun my/display-startup-time ()
   (message "Emacs loaded in %s with %d garbage collections."
