@@ -70,7 +70,6 @@ fi
 alias sz="source $HOME/.zshrc && source $HOME/.zshenv"
 
 # Navigation
-alias home="cd ~"
 alias ..="cd .."
 alias pf="fzf --preview 'bat --color=always {}' --preview-window '~3'"
 
