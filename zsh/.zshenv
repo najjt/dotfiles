@@ -16,6 +16,9 @@ export PAGER=less
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export GPG_TTY=$(tty)
 
+# Custom zsh files directory location
+export ZSH_CUSTOM="$HOME/dotfiles/zsh/custom"
+
 # Path
 path=(
     /opt/local/sbin
