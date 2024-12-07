@@ -4,7 +4,8 @@ StartLimitIntervalSec=1 min
 StartLimitBurst=3
 
 [Service]
-ExecStart=/usr/local/bin/kmonad /home/najjt/.config/kmonad/kmonad.kbd
+Type=simple
+ExecStart=%h/.local/bin/kmonad %h/.config/kmonad/kmonad.kbd
 Restart=always
 RestartSec=5
 StandardOutput=null
