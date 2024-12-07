@@ -36,7 +36,11 @@
                     :background "unspecified"
                     :inherit nil)
 
-(add-to-list 'default-frame-alist '(font . "Menlo-16"))
+(if (eq system-type 'darwin)
+    (add-to-list 'default-frame-alist '(font . "Noto Sans Mono-16")))
+
+(if (eq system-type 'gnu/linux)
+    (add-to-list 'default-frame-alist '(font . "Noto Sans Mono-10")))
 
 (use-package modus-themes
   :defer t)
