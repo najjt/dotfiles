@@ -1,7 +1,7 @@
 [window]
   decorations = 'Buttonless'
 [font]
-  normal = { family = "Menlo"}
-  size = 16.0
+  normal = { family = "Noto Sans Mono"}
+  size = 10.0
 [colors.primary]
    background = "#000000"
