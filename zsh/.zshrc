@@ -54,9 +54,6 @@ bindkey -M vicmd 'y' vi-yank-xclip
 #  Aliases
 #
 
-# dotfiles repo alias
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
 # Make aliases work correctly with sudo
 alias sudo='sudo '
 
@@ -97,28 +94,22 @@ alias python="python3"
 alias pi="ssh pi@192.168.1.48"                             # ssh to raspberry pi
 alias pist="ssh -N -L 9090:127.0.0.1:8384 pi@192.168.1.48" # Port forward port 9090 to be able to use syncthing admin gui on other machine
 
-#
-# Emacs
-#
-
+# Emacsclient
 alias ec="emacsclient -c -n"
 
-alias ecre="brew services restart emacs-plus"              # Restart Emacs service
-
-alias stre="brew services restart syncthing"               # Restart Syncthing service
+# Load OS-specific settings
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    source "$ZSH_CUSTOM"/linux.zsh
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    source "$ZSH_CUSTOM"/mac.zsh
+fi
 
 #
 # Plugins
 #
 
-# Syntax highlighting
-source $(brew --prefix)/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # Set up fzf keybindings and fuzzy completion
 source <(fzf --zsh)
-
-# Prompt theme
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

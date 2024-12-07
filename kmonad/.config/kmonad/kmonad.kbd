@@ -12,9 +12,9 @@
 
   ;; Layers
   a (tap-hold-next-release 200 d (layer-toggle arithmetic))
-;;p (tap-hold-next-release 200 s (layer-toggle punctuation))
+  p (tap-hold-next-release 200 s (layer-toggle punctuation))
   c (tap-hold-next-release 200 c (layer-toggle symbols))
-;;d (tap-hold-next-release 200 f (layer-toggle delimiters))
+  d (tap-hold-next-release 200 f (layer-toggle delimiters))
   r (tap-hold-next-release 200 r (layer-toggle deletion))
   e (tap-hold-next-release 200 e (layer-toggle navigation))
   w (tap-hold-next-release 200 w (layer-toggle selection))
@@ -56,7 +56,7 @@
 (deflayer base
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q   @w   @e   @r    t    y    u    i    o    p
-  @ec @v    s   @a    f    g    h    j    k    l
+  @ec @v   @p   @a   @d    g    h    j    k    l
   lsft z    x   @c    v    b    n    m    ,    .    /    rsft
   lctl lmet lalt           spc            ralt rmet cmp rctrl
 )

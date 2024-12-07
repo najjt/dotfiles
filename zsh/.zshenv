@@ -16,17 +16,33 @@ export PAGER=less
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export GPG_TTY=$(tty)
 
+# Custom zsh files directory location
+export ZSH_CUSTOM="$HOME/dotfiles/zsh/custom"
+
 # Path
-path=(
-    /opt/local/sbin
-    /opt/local/bin
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    path=(
+    /usr/local/sbin
     /usr/local/bin
+    /usr/sbin
     /usr/bin
-    /Users/najjt/Library/Python/3.9/bin
-    /opt/homebrew/bin:/opt/homebrew/sbin
-    /Library/TeX/texbin
-    $path
-)
+    /sbin
+    /bin
+    /home/najjt/.local/bin
+    )
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    path=(
+        /opt/local/sbin
+        /opt/local/bin
+        /usr/local/bin
+        /usr/bin
+        /Users/najjt/Library/Python/3.9/bin
+        /opt/homebrew/bin:/opt/homebrew/sbin
+        /Library/TeX/texbin
+        $path
+    )
+fi
+
 export PATH="$PATH"
 
 # Jupyter
