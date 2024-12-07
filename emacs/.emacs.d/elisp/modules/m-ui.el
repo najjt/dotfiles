@@ -207,6 +207,7 @@
 
 ;; Center buffers
 (use-package olivetti
+  :diminish
   :custom (olivetti-body-width 80)
   :hook ((text-mode markdown-mode org-mode) . olivetti-mode))
 
