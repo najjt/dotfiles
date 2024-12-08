@@ -7,5 +7,8 @@ alias dnf="sudo dnf"
 alias vpn-up="wg-quick up sto11-adb"
 alias vpn-down="wg-quick down sto11-adb"
 
+# Syntax highlighting
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # Prompt theme
 source ~/programs/powerlevel10k/powerlevel10k.zsh-theme
