@@ -100,4 +100,7 @@
 ;; Don't open a new window for ediff
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
+;; Open man pages in current window
+(setq Man-notify-method 'bully)
+
 (provide 'm-general)
