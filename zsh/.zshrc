@@ -97,6 +97,11 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     source "$ZSH_CUSTOM"/mac.zsh
 fi
 
+# View man pages in Emacs
+function man () {
+    emacsclient -nw -e '(man "'$1'")'
+}
+
 #
 # Plugins
 #
