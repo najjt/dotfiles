@@ -74,7 +74,7 @@ input type:keyboard {
 
 ## Output Configuration
 
-output * scale 2.0 adaptive_sync on background ~/Pictures/wallpapers-fantasy/FJAnE9xXEAEbjbr fill
+output * scale 1.5 adaptive_sync on
 
 
 #
