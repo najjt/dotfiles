@@ -2,16 +2,18 @@
 # System
 #
 
-## Background processes
+# Scripts directory
+set $scriptsdir ~/scripts
 
 # Emacs daemon
 exec_always emacs --daemon
+## Background processes
 
 # Clipboard manager listener
 exec_always wl-paste --type text --watch cliphist -max-items 100 store
 
 # Shuffle wallpaper
-# exec_always ~/scripts/shuffle_wallpaper.sh
+exec_always $scriptsdir/shuffle_wallpaper.sh
 
 # Binary space partitioning
 exec_always ~/.local/bin/autotiling
@@ -20,7 +22,7 @@ exec_always ~/.local/bin/autotiling
 exec_always nm-applet --indicator
 
 # Audio system tray item
-exec_always ~/scripts/pasystray.sh
+exec_always $scriptsdir/pasystray.sh
 
 # Bluetooth system tray item
 exec_always blueman-applet
@@ -284,9 +286,9 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 bindsym ctrl+$mod+q exec swaylock -f -c 000000
 
 # Volume
-bindsym XF86AudioRaiseVolume exec ~/scripts/volume.sh +
-bindsym XF86AudioLowerVolume exec ~/scripts/volume.sh -
-bindsym XF86AudioMute exec ~/scripts/volume.sh 0
+bindsym XF86AudioRaiseVolume exec $scriptsdir/volume.sh +
+bindsym XF86AudioLowerVolume exec $scriptsdir/volume.sh -
+bindsym XF86AudioMute exec $scriptsdir/volume.sh 0
 
 # Media
 bindsym XF86AudioNext exec playerctl next
@@ -294,12 +296,12 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioPlay exec playerctl pause
 
 # Screen brightness
-bindsym XF86MonBrightnessUp exec ~/scripts/brightness.sh +
-bindsym XF86MonBrightnessDown exec ~/scripts/brightness.sh -
+bindsym XF86MonBrightnessUp exec $scriptsdir/brightness.sh +
+bindsym XF86MonBrightnessDown exec $scriptsdir/brightness.sh -
 
 # Keyboard backlight
-bindsym $mod+Shift+b exec ~/scripts/kbd_backlight.sh +
-bindsym $cmd+Shift+b exec ~/scripts/kbd_backlight.sh -
+bindsym $mod+Shift+b exec $scriptsdir/keyboard_backlight.sh +
+bindsym $cmd+Shift+b exec $scriptsdir/keyboard_backlight.sh -
 
 # Take a screenshot of the whole screen
 bindsym $mod+u exec grim && notify-send "Screenshot taken"
