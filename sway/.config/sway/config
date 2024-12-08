@@ -126,7 +126,7 @@ set $system_dpi_scaling_factor 1.0
 set $cursor_size 28
 
 # Font
-set $titlebar_font Terminus (TTF) Medium
+set $titlebar_font Sans Noto Mono Medium
 set $titlebar_font_size 13
 
 
