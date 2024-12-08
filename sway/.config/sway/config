@@ -64,7 +64,7 @@ seat seat0 hide_cursor 3000
 
 # Keyboard
 input type:keyboard {
-    xkb_layout us,se
+    xkb_layout se,us
     xkb_switch_layout next
     xkb_options grp:rshift_toggle
     repeat_rate 40
