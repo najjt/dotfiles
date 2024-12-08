@@ -64,7 +64,6 @@
           "^\\*tex-shell.*\\*$"
           "^\\*Flycheck.*\\*$"
           "^\\*LSP Error List*\\*$"
-          Man-mode
           magit-mode
           comint-mode
           eshell-mode
