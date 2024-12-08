@@ -87,7 +87,8 @@ alias python="python3"
 alias pi="ssh pi@192.168.1.48"                             # ssh to raspberry pi
 alias pist="ssh -N -L 9090:127.0.0.1:8384 pi@192.168.1.48" # Port forward port 9090 to be able to use syncthing admin gui on other machine
 
-# Emacsclient
+# Emacs
+alias e="emacs"
 alias ec="emacsclient -c -n"
 
 # Load OS-specific settings
