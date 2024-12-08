@@ -499,14 +499,14 @@ c.colors.webpage.preferred_color_scheme = 'dark'
 # font setting, it's replaced with the fonts listed here. If set to an
 # empty value, a system-specific monospace default is used.
 # Type: List of Font, or Font
-c.fonts.default_family = 'Menlo'
+c.fonts.default_family = 'Noto Sans Mono'
 
 # Default font size to use. Whenever "default_size" is used in a font
 # setting, it's replaced with the size listed here. Valid values are
 # either a float value with a "pt" suffix, or an integer value with a
 # "px" suffix.
 # Type: String
-c.fonts.default_size = '16pt'
+c.fonts.default_size = '12pt'
 
 # Default font size (in pixels) for regular text.
 # Type: Int
