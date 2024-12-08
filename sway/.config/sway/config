@@ -149,7 +149,7 @@ focus_follows_mouse no
 
 gaps inner 10
 
-set $opacity 0.95
+set $opacity 0.85
 for_window [class=".*"] opacity $opacity
 for_window [app_id=".*"] opacity $opacity
 
