@@ -1,7 +1,6 @@
 # Homebrew services
-alias ecre="brew services restart emacs-plus"              # Restart Emacs service
-
-alias stre="brew services restart syncthing"               # Restart Syncthing service
+alias ecre="brew services restart emacs-plus" # Restart Emacs service
+alias stre="brew services restart syncthing"  # Restart Syncthing service
 
 # Syntax highlighting
 source $(brew --prefix)/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
