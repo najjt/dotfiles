@@ -5,8 +5,6 @@
 # Scripts directory
 set $scriptsdir ~/scripts
 
-# Emacs daemon
-exec_always emacs --daemon
 ## Background processes
 
 # Clipboard manager listener
