@@ -30,7 +30,9 @@ exec_always mako
 
 ## Idle configuration
 
-# Lock screen after 300 seconds of inactivity, then turn off displays after another 30 seconds. Lock if laptop lid is closed.
+# Lock screen after 300 seconds of inactivity,
+# then turn off displays after another 30 seconds.
+# Lock if laptop lid is closed.
 
 bindswitch --reload --locked lid:on exec $lock
 
