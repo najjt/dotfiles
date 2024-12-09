@@ -29,6 +29,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     /sbin
     /bin
     /home/najjt/.local/bin
+    /home/najjt/go/bin
     )
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     path=(
