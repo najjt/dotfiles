@@ -149,8 +149,6 @@ set $opacity 0.85
 for_window [class=".*"] opacity $opacity
 for_window [app_id=".*"] opacity $opacity
 
-default_border pixel 2
-default_floating_border pixel 2
 default_border pixel 4
 default_floating_border pixel 4
 
@@ -231,9 +229,6 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
-# Balance size of windows
-bindsym $mod+Shift+0 exec sway-balance-workspace
 
 ## Focus
 
