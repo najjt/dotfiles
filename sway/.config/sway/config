@@ -155,6 +155,8 @@ for_window [app_id=".*"] opacity $opacity
 
 default_border pixel 2
 default_floating_border pixel 2
+default_border pixel 4
+default_floating_border pixel 4
 
 
 #
