@@ -17,9 +17,8 @@
                                    ("../misc/computer.org"    :maxlevel   . 1))))
 
   ;; Refile settings
-  (setq org-refile-use-outline-path 'file      ; Refile between files
-        org-outline-path-complete-in-steps nil ; Refile in a single go
-        org-refile-use-outline-path t)         ; Show full paths for refiling
+  (setq org-refile-use-outline-path 'file       ; Provide refile targets as path
+        org-outline-path-complete-in-steps nil) ; Refile in a single go
 
   ;; Appearance
   (setq org-tags-column 0               ; Position tags next to heading
