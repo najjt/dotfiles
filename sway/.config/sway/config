@@ -30,20 +30,19 @@ exec_always mako
 
 ## Idle configuration
 
-# Lock screen after 300 seconds of inactivity,
-# then turn off displays after another 30 seconds.
-# Lock if laptop lid is closed.
+# Lock command
+set $lock 'swaylock -f -c 000000'
 
+# Lock if laptop lid is closed.
 bindswitch --reload --locked lid:on exec $lock
 
-exec swayidle -w                                                                 \
-          timeout 300 $lock                                                      \
-          timeout 330 'swaymsg "output * dpms off"'                              \
-                  resume 'swaymsg "output * dpms on"'                            \
-          timeout 30 'if pgrep swaylock; then swaymsg "output * dpms off"; fi'   \
-                  resume 'if pgrep swaylock; then swaymsg "output* dpms on"; fi' \
-          before-sleep $lock                                                     \
-          lock $lock
+# Turn off displays after 300 seconds of inactivity,
+# then lock screen after another 30 seconds.
+exec swayidle -w                                    \
+         timeout 300 'swaymsg "output * power off"' \
+         resume 'swaymsg "output * power on"'       \
+         timeout 330 $lock                          \
+         before-sleep $lock
 
 
 ## Input configuration
@@ -100,9 +99,6 @@ set $menu rofi -show combi -modes combi -combi-modes "window,drun,run" | xargs s
 
 # Clipboard manager
 set $clip cliphist list | rofi -dmenu -P -i "Clipboard" | cliphist decode | wl-copy
-
-# Lock command
-set $lock 'swaylock -f -c 000000'
 
 # Workspace names
 set $ws1 "1"
@@ -284,8 +280,9 @@ bindsym $mod+Control+Shift+e restart
 
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
 # Lock screen
-bindsym ctrl+$mod+q exec swaylock -f -c 000000
+bindsym ctrl+$mod+q exec $lock
 
 # Volume
 bindsym XF86AudioRaiseVolume exec $scriptsdir/volume.sh +
