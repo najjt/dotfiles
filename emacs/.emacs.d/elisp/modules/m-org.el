@@ -197,4 +197,11 @@ has no effect."
   :init
   (require 'ox-org))
 
+;; View statistics for habits
+(use-package org-habit-stats
+  :bind ((:map org-mode-map
+              ("C-c h" . org-habit-stats-view-habit-at-point))
+         (:map org-agenda-mode-map
+               ("C-c h" . org-habit-stats-view-habit-at-point-agenda))))
+
 (provide 'm-org)
