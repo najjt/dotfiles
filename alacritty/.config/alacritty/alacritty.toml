@@ -2,6 +2,6 @@
   decorations = 'Buttonless'
 [font]
   normal = { family = "Noto Sans Mono"}
-  size = 12.0
+  size = 16.0
 [colors.primary]
    background = "#000000"
