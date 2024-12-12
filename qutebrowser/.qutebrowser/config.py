@@ -506,7 +506,7 @@ c.fonts.default_family = 'Noto Sans Mono'
 # either a float value with a "pt" suffix, or an integer value with a
 # "px" suffix.
 # Type: String
-c.fonts.default_size = '12pt'
+c.fonts.default_size = '16pt'
 
 # Default font size (in pixels) for regular text.
 # Type: Int
