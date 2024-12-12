@@ -212,7 +212,7 @@
 (use-package olivetti
   :diminish
   :custom (olivetti-body-width 80)
-  :hook ((text-mode markdown-mode org-mode) . olivetti-mode))
+  :hook ((markdown-mode org-mode) . olivetti-mode))
 
 ;; Hide minor modes in modeline
 (use-package diminish
