@@ -40,7 +40,43 @@
    '(org-level-8 ((t (:inherit outline-8 :weight normal)))))
 
   ;; Activate the habit module for org mode
-  (add-to-list 'org-modules 'org-habit t))
+  (add-to-list 'org-modules 'org-habit t)
+
+  (defvar my/org-habit-show-graphs-everywhere t
+    "If non-nil, show habit graphs in all types of agenda buffers.
+
+Normally, habits display consistency graphs only in
+\"agenda\"-type agenda buffers, not in other types of agenda
+buffers.  Set this variable to any non-nil variable to show
+consistency graphs in all Org mode agendas.")
+
+  (defun my/org-agenda-mark-habits ()
+    "Mark all habits in current agenda for graph display.
+
+This function enforces `my/org-habit-show-graphs-everywhere' by
+marking all habits in the current agenda as such.  When run just
+before `org-agenda-finalize' (such as by advice; unfortunately,
+`org-agenda-finalize-hook' is run too late), this has the effect
+of displaying consistency graphs for these habits.
+
+When `my/org-habit-show-graphs-everywhere' is nil, this function
+has no effect."
+    (when (and my/org-habit-show-graphs-everywhere
+               (not (get-text-property (point) 'org-series)))
+      (let ((cursor (point))
+            item data)
+        (while (setq cursor (next-single-property-change cursor 'org-marker))
+          (setq item (get-text-property cursor 'org-marker))
+          (when (and item (org-is-habit-p item))
+            (with-current-buffer (marker-buffer item)
+              (setq data (org-habit-parse-todo item)))
+            (put-text-property cursor
+                               (next-single-property-change cursor 'org-marker)
+                               'org-habit-p data))))))
+
+  (advice-add #'org-agenda-finalize :before #'my/org-agenda-mark-habits)
+
+  )
 
 ;; Generate a table of contents
 (use-package toc-org
@@ -77,7 +113,8 @@
 
   (setq org-agenda-custom-commands
         '(("w" "Week agenda"
-           ((agenda "" ((org-agenda-span 'week)))))))
+           ((agenda "" ((org-agenda-span 'week)))))
+          ("h" "Habits" tags-todo "STYLE=\"habit\"" ((org-agenda-overriding-header "Habits")))))
 
   ;; Date heading settings
   (custom-set-faces
