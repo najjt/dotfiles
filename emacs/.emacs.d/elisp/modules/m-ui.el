@@ -1,8 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-;; Hide title bar, use rounded corners for frame
-(add-to-list 'default-frame-alist '(undecorated-round . t))
-
 ;; Display right and left fringe
 (fringe-mode '(8 . 8))
 
