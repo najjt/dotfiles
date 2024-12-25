@@ -1,0 +1,11 @@
+# Open Emacs client
+control + Return
+    emacsclient -n -c
+
+# Open web browser
+control + shift + Return
+    librewolf
+
+# Open terminal emulator
+alt + Return
+    exo-open --launch TerminalEmulator
