@@ -1,5 +1,5 @@
 # Set keyboard layout and layout switching key
-setxkbmap -layout us,se -option grp:ctrl_alt_toggle
+setxkbmap -layout us,se -option grp:rshift_toggle
 
 # Set keyboard repeat delay
 xset r rate 200
