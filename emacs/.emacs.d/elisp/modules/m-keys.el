@@ -87,7 +87,7 @@
 ;; vim keybindings for org mode
 (use-package evil-org
   :after org
-  :hook (org-mode . evil-org-mode)
+  :hook ((org-mode org-agenda-mode) . evil-org-mode)
   :diminish
   :config
   (require 'evil-org-agenda)
