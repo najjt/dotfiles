@@ -10,5 +10,8 @@ pgrep sxhkd || sxhkd &
 # Shuffle desktop wallpaper
 sh $HOME/scripts/shuffle_wallpaper.sh
 
+# Set screen color temperature
+xsct 3500
+
 # Start the Xfce desktop environment
 exec startxfce4
