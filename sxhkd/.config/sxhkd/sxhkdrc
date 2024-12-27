@@ -8,4 +8,4 @@ control + shift + Return
 
 # Open terminal emulator
 alt + Return
-    exo-open --launch TerminalEmulator
+    alacritty
