@@ -61,6 +61,9 @@
    mu4e-view-show-addresses t
    mu4e-date-format "%d/%m/%y"
    mu4e-headers-date-format "%d/%m/%Y"
+   mu4e-compose-dont-reply-to-self t
+   mu4e-view-fields '(:from :to :cc :bcc :subject :flags :date :maildir :mailing-list :tags :attachments :signature :decryption)
+   mu4e-headers-fields '((:human-date . 12) (:flags . 6) (:from . 22) (:subject))
 
    ;; Re-flow mail so it's not hard wrapped
    mu4e-compose-format-flowed t
