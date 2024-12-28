@@ -47,11 +47,11 @@
    mu4e-update-interval 120)             ; Update every 2 minutes
 
   ;; Send mail
-  (setq
-   message-send-mail-function 'smtpmail-send-it
-   smtpmail-auth-credentials "~/.authinfo.gpg"
-   smtpmail-default-smtp-server "smtp.fastmail.com"
-   smtpmail-smtp-server "smtp.fastmail.com")
+  (setq sendmail-program "/usr/bin/msmtp"
+        send-mail-function 'smtpmail-send-it
+        message-sendmail-f-is-evil t
+        message-sendmail-extra-arguments '("--read-envelope-from")
+        message-send-mail-function 'message-send-mail-with-sendmail)
 
   ;; Other options
   (setq
