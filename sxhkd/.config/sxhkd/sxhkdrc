@@ -9,3 +9,6 @@ control + shift + Return
 # Open terminal emulator
 alt + Return
     alacritty
+
+alt + space
+    dmenu_run -b -i
