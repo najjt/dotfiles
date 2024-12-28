@@ -31,7 +31,14 @@
    '((:maildir "/INBOX"      :key ?i)
      (:maildir "/Viktigt"    :key ?v)
      (:maildir "/Orders"     :key ?r)
-     (:maildir "/Resor"      :key ?k)))
+     (:maildir "/Resor"      :key ?k))
+
+  ;; fastmail likes to mark things trashed, so you have to
+  ;; add filters against seeing them in standard searches
+   mu4e-bookmarks
+   `(("flag:unread AND NOT flag:trashed AND NOT maildir:/Spam" "Unread messages" ?u)
+     ("date:today..now AND NOT flag:trashed AND NOT maildir:/Spam" "Today's messages" ?t)
+     ("date:7d..now AND NOT flag:trashed AND NOT maildir:/Spam" "Last 7 days" ?w)))
 
   ;; Fetch mail
   (setq
@@ -63,9 +70,8 @@
    mu4e-index-update-error-warning 'nil)
 
    ;; Move messages to the trash folder instead of completely deleting it
-   ;; (fset 'my-move-to-trash "mTrash")
-   ;; (define-key mu4e-headers-mode-map (kbd "d") 'my-move-to-trash)
-   ;; (define-key mu4e-view-mode-map (kbd "d") 'my-move-to-trash))
-  )
+   (fset 'my-move-to-trash "mTrash")
+   (define-key mu4e-headers-mode-map (kbd "d") 'my-move-to-trash)
+   (define-key mu4e-view-mode-map (kbd "d") 'my-move-to-trash))
 
 (provide 'm-mail)
