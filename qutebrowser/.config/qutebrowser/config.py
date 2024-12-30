@@ -553,14 +553,14 @@ config.bind('ca', 'set -t content.javascript.clipboard access ;; cmd-later 10s s
 #
 
 # mpv
-config.bind(',M', 'hint links spawn mpv {hint-url}')
-config.bind(',m', 'spawn mpv {url}')
+config.bind('zM', 'hint links spawn mpv {hint-url}')
+config.bind('zm', 'spawn mpv {url}')
 
 # Bitwarden
-config.bind(',b', 'spawn --userscript qute-bitwarden.sh')
+config.bind('zl', 'spawn --userscript qute-bitwarden.sh')
 
 # Code select
-config.bind(',c', 'hint code userscript code_select.py')
+config.bind('zc', 'hint code userscript code_select.py')
 
 # Set PATH
 import os
