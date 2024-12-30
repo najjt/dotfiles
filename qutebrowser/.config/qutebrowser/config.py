@@ -545,7 +545,7 @@ config.bind('ed', 'download-open')
 # Yank to Org Mode link format
 config.bind('yo', 'yank inline [[{url}][{title}]]')
 
-# Temporarily allow clipboard access
+# Allow clipboard access for 10 s
 config.bind('ca', 'set -t content.javascript.clipboard access ;; cmd-later 10s set -p content.javascript.clipboard none')
 
 #
