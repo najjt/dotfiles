@@ -4,7 +4,7 @@ control + Return
 
 # Open web browser
 control + shift + Return
-    librewolf
+    qutebrowser
 
 # Open terminal emulator
 alt + Return
