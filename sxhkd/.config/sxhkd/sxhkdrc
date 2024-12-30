@@ -10,5 +10,6 @@ control + shift + Return
 alt + Return
     alacritty
 
+# Open application launcher
 alt + space
-    dmenu_run -b -i
+    rofi -show combi -modes combi -combi-modes "window,drun,run"
