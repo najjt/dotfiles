@@ -1,5 +1,5 @@
 configuration {
-font: "Noto Sans Mono 10";
+font: "Noto Sans Mono 12";
 }
 
 @theme "theme.rasi"
