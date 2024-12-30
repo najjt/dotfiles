@@ -564,4 +564,4 @@ config.bind('zc', 'hint code userscript code_select.py')
 
 # Set PATH
 import os
-os.environ['PATH'] = '/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/TeX/texbin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/local/sbin:/opt/local/bin:/usr/local/sicstus4.8.0/bin:/Applications/WezTerm.app/Contents/MacOS:/Users/najjt/Library/Python/3.9/bin:/Users/najjt/Projects/kod/scripts'
+os.environ['PATH'] = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/najjt/.local/bin'
