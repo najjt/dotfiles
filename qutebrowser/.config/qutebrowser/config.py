@@ -530,9 +530,6 @@ config.unbind('<Alt+9>')
 # Unbind <CTRL-w>
 config.unbind('<Ctrl+w>')
 
-# Allow clipboard access for current site
-config.bind(',j', 'set -u {domain} content.javascript.clipboard access')
-
 # Help shortcut
 config.bind('<Ctrl+h>', 'cmd-set-text -s :help')
 
