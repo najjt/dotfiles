@@ -75,6 +75,11 @@
    ;; Move messages to the trash folder instead of completely deleting it
    (fset 'my-move-to-trash "mTrash")
    (define-key mu4e-headers-mode-map (kbd "d") 'my-move-to-trash)
-   (define-key mu4e-view-mode-map (kbd "d") 'my-move-to-trash))
+   (define-key mu4e-view-mode-map (kbd "d") 'my-move-to-trash)
+
+   ;; Prefer plain text
+   (with-eval-after-load "mm-decode"
+     (add-to-list 'mm-discouraged-alternatives "text/html")
+     (add-to-list 'mm-discouraged-alternatives "text/richtext")))
 
 (provide 'm-mail)
