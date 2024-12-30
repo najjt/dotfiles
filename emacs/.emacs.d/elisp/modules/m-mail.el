@@ -33,7 +33,7 @@
      (:maildir "/Orders"     :key ?r)
      (:maildir "/Resor"      :key ?k))
 
-  ;; fastmail likes to mark things trashed, so you have to
+  ;; Fastmail likes to mark things trashed, so you have to
   ;; add filters against seeing them in standard searches
    mu4e-bookmarks
    `(("flag:unread AND NOT flag:trashed AND NOT maildir:/Spam" "Unread messages" ?u)
