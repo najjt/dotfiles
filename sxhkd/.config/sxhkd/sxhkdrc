@@ -11,5 +11,5 @@ alt + Return
     alacritty
 
 # Open application launcher
-alt + space
+super + space
     rofi -show combi -modes combi -combi-modes "window,drun,run"
