@@ -4,4 +4,3 @@ Welcome to my dotfiles repository! I use [GNU Stow](https://www.gnu.org/software
 * **Terminal**: Alacritty
 * **Editor**: Emacs
 * **Browser**: qutebrowser
-* **WM**: yabai
