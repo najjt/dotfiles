@@ -13,3 +13,7 @@ alt + Return
 # Open application launcher
 super + space
     rofi -show combi -modes combi -combi-modes "window,drun,run"
+
+# Open Org Mode capture frame
+shift + alt + c
+    emacsclient -e '(prot-window-popup-org-capture)'
