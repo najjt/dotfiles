@@ -17,3 +17,7 @@ super + space
 # Open Org Mode capture frame
 shift + alt + c
     emacsclient -e '(prot-window-popup-org-capture)'
+
+# Clipboard history
+super + c
+    rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
