@@ -17,7 +17,7 @@ Make the new frame have the `prot-window-popup-frame' parameter."
      ,(format "Run `%s' in a popup frame with `prot-window-popup-frame' parameter.
 Also see `prot-window-delete-popup-frame'." command)
      (interactive)
-     (let ((frame (make-frame '((prot-window-popup-frame . t)))))
+     (let ((frame (make-frame '((prot-window-popup-frame . t) (window-system . x)))))
        (select-frame frame)
        (switch-to-buffer " prot-window-hidden-buffer-for-popup-frame")
        (condition-case nil
