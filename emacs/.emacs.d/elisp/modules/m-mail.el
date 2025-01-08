@@ -5,8 +5,6 @@
   :defer t
   :commands (mu4e make-mu4e-context)
   :bind
-  ("C-c m" . mu4e)
-
   (:map mu4e-view-mode-map
         ("e" . mu4e-view-save-attachment))
   :config
