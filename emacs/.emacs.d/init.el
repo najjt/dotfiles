@@ -84,14 +84,5 @@
 ;; Add packages to load path
 (add-to-list 'load-path '"~/.emacs.d/elisp/packages")
 
-
-(defun my/display-startup-time ()
-  (message "Emacs loaded in %s with %d garbage collections."
-           (format "%.2f seconds"
-                   (float-time
-                    (time-subtract after-init-time before-init-time)))
-           gcs-done))
-
-(add-hook 'emacs-startup-hook #'my/display-startup-time)
 ;; Load setup files in .emacs.d/elisp/modules/
 (mapc 'load (file-expand-wildcards "~/.emacs.d/elisp/modules/*.el"))
