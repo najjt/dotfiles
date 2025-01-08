@@ -103,4 +103,7 @@
 ;; Open man pages in current window
 (setq Man-notify-method 'pushy)
 
+;; Use a single buffer for the dictionary
+(setq dictionary-use-single-buffer t)
+
 (provide 'm-general)
