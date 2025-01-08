@@ -101,6 +101,6 @@
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 ;; Open man pages in current window
-(setq Man-notify-method 'bully)
+(setq Man-notify-method 'pushy)
 
 (provide 'm-general)
