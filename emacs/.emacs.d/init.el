@@ -84,21 +84,6 @@
 ;; Add packages to load path
 (add-to-list 'load-path '"~/.emacs.d/elisp/packages")
 
-;; Load modules
-(require 'm-startup)
-(require 'm-general)
-(require 'm-dev)
-(require 'm-dired)
-(require 'm-help)
-(require 'm-keys)
-(require 'm-org)
-(require 'm-pdf)
-(require 'm-term)
-(require 'm-mail)
-(require 'm-rss)
-(require 'm-text)
-(require 'm-global-popup)
-(require 'm-ui)
 
 (defun my/display-startup-time ()
   (message "Emacs loaded in %s with %d garbage collections."
@@ -108,3 +93,5 @@
            gcs-done))
 
 (add-hook 'emacs-startup-hook #'my/display-startup-time)
+;; Load setup files in .emacs.d/elisp/modules/
+(mapc 'load (file-expand-wildcards "~/.emacs.d/elisp/modules/*.el"))
