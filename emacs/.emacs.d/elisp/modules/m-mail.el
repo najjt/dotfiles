@@ -2,7 +2,7 @@
 
 (use-package mu4e
   :ensure nil
-  :defer 20 ; Load 20 s after startup
+  :defer t
   :commands (mu4e make-mu4e-context)
   :bind
   ("C-c m" . mu4e)
