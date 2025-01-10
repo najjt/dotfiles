@@ -5,8 +5,6 @@
   :hook (;; Hide details
          dired-mode . dired-hide-details-mode)
   :custom
-  ;; Hide free space
-  (dired-free-space nil)
   ;; Hide message when omitting files
   (dired-omit-verbose nil)
   ;; Show hidden files, sort directories first
