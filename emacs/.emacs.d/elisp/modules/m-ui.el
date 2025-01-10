@@ -108,13 +108,15 @@
 ;; Choose theme and remember it between sessions
 (defhydra hydra-theme (:timeout 4)
   "
-  Choose theme
-  -----------------------------
-  [_l_] Light theme
-  [_d_] Dark theme
-  [_q_] Quit"
+  Choose theme:
+  -------------
+  [_l_] Light
+  [_d_] Dark
+  [_g_] Gruvbox
+"
   ("l" (my/enable-theme 'ef-melissa-light) nil)
   ("d" (my/enable-theme 'modus-vivendi) nil)
+  ("g" (my/enable-theme 'gruvbox-dark-soft) nil)
   ("q" nil nil :exit t))
 
 (defun my/disable-all-themes ()
