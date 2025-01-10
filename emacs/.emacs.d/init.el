@@ -32,17 +32,8 @@
         (add-hook 'minibuffer-setup-hook #'gc-minibuffer-setup-hook)
         (add-hook 'minibuffer-exit-hook #'gc-minibuffer-exit-hook)))
 
-;; Define constants for detecting the current OS
-(defconst *sys/linux*
-  (eq system-type 'gnu/linux)
-  "Are we running on a GNU/Linux system?")
-
-(defconst *sys/mac*
-  (eq system-type 'darwin)
-  "Are we running on a Mac system?")
-
 ;; Linux settings
-(when *sys/linux*
+(when (eq system-type 'gnu/linux)
   (setq x-super-keysym 'meta)
   (add-to-list 'default-frame-alist '(undecorated . t)))
 
