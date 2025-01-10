@@ -96,15 +96,13 @@
 
   (defhydra hydra-main (:timeout 4)
     "
-  ^Misc^                 ^Open^
-  ^^^^^^^^^--------------------------------------
-  [_t_] Choose Theme     [_c_] Open calendar
-  [_r_] Resize Window    [_m_] Open mail
+  Choose function:
+  ----------------
+  [_t_] Choose Theme
+  [_r_] Resize Window
 "
     ("t" hydra-theme/body nil :exit t)
     ("r" hydra-window/body nil :exit t)
-    ("c" my/custom-open-calendar nil :exit t)
-    ("m" mu4e nil :exit t)
     ("q" nil nil :exit t)))
 
 ;; Choose theme and remember it between sessions
