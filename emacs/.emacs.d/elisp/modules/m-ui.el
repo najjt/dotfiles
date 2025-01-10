@@ -33,11 +33,8 @@
                     :background "unspecified"
                     :inherit nil)
 
-(if (eq system-type 'darwin)
-    (add-to-list 'default-frame-alist '(font . "Noto Sans Mono-15")))
-
-(if (eq system-type 'gnu/linux)
-    (add-to-list 'default-frame-alist '(font . "Noto Sans Mono-11")))
+;; Set font
+(add-to-list 'default-frame-alist '(font . "Noto Sans Mono-11"))
 
 (use-package modus-themes
   :defer t)
