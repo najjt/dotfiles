@@ -148,13 +148,13 @@
 ;; Resize window
 (defhydra hydra-window (:timeout 4)
   "
-  Resize window
-  -----------------------------
+  Resize window:
+  -------------
   [_h_] Decrease width
   [_j_] Increase height
   [_k_] Decrease height
   [_l_] Increase width
-  [_q_] Quit"
+"
   ("h" (window-width-decrease)  nil)
   ("j" (window-height-increase) nil)
   ("k" (window-height-decrease) nil)
