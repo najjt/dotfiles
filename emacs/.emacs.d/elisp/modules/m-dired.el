@@ -15,14 +15,7 @@
            (seq bol "." (not (any "."))) ; dotfiles
            (seq "~" eol))))              ; backup files
   ;; No infinite dired buffers!
-  (dired-kill-when-opening-new-dired-buffer t)
-  :config
-  (when *sys/mac*
-    ;; Set directory program to gls on macOS
-    ;; since flag --group-directories-first
-    ;; doesn't exist on macOS' stock ls
-    (setq insert-directory-program "gls")
-    (setq dired-use-ls-dired t)))
+  (dired-kill-when-opening-new-dired-buffer t))
 
 ;; Use nerd icons in dired
 (use-package nerd-icons-dired
