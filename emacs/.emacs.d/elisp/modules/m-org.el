@@ -192,6 +192,9 @@ has no effect."
     (cfw:org-create-source "medium purple"))
    :view 'two-weeks))
 
+;; Open calendar
+(keymap-global-set "C-c k" 'my/custom-open-calendar)
+
 ;; Generate mind maps from org files
 (use-package org-mind-map
   :init
