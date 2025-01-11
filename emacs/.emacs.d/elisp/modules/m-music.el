@@ -9,6 +9,7 @@
   (emms-all)
   (setq emms-player-list '(emms-player-mpv)
         emms-info-functions '(emms-info-native)
-        emms-source-file-default-directory "~/Music/"))
+        emms-source-file-default-directory "~/Music/"
+        emms-browser-covers 'emms-browser-cache-thumbnail-async))
 
 (provide 'm-music)
