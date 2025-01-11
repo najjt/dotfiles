@@ -13,12 +13,6 @@ pgrep nm-applet || nm-applet &
 # Start bluetooth applet if it isn't running already
 pgrep blueman-applet || blueman-applet &
 
-# Shuffle desktop wallpaper
-sh $HOME/scripts/shuffle_wallpaper.sh
-
-# Set screen color temperature
-xsct 3500
-
 # Start clipboard manager
 greenclip daemon &
 
