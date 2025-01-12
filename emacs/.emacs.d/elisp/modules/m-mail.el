@@ -35,9 +35,9 @@
   ;; Fastmail likes to mark things trashed, so you have to
   ;; add filters against seeing them in standard searches
    mu4e-bookmarks
-   `(("flag:unread AND NOT flag:trashed AND NOT maildir:/Spam" "Unread messages" ?u)
-     ("date:today..now AND NOT flag:trashed AND NOT maildir:/Spam" "Today's messages" ?t)
-     ("date:7d..now AND NOT flag:trashed AND NOT maildir:/Spam" "Last 7 days" ?w)))
+   `(("flag:unread AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Unread messages" ?u)
+     ("date:today..now AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Today's messages" ?t)
+     ("date:7d..now AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Last 7 days" ?w)))
 
   ;; Fetch mail
   (setq
