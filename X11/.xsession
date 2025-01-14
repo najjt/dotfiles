@@ -10,5 +10,8 @@ pgrep sxhkd || sxhkd &
 # Start clipboard manager
 greenclip daemon &
 
+# Hide mouse cursor when not in use
+xbanish -t 5 -s &
+
 # Start the Xfce desktop environment
 exec startxfce4
