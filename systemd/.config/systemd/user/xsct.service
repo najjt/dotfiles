@@ -1,0 +1,11 @@
+[Unit]
+Description=xsct blue light filter
+After=display-manager.service
+
+[Service]
+Type=simple
+Environment="DISPLAY=:0" "XAUTHORITY=/home/najjt/.Xauthority"
+ExecStart=/usr/bin/start_xsct
+
+[Install]
+WantedBy=default.target
