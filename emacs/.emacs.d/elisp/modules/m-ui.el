@@ -34,7 +34,7 @@
                     :inherit nil)
 
 ;; Set font
-(add-to-list 'default-frame-alist '(font . "Noto Sans Mono-11"))
+(add-to-list 'default-frame-alist '(font . "Noto Sans Mono 12"))
 
 (use-package modus-themes
   :defer t)
