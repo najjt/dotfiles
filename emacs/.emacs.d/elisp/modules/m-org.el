@@ -96,7 +96,6 @@ has no effect."
         org-agenda-todo-list-sublevels t
         ;; org element cache often produced errors, so I disabled it
         org-element-use-cache nil
-        org-agenda-prefix-format "  %?-12t% s" ; Hide category for agenda items
         org-agenda-files '("~/notes/org")
 
         ;; Add newline above date heading
