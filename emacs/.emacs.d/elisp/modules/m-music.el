@@ -11,6 +11,7 @@
   (setq emms-player-list '(emms-player-mpv)
         emms-info-functions '(emms-info-native)
         emms-source-file-default-directory "~/Music/"
-        emms-browser-covers 'emms-browser-cache-thumbnail-async))
+        emms-browser-covers 'emms-browser-cache-thumbnail-async
+        emms-playlist-mode-window-width 75))
 
 (provide 'm-music)
