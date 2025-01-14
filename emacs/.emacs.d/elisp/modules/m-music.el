@@ -1,7 +1,8 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package emms
-  :bind (("C-c e" . emms-smart-browse)
+  :bind (("C-c e e" . emms-smart-browse)
+         ("C-c e p" . emms-playlist-mode-go-popup)
          :map emms-browser-mode-map
          ("C-a" . emms-browser-add-tracks-and-play))
   :hook ((emms-browser-mode emms-playlist-mode) . hl-line-mode)
