@@ -120,6 +120,9 @@ has no effect."
    '(org-agenda-date ((t (:height 1.0 :weight bold :background "unspecified"))))
    '(org-agenda-date-today ((t (:height 1.3 :weight bold :background "unspecified" :underline nil))))))
 
+;; Show org item properties in the agenda buffer
+(use-package org-agenda-property)
+
 (use-package org-capture
   :ensure nil
   :after org
