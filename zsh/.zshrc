@@ -91,16 +91,13 @@ alias pist="ssh -N -L 9090:127.0.0.1:8384 pi@192.168.1.48" # Port forward port 9
 alias e="emacs"
 alias ec="emacsclient -c -n -F \"'(fullscreen . maximized)\""
 
+# Systemd services
+alias ecre="systemctl --user restart emacs"     # Restart Emacs service
+alias stre="systemctl --user restart syncthing" # Restart Syncthing service
+
 #
 # Other
 #
-
-# Load OS-specific settings
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    source "$ZSH_CUSTOM"/linux.zsh
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    source "$ZSH_CUSTOM"/mac.zsh
-fi
 
 # View man pages in Emacs
 function man () {
@@ -129,6 +126,12 @@ function pomo() {
 
 # Set up fzf keybindings and fuzzy completion
 source <(fzf --zsh)
+
+# Syntax highlighting
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Prompt theme
+source ~/programs/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

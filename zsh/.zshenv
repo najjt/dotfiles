@@ -17,12 +17,8 @@ export EDITOR=emacsclient
 export PAGER=less
 export GPG_TTY=$(tty)
 
-# Custom zsh files directory location
-export ZSH_CUSTOM="$HOME/dotfiles/zsh/custom"
-
 # Path
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    path=(
+path=(
     /usr/local/sbin
     /usr/local/bin
     /usr/sbin
@@ -31,25 +27,9 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     /bin
     /home/najjt/.local/bin
     /home/najjt/go/bin
-    )
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    path=(
-        /opt/local/sbin
-        /opt/local/bin
-        /usr/local/bin
-        /usr/bin
-        /Users/najjt/Library/Python/3.9/bin
-        /opt/homebrew/bin:/opt/homebrew/sbin
-        /Library/TeX/texbin
-        $path
-    )
-fi
+)
 
 export PATH="$PATH"
-
-# Jupyter
-export JUPYTER_PATH=/opt/homebrew/share/jupyter
-export JUPYTER_CONFIG_PATH=/opt/homebrew/etc/jupyter
 
 # Java
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home"
