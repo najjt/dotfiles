@@ -15,7 +15,6 @@ export BROWSER=qutebrowser
 export TERMINAL=alacritty
 export EDITOR=emacsclient
 export PAGER=less
-# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export GPG_TTY=$(tty)
 
 # Custom zsh files directory location
