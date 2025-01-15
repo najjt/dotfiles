@@ -117,8 +117,8 @@ has no effect."
 
   ;; Date heading settings
   (custom-set-faces
-   '(org-agenda-date ((t (:height 1.0 :weight bold :background "unspecified"))))
-   '(org-agenda-date-today ((t (:height 1.3 :weight bold :background "unspecified" :underline nil))))))
+   '(org-agenda-date ((t (:height 1.0 :weight bold :background nil))))
+   '(org-agenda-date-today ((t (:height 1.3 :weight bold :background nil :underline nil))))))
 
 ;; Show org item properties in the agenda buffer
 (use-package org-agenda-property)
