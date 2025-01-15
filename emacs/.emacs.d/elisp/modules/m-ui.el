@@ -23,7 +23,7 @@
   (add-hook hook 'display-line-numbers-mode))
 
 ;; Highlight current line
-(let ((hl-line-hooks '(text-mode-hook prog-mode-hook dired-mode-hook Man-mode-hook conf-mode-hook)))
+(let ((hl-line-hooks '(text-mode-hook prog-mode-hook dired-mode-hook Man-mode-hook conf-mode-hook emms-browser-mode-hook elfeed-show-mode-hook)))
   (mapc (lambda (hook) (add-hook hook 'hl-line-mode)) hl-line-hooks))
 
 ;; Make keybindings in minibuffer look like other text
