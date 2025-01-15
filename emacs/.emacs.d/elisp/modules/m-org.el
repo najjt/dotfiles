@@ -98,10 +98,6 @@ has no effect."
         org-element-use-cache nil
         org-agenda-files '("~/notes/org")
 
-        ;; Add newline above date heading
-        org-agenda-format-date (lambda (date)
-                                 (concat "\n" (org-agenda-format-date-aligned date)))
-
         ;; Time grid settings
         org-agenda-time-grid
         '((daily today require-timed remove-match)
