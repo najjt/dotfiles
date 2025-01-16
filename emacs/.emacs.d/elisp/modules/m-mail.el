@@ -20,7 +20,7 @@
   ;; Maildir setup
   (setq
    mu4e-maildir "~/.mail"
-   mu4e-attachments-dir "~/Downloads"
+   mu4e-attachment-dir "~/Downloads"
    mu4e-refile-folder "/Archive"
    mu4e-sent-folder "/Sent"
    mu4e-drafts-folder "/Drafts"
