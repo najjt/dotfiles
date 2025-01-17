@@ -1,9 +1,8 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package mu4e
-  :ensure nil
-  :defer t
   :commands (mu4e make-mu4e-context)
+  :defer 5
   :bind
   ("C-c m" . mu4e)
   (:map mu4e-view-mode-map
