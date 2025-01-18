@@ -4,8 +4,8 @@ setxkbmap -layout us,se -option grp:rshift_toggle
 # Set keyboard repeat delay
 xset r rate 200
 
-# Start sxhkd if it isn't running already
-pgrep sxhkd || sxhkd &
+# Start sxhkd
+sxhkd &
 
 # Start clipboard manager
 greenclip daemon &
@@ -15,9 +15,6 @@ xbanish -t 5 -s &
 
 # Shuffle wallpaper
 sh $HOME/scripts/shuffle_wallpaper.sh
-
-# Set screen color temperature
-xsct 3500
 
 # Start the Xfce desktop environment
 exec startxfce4
