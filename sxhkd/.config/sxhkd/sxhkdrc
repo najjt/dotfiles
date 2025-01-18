@@ -7,11 +7,11 @@ control + shift + Return
     qutebrowser
 
 # Open terminal emulator
-alt + Return
+shift + alt + Return
     alacritty
 
 # Open application launcher
-super + space
+alt + p
     rofi -show combi -modes combi -combi-modes "window,drun,run"
 
 # Open Org Mode capture frame
@@ -19,5 +19,5 @@ shift + alt + c
     emacsclient -e '(prot-window-popup-org-capture)'
 
 # Clipboard history
-super + c
+alt + o
     rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
