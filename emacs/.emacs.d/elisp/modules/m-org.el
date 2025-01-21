@@ -75,9 +75,7 @@ has no effect."
                                (next-single-property-change cursor 'org-marker)
                                'org-habit-p data))))))
 
-  (advice-add #'org-agenda-finalize :before #'my/org-agenda-mark-habits)
-
-  )
+  (advice-add #'org-agenda-finalize :before #'my/org-agenda-mark-habits))
 
 ;; Generate a table of contents
 (use-package toc-org
