@@ -68,7 +68,10 @@
 
    ;; Hide annoying retrieving msg in mini buffer
    mu4e-hide-index-messages t
-   mu4e-index-update-error-warning 'nil)
+   mu4e-index-update-error-warning 'nil
+
+   ;; Signature
+   message-signature "Med vänlig hälsning,\nMartin Lönn Andersson")
 
    ;; Move messages to the trash folder instead of completely deleting it
    (fset 'my-move-to-trash "mTrash")
