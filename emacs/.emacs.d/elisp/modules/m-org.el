@@ -139,15 +139,8 @@ has no effect."
      ("e" "Calendar event" entry (file "calendar.org")
       "* %?\n %^t")
 
-     ("c" "Contact" entry (file "")
-      "* %?
-          :PROPERTIES:
-          :PHONE: %^{phone number}
-          :ADDRESS: %^{Street name Street no., Postal Code Postal Area, Country}
-          :BIRTHDAY: %^{yyyy-mm-dd}
-          :EMAIL: %^{name@domain.com}
-          :NOTE: %^{NOTE}
-          :END:"))))
+     ("c" "Contact" entry (file "contacts.org")
+      "* %? \n:PROPERTIES:\n:PHONE: %^{Phone number}\n:END:"))))
 
 (use-package org-contacts
   :after org
