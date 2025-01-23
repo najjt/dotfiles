@@ -1,3 +1,16 @@
+setopt PROMPT_SUBST
+
+format_current_git_branch() {
+  local BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+  if [[ -n ${BRANCH} ]] ; then
+    echo "(${BRANCH})"
+  fi
+}
+
+export NEWLINE=$'\n'
+
+export PROMPT='%F{green}%n@%m %F{cyan}%~%F{reset_color} %F{yellow}$(format_current_git_branch)%F{reset_color} ${NEWLINE}%F{red}$ '
+
 # Set cursor style to
 # non-blinking vertical line
 echo '\e[6 q'
@@ -110,9 +123,3 @@ source <(fzf --zsh)
 
 # Syntax highlighting
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Prompt theme
-source ~/programs/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
