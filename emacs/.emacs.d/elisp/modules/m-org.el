@@ -128,16 +128,16 @@ has no effect."
   :custom
   (org-capture-templates
    '(("t" "Task" entry (file "")
-      "* TODO %?\n  %i\n")
+      "* TODO %?\n%i\n")
 
      ("l" "Task with link" entry (file "")
-      "* TODO %?\n  %i\n %a")
+      "* TODO %?\n%i\n%a")
 
      ("n" "Note" entry (file "")
-      "* %?\n %i\n")
+      "* %?\n%i\n")
 
      ("e" "Calendar event" entry (file "calendar.org")
-      "* %?\n %^t")
+      "* %?\n%^t")
 
      ("c" "Contact" entry (file "contacts.org")
       "* %? \n:PROPERTIES:\n:PHONE: %^{Phone number}\n:END:"))))
