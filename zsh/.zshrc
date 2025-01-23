@@ -72,9 +72,6 @@ alias fgrep='fgrep --color=auto'
 # and list them as they are created
 alias mkdir='mkdir -pv'
 
-# Make mount output be human readable
-alias mount='mount | column -t'
-
 # Colorize diff output
 alias diff='colordiff'
 
