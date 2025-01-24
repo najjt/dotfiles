@@ -11,13 +11,7 @@
         emms-info-functions '(emms-info-native)
         emms-source-file-default-directory "~/Music/"
         emms-browser-covers 'emms-browser-cache-thumbnail-async
-        emms-playlist-mode-window-width 75))
-
-;; Cycle currently playing track title and display time separately
-(use-package emms-mode-line-cycle
-  :init
-  (emms-mode-line-cycle 1)
-  :custom
-  (emms-mode-line-cycle-velocity 3))
+        emms-playlist-mode-window-width 75
+        emms-mode-line-format ""))
 
 (provide 'm-music)
