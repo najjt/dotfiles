@@ -3,7 +3,8 @@ separator_block_width=15
 markup=none
 
 [mediaplayer]
-instance=mpv
+command=~/programs/i3blocks-contrib/mediaplayer/mediaplayer
+instance=vlc
 interval=5
 signal=10
 
