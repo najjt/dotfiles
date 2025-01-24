@@ -11,7 +11,7 @@ shift + alt + Return
     alacritty
 
 # Open application launcher
-alt + p
+alt + o
     rofi -show combi -modes combi -combi-modes "window,drun,run"
 
 # Open Org Mode capture frame
@@ -19,5 +19,5 @@ shift + alt + c
     emacsclient -e '(prot-window-popup-org-capture)'
 
 # Clipboard history
-alt + o
+alt + i
     rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
