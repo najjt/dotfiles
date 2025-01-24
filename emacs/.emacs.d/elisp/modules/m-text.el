@@ -20,4 +20,9 @@
 ;; Tabs are four spaces
 (setq-default tab-width 4 indent-tabs-mode nil)
 
+;; Visualize color codes in text
+(use-package rainbow-mode
+  :diminish
+  :hook (prog-mode text-mode fundamental-mode))
+
 (provide 'm-text)
