@@ -1,0 +1,32 @@
+[global]
+    monitor = 0
+    follow = keyboard
+    width = (250, 500)
+    height = (0, 750)
+    offset = 20x20
+    padding = 5
+    horizontal_padding = 5
+    gap_size = 3
+    transparency = 15
+    frame_width = 1
+    frame_color = "#1E1E1E"
+    font = Noto Sans Mono 11
+    format = "<b>%s</b>\n%b"
+    corner_radius = 4
+    icon_position = off
+
+[urgency_low]
+    foreground = "#F1F1F1"
+    background = "#1E1E1E"
+    timeout = 3
+
+[urgency_normal]
+    foreground = "#F1F1F1"
+    background = "#1E1E1E"
+    timeout = 5
+
+[urgency_critical]
+    foreground = "#F1F1F1"
+    background = "#1E1E1E"
+    frame_color = "#FF0000"
+    timeout = 15
