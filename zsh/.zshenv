@@ -17,6 +17,8 @@ export EDITOR=emacsclient
 export PAGER=less
 export GPG_TTY=$(tty)
 
+export GTK_THEME=Adwaita-dark
+
 # Path
 path=(
     /usr/local/sbin
