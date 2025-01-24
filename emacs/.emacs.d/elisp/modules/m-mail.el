@@ -27,9 +27,7 @@
 
    mu4e-maildir-shortcuts
    '((:maildir "/INBOX"             :key ?i)
-     (:maildir "/Viktigt"           :key ?v)
-     (:maildir "/Beställningar"     :key ?b)
-     (:maildir "/Resor"             :key ?r))
+     (:maildir "/Viktigt"           :key ?v))
 
   ;; Fastmail likes to mark things trashed, so you have to
   ;; add filters against seeing them in standard searches
