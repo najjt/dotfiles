@@ -7,7 +7,7 @@
          ("C-a" . emms-browser-add-tracks-and-play))
   :config
   (emms-all)
-  (setq emms-player-list '(emms-player-mpv)
+  (setq emms-player-list '(emms-player-vlc)
         emms-info-functions '(emms-info-native)
         emms-source-file-default-directory "~/Music/"
         emms-browser-covers 'emms-browser-cache-thumbnail-async
