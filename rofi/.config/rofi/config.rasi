@@ -1,5 +1,13 @@
 configuration {
-font: "Noto Sans Mono 10";
+font: "Noto Sans Mono 11";
 }
 
 @theme "theme.rasi"
+
+listview {
+         lines: 10;
+}
+
+window {
+       width: 40%;
+}
