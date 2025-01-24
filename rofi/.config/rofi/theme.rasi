@@ -2,10 +2,10 @@
 
 * {
     /* Colors */
-    white:                       rgba ( 255, 255, 255, 100 % );
-    black:                       rgba ( 0,   0,   0,   100 % );
+    white:                       rgba ( 241, 241, 241, 100 % );
+    black:                       rgba ( 30,  30,  30,  100 % );
     grey:                        rgba ( 70,  70,  70,  100 % );
-    light-grey:                  rgba ( 120, 120, 120, 100 % );
+    light-grey:                  rgba ( 206, 206, 206,  50 % );
     red:                         rgba ( 220, 50,  47,  100 % );
     blue:                        rgba ( 38,  139, 210, 100 % );
 
