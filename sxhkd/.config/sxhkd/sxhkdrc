@@ -1,5 +1,5 @@
 # Open Emacs client
-control + Return
+control + alt + Return
     emacsclient -n -c -F "'(fullscreen . maximized)"
 
 # Open web browser
