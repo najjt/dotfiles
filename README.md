@@ -2,5 +2,6 @@ Welcome to my dotfiles repository! I use [GNU Stow](https://www.gnu.org/software
 
 * **Shell**: zsh
 * **Terminal**: Alacritty
-* **Editor**: Emacs
-* **Browser**: qutebrowser
+* **Editor** (among other things): Emacs
+* **Browser**: qutebrowser/Librewolf
+* **WM**: i3
