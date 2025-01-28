@@ -192,15 +192,4 @@ bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/screenshots/screen
 bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/screenshots/screenshot $(date '+%F %T').jpg" && notify-send "Screenshot taken"
 
 ## Status bar
-bar {
-    position bottom
-    tray_output primary
-    status_command i3blocks
-    colors {
-           background "#1E1E1E"
-           focused_workspace #CECECE #CECECE #000000
-           active_workspace #333333 #333333 #000000
-           inactive_workspace #1E1E1E #1E1E1E #F1F1F1
-           urgent_workspace #EB709B #EB709B #FFFFFF
-    }
-}
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
