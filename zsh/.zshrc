@@ -119,7 +119,8 @@ function man () {
 #
 
 # Set up fzf keybindings and fuzzy completion
-source <(fzf --zsh)
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 
 # Syntax highlighting
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
