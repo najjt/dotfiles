@@ -1,9 +1,3 @@
-# Set keyboard layout and layout switching key
-setxkbmap -layout us,se -option grp:rshift_toggle
-
-# Set keyboard repeat delay
-xset r rate 200
-
 # Sleep after 3 min, suspend after 5 min
 xset 180 300 &
 
