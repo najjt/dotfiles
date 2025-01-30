@@ -42,6 +42,12 @@
 (use-package ef-themes
   :defer t)
 
+(use-package gruvbox-theme
+  :defer t)
+
+(use-package nordic-night-theme
+  :defer t)
+
 ;; Popup buffers
 (use-package popper
   :bind
