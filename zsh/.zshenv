@@ -30,6 +30,7 @@ path=(
     /home/najjt/.local/bin
     /home/najjt/go/bin
     /snap/bin
+    /usr/local/go/bin
 )
 
 export PATH="$PATH"
