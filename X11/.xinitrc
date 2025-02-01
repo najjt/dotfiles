@@ -1,8 +1,8 @@
-# Sleep after 3 min, suspend after 5 min
-xset 180 300 &
 # Set keyboard repeat rate
 xset r rate 200
 
+# Suspend after two minutes of inactivity
+xset dpms 0 0 120
 
 # Hotkey daemon
 sxhkd &
