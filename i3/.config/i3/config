@@ -19,8 +19,6 @@ exec --no-startup-id blueman-applet
 # Notifications
 exec --no-startup-id dunst
 
-## Idle configuration
-
 # Lock
 exec --no-startup-id xss-lock -- ~/.config/i3/lock.sh
 
