@@ -29,8 +29,8 @@
 ;; Make keybindings in minibuffer look like other text
 (set-face-attribute 'help-key-binding nil
                     :box nil
-                    :foreground nil
-                    :background nil
+                    :foreground 'unspecified'
+                    :background 'unspecified'
                     :inherit nil)
 
 ;; Set font
