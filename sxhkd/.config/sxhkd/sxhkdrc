@@ -8,7 +8,7 @@ control + shift + Return
 
 # Open terminal emulator
 shift + alt + Return
-    alacritty
+    xfce4-terminal
 
 # Open application launcher
 alt + o
