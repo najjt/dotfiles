@@ -14,4 +14,4 @@ greenclip daemon &
 xbanish -t 5 -s &
 
 # Start the desktop environment
-exec startxfce4
+exec startplasma-x11
