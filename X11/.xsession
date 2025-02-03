@@ -1,7 +1,7 @@
 # Set keyboard layouts and layout switching shortcut
 setxkbmap -layout us,se -option grp:rshift_toggle
 
-# Set keyboard repeat rate
+# Set keyboard repeat delay
 xset r rate 300
 
 # Hotkey daemon
