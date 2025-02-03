@@ -1,0 +1,14 @@
+[Unit]
+Description=KMonad for HHKB
+StartLimitIntervalSec=1 min
+StartLimitBurst=3
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/kmonad %h/.config/kmonad/hhkb.kbd
+Restart=always
+RestartSec=5
+StandardOutput=null
+
+[Install]
+WantedBy=default.target

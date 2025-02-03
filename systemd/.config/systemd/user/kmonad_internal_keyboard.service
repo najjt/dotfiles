@@ -1,11 +1,11 @@
 [Unit]
-Description=KMonad for Laptop Keyboard
+Description=KMonad for internal keyboard
 StartLimitIntervalSec=1 min
 StartLimitBurst=3
 
 [Service]
 Type=simple
-ExecStart=%h/.local/bin/kmonad %h/.config/kmonad/kmonad.kbd
+ExecStart=%h/.local/bin/kmonad %h/.config/kmonad/internal_keyboard.kbd
 Restart=always
 RestartSec=5
 StandardOutput=null
