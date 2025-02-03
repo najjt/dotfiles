@@ -1,13 +1,14 @@
 configuration {
-font: "Noto Sans Mono 11";
+        font: "Noto Sans Mono 11";
+        modi: [window,run,ssh,combi];
 }
 
 @theme "theme.rasi"
 
 listview {
-         lines: 10;
+        lines: 10;
 }
 
 window {
-       width: 40%;
+        width: 40%;
 }
