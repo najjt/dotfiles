@@ -29,7 +29,6 @@ path=(
     /bin
     /home/najjt/.local/bin
     /home/najjt/go/bin
-    /snap/bin
     /usr/local/go/bin
 )
 
