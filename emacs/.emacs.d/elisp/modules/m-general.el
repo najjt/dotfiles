@@ -106,4 +106,8 @@
 ;; Use a single buffer for the dictionary
 (setq dictionary-use-single-buffer t)
 
+;; Use local dictionary server
+;; See https://www.masteringemacs.org/article/wordsmithing-in-emacs
+(setq dictionary-server "localhost")
+
 (provide 'm-general)
