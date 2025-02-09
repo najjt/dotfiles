@@ -99,7 +99,7 @@ alias pist="ssh -N -L 9090:127.0.0.1:8384 pi@192.168.1.48" # Port forward port 9
 
 # Emacs
 alias e="emacs"
-alias ec="emacsclient -c -n -F \"'(fullscreen . maximized)\""
+alias ec="emacsclient -c -n"
 
 # Systemd services
 alias ecre="systemctl --user restart emacs"     # Restart Emacs service
