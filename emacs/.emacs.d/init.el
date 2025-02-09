@@ -75,3 +75,6 @@
 
 ;; Load setup files in .emacs.d/elisp/modules/
 (mapc 'load (file-expand-wildcards "~/.emacs.d/elisp/modules/*.el"))
+
+;; Ensure new client frames are focused
+(add-hook 'server-switch-hook (lambda () (select-frame-set-input-focus (selected-frame))))
