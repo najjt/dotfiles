@@ -5,10 +5,10 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
 # Language & locale
-export LANGUAGE="en_US.UTF-8"
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
+export LANGUAGE="en_IE.UTF-8"
+export LANG="en_IE.UTF-8"
+export LC_ALL="en_IE.UTF-8"
+export LC_CTYPE="en_IE.UTF-8"
 
 # Default programs
 export BROWSER=qutebrowser
