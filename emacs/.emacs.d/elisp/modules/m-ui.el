@@ -9,10 +9,16 @@
 ;; Show column number in status bar
 (column-number-mode)
 
-;; Disable border around modelines
-(custom-set-faces
- '(mode-line ((t (:box nil))))
- '(mode-line-inactive ((t (:box nil)))))
+;; Hide minor modes in modeline
+(use-package diminish
+  :diminish (auto-fill-function
+             centered-window-mode
+             eldoc-mode
+             evil-collection-unimpaired-mode
+             org-indent-mode
+             abbrev-mode
+             subword-mode
+             flymake-mode))
 
 ;; Make line numbers relative
 (setq display-line-numbers-type 'relative
@@ -222,15 +228,5 @@
   (spacious-padding-mode)
   (setq spacious-padding-subtle-mode-line t))
 
-;; Hide minor modes in modeline
-(use-package diminish
-  :diminish (auto-fill-function
-             centered-window-mode
-             eldoc-mode
-             evil-collection-unimpaired-mode
-             org-indent-mode
-             abbrev-mode
-             subword-mode
-             flymake-mode))
 
 (provide 'm-ui)
