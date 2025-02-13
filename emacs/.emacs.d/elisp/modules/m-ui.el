@@ -228,5 +228,10 @@
   (interactive)
   (resize-window nil -5))
 
+;; Disable border around modelines
+;; and use variable pitch font
+(custom-set-faces
+ '(mode-line ((t (:box nil :inherit variable-pitch))))
+ '(mode-line-inactive ((t (:box nil)))))
 
 (provide 'm-ui)
