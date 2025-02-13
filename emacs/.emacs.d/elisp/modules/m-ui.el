@@ -36,6 +36,9 @@
 ;; Set font
 (add-to-list 'default-frame-alist '(font . "Noto Sans Mono 11"))
 
+;; Set background transparency
+(add-to-list 'default-frame-alist '(alpha-background . 90))
+
 (use-package modus-themes
   :defer t)
 
