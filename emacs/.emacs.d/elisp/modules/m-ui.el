@@ -228,10 +228,5 @@
   (interactive)
   (resize-window nil -5))
 
-(use-package spacious-padding
-  :config
-  (spacious-padding-mode)
-  (setq spacious-padding-subtle-mode-line t))
-
 
 (provide 'm-ui)
