@@ -61,6 +61,9 @@
 (use-package nordic-night-theme
   :defer t)
 
+(use-package miasma-theme
+  :defer t)
+
 ;; Popup buffers
 (use-package popper
   :bind
@@ -133,11 +136,13 @@
   [_d_] Dark
   [_g_] Gruvbox
   [_n_] Nordic night
+  [_m_] Miasma
 "
   ("l" (my/enable-theme 'ef-melissa-light) nil)
   ("d" (my/enable-theme 'modus-vivendi) nil)
   ("g" (my/enable-theme 'gruvbox-dark-soft) nil)
   ("n" (my/enable-theme 'nordic-night) nil)
+  ("m" (my/enable-theme 'miasma) nil)
   ("q" nil nil :exit t))
 
 (defun my/disable-all-themes ()
