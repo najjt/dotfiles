@@ -217,6 +217,11 @@
   (interactive)
   (resize-window nil -5))
 
+(use-package spacious-padding
+  :config
+  (spacious-padding-mode)
+  (setq spacious-padding-subtle-mode-line t))
+
 ;; Hide minor modes in modeline
 (use-package diminish
   :diminish (auto-fill-function
