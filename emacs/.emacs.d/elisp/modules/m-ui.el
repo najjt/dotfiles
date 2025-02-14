@@ -232,6 +232,6 @@
 ;; and use variable pitch font
 (custom-set-faces
  '(mode-line ((t (:box nil :inherit variable-pitch))))
- '(mode-line-inactive ((t (:box nil)))))
+ '(mode-line-inactive ((t (:box nil :inherit variable-pitch)))))
 
 (provide 'm-ui)
