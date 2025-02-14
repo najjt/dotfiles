@@ -47,7 +47,7 @@
   (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.2))
 
 ;; Set background transparency
-(add-to-list 'default-frame-alist '(alpha-background . 90))
+(add-to-list 'default-frame-alist '(alpha-background . 95))
 
 (use-package modus-themes
   :defer t)
