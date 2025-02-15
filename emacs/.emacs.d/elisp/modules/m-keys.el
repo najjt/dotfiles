@@ -64,6 +64,10 @@
       (let ((line-move-visual (unless count t)))
         (evil-line-move (- (or count 1))))))
 
+  (unless (display-graphic-p)
+    (require 'evil-terminal-cursor-changer)
+    (evil-terminal-cursor-changer-activate))
+
   :custom
   ;; Horizontal movement crosses lines
   (evil-cross-lines t))
