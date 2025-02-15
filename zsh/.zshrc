@@ -50,7 +50,7 @@ zle -N zle-line-init
 # Yank to the system clipboard in vi mode
 function vi-yank-xclip {
     zle vi-yank
-   echo "$CUTBUFFER" | pbcopy -i
+   echo "$CUTBUFFER" | xclip -i -selection clipboard
 }
 
 zle -N vi-yank-xclip
