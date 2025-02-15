@@ -9,7 +9,7 @@
 (keymap-global-set "<escape>" 'keyboard-escape-quit)
 
 ;; Open Hydra main menu
-(keymap-global-set "C-;" 'hydra-main/body)
+(keymap-global-set "C-c ;" 'hydra-main/body)
 
 ;; vi emulation
 (use-package evil
