@@ -197,4 +197,4 @@ has no effect."
          (:map org-agenda-mode-map
                ("C-c h" . org-habit-stats-view-habit-at-point-agenda))))
 
-(provide 'm-org)
+(provide 'cfg-org)

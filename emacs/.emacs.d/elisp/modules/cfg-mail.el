@@ -82,4 +82,4 @@
      (add-to-list 'mm-discouraged-alternatives "text/html")
      (add-to-list 'mm-discouraged-alternatives "text/richtext")))
 
-(provide 'm-mail)
+(provide 'cfg-mail)

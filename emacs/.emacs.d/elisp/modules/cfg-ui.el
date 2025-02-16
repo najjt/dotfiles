@@ -234,4 +234,4 @@
  '(mode-line ((t (:box nil :inherit variable-pitch))))
  '(mode-line-inactive ((t (:box nil :inherit variable-pitch)))))
 
-(provide 'm-ui)
+(provide 'cfg-ui)

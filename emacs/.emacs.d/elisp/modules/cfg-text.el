@@ -25,4 +25,4 @@
   :diminish
   :hook (prog-mode text-mode fundamental-mode))
 
-(provide 'm-text)
+(provide 'cfg-text)

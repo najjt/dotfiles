@@ -33,4 +33,4 @@ Also see `prot-window-delete-popup-frame'." command)
 
 (add-hook 'org-capture-after-finalize-hook #'prot-window-delete-popup-frame)
 
-(provide 'm-global-popup)
+(provide 'cfg-global-popup)

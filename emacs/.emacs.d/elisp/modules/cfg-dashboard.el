@@ -26,4 +26,4 @@
   (custom-set-faces
    '(widget-button ((t (:weight regular))))))
 
-(provide 'm-dashboard)
+(provide 'cfg-dashboard)

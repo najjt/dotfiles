@@ -79,4 +79,4 @@
   :mode ("\\.rasi\\'"
          "\\.edn\\'"))
 
-(provide 'm-dev)
+(provide 'cfg-dev)

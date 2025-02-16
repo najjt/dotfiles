@@ -31,4 +31,4 @@
   ;; Hook into the track change event to trigger the notification
   (add-hook 'emms-player-started-hook 'emms-dunst-notify))
 
-(provide 'm-music)
+(provide 'cfg-music)

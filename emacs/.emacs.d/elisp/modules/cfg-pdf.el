@@ -9,4 +9,4 @@
   :config
   (pdf-tools-install))
 
-(provide 'm-pdf)
+(provide 'cfg-pdf)

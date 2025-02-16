@@ -47,4 +47,4 @@
   :diminish
   :config (which-key-mode 1))
 
-(provide 'm-help)
+(provide 'cfg-help)

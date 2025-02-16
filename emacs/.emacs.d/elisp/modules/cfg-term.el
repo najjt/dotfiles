@@ -19,4 +19,4 @@
               (setq-local evil-insert-state-cursor 'box)
               (evil-insert-state))))
 
-(provide 'm-term)
+(provide 'cfg-term)

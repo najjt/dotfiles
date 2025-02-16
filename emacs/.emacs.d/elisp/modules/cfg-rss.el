@@ -14,4 +14,4 @@
           ;; Bread on Penguins's youtube channel
           "https://www.youtube.com/feeds/videos.xml?channel_id=UCwHwDuNd9lCdA7chyyquDXw")))
 
-(provide 'm-rss)
+(provide 'cfg-rss)

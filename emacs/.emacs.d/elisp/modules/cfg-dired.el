@@ -26,4 +26,4 @@
   :ensure nil
   :custom  (browse-url-handlers '(("\\`file:" . browse-url-default-browser))))
 
-(provide 'm-dired)
+(provide 'cfg-dired)

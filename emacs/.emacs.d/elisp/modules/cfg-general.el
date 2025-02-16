@@ -110,4 +110,4 @@
 ;; See https://www.masteringemacs.org/article/wordsmithing-in-emacs
 (setq dictionary-server "localhost")
 
-(provide 'm-general)
+(provide 'cfg-general)
