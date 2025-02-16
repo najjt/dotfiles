@@ -9,6 +9,7 @@
                           (recents . 8))
         dashboard-path-style 'truncate-middle
         dashboard-path-max-length 25
+        ;; Banner courtesy of https://github.com/jsilve24/kisses
         dashboard-startup-banner "~/.emacs.d/banner.txt"
         dashboard-startupify-list '(dashboard-insert-banner
                                     dashboard-insert-newline
