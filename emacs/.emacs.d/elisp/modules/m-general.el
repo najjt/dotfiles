@@ -2,7 +2,7 @@
 
 ;; User information
 (setq user-full-name "Martin Lönn Andersson")
-(setq user-mail-address "mlonna@pm.me")
+(setq user-mail-address "martin@malon.se")
 
 ;; Get environment variables from your shell
 (use-package exec-path-from-shell
