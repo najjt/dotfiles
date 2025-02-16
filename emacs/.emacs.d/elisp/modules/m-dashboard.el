@@ -6,7 +6,7 @@
   (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name))
         dashboard-center-content t
         dashboard-items '((bookmarks . 5)
-                          (recents . 5))
+                          (recents . 8))
         dashboard-path-style 'truncate-middle
         dashboard-path-max-length 25
         dashboard-startup-banner "~/.emacs.d/banner.txt"
