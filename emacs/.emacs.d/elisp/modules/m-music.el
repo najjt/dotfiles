@@ -12,6 +12,23 @@
         emms-source-file-default-directory "~/Music/"
         emms-browser-covers 'emms-browser-cache-thumbnail-async
         emms-playlist-mode-window-width 75
-        emms-mode-line-format ""))
+        emms-mode-line-format "")
+
+  ;; Function to send a notification to dunst with the song details and album art
+  (defun emms-dunst-notify ()
+    "Send a notification to dunst with the current track, artist, album name, and cover art."
+    (let ((track (emms-playlist-current-selected-track))
+          (title (emms-track-get (emms-playlist-current-selected-track) 'info-title))
+          (artist (emms-track-get (emms-playlist-current-selected-track) 'info-artist))
+          (album (emms-track-get (emms-playlist-current-selected-track) 'info-album)))
+
+      (when track
+        (start-process-shell-command
+         "dunst-notify" nil
+         (format "notify-send '%s' 'Artist: %s\nAlbum: %s'"
+                 title artist album)))))
+
+  ;; Hook into the track change event to trigger the notification
+  (add-hook 'emms-player-started-hook 'emms-dunst-notify))
 
 (provide 'm-music)
