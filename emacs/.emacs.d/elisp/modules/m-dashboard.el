@@ -20,6 +20,10 @@
                                     dashboard-insert-items)
         dashboard-display-icons-p t
         dashboard-icon-type 'nerd-icons
-        dashboard-set-file-icons t))
+        dashboard-set-file-icons t)
+
+  ;; Set widgets to not be bold
+  (custom-set-faces
+   '(widget-button ((t (:weight regular))))))
 
 (provide 'm-dashboard)
