@@ -14,6 +14,10 @@
     format = "<b>%s</b>\n%b"
     corner_radius = 4
     icon_position = off
+    enable_recursive_icon_lookup = true
+    icon_theme = "Adwaita"
+    icon_position = left
+    max_icon_size = 128
 
 [urgency_low]
     foreground = "#F1F1F1"
