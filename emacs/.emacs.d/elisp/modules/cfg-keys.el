@@ -84,6 +84,7 @@
   :diminish evil-collection-unimpaired-mode
   :config
   (evil-collection-init)
+
   ;; vim-style navigation in dired
   (evil-collection-define-key 'normal 'dired-mode-map
     "h" 'dired-up-directory
