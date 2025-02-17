@@ -2,18 +2,20 @@
 
 (use-package dired
   :ensure nil
-  :hook (;; Hide details
-         dired-mode . dired-hide-details-mode)
+  :hook (dired-mode . dired-hide-details-mode) ;; Hide details
   :custom
   ;; Hide message when omitting files
   (dired-omit-verbose nil)
+
   ;; Show hidden files, sort directories first
   (dired-listing-switches "-la --group-directories-first -v")
+
   ;; What files to hide in dired-omit-mode
   (dired-omit-files
-   (rx (or (seq bol (? ".") "#")         ; emacs autosave files
-           (seq bol "." (not (any "."))) ; dotfiles
-           (seq "~" eol))))              ; backup files
+   (rx (or (seq bol (? ".") "#")         ; Autosave files
+           (seq bol "." (not (any "."))) ; DotfileS
+           (seq "~" eol))))              ; Backup files
+
   ;; No infinite dired buffers!
   (dired-kill-when-opening-new-dired-buffer t))
 
