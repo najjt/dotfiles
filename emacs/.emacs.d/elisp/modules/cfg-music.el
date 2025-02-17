@@ -25,7 +25,7 @@
       (when track
         (start-process-shell-command
          "dunst-notify" nil
-         (format "notify-send '%s' 'Artist: %s\nAlbum: %s'"
+         (format "notify-send '%s' '%s, <i>%s</i>' -t 5000"
                  title artist album)))))
 
   ;; Hook into the track change event to trigger the notification
