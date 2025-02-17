@@ -64,6 +64,7 @@
       (let ((line-move-visual (unless count t)))
         (evil-line-move (- (or count 1))))))
 
+  ;; Indicate current evil state in terminal environment
   (unless (display-graphic-p)
     (require 'evil-terminal-cursor-changer)
     (evil-terminal-cursor-changer-activate))
