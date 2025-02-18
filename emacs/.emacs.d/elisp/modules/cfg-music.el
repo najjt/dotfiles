@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package emms
+  :defer t
   :bind (("C-c e e" . emms-smart-browse)
          ("C-c e p" . emms-playlist-mode-go-popup)
          :map emms-browser-mode-map
