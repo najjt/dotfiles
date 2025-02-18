@@ -9,7 +9,7 @@
     gap_size = 3
     transparency = 15
     frame_width = 1
-    frame_color = "#1E1E1E"
+    frame_color = "#F1F1F1"
     font = Noto Sans Mono 11
     format = "<b>%s</b>\n%b"
     corner_radius = 4
