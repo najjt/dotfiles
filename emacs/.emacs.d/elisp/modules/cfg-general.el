@@ -110,4 +110,10 @@
 ;; See https://www.masteringemacs.org/article/wordsmithing-in-emacs
 (setq dictionary-server "localhost")
 
+;; Copy to system clipboard in terminal
+(unless (display-graphic-p)
+  (use-package xclip
+    :config
+    (xclip-mode)))
+
 (provide 'cfg-general)
