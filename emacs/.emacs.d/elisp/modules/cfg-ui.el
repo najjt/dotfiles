@@ -121,17 +121,19 @@
   "
   Choose theme:
   -------------
+  [_w_] White
   [_l_] Light
-  [_d_] Dark
   [_g_] Gruvbox
-  [_n_] Nordic night
   [_m_] Miasma
+  [_n_] Nordic night
+  [_v_] Modus Vivendi
 "
+  ("w" (my/enable-theme 'modus-operandi-tinted) nil)
   ("l" (my/enable-theme 'ef-melissa-light) nil)
-  ("d" (my/enable-theme 'modus-vivendi) nil)
   ("g" (my/enable-theme 'gruvbox-dark-soft) nil)
-  ("n" (my/enable-theme 'nordic-night) nil)
   ("m" (my/enable-theme 'miasma) nil)
+  ("n" (my/enable-theme 'nordic-night) nil)
+  ("v" (my/enable-theme 'modus-vivendi) nil)
   ("q" nil nil :exit t))
 
 (defun my/disable-all-themes ()
