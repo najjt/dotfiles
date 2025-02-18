@@ -16,20 +16,11 @@
         emms-mode-line-format "")
 
   ;; Function to send a notification to dunst with the song details and album art
-  (defun emms-dunst-notify ()
-    "Send a notification to dunst with the current track, artist, album name, and cover art."
-    (let ((track (emms-playlist-current-selected-track))
-          (title (emms-track-get (emms-playlist-current-selected-track) 'info-title))
-          (artist (emms-track-get (emms-playlist-current-selected-track) 'info-artist))
-          (album (emms-track-get (emms-playlist-current-selected-track) 'info-album)))
-
-      (when track
-        (start-process-shell-command
-         "dunst-notify" nil
-         (format "notify-send '%s' '%s, <i>%s</i>' -t 5000"
-                 title artist album)))))
+  (defun emms-show-notification ()
+    "Send a notification with the current track, artist, album name, and cover art."
+    (start-process-shell-command "notify-song" nil "$HOME/scripts/notify_song.sh"))
 
   ;; Hook into the track change event to trigger the notification
-  (add-hook 'emms-player-started-hook 'emms-dunst-notify))
+  (add-hook 'emms-player-started-hook #'emms-show-notification))
 
 (provide 'cfg-music)
