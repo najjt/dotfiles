@@ -9,17 +9,6 @@
 ;; Show column number in status bar
 (column-number-mode)
 
-;; Hide minor modes in modeline
-(use-package diminish
-  :diminish (auto-fill-function
-             centered-window-mode
-             eldoc-mode
-             evil-collection-unimpaired-mode
-             org-indent-mode
-             abbrev-mode
-             subword-mode
-             flymake-mode))
-
 ;; Make line numbers relative
 (setq display-line-numbers-type 'relative
       display-line-numbers-width-start t)
@@ -227,11 +216,5 @@
 (defun window-height-decrease ()
   (interactive)
   (resize-window nil -5))
-
-;; Disable border around modelines
-;; and use variable pitch font
-(custom-set-faces
- '(mode-line ((t (:box nil :inherit variable-pitch))))
- '(mode-line-inactive ((t (:box nil :inherit variable-pitch)))))
 
 (provide 'cfg-ui)
