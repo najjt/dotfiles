@@ -72,7 +72,8 @@
   ;; Clearer indications of current evil state in modeline
   (setq evil-emacs-state-tag    (propertize "-- EMACS --" 'face '((:background "orange" :foreground "black")))
         evil-insert-state-tag   (propertize "-- INSERT -- " 'face '((:background "white" :foreground "black")))
-        evil-visual-state-tag   (propertize "-- VISUAL LINE -- " 'face '((:background "pink" :foreground "black"))))
+        evil-visual-state-tag   (propertize "-- VISUAL -- " 'face '((:background "pink" :foreground "black")))
+        evil-visual-line-state-tag   (propertize "-- VISUAL LINE -- " 'face '((:background "red" :foreground "black"))))
 
   :custom
   ;; Horizontal movement crosses lines
