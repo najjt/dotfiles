@@ -5,8 +5,8 @@
   (dashboard-setup-startup-hook)
   (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name))
         dashboard-center-content t
-        dashboard-items '((bookmarks . 5)
-                          (recents . 8))
+        dashboard-items '((recents . 8)
+                          (bookmarks . 5))
         dashboard-path-style 'truncate-middle
         dashboard-path-max-length 25
         ;; Banner courtesy of https://github.com/jsilve24/kisses
