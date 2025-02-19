@@ -1,5 +1,12 @@
 ;; -*- lexical-binding: t; -*-
 
+(add-hook 'before-make-frame-hook
+          #'(lambda ()
+              (add-to-list 'default-frame-alist '(left   . 200))
+              (add-to-list 'default-frame-alist '(top    . 200))
+              (add-to-list 'default-frame-alist '(height . 40))
+              (add-to-list 'default-frame-alist '(width  . 150))))
+
 ;; Display right and left fringe
 (fringe-mode '(8 . 8))
 
@@ -36,7 +43,7 @@
   (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.2))
 
 ;; Set background transparency
-(add-to-list 'default-frame-alist '(alpha-background . 95))
+(add-to-list 'default-frame-alist '(alpha-background . 100))
 
 (use-package modus-themes
   :defer t)
