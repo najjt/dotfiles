@@ -42,7 +42,11 @@ Returns the path to the album art or a default image if no album art is found."
       ;; Trim any extra whitespace from the results
       (setq title (string-trim title))
       (setq artist (string-trim artist))
-      (setq album (string-trim album))
+
+      ;; Limit the album title to 40 characters
+      (setq album (if (> (length album) 40)
+                      (concat (substring album 0 37) "...")  ; Truncate and add "..."
+                    album))
 
       ;; Send the notification
       (call-process "notify-send"
