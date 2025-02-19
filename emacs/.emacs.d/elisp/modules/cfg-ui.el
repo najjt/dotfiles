@@ -121,14 +121,14 @@
   "
   Choose theme:
   -------------
-  [_w_] White
-  [_l_] Light
+  [_o_] Modus Operandi Tinted
+  [_l_] EF Melissa Light
   [_g_] Gruvbox
   [_m_] Miasma
   [_n_] Nordic night
   [_v_] Modus Vivendi
 "
-  ("w" (my/enable-theme 'modus-operandi-tinted) nil)
+  ("o" (my/enable-theme 'modus-operandi-tinted) nil)
   ("l" (my/enable-theme 'ef-melissa-light) nil)
   ("g" (my/enable-theme 'gruvbox-dark-soft) nil)
   ("m" (my/enable-theme 'miasma) nil)
