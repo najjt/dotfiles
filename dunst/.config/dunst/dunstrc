@@ -7,7 +7,6 @@
     padding = 5
     horizontal_padding = 5
     gap_size = 3
-    transparency = 15
     frame_width = 1
     frame_color = "#F1F1F1"
     font = Noto Sans Mono 11
