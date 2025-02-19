@@ -83,3 +83,9 @@
                   "-i" (concat (getenv "HOME") "/.local/share/icons/Papirus-Dark/16x16/apps/emacs.svg")
                   "Emacs"
                   "Daemon is running"))
+
+;; Focus new frames
+(defun my/focus-new-client-frame ()
+  (select-frame-set-input-focus (selected-frame)))
+
+(add-hook 'server-after-make-frame-hook #'my/focus-new-client-frame)
