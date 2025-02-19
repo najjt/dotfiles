@@ -75,3 +75,11 @@
 
 ;; Load setup files in .emacs.d/elisp/modules/
 (mapc 'load (file-expand-wildcards "~/.emacs.d/elisp/modules/*.el"))
+
+;; Send notification if launched as daemon
+(if (daemonp)
+    (call-process "notify-send"
+                  nil nil nil
+                  "-i" (concat (getenv "HOME") "/.local/share/icons/Papirus-Dark/16x16/apps/emacs.svg")
+                  "Emacs"
+                  "Daemon is running"))
