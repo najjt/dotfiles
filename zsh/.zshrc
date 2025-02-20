@@ -9,7 +9,7 @@ format_current_git_branch() {
 
 export NEWLINE=$'\n'
 
-export PROMPT='%F{green}%n@%m %F{cyan}%~%F{reset_color} %F{yellow}$(format_current_git_branch)%F{reset_color} ${NEWLINE}$ '
+export PROMPT='%F{green}%n@%m %F{cyan}%~%F{reset_color} %F{yellow}$(format_current_git_branch)%F{reset_color} ${NEWLINE}%F{blue}$%F{reset_color} '
 
 # Set cursor style to
 # non-blinking vertical line
