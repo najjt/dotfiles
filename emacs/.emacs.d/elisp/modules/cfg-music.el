@@ -38,13 +38,19 @@ Returns the path to the album art or a default image if no album art is found."
            (track-path (emms-track-get track 'name))
            (album-art (emms-get-album-art track-path)))
 
-      ;; Trim any extra whitespace from the results
-      (setq title (string-trim title))
-      (setq artist (string-trim artist))
+      ;; Limit the title to 40 characters
+      (setq title (if (> (length title) 40)
+                      (concat (substring title 0 37) "...")  ; Truncate and add "..."
+                    title))
+
+      ;; Limit the artist name to 40 characters
+      (setq artist (if (> (length artist) 40)
+                       (concat (substring artist 0 37) "...")
+                     artist))
 
       ;; Limit the album title to 40 characters
       (setq album (if (> (length album) 40)
-                      (concat (substring album 0 37) "...")  ; Truncate and add "..."
+                      (concat (substring album 0 37) "...")
                     album))
 
       ;; Send the notification
