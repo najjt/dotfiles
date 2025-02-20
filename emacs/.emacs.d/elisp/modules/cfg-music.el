@@ -36,8 +36,7 @@ Returns the path to the album art or a default image if no album art is found."
            (artist (emms-track-get track 'info-albumartist))
            (album (emms-track-get track 'info-album))
            (track-path (emms-track-get track 'name))
-           (album-art (emms-get-album-art track-path))
-           (default-album-art "~/.local/share/icons/Papirus-Dark/16x16/actions/media-play.svg"))
+           (album-art (emms-get-album-art track-path)))
 
       ;; Trim any extra whitespace from the results
       (setq title (string-trim title))
