@@ -3,7 +3,7 @@ configuration {
         modi: [window,run,ssh,combi];
 }
 
-@theme "theme.rasi"
+@theme "light_theme.rasi"
 
 listview {
         lines: 10;
