@@ -34,8 +34,7 @@
 
 ;; Linux settings
 (when (eq system-type 'gnu/linux)
-  (setq x-super-keysym 'meta)
-  (add-to-list 'default-frame-alist '(undecorated . t)))
+  (setq x-super-keysym 'meta))
 
 ;; Make customize-based setting live in the custom.el file
 (setq custom-file "~/.emacs.d/custom.el")
