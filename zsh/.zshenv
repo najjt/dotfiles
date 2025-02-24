@@ -39,3 +39,5 @@ export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
 
 # Cargo
 . "$HOME/.cargo/env"
+
+export $(dbus-launch)
