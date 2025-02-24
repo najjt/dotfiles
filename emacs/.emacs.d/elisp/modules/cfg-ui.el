@@ -50,9 +50,6 @@
   (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.1)
   (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.2))
 
-;; Set background transparency
-(add-to-list 'default-frame-alist '(alpha-background . 100))
-
 (use-package modus-themes
   :defer t)
 
