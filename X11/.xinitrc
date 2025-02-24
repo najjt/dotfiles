@@ -2,7 +2,7 @@
 setxkbmap -layout us,se -option grp:rshift_toggle
 
 # Set keyboard repeat rate
-xset r rate 200
+xset r rate 300
 
 # Hotkey daemon
 sxhkd &
