@@ -116,4 +116,9 @@
     :config
     (xclip-mode)))
 
+;; Fuzzy finder
+(use-package fzf
+  :defer t
+  :bind ("C-c r" . fzf))
+
 (provide 'cfg-general)
