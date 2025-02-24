@@ -21,12 +21,23 @@
       display-line-numbers-width-start t)
 
 ;; Display relative line numbers in the below modes
-(dolist (hook '(fundamental-mode conf-mode-hook prog-mode-hook text-mode-hook markdown-mode-hook org-mode-hook))
+(dolist (hook '(fundamental-mode
+                conf-mode-hook
+                prog-mode-hook
+                text-mode-hook
+                markdown-mode-hook
+                org-mode-hook))
   (add-hook hook 'display-line-numbers-mode))
 
 ;; Highlight current line
-(let ((hl-line-hooks '(text-mode-hook prog-mode-hook dired-mode-hook Man-mode-hook conf-mode-hook emms-browser-mode-hook elfeed-show-mode-hook)))
-  (mapc (lambda (hook) (add-hook hook 'hl-line-mode)) hl-line-hooks))
+(dolist (hook '(text-mode-hook
+                prog-mode-hook
+                dired-mode-hook
+                Man-mode-hook
+                conf-mode-hook
+                emms-browser-mode-hook
+                elfeed-show-mode-hook))
+  (add-hook hook 'hl-line-mode))
 
 ;; Make keybindings in minibuffer look like other text
 (set-face-attribute 'help-key-binding nil
