@@ -1,11 +1,8 @@
 ;; -*- lexical-binding: t; -*-
 
-(add-hook 'before-make-frame-hook
-          #'(lambda ()
-              (add-to-list 'default-frame-alist '(left   . 200))
-              (add-to-list 'default-frame-alist '(top    . 200))
-              (add-to-list 'default-frame-alist '(height . 40))
-              (add-to-list 'default-frame-alist '(width  . 150))))
+;; Set default frame dimensions
+(add-to-list 'default-frame-alist '(height . 40))
+(add-to-list 'default-frame-alist '(width . 160))
 
 ;; Display right and left fringe
 (fringe-mode '(8 . 8))
