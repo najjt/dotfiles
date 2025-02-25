@@ -75,6 +75,14 @@
 ;; Load setup files in .emacs.d/elisp/modules/
 (mapc 'load (file-expand-wildcards "~/.emacs.d/elisp/modules/*.el"))
 
+;; Send notification if launched as daemon
+(if (daemonp)
+    (call-process "notify-send"
+                  nil nil nil
+                  "-i" (concat (getenv "HOME") "/.emacs.d/emacs.svg")
+                  "Emacs"
+                  "Daemon is running"))
+
 ;; Focus new frames
 (defun my/focus-new-client-frame ()
   (select-frame-set-input-focus (selected-frame)))
