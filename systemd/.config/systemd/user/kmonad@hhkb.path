@@ -1,0 +1,10 @@
+[Unit]
+Description=start kmonad for hkhb
+StartLimitIntervalSec=400
+StartLimitBurst=3
+
+[Path]
+PathExists=/dev/hhkb
+
+[Install]
+WantedBy=graphical-session.target%

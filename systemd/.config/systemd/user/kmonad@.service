@@ -1,0 +1,12 @@
+[Unit]
+Description=kmonad
+
+[Service]
+ExecStart=%h/.local/bin/kmonad %h/.config/kmonad/%i.kbd
+Restart=always
+RestartSec=5
+StandardOutput=null
+StandardError=null
+
+[Install]
+WantedBy=graphical-session.target
