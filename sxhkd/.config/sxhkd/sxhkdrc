@@ -8,7 +8,7 @@ control + shift + Return
 
 # Open terminal emulator
 shift + alt + Return
-    wezterm
+    konsole
 
 # Open application launcher
 alt + o
