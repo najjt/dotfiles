@@ -53,13 +53,7 @@
 (use-package modus-themes
   :defer t)
 
-(use-package ef-themes
-  :defer t)
-
 (use-package gruvbox-theme
-  :defer t)
-
-(use-package nordic-night-theme
   :defer t)
 
 (use-package miasma-theme
@@ -133,17 +127,13 @@
   Choose theme:
   -------------
   [_o_] Modus Operandi Tinted
-  [_l_] EF Melissa Light
   [_g_] Gruvbox
   [_m_] Miasma
-  [_n_] Nordic night
   [_v_] Modus Vivendi
 "
   ("o" (my/enable-theme 'modus-operandi-tinted) nil)
-  ("l" (my/enable-theme 'ef-melissa-light) nil)
   ("g" (my/enable-theme 'gruvbox-dark-medium) nil)
   ("m" (my/enable-theme 'miasma) nil)
-  ("n" (my/enable-theme 'nordic-night) nil)
   ("v" (my/enable-theme 'modus-vivendi) nil)
   ("q" nil nil :exit t))
 
