@@ -141,7 +141,7 @@
 "
   ("o" (my/enable-theme 'modus-operandi-tinted) nil)
   ("l" (my/enable-theme 'ef-melissa-light) nil)
-  ("g" (my/enable-theme 'gruvbox-dark-soft) nil)
+  ("g" (my/enable-theme 'gruvbox-dark-medium) nil)
   ("m" (my/enable-theme 'miasma) nil)
   ("n" (my/enable-theme 'nordic-night) nil)
   ("v" (my/enable-theme 'modus-vivendi) nil)
