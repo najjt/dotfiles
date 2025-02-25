@@ -164,4 +164,7 @@
          (dedicated . t)
          (preserve-size . (t . t)))))
 
+;; Use minibuffer for epa password interface
+(setq epa-pinentry-mode 'loopback)
+
 (provide 'cfg-general)
