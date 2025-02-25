@@ -1,6 +1,6 @@
 (defcfg
-  input  (device-file "/dev/input/by-id/usb-PFU_Limited_HHKB-Classic-event-kbd")
-  output (uinput-sink "KMonad kbd" "sleep 1")
+  input  (device-file "/dev/hhkb")
+  output (uinput-sink "KMonad: HHKB" "sleep 1")
   cmp-seq ralt
   fallthrough true
   allow-cmd true
