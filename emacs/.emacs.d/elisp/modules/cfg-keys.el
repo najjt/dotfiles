@@ -25,8 +25,6 @@
         ("C-w k" . evil-window-up)
         ("C-w l" . evil-window-right))
 
-  :hook (evil-mode . my/evil-hook)
-
   :init
   (setq evil-want-integration t
         evil-want-keybinding nil
@@ -35,17 +33,6 @@
 
   :config
   (evil-set-undo-system 'undo-redo)
-
-  ;; Modes to disable evil in
-  (defun my/evil-hook ()
-    (dolist (mode '(custom-mode
-                    eshell-mode
-                    git-rebase-mode
-                    erc-mode
-                    term-mode
-                    vterm-mode
-                    ansi-term-mode))
-      (add-to-list 'evil-emacs-state-modes mode)))
 
   ;; Turn on evil mode
   (evil-mode 1)
