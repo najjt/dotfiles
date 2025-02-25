@@ -25,7 +25,7 @@ Returns the path to the album art or a default image if no album art is found."
                                (concat album-dir "folder.jpg"))
                           (and (file-exists-p (concat album-dir "cover.png"))
                                (concat album-dir "cover.png"))
-                          "~/.local/share/icons/Papirus-Dark/16x16/actions/media-play.svg")))
+                          nil)))
       album-art))
 
   (defun emms-notify-track-description ()
