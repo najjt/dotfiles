@@ -34,8 +34,8 @@
      (:maildir "/Archive" :key ?a)
      (:maildir "/Viktigt" :key ?v))
 
-  ;; Fastmail likes to mark things trashed, so you have to
-  ;; add filters against seeing them in standard searches
+   ;; Fastmail likes to mark things trashed, so you have to
+   ;; add filters against seeing them in standard searches
    mu4e-bookmarks
    `(("flag:unread AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Unread messages" ?u)
      ("date:today..now AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Today's messages" ?t)
@@ -76,14 +76,14 @@
    ;; Signature
    message-signature "Med vänlig hälsning,\nMartin Lönn Andersson")
 
-   ;; Move messages to the trash folder instead of completely deleting it
-   (fset 'my-move-to-trash "mTrash")
-   (define-key mu4e-headers-mode-map (kbd "d") 'my-move-to-trash)
-   (define-key mu4e-view-mode-map (kbd "d") 'my-move-to-trash)
+  ;; Move messages to the trash folder instead of completely deleting it
+  (fset 'my-move-to-trash "mTrash")
+  (define-key mu4e-headers-mode-map (kbd "d") 'my-move-to-trash)
+  (define-key mu4e-view-mode-map (kbd "d") 'my-move-to-trash)
 
-   ;; Prefer plain text
-   (with-eval-after-load "mm-decode"
-     (add-to-list 'mm-discouraged-alternatives "text/html")
-     (add-to-list 'mm-discouraged-alternatives "text/richtext")))
+  ;; Prefer plain text
+  (with-eval-after-load "mm-decode"
+    (add-to-list 'mm-discouraged-alternatives "text/html")
+    (add-to-list 'mm-discouraged-alternatives "text/richtext")))
 
 (provide 'cfg-mail)
