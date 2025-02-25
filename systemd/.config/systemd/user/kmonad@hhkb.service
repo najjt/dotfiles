@@ -1,0 +1,11 @@
+[Unit]
+Description=KMonad for HHKB
+
+[Service]
+Type=simple
+ExecStart=%h/scripts/kmonad_hhkb.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
