@@ -31,7 +31,7 @@
 
   ;; Make only first org heading be bold
   (custom-set-faces
-   '(org-level-1 ((t (:inherit outline-1 :weight bold))))
+   '(org-level-1 ((t (:inherit outline-1 :weight bold :height 1.1))))
    '(org-level-2 ((t (:inherit outline-2 :weight normal))))
    '(org-level-3 ((t (:inherit outline-3 :weight normal))))
    '(org-level-4 ((t (:inherit outline-4 :weight normal))))
