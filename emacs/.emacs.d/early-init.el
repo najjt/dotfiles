@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; Increase garbace collection threshold temporarily
 (setq gc-cons-threshold 100000000)
 
