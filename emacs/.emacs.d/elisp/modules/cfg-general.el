@@ -124,7 +124,7 @@
 
   ;; Open occurrences of current isearch in new buffer
   ;; Source: https://blog.chmouel.com/posts/emacs-isearch/
-  (defun my-occur-from-isearch ()
+  (defun my/occur-from-isearch ()
     (interactive)
     (let ((query (if isearch-regexp
                      isearch-string
@@ -150,17 +150,17 @@
 
   :bind
   (:map isearch-mode-map
-        ("C-o" . my-occur-from-isearch)
+        ("C-o" . my/occur-from-isearch)
         ("C-d" . isearch-forward-symbol-at-point)))
 
-(defun my-select-window (window &rest _)
+(defun my/select-window (window &rest _)
   "Select WINDOW for display-buffer-alist"
   (select-window window))
 
 (setq display-buffer-alist
       '(((or . ((derived-mode . occur-mode)))
          (display-buffer-reuse-mode-window display-buffer-at-bottom)
-         (body-function . my-select-window)
+         (body-function . my/select-window)
          (dedicated . t)
          (preserve-size . (t . t)))))
 

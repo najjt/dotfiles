@@ -92,19 +92,19 @@
   (popper-echo-mode 1))
 
 ;; Automatically switch focus to new window when it is created
-(defun split-and-follow-horizontally ()
+(defun my/split-and-follow-horizontally ()
   (interactive)
   (split-window-below)
   (balance-windows)
   (other-window 1))
-(global-set-key (kbd "C-x 2") 'split-and-follow-horizontally)
+(global-set-key (kbd "C-x 2") 'my/split-and-follow-horizontally)
 
-(defun split-and-follow-vertically ()
+(defun my/split-and-follow-vertically ()
   (interactive)
   (split-window-right)
   (balance-windows)
   (other-window 1))
-(global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
+(global-set-key (kbd "C-x 3") 'my/split-and-follow-vertically)
 
 ;; Temporary command buffers
 (use-package hydra
@@ -173,14 +173,14 @@
   [_k_] Decrease height
   [_l_] Increase width
 "
-  ("h" (window-width-decrease)  nil)
-  ("j" (window-height-increase) nil)
-  ("k" (window-height-decrease) nil)
-  ("l" (window-width-increase)  nil)
+  ("h" (my/window-width-decrease)  nil)
+  ("j" (my/window-height-increase) nil)
+  ("k" (my/window-height-decrease) nil)
+  ("l" (my/window-width-increase)  nil)
   ("q" nil nil :exit t))
 
 ;; Resizes the window width based on the input
-(defun resize-window-width (w)
+(defun my/resize-window-width (w)
   "Resizes the window width based on W."
   (interactive (list (if (> (count-windows) 1)
                          (read-number "Set the current window width in [1~9]x10%: ")
@@ -189,7 +189,7 @@
                (window-resize nil (- (truncate (* (/ w 10.0) (frame-width))) (window-total-width)) t)))
 
 ;; Resizes the window height based on the input
-(defun resize-window-height (h)
+(defun my/resize-window-height (h)
   "Resizes the window height based on H."
   (interactive (list (if (> (count-windows) 1)
                          (read-number "Set the current window height in [1~9]x10%: ")
@@ -197,27 +197,27 @@
                (message "%s" h)
                (window-resize nil (- (truncate (* (/ h 10.0) (frame-height))) (window-total-height)) nil)))
 
-(defun resize-window (width delta)
+(defun my/resize-window (width delta)
   "Resize the current window's size.  If WIDTH is non-nil, resize width by some DELTA."
   (if (> (count-windows) 1)
       (window-resize nil delta width)
     (error "You need more than 1 window to execute this function!")))
 
 ;; Shorcuts for window resize width and height
-(defun window-width-increase ()
+(defun my/window-width-increase ()
   (interactive)
-  (resize-window t 5))
+  (my/resize-window t 5))
 
-(defun window-width-decrease ()
+(defun my/window-width-decrease ()
   (interactive)
-  (resize-window t -5))
+  (my/resize-window t -5))
 
-(defun window-height-increase ()
+(defun my/window-height-increase ()
   (interactive)
-  (resize-window nil 5))
+  (my/resize-window nil 5))
 
-(defun window-height-decrease ()
+(defun my/window-height-decrease ()
   (interactive)
-  (resize-window nil -5))
+  (my/resize-window nil -5))
 
 (provide 'cfg-ui)
