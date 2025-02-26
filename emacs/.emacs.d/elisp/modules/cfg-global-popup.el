@@ -1,6 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 
 ;; Source: https://protesilaos.com/codelog/2024-09-19-emacs-command-popup-frame-emacsclient/
+;; Changes:
+;; - Set window system to X11
+;; - Ensure frame gets focus
 
 ;;;; Run commands in a popup frame
 
@@ -17,8 +20,9 @@ Make the new frame have the `prot-window-popup-frame' parameter."
      ,(format "Run `%s' in a popup frame with `prot-window-popup-frame' parameter.
 Also see `prot-window-delete-popup-frame'." command)
      (interactive)
-     (let ((frame (make-frame '((prot-window-popup-frame . t) (window-system . x)))))
+     (let ((frame (make-frame '((prot-window-popup-frame . t) (window-system . x))))) ;; Set window system
        (select-frame frame)
+       (select-frame-set-input-focus frame)  ;; Ensure the frame gets focus
        (switch-to-buffer " prot-window-hidden-buffer-for-popup-frame")
        (condition-case nil
            (call-interactively ',command)
