@@ -4,7 +4,7 @@ control + alt + Return
 
 # Open web browser
 control + shift + Return
-    librewolf
+    firefox-esr
 
 # Open terminal emulator
 shift + alt + Return
