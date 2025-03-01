@@ -73,10 +73,6 @@
 
 (use-package lua-mode)
 
-(use-package config-general-mode
-  :config
-  (add-to-list 'auto-mode-alist '("\\.conf$" . config-general-mode)))
-
 (use-package prog-mode
   :ensure nil
   :hook (prog-mode . subword-mode)
