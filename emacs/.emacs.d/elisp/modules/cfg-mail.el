@@ -69,9 +69,7 @@
    ;; Re-flow mail so it's not hard wrapped
    mu4e-compose-format-flowed t
 
-   ;; Hide annoying retrieving msg in mini buffer
-   mu4e-hide-index-messages t
-   mu4e-index-update-error-warning 'nil
+   mu4e-display-update-status-in-modeline t
 
    ;; Signature
    message-signature "Med vänlig hälsning,\nMartin Lönn Andersson")
