@@ -4,6 +4,7 @@
 ;; Changes:
 ;; - Set window system to X11
 ;; - Ensure frame gets focus
+;; - Set frame's width and height
 
 ;;;; Run commands in a popup frame
 
@@ -20,9 +21,12 @@ Make the new frame have the `prot-window-popup-frame' parameter."
      ,(format "Run `%s' in a popup frame with `prot-window-popup-frame' parameter.
 Also see `prot-window-delete-popup-frame'." command)
      (interactive)
-     (let ((frame (make-frame '((prot-window-popup-frame . t) (window-system . x))))) ;; Set window system
+     (let ((frame (make-frame '((prot-window-popup-frame . t)
+                                (window-system . x)
+                                (width . 75)
+                                (height . 25)))))
        (select-frame frame)
-       (select-frame-set-input-focus frame)  ;; Ensure the frame gets focus
+       (select-frame-set-input-focus frame)
        (switch-to-buffer " prot-window-hidden-buffer-for-popup-frame")
        (condition-case nil
            (call-interactively ',command)
