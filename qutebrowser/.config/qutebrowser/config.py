@@ -408,7 +408,7 @@ c.window.transparent = False
 
 # Default zoom level.
 # Type: Perc
-c.zoom.default = '125%'
+c.zoom.default = '100%'
 
 # Text color of the completion widget. May be a single color to use for
 # all columns or a list of three colors, one for each column.
@@ -506,11 +506,11 @@ c.fonts.default_family = 'Noto Sans Mono'
 # either a float value with a "pt" suffix, or an integer value with a
 # "px" suffix.
 # Type: String
-c.fonts.default_size = '12pt'
+c.fonts.default_size = '11pt'
 
 # Default font size (in pixels) for regular text.
 # Type: Int
-c.fonts.web.size.default = 12
+c.fonts.web.size.default = 11
 
 #
 # Keybindings for normal mode
