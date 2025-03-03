@@ -131,11 +131,14 @@
   [_g_] Gruvbox
   [_m_] Miasma
   [_v_] Modus Vivendi
+  ...
+  [_c_] Choose theme interactively
 "
   ("o" (my/enable-theme 'modus-operandi-tinted) nil)
   ("g" (my/enable-theme 'gruvbox-dark-medium) nil)
   ("m" (my/enable-theme 'miasma) nil)
   ("v" (my/enable-theme 'modus-vivendi) nil)
+  ("c" (call-interactively 'my/enable-theme-interactive) nil)
   ("q" nil nil :exit t))
 
 (defun my/disable-all-themes ()
