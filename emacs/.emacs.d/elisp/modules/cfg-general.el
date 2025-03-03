@@ -53,7 +53,7 @@
 
 ;; Set default browser
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "firefox-esr")
+      browse-url-generic-program "qutebrowser")
 
 ;; Increase large file warning threshold
 (setq large-file-warning-threshold 100000000)
