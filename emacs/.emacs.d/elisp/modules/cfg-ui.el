@@ -33,6 +33,7 @@
                 Man-mode-hook
                 conf-mode-hook
                 emms-browser-mode-hook
+                emms-playlist-mode-hook
                 elfeed-show-mode-hook))
   (add-hook hook 'hl-line-mode))
 
