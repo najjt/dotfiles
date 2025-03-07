@@ -321,7 +321,7 @@ c.statusbar.position = 'bottom'
 #   - startpage: Load the start page.
 #   - default-page: Load the default page.
 #   - close: Close the window.
-c.tabs.last_close = 'close'
+c.tabs.last_close = 'ignore'
 
 # Position of the tab bar.
 # Type: Position
