@@ -4,9 +4,6 @@
 (add-to-list 'default-frame-alist '(height . 40))
 (add-to-list 'default-frame-alist '(width . 160))
 
-;; Display right and left fringe
-(fringe-mode '(8 . 8))
-
 ;; Turn off blinking cursor
 (blink-cursor-mode 0)
 
