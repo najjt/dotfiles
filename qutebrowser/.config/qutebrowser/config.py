@@ -487,7 +487,7 @@ c.fonts.web.size.default = 11
 # Keybindings for normal mode
 #
 
-# Unbind keys used in my window manager
+# Unbind keys used in window manager
 config.unbind('<Alt+1>')
 config.unbind('<Alt+2>')
 config.unbind('<Alt+3>')
