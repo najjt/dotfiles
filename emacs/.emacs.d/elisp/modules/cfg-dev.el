@@ -62,6 +62,13 @@
   :bind
   ("C-c g" . magit-status))
 
+;; Highlight vc diff in buffers
+(use-package diff-hl
+  :config
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+  (global-diff-hl-mode)
+  (diff-hl-margin-mode))
+
 ;; Common file types
 (use-package yaml-mode)
 
