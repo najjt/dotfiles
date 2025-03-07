@@ -7,9 +7,6 @@ xset r rate 300 25
 # Hotkey daemon
 sxhkd &
 
-# Clipboard manager
-greenclip daemon &
-
 # Notifications
 dunst &
 
