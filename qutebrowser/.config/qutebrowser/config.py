@@ -330,7 +330,7 @@ c.tabs.last_close = 'ignore'
 #   - bottom
 #   - left
 #   - right
-c.tabs.position = 'bottom'
+c.tabs.position = 'top'
 
 # When to show the tab bar.
 # Type: String
