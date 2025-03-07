@@ -44,11 +44,6 @@ echo '\e[6 q'
 autoload -U select-word-style
 select-word-style bash
 
-# History time stamp format
-HIST_STAMPS="mm/dd/yyyy"
-HISTFILE=~/.zsh_history
-SAVEHIST=1000
-
 # Emacs keybindings
 set -o emacs
 
