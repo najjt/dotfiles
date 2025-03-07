@@ -1,56 +1,156 @@
-#!/usr/bin/env python3
+"""draw kitty tab"""
+# pyright: reportMissingImports=false
+# pylint: disable=E0401,C0116,C0103,W0603,R0913
 
-# Source: https://github.com/kovidgoyal/kitty/discussions/4447?sort=top#discussioncomment-6454511
+# Source: https://github.com/kovidgoyal/kitty/discussions/4447#discussion-3781380
 
-from kitty.fast_data_types import (
-    Screen,
-)
+import datetime
 
+from kitty.fast_data_types import Screen, get_options
+from kitty.tab_bar import (DrawData, ExtraData, TabBarData, as_rgb,
+                           draw_tab_with_powerline, draw_title)
 from kitty.utils import color_as_int
 
-from kitty.tab_bar import (
-    DrawData,
-    ExtraData,
-    TabBarData,
-    as_rgb,
-    draw_title,
-)
+opts = get_options()
 
-# Draw tabs by splitting the full width of the window
-def draw_tab(
-        draw_data: DrawData, screen: Screen, tab: TabBarData,
-        before: int, max_tab_length: int, index: int, is_last: bool,
-        extra_data: ExtraData
+ICON: str = " LEI "
+ICON_LENGTH: int = len(ICON)
+ICON_FG: int = as_rgb(color_as_int(opts.color16))
+ICON_BG: int = as_rgb(color_as_int(opts.color8))
+
+CLOCK_FG = 0
+CLOCK_BG = as_rgb(color_as_int(opts.color15))
+DATE_FG = 0
+DATE_BG =  as_rgb(color_as_int(opts.color8))
+
+
+def _draw_icon(screen: Screen, index: int) -> int:
+    if index != 1:
+        return screen.cursor.x
+
+    fg, bg, bold, italic = (
+        screen.cursor.fg,
+        screen.cursor.bg,
+        screen.cursor.bold,
+        screen.cursor.italic,
+    )
+    screen.cursor.bold, screen.cursor.italic, screen.cursor.fg, screen.cursor.bg = (
+        True,
+        False,
+        ICON_FG,
+        ICON_BG,
+    )
+    screen.draw(ICON)
+    # set cursor position
+    screen.cursor.x = ICON_LENGTH
+    # restore color style
+    screen.cursor.fg, screen.cursor.bg, screen.cursor.bold, screen.cursor.italic = (
+        fg,
+        bg,
+        bold,
+        italic,
+    )
+    return screen.cursor.x
+
+
+def _draw_left_status(
+        draw_data: DrawData,
+        screen: Screen,
+        tab: TabBarData,
+        before: int,
+        max_title_length: int,
+        index: int,
+        is_last: bool,
+        extra_data: ExtraData,
+        use_kitty_render_function: bool = False,
 ) -> int:
-    # Draw first space
-    screen.draw(' ')
+    if use_kitty_render_function:
+        # Use `kitty` function render tab
+        end = draw_tab_with_powerline(
+            draw_data, screen, tab, before, max_title_length, index, is_last, extra_data
+        )
+        return end
 
-    # Draw title
-    draw_title(draw_data, screen, tab, index, max_tab_length)
+    if draw_data.leading_spaces:
+        screen.draw(" " * draw_data.leading_spaces)
 
-    title_length = screen.cursor.x - before
+    # draw tab title
+    draw_title(draw_data, screen, tab, index)
 
-    # Truncate the title if it's too long
-    if title_length + 1 > max_tab_length:
-        screen.cursor.x = before + max_tab_length - 1
-        screen.draw('… ')
-    else:
-        # Draw trailing spaces
-        if is_last:
-            # Draw the last tab to the end
-            screen.draw(' ' * (screen.columns - screen.cursor.x))
-        else:
-            # Draw to max_tab_length
-            screen.draw(' ' * (max_tab_length - title_length + 1))
-
-    end = screen.cursor.x
+    trailing_spaces = min(max_title_length - 1, draw_data.trailing_spaces)
+    max_title_length -= trailing_spaces
+    extra = screen.cursor.x - before - max_title_length
+    if extra > 0:
+        screen.cursor.x -= extra + 1
+        # Don't change `ICON`
+        screen.cursor.x = max(screen.cursor.x, ICON_LENGTH)
+        screen.draw("…")
+    if trailing_spaces:
+        screen.draw(" " * trailing_spaces)
 
     screen.cursor.bold = screen.cursor.italic = False
     screen.cursor.fg = 0
-
     if not is_last:
         screen.cursor.bg = as_rgb(color_as_int(draw_data.inactive_bg))
+        screen.draw(draw_data.sep)
+        screen.cursor.bg = 0
+    return screen.cursor.x
 
-    screen.cursor.bg = 0
 
+def _draw_right_status(screen: Screen, is_last: bool) -> int:
+    if not is_last:
+        return screen.cursor.x
+
+    cells = [
+        (CLOCK_FG, CLOCK_BG, datetime.datetime.now().strftime(" %H:%M ")),
+        (DATE_FG, DATE_BG, datetime.datetime.now().strftime(" %Y/%m/%d ")),
+    ]
+
+    right_status_length = 0
+    for _, _, cell in cells:
+        right_status_length += len(cell)
+
+    draw_spaces = screen.columns - screen.cursor.x - right_status_length
+    if draw_spaces > 0:
+        screen.draw(" " * draw_spaces)
+
+    for fg, bg, cell in cells:
+        screen.cursor.fg = fg
+        screen.cursor.bg = bg
+        screen.draw(cell)
+        screen.cursor.fg = 0
+        screen.cursor.bg = 0
+
+    screen.cursor.x = max(screen.cursor.x, screen.columns - right_status_length)
+    return screen.cursor.x
+
+
+def draw_tab(
+        draw_data: DrawData,
+        screen: Screen,
+        tab: TabBarData,
+        before: int,
+        max_title_length: int,
+        index: int,
+        is_last: bool,
+        extra_data: ExtraData,
+) -> int:
+    _draw_icon(screen, index)
+    # Set cursor to where `left_status` ends, instead `right_status`,
+    # to enable `open new tab` feature
+    end = _draw_left_status(
+        draw_data,
+        screen,
+        tab,
+        before,
+        max_title_length,
+        index,
+        is_last,
+        extra_data,
+        use_kitty_render_function=False,
+    )
+    _draw_right_status(
+        screen,
+        is_last,
+    )
     return end
