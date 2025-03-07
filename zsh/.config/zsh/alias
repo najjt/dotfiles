@@ -1,0 +1,47 @@
+#
+#  Aliases
+#
+
+# Make aliases work correctly with sudo
+alias sudo='sudo '
+
+# If user is not root, pass all commands via sudo
+if [ $UID -ne 0 ]; then
+    alias reboot='sudo reboot'
+    alias shutdown="sudo shutdown -h now"
+fi
+
+# Source zsh config
+alias sz="source $ZDOTDIR/.zshrc && source $HOME/.zprofile"
+
+# Navigation
+alias ..="cd .."
+
+## Colorize the grep command output for ease of use
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# Create parent directories if necessary,
+# and list them as they are created
+alias mkdir='mkdir -pv'
+
+# Colorize diff output
+alias diff='colordiff'
+
+# Other
+alias x="exit"
+alias ls='ls -lh --color=always'
+alias python="python3"
+
+# Pi
+alias pi="ssh pi@192.168.1.48"                             # ssh to raspberry pi
+alias pist="ssh -N -L 9090:127.0.0.1:8384 pi@192.168.1.48" # Port forward port 9090 to be able to use syncthing admin gui on other machine
+
+# Emacs
+alias e="emacs -nw"
+alias ec="emacsclient -c -nw"
+
+# Systemd services
+alias ecre="systemctl --user restart emacs"     # Restart Emacs service
+alias stre="systemctl --user restart syncthing" # Restart Syncthing service
