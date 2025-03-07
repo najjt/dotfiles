@@ -45,7 +45,7 @@
   (setq
    mu4e-get-mail-command "mbsync -a"
    mu4e-change-filenames-when-moving t   ; Needed for mbsync
-   mu4e-update-interval 120)             ; Update every 2 minutes
+   mu4e-update-interval 300)             ; Update every 5 minutes
 
   ;; Send mail
   (setq sendmail-program "/usr/bin/msmtp"
