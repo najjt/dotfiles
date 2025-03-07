@@ -14,4 +14,4 @@ greenclip daemon &
 xbanish -t 5 -s &
 
 # Start the desktop environment
-exec startplasma-x11
+exec dbus-run-session startplasma-x11
