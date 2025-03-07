@@ -13,8 +13,5 @@ dunst &
 # Hide mouse cursor when not in use
 xbanish -t 5 -s &
 
-# Start compositor
-picom -b &
-
 # Start the desktop environment
 exec dbus-run-session startplasma-x11
