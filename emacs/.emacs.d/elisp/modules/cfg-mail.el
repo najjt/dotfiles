@@ -84,4 +84,21 @@
     (add-to-list 'mm-discouraged-alternatives "text/html")
     (add-to-list 'mm-discouraged-alternatives "text/richtext")))
 
+;; Notifications
+(use-package mu4e-alert
+  :ensure t
+  :config
+  (mu4e-alert-enable-notifications)
+  (mu4e-alert-set-default-style 'libnotify)
+  (setq mu4e-alert-interesting-mail-query "flag:unread AND NOT flag:trashed"
+        mu4e-alert-email-notification-types '(subjects))
+
+  (alert-add-rule
+   :category "mu4e-alert"
+   :predicate (lambda (_) (string-match-p "^mu4e-" (symbol-name major-mode)))
+   :continue t)
+
+  (add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
+  (add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display))
+
 (provide 'cfg-mail)
