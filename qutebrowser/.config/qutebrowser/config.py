@@ -410,35 +410,6 @@ c.window.transparent = False
 # Type: Perc
 c.zoom.default = '100%'
 
-# Text color of the completion widget. May be a single color to use for
-# all columns or a list of three colors, one for each column.
-# Type: List of QtColor, or QtColor
-c.colors.completion.fg = '#b7bec9'
-
-# Background color of the completion widget for odd rows.
-# Type: QssColor
-c.colors.completion.odd.bg = '#1f1f1f'
-
-# Background color of the completion widget for even rows.
-# Type: QssColor
-c.colors.completion.even.bg = '#000000'
-
-# Foreground color of completion widget category headers.
-# Type: QtColor
-c.colors.completion.category.fg = '#b7bec9'
-
-# Background color of the completion widget category headers.
-# Type: QssColor
-c.colors.completion.category.bg = '#000000'
-
-# Foreground color of the selected completion item.
-# Type: QtColor
-c.colors.completion.item.selected.fg = '#b7bec9'
-
-# Background color of the selected completion item.
-# Type: QssColor
-c.colors.completion.item.selected.bg = '#000000'
-
 # Foreground color of the statusbar.
 # Type: QssColor
 c.colors.statusbar.normal.fg = '#b7bec9'
