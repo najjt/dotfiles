@@ -507,6 +507,9 @@ config.bind('<Ctrl+h>', 'cmd-set-text -s :help')
 # Open new window in private browsing mode
 config.bind('<Ctrl+p>', 'open -p')
 
+# Rebind default zoom in key
+config.bind('=', 'zoom-in')
+
 # Edit url
 config.bind('eu', 'edit-url')
 
