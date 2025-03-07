@@ -539,6 +539,3 @@ config.bind('zc', 'hint code userscript code_select.py')
 # Set PATH
 import os
 os.environ['PATH'] = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/najjt/.local/bin'
-
-# Confirm when quitting
-c.confirm_quit = ["always"]
