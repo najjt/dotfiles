@@ -135,9 +135,6 @@ def draw_tab(
         is_last: bool,
         extra_data: ExtraData,
 ) -> int:
-    _draw_icon(screen, index)
-    # Set cursor to where `left_status` ends, instead `right_status`,
-    # to enable `open new tab` feature
     end = _draw_left_status(
         draw_data,
         screen,
@@ -148,9 +145,5 @@ def draw_tab(
         is_last,
         extra_data,
         use_kitty_render_function=False,
-    )
-    _draw_right_status(
-        screen,
-        is_last,
     )
     return end
