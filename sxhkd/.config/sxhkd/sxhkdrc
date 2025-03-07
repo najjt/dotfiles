@@ -1,6 +1,6 @@
 # Open Emacs client
 control + alt + Return
-    emacsclient -n -c
+    emacsclient -c -e "(fancy-startup-screen)"
 
 # Open web browser
 control + shift + Return
