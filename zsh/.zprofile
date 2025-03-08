@@ -34,6 +34,9 @@ export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
 # Cargo
 . "$HOME/.cargo/env"
 
+export FZF_DEFAULT_OPTS="--color 16 --layout=reverse --height 30% --preview='batcat -p --color=always {}'"
+export FZF_CTRL_R_OPTS="--color 16 --info inline --no-sort --no-preview" # separate opts for history widget
+
 export $(dbus-launch)
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
