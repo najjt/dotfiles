@@ -12,6 +12,9 @@
           ;; Prot's youtube channel
           "https://www.youtube.com/feeds/videos.xml?channel_id=UC0uTPqBCFIpZxlz_Lv1tk_g"
           ;; Bread on Penguins's youtube channel
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCwHwDuNd9lCdA7chyyquDXw")))
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCwHwDuNd9lCdA7chyyquDXw"
+          "https://xkcd.com/rss.xml"
+          "https://www.debian.org/News/news"
+          )))
 
 (provide 'cfg-rss)
