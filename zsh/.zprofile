@@ -35,3 +35,7 @@ export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
 . "$HOME/.cargo/env"
 
 export $(dbus-launch)
+
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+    startx
+fi
