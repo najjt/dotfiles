@@ -32,8 +32,9 @@ HISTFILE="$XDG_CACHE_HOME/zsh_history" # move histfile to cache
 HISTCONTROL=ignoreboth # consecutive duplicates & commands starting with space are not saved
 
 # Prompt style
+NEWLINE=$'\n'
 PROMPT="${NEWLINE}%K{#3b4252}%F{#ECEFF4} %n %K{#4c566a} %~ %f%k ${NEWLINE}%F{green} ❯%F{reset_color} "
-echo -e "${NEWLINE}\033[48;2;46;52;64;38;2;216;222;233m $0 \033[0m\033[48;2;59;66;82;38;2;216;222;233m $(uptime -p | cut -c 4-) \033[0m\033[48;2;76;86;106;38;2;216;222;233m $(uname -r) \033[0m ${NEWLINE} ${NEWLINE} $(date +%A\ %d\ %B\ %X)"
+echo -e "$(date +%A\ %d\ %B\ %Y\ %X)"
 
 # Set cursor style to
 # non-blinking vertical line
