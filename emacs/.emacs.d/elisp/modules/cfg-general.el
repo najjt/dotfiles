@@ -179,4 +179,9 @@
     (let ((default-directory (expand-file-name "~/")))
       (setq current-prefix-arg '(1))
       (call-interactively 'fzf))))
+
+;; Manage window
+(use-package ace-window
+  :bind ("M-o" . ace-window))
+
 (provide 'cfg-general)
