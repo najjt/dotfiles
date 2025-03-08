@@ -17,14 +17,6 @@
   :demand t
   :bind
   ("C-z" . evil-local-mode) ; Toggle evil mode
-
-  ;; Window navigation
-  (:map evil-normal-state-map
-        ("C-w h" . evil-window-left)
-        ("C-w j" . evil-window-down)
-        ("C-w k" . evil-window-up)
-        ("C-w l" . evil-window-right))
-
   :init
   (setq evil-want-integration t
         evil-want-keybinding nil
