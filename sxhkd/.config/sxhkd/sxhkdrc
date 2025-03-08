@@ -11,7 +11,7 @@ shift + alt + Return
     kitty
 
 # Open application launcher
-alt + o
+alt + space
     rofi -modi run,drun -show run
 
 # Open Org Mode capture frame
