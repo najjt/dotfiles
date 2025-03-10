@@ -57,12 +57,6 @@
 ;; Initialize the package manager
 (package-initialize)
 
-;; Ensure use-package is installed
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-(require 'use-package)
 (setq use-package-verbose t)
 
 ;; Add packages to load path
