@@ -10,6 +10,9 @@
 ;; Show column number in status bar
 (column-number-mode)
 
+;; Hide tab bar if only one tab
+(setq tab-bar-show 1)
+
 ;; Make line numbers relative
 (setq display-line-numbers-type 'relative
       display-line-numbers-width-start t)
