@@ -57,6 +57,7 @@
 ;; Initialize the package manager
 (package-initialize)
 
+;; Report about loading and config details
 (setq use-package-verbose t)
 
 ;; Add packages to load path
