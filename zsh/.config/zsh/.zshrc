@@ -36,10 +36,6 @@ NEWLINE=$'\n'
 PROMPT="${NEWLINE}%K{#3b4252}%F{#ECEFF4} %n %K{#4c566a} %~ %f%k ${NEWLINE}%F{green} ❯%F{reset_color} "
 echo -e "$(date +%A\ %d\ %B\ %Y\ %X)"
 
-# Set cursor style to
-# non-blinking vertical line
-echo '\e[6 q'
-
 # Delete to previous slash,
 # useful for editing paths
 autoload -U select-word-style
