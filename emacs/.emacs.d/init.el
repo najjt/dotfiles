@@ -32,10 +32,6 @@
         (add-hook 'minibuffer-setup-hook #'gc-minibuffer-setup-hook)
         (add-hook 'minibuffer-exit-hook #'gc-minibuffer-exit-hook)))
 
-;; Linux settings
-(when (eq system-type 'gnu/linux)
-  (setq x-super-keysym 'meta))
-
 ;; Make customize-based setting live in the custom.el file
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
