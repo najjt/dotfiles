@@ -2,7 +2,7 @@
 
 (use-package dired
   :ensure nil
-  :hook (dired-mode . dired-hide-details-mode) ;; Hide details
+  :hook (dired-mode . dired-hide-details-mode) ; Hide details
   :custom
   ;; Hide message when omitting files
   (dired-omit-verbose nil)
@@ -13,7 +13,7 @@
   ;; What files to hide in dired-omit-mode
   (dired-omit-files
    (rx (or (seq bol (? ".") "#")         ; Autosave files
-           (seq bol "." (not (any "."))) ; DotfileS
+           (seq bol "." (not (any "."))) ; Dotfiles
            (seq "~" eol))))              ; Backup files
 
   ;; No infinite dired buffers!
