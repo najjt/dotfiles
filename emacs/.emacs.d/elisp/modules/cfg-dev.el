@@ -28,8 +28,7 @@
 ;; Completions
 (use-package company
   :after lsp-mode
-  :hook ((lsp-mode). company-mode)
-  :bind (:map company-active-map
+  :hook (prog-mode . company-mode)
   :bind
   ((:map company-active-map
          ("<tab>" . company-complete-selection))
