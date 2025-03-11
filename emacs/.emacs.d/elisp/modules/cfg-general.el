@@ -166,7 +166,7 @@
 ;; Use minibuffer for epa password interface
 (setq egp-pinentry-mode 'loopback)
 
-;; Manage window
+;; Manage windows
 (use-package ace-window
   :bind ("M-o" . ace-window))
 
