@@ -408,7 +408,7 @@ c.window.transparent = False
 
 # Default zoom level.
 # Type: Perc
-c.zoom.default = '100%'
+c.zoom.default = '110%'
 
 # Foreground color of the statusbar.
 # Type: QssColor
