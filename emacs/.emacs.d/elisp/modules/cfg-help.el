@@ -7,6 +7,8 @@
 
 ;; Search and navigation commands
 (use-package consult
+  :bind (("C-c r" . consult-ripgrep)
+         ("C-c f" . consult-find))
   :config
   (global-set-key [remap switch-to-buffer] 'consult-buffer)
   (global-set-key [remap switch-to-buffer-other-window] 'consult-buffer-other-window)
