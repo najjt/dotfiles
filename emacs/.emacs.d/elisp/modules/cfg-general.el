@@ -166,19 +166,6 @@
 ;; Use minibuffer for epa password interface
 (setq egp-pinentry-mode 'loopback)
 
-;; Fuzzy finder
-(use-package fzf
-  :bind (("C-c f" . 'my/fzf-directory-home)
-         ("C-c F" . 'fzf-grep))
-  :config
-  (setq fzf/args-for-preview "--preview='batcat -p --color=always {}'")
-  (defun my/fzf-directory-home ()
-    "Launch fzf-directory in the user's home directory."
-    (interactive)
-    (let ((default-directory (expand-file-name "~/")))
-      (setq current-prefix-arg '(1))
-      (call-interactively 'fzf))))
-
 ;; Manage window
 (use-package ace-window
   :bind ("M-o" . ace-window))
