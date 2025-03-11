@@ -35,8 +35,7 @@
 (use-package sudo-edit
   :defer t
   :diminish
-  :config
-  (global-set-key (kbd "C-c C-r") 'sudo-edit))
+  :bind ("C-c C-r" . sudo-edit))
 
 ;; Provides commands to run based on current context
 (use-package embark
