@@ -454,6 +454,10 @@ c.colors.tabs.selected.odd.bg = '#747474'
 # Type: QtColor
 c.colors.tabs.selected.even.bg = '#747474'
 
+# Background color of the statusbar in private browsing mode.
+# Type: QtColor
+c.colors.statusbar.private.bg = '#6232a8'
+
 # Value to use for `prefers-color-scheme:` for websites. The "light"
 # value is only available with QtWebEngine 5.15.2+. On older versions,
 # it is the same as "auto". The "auto" value is broken on QtWebEngine
