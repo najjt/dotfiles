@@ -8,8 +8,16 @@
 ;; Search and navigation commands
 (use-package consult
   :bind (("C-c r" . consult-ripgrep)
-         ("C-c f" . consult-find))
+         ("C-c f" . consult-find)
+         ("C-c F" . my/consult-find-home-dir))
+  :custom
+  (consult-find-args "find .")
   :config
+  (defun my/consult-find-home-dir ()
+    "Search for files with `consult-find` in users home directory"
+    (interactive)
+    (consult-find (expand-file-name "~")))
+
   (global-set-key [remap switch-to-buffer] 'consult-buffer)
   (global-set-key [remap switch-to-buffer-other-window] 'consult-buffer-other-window)
   (global-set-key [remap switch-to-buffer-other-frame] 'consult-buffer-other-frame)
