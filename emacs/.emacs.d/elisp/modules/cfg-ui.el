@@ -171,4 +171,10 @@
   (interactive)
   (my/resize-window nil -5))
 
+;; Increase padding between windows
+(use-package spacious-padding
+  :config
+  (spacious-padding-mode +1)
+  (setq spacious-padding-subtle-mode-line t))
+
 (provide 'cfg-ui)
