@@ -10,6 +10,9 @@
 ;; Show column number in status bar
 (column-number-mode)
 
+;; Show fringes
+(fringe-mode 8)
+
 ;; Hide tab bar if only one tab
 (setq tab-bar-show 1)
 

@@ -22,7 +22,6 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (blink-cursor-mode -1)
-(fringe-mode -1)
 
 ;; Don't show unnecessary warnings
 (setq warning-minimum-level :error)
