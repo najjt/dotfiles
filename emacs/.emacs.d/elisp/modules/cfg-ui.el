@@ -96,9 +96,10 @@
 
 ;; Temporary command buffers
 (use-package hydra
+  :bind ("C-c q" . hydra-window/body)
   :config
-
-  (defhydra hydra-main (:timeout 4)
+  ;; Resize window
+  (defhydra hydra-window (:timeout 4)
     "
   Resize window:
   -------------
