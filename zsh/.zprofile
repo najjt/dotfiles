@@ -12,7 +12,6 @@ export EDITOR=emacsclient
 export TERM=xterm-256color
 export TERMINAL=kitty
 export BROWSER=qutebrowser
-# export DISPLAY=:0 # useful for some scripts
 export GPG_TTY=$(tty)
 export GTK_THEME=Adwaita-dark
 
@@ -34,11 +33,13 @@ export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
 # Cargo
 . "$HOME/.cargo/env"
 
+# fzf default options
 export FZF_DEFAULT_OPTS="--color 16 --layout=reverse --height 30% --preview='batcat -p --color=always {}'"
 export FZF_CTRL_R_OPTS="--color 16 --info inline --no-sort --no-preview" # separate opts for history widget
 
 export $(dbus-launch)
 
+# Start X11 on login
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     startx
 fi
