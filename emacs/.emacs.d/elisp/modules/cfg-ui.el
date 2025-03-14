@@ -82,11 +82,9 @@
           "^\\*LSP Error List*\\*$"
           magit-mode
           comint-mode
-          eshell-mode
           shell-mode
           term-mode
           vterm-mode
-          ansi-term-mode
           help-mode
           helpful-mode
           compilation-mode))
