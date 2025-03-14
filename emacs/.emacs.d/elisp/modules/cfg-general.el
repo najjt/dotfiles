@@ -168,6 +168,22 @@
 
 ;; Manage windows
 (use-package ace-window
-  :bind ("M-o" . ace-window))
+  :bind ("M-o" . ace-window)
+  :custom (aw-scope 'frame))
+
+;; Automatically switch focus to new window when it is created
+(defun my/split-and-follow-horizontally ()
+  (interactive)
+  (split-window-below)
+  (balance-windows)
+  (other-window 1))
+(global-set-key (kbd "C-x 2") 'my/split-and-follow-horizontally)
+
+(defun my/split-and-follow-vertically ()
+  (interactive)
+  (split-window-right)
+  (balance-windows)
+  (other-window 1))
+(global-set-key (kbd "C-x 3") 'my/split-and-follow-vertically)
 
 (provide 'cfg-general)

@@ -94,21 +94,6 @@
   (popper-mode 1)
   (popper-echo-mode 1))
 
-;; Automatically switch focus to new window when it is created
-(defun my/split-and-follow-horizontally ()
-  (interactive)
-  (split-window-below)
-  (balance-windows)
-  (other-window 1))
-(global-set-key (kbd "C-x 2") 'my/split-and-follow-horizontally)
-
-(defun my/split-and-follow-vertically ()
-  (interactive)
-  (split-window-right)
-  (balance-windows)
-  (other-window 1))
-(global-set-key (kbd "C-x 3") 'my/split-and-follow-vertically)
-
 ;; Temporary command buffers
 (use-package hydra
   :config
