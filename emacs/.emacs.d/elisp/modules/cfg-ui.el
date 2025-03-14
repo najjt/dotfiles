@@ -58,11 +58,25 @@
 (use-package modus-themes
   :defer t)
 
-(use-package gruvbox-theme
-  :defer t)
+(defun my/disable-all-themes ()
+  "Disable all active themes."
+  (dolist (theme custom-enabled-themes)
+    (disable-theme theme)))
 
-(use-package miasma-theme
-  :defer t)
+(defun my/enable-theme (theme)
+  "Interactively enable the specified THEME and disable all other themes."
+  (interactive
+   (list (completing-read "Choose theme: " (mapcar #'symbol-name (custom-available-themes)))))
+  (my/disable-all-themes)
+  (load-theme (intern theme) t)
+  (customize-save-variable 'my-chosen-theme theme))
+
+;; Remember last used theme between sessions
+(add-hook 'after-init-hook
+          (lambda ()
+            (if (boundp 'my-chosen-theme)
+                (my/enable-theme my-chosen-theme)
+              (my/enable-theme 'modus-vivendi))))
 
 ;; Popup buffers
 (use-package popper
