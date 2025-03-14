@@ -62,7 +62,6 @@
 (defun my/whitespace-cleanup ()
   (unless (derived-mode-p 'markdown-mode)
     (whitespace-cleanup)))
-
 (add-hook 'before-save-hook 'my/whitespace-cleanup)
 
 ;; Map yes and no to y and n
