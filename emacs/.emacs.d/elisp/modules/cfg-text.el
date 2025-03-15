@@ -4,7 +4,7 @@
 
 ;; Automatic line breaking
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
-(setq-default fill-column 72)
+(setq-default fill-column 80)
 
 ;; Spell checking
 (use-package jinx
