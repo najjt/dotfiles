@@ -10,8 +10,6 @@
   :bind (("C-c r" . consult-ripgrep)
          ("C-c f" . consult-find)
          ("C-c F" . my/consult-find-home-dir))
-  :custom
-  (consult-find-args "find .")
   :config
   (defun my/consult-find-home-dir ()
     "Search for files with `consult-find` in users home directory"
