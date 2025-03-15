@@ -10,6 +10,9 @@ sxhkd &
 # Clipboard manager
 greenclip daemon &
 
+# Notifications
+dunst &
+
 # Hide mouse cursor when not in use
 xbanish -t 5 -s &
 
