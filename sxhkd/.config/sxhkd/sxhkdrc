@@ -6,10 +6,6 @@ control + alt + Return
 control + shift + Return
     qutebrowser
 
-# Open terminal emulator
-shift + alt + Return
-    kitty
-
 # Open application launcher
 alt + space
     rofi -modi run,drun -show run
