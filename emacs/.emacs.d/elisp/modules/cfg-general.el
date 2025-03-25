@@ -52,7 +52,7 @@
 
 ;; Set default browser
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "qutebrowser")
+      browse-url-generic-program "librewolf")
 
 ;; Increase large file warning threshold
 (setq large-file-warning-threshold 100000000)
