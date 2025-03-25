@@ -171,4 +171,15 @@
   (interactive)
   (my/resize-window nil -5))
 
+;; Hide minor modes in modeline
+(use-package diminish
+  :diminish (auto-fill-function
+             centered-window-mode
+             eldoc-mode
+             evil-collection-unimpaired-mode
+             org-indent-mode
+             abbrev-mode
+             subword-mode
+             flymake-mode))
+
 (provide 'cfg-ui)
