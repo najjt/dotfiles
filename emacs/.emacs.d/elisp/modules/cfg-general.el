@@ -212,4 +212,47 @@
           (if this-win-2nd (other-window 1))))))
 
 (global-set-key (kbd "C-x |") 'toggle-window-split)
+
+(use-package pdf-tools
+  :defer t
+  :mode ("\\.pdf\\'" . pdf-view-mode)
+  :bind (:map pdf-view-mode-map
+              ("M-n" . pdf-view-next-page)
+              ("M-p" . pdf-view-previous-page))
+  :config
+  (pdf-tools-install))
+
+(use-package elfeed
+  :bind ("C-c w" . (lambda ()
+                     (interactive)
+                     (elfeed)
+                     (elfeed-update)))
+  :config
+  (setq elfeed-feeds
+        '(;; Prot's commentary on life
+          "https://protesilaos.com/commentary.xml"
+          ;; Prot's youtube channel
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC0uTPqBCFIpZxlz_Lv1tk_g"
+          ;; Bread on Penguins's youtube channel
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCwHwDuNd9lCdA7chyyquDXw"
+          "https://www.debian.org/News/news")))
+
+(use-package vterm
+  :custom
+  (term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
+  (vterm-shell "zsh")
+  (vterm-max-scrollback 10000))
+
+;; Open multiple vterm buffers
+(use-package multi-vterm
+  :hook (vterm-mode . (lambda ()
+                        (setq-local evil-insert-state-cursor 'box)
+                        (evil-insert-state)))
+  :bind
+  ("C-c t" . multi-vterm-dedicated-toggle)
+  ("C-c T" . multi-vterm)
+  :config
+  ;; Dedicated terminal height
+  (setq multi-vterm-dedicated-window-height-percent 30))
+
 (provide 'cfg-general)
