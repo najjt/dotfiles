@@ -25,4 +25,14 @@
   :diminish
   :hook (prog-mode text-mode fundamental-mode))
 
+(use-package go-translate
+  :bind ("C-c o" . gt-do-translate)
+  :config
+  (setq gt-langs '(en sv))
+  (setq gt-default-translator
+        (gt-translator
+         :taker   (gt-taker :text 'word :prompt t)
+         :engines (gt-google-engine)
+         :render  (gt-buffer-render))))
+
 (provide 'cfg-text)
