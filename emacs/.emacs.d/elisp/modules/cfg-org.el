@@ -14,7 +14,7 @@
         org-refile-targets (quote (("personal.org"            :maxlevel   . 2)
                                    ("backlog.org"             :maxlevel   . 2)
                                    ("repeating.org"           :maxlevel   . 2)
-                                   ("calendar.org"            :maxlevel   . 1)
+                                   ("calendar.org"            :level      . 0)
                                    ("../misc/computer.org"    :maxlevel   . 1))))
 
   ;; Refile settings
