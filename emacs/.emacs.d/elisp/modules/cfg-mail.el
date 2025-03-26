@@ -33,8 +33,7 @@
      (:maildir "/Archive" :key ?a)
      (:maildir "/Viktigt" :key ?v))
 
-   ;; Fastmail likes to mark things trashed, so you have to
-   ;; add filters against seeing them in standard searches
+   ;; Filters for hiding trashed messages from bookmarks
    mu4e-bookmarks
    `(("flag:unread AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Unread messages" ?u)
      ("date:today..now AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Today's messages" ?t)
@@ -57,6 +56,7 @@
   (setq
    mu4e-confirm-quit nil
    mu4e-headers-skip-duplicates t
+   mu4e-display-update-status-in-modeline t
    mu4e-view-show-images t
    mu4e-view-show-addresses t
    mu4e-date-format "%d/%m/%y"
@@ -67,8 +67,6 @@
 
    ;; Re-flow mail so it's not hard wrapped
    mu4e-compose-format-flowed t
-
-   mu4e-display-update-status-in-modeline t
 
    ;; Signature
    message-signature "Med vänlig hälsning,\nMartin Lönn Andersson")
