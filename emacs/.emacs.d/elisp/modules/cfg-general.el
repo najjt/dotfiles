@@ -35,7 +35,8 @@
 (use-package sudo-edit
   :defer t
   :diminish
-  :bind ("C-c C-r" . sudo-edit))
+  :bind (("C-c C-r" . sudo-edit)
+         ("C-c C-t" . sudo-edit-find-file)))
 
 ;; Provides commands to run based on current context
 (use-package embark
