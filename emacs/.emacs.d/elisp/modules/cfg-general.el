@@ -169,7 +169,9 @@
 ;; Manage windows
 (use-package ace-window
   :bind ("M-o" . ace-window)
-  :custom (aw-scope 'frame))
+  :custom (aw-scope 'frame)
+  :config
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
 ;; Automatically switch focus to new window when it is created
 (defun my/split-and-follow-horizontally ()
