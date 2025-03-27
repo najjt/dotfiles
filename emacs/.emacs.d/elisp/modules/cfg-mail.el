@@ -37,6 +37,7 @@
    mu4e-bookmarks
    `(("flag:unread AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Unread messages" ?u)
      ("date:today..now AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Today's messages" ?t)
+     ("maildir:/INBOX AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Inbox" ?i)
      ("date:7d..now AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Last 7 days" ?w)))
 
   ;; Fetch mail
