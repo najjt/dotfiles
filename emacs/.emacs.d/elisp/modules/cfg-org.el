@@ -75,7 +75,10 @@ has no effect."
                                (next-single-property-change cursor 'org-marker)
                                'org-habit-p data))))))
 
-  (advice-add #'org-agenda-finalize :before #'my/org-agenda-mark-habits))
+  (advice-add #'org-agenda-finalize :before #'my/org-agenda-mark-habits)
+
+  ;; Put cursor at beginning of buffer when opening agenda
+  (add-hook 'org-agenda-finalize-hook #'beginning-of-buffer))
 
 ;; Generate a table of contents
 (use-package toc-org
