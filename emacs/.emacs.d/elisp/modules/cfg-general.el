@@ -225,6 +225,7 @@
   :config
   (pdf-tools-install))
 
+;; RSS feeds
 (use-package elfeed
   :bind ("C-c w" . (lambda ()
                      (interactive)
@@ -238,7 +239,8 @@
           "https://www.youtube.com/feeds/videos.xml?channel_id=UC0uTPqBCFIpZxlz_Lv1tk_g"
           ;; Bread on Penguins's youtube channel
           "https://www.youtube.com/feeds/videos.xml?channel_id=UCwHwDuNd9lCdA7chyyquDXw"
-          "https://www.debian.org/News/news")))
+          "https://www.debian.org/News/news"
+          "https://www.femtejuli.se/feed")))
 
 (use-package vterm
   :custom
