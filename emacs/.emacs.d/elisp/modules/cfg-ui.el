@@ -94,11 +94,11 @@
           "^\\*tex-shell.*\\*$"
           "^\\*Flycheck.*\\*$"
           "^\\*LSP Error List*\\*$"
+          "^\\*vterminal - dedicated\\*$"
           magit-mode
           comint-mode
           shell-mode
           term-mode
-          vterm-mode
           help-mode
           helpful-mode
           compilation-mode))
