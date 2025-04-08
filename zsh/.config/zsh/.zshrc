@@ -13,23 +13,26 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} ma=0\;33 # colorize cmp me
 zstyle ':completion:*' squeeze-slashes false # explicit disable to allow /*/ expansion
 
 # Options
-setopt append_history inc_append_history share_history # better history
-# on exit, history appends rather than overwrites; history is appended as soon as cmds executed; history shared across sessions
-setopt auto_menu menu_complete # autocmp first menu match
-setopt autocd # type a dir to cd
-setopt auto_param_slash # when a dir is completed, add a / instead of a trailing space
-setopt no_case_glob no_case_match # make cmp case insensitive
-setopt globdots # include dotfiles
-setopt extended_glob # match ~ # ^
-setopt interactive_comments # allow comments in shell
-unsetopt prompt_sp # don't autoclean blanklines
-stty stop undef # disable accidental ctrl s
+# Better history:
+# on exit, history appends rather than overwrites;
+# history is appended as soon as cmds executed;
+# history shared across sessions
+setopt append_history inc_append_history share_history
+setopt auto_menu menu_complete    # Autocmp first menu match
+setopt autocd                     # Type a dir to cd
+setopt auto_param_slash           # When a dir is completed, add a / instead of a trailing space
+setopt no_case_glob no_case_match # Make cmp case insensitive
+setopt globdots                   # Include dotfiles
+setopt extended_glob              # Match ~ # ^
+setopt interactive_comments       # Allow comments in shell
+unsetopt prompt_sp                # Don't autoclean blanklines
+stty stop undef                   # Disable accidental ctrl s
 
 # History opts
 HISTSIZE=1000000
 SAVEHIST=1000000
-HISTFILE="$XDG_CACHE_HOME/zsh_history" # move histfile to cache
-HISTCONTROL=ignoreboth # consecutive duplicates & commands starting with space are not saved
+HISTFILE="$XDG_CACHE_HOME/zsh_history" # Move histfile to cache
+HISTCONTROL=ignoreboth                 # Consecutive duplicates & commands starting with space are not saved
 
 # Prompt style
 NEWLINE=$'\n'
