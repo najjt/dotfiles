@@ -24,7 +24,7 @@ export LC_CTYPE="en_IE.UTF-8"
 # Path
 export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin:/usr/local/go/bin:$HOME/scripts"
 
-# bootstrap .zshrc to ~/.config/zsh/.zshrc, any other zsh config files can also reside here
+# Change default .zshrc location to ~/.config/zsh/.zshrc, any other zsh config files can also reside here
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # Java
@@ -35,7 +35,7 @@ export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
 
 # fzf default options
 export FZF_DEFAULT_OPTS="--color 16 --layout=reverse --height 30% --preview='batcat -p --color=always {}'"
-export FZF_CTRL_R_OPTS="--color 16 --info inline --no-sort --no-preview" # separate opts for history widget
+export FZF_CTRL_R_OPTS="--color 16 --info inline --no-sort --no-preview" # Separate opts for history widget
 
 export $(dbus-launch)
 
