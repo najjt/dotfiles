@@ -7,8 +7,12 @@
   ;; Hide message when omitting files
   (dired-omit-verbose nil)
 
-  ;; Show hidden files, sort directories first
-  (dired-listing-switches "-la --group-directories-first -v")
+  ;; Show in long listing format,
+  ;; show hidden files,
+  ;; show sizes in human-readable format
+  ;; sort directories first,
+  ;; use natural sort for version numbers within text
+  (dired-listing-switches "-lah --group-directories-first -v")
 
   ;; What files to hide in dired-omit-mode
   (dired-omit-files
