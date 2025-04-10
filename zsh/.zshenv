@@ -27,9 +27,6 @@ export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin:/usr/local/go/bin:$HOME/scripts
 # Change default .zshrc location to ~/.config/zsh/.zshrc, any other zsh config files can also reside here
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
-# Set .zcompdump files to live in ~/.cache
-export ZSH_COMPDUMP="$XDG_CACHE_HOME/.zcompdump"
-
 # Java
 export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
 
