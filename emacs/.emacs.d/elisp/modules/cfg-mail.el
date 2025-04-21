@@ -5,9 +5,10 @@
   :load-path "/usr/share/emacs/site-lisp/elpa-src/mu4e-1.8.14"
   :bind
   ("C-c m" . mu4e)
+  (:map mu4e-compose-mode-map
+        ("C-c C-a" . mail-add-attachment))
   (:map mu4e-view-mode-map
         ("C-c E"   . mu4e-compose-edit) ; Edit a draft
-        ("C-c C-a" . mail-add-attachment)
         ("e"       . mu4e-view-save-attachment))
   :config
   (setq mail-user-agent 'mu4e-user-agent) ; Make mu4e default email client
