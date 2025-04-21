@@ -14,11 +14,6 @@
   (setq mail-user-agent 'mu4e-user-agent) ; Make mu4e default email client
   (set-variable 'read-mail-command 'mu4e) ; Make mu4e default email reader
 
-  ;; User info
-  (setq
-   user-mail-address "martin@malon.se"
-   user-full-name  "Martin Lönn Andersson")
-
   ;; Maildir setup
   (setq
    mu4e-maildir "~/.mail"
@@ -55,6 +50,31 @@
         message-sendmail-f-is-evil t
         message-sendmail-extra-arguments '("--read-envelope-from")
         message-send-mail-function 'message-send-mail-with-sendmail)
+
+  (setq mu4e-contexts
+        `( ,(make-mu4e-context
+             :name "main"
+             :enter-func (lambda () (mu4e-message "Entering MAIN context"))
+             :leave-func (lambda () (mu4e-message "Leaving MAIN context"))
+             :vars '((user-mail-address     . "martin@malon.se")
+                     (user-full-name        . "Martin Lönn andersson")
+                     (message-signature     .
+                                            (concat
+                                             "Med vänlig hälsning,\n"
+                                             "Martin Lönn Andersson\n"))))
+           ,(make-mu4e-context
+             :name "Mask"
+             :enter-func (lambda () (mu4e-message "Switch to the MASK context"))
+             ;; no leave-func
+             :vars '((user-mail-address      . "tidy.dust2080@fastmail.com")
+                     (user-full-name         . "Martin")
+                     (message-signature      .
+                                             (concat
+                                              "Kind regards,\n"
+                                              "Martin\n"))))))
+
+  ;; start with the first (default) context
+  (setq mu4e-context-policy 'pick-first)
 
   ;; Other options
   (setq
