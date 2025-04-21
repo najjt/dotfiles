@@ -17,4 +17,4 @@ dunst &
 unclutter &
 
 # Start the desktop environment
-exec dbus-run-session startplasma-x11
+exec startplasma-x11
