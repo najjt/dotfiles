@@ -11,6 +11,12 @@
          ("C-c f" . consult-find)
          ("C-c F" . my/consult-find-home-dir))
   :config
+  (with-eval-after-load 'consult
+    (setq consult-ripgrep-args
+          (concat consult-ripgrep-args " --hidden")))
+
+  (setq-default consult-find-args "find .")
+
   (defun my/consult-find-home-dir ()
     "Search for files with `consult-find` in users home directory"
     (interactive)
