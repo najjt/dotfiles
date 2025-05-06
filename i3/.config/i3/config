@@ -65,7 +65,7 @@ focus_follows_mouse yes
 
 gaps inner 0
 
-default_border pixel 3
+default_border pixel 4
 default_floating_border pixel 3
 
 
