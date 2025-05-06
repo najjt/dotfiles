@@ -254,8 +254,8 @@
                         (setq-local evil-insert-state-cursor 'box)
                         (evil-insert-state)))
   :bind
-  ("C-c T" . multi-vterm-dedicated-toggle)
-  ("C-c t" . multi-vterm)
+  ("C-c t" . multi-vterm-dedicated-toggle)
+  ("C-c T" . multi-vterm)
   :config
   ;; Dedicated terminal height
   (setq multi-vterm-dedicated-window-height-percent 30))
