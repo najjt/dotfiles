@@ -16,6 +16,9 @@ exec --no-startup-id blueman-applet
 # Pulse audio system tray item
 exec --no-startup-id pasystray
 
+# Compositing
+exec --no-startup-id picom --experimental-backends
+
 # Lock
 exec --no-startup-id xss-lock -- ~/.config/i3/lock.sh
 
