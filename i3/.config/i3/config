@@ -23,7 +23,7 @@ exec --no-startup-id picom --experimental-backends
 exec --no-startup-id xss-lock -- ~/.config/i3/lock.sh
 
 # Monitor setup
-exec --no-startup-id xrandr --output HDMI-2 --primary --auto --left-of eDP-1
+exec --no-startup-id autorandr --change
 
 # Shuffle wallpaper
 exec --no-startup-id $sd/wallshuffle
