@@ -3,7 +3,7 @@
 #
 
 # Scripts directory
-set $scriptsdir ~/scripts
+set $sd ~/scripts
 
 ## Background processes
 
@@ -26,7 +26,7 @@ exec --no-startup-id xss-lock -- ~/.config/i3/lock.sh
 exec --no-startup-id xrandr --output HDMI-2 --primary --auto --left-of eDP-1
 
 # Shuffle wallpaper
-exec --no-startup-id $scriptsdir/wallshuffle
+exec --no-startup-id $sd/wallshuffle
 
 # Blue light filter
 exec --no-startup-id redshift -P -O 4500
@@ -194,9 +194,9 @@ mode "lock" {
 bindsym $mod+x mode "lock"
 
 # Volume
-bindsym XF86AudioRaiseVolume exec $scriptsdir/volume.sh +
-bindsym XF86AudioLowerVolume exec $scriptsdir/volume.sh -
-bindsym XF86AudioMute exec $scriptsdir/volume.sh 0
+bindsym XF86AudioRaiseVolume exec $sd/volume.sh +
+bindsym XF86AudioLowerVolume exec $sd/volume.sh -
+bindsym XF86AudioMute exec $sd/volume.sh 0
 
 # Toggle mute microphone
 bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle | grep '\[off\]' && notify-send "Microphone: switched OFF" || notify-send "Microphone: switched ON"
@@ -207,8 +207,8 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioPlay exec playerctl pause
 
 # Screen brightness
-bindsym XF86MonBrightnessUp exec $scriptsdir/brightness.sh +
-bindsym XF86MonBrightnessDown exec $scriptsdir/brightness.sh -
+bindsym XF86MonBrightnessUp exec $sd/brightness.sh +
+bindsym XF86MonBrightnessDown exec $sd/brightness.sh -
 
 # Take a screenshot of the whole screen
 bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/screenshots/screenshot $(date '+%F %T').jpg" && notify-send "Screenshot taken"
