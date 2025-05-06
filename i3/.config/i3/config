@@ -36,7 +36,7 @@ exec --no-startup-id redshift -P -O 4500
 #
 
 # Modifier keys
-set $mod Mod1
+set $mod Mod4
 
 # Workspace names
 set $ws1 "1"
