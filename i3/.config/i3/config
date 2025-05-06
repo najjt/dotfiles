@@ -204,5 +204,9 @@ bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/screenshots/screen
 # Take a screenshot of a selected part
 bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/screenshots/screenshot $(date '+%F %T').jpg" && notify-send "Screenshot taken"
 
+# Windows that should be floating by default
+for_window [class="Emacs" instance="Global_Popup"] floating enable
+for_window [class="Bitwarden" instance="bitwarden"] floating enable
+
 ## Status bar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
