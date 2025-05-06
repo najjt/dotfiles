@@ -13,8 +13,6 @@ exec --no-startup-id nm-tray
 # Bluetooth system tray item
 exec --no-startup-id blueman-applet
 
-# Notifications
-exec --no-startup-id dunst
 
 # Lock
 exec --no-startup-id xss-lock -- ~/.config/i3/lock.sh
