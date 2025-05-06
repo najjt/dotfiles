@@ -16,5 +16,12 @@ dunst &
 # Hide mouse cursor when not in use
 unclutter &
 
-# Start the desktop environment
-exec startplasma-x11
+# KDE Plasma is kept as default
+session=${1:-kde}
+
+case $session in
+    i3                ) exec /usr/bin/i3;;
+    kde               ) exec /usr/bin/startplasma-x11;;
+    # No known session, try to run it as command
+    *                 ) exec $1;;
+esac
