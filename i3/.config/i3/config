@@ -3,7 +3,7 @@
 #
 
 # Scripts directory
-set $scriptsdir ~/scripts
+set $sd ~/scripts
 
 ## Background processes
 
