@@ -15,7 +15,7 @@ xidlehook \
     'xrandr --output "$PRIMARY_DISPLAY" --brightness 1' \
   `# Lock after 10 more seconds` \
   --timer 10 \
-    'xrandr --output "$PRIMARY_DISPLAY" --brightness; i3lock' \
+    'xrandr --output "$PRIMARY_DISPLAY" --brightness 1; i3lock' \
     '' \
   `# Finally, suspend 5 seconds after it locks` \
   --timer 5 \
