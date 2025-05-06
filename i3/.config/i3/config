@@ -181,8 +181,17 @@ bindsym $mod+Control+Shift+e restart
 # Exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -f 'pango: monospace 11' -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# Lock screen
-bindsym Control+$mod+l exec --no-startup-id sleep 1 && xset dpms force suspend
+# Lock or suspend directly
+mode "lock" {
+    bindsym l exec i3lock --ignore-empty-password --tiling 2>/dev/null, mode "default"
+    # just force suspend. i3lock will be called automatically via lock.sh
+    bindsym s exec --no-startup-id sleep 1 && systemctl suspend , mode "default"
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+x mode "lock"
 
 # Volume
 bindsym XF86AudioRaiseVolume exec $scriptsdir/volume.sh +
