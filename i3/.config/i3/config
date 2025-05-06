@@ -190,9 +190,9 @@ bindsym XF86AudioMute exec $scriptsdir/volume.sh 0
 bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle | grep '\[off\]' && notify-send "Microphone: switched OFF" || notify-send "Microphone: switched ON"
 
 # Media
-# bindsym XF86AudioNext exec playerctl next
-# bindsym XF86AudioPrev exec playerctl previous
-# bindsym XF86AudioPlay exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl pause
 
 # Screen brightness
 bindsym XF86MonBrightnessUp exec $scriptsdir/brightness.sh +
