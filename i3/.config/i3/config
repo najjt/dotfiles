@@ -8,7 +8,7 @@ set $scriptsdir ~/scripts
 ## Background processes
 
 # Network manager system tray icon
-exec --no-startup-id nm-applet
+exec --no-startup-id nm-tray
 
 # Bluetooth system tray item
 exec --no-startup-id blueman-applet
