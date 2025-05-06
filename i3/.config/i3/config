@@ -7,9 +7,6 @@ set $scriptsdir ~/scripts
 
 ## Background processes
 
-# Binary space partitioning
-exec_always autotiling
-
 # Network manager system tray icon
 exec --no-startup-id nm-applet
 
