@@ -16,7 +16,8 @@ dunst &
 # Hide mouse cursor when not in use
 unclutter &
 
-# KDE Plasma is kept as default
+# Choose session,
+# KDE Plasma kept as default
 session=${1:-kde}
 
 case $session in
