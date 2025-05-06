@@ -38,8 +38,3 @@ export FZF_DEFAULT_OPTS="--color 16 --layout=reverse --height 30% --preview='bat
 export FZF_CTRL_R_OPTS="--color 16 --info inline --no-sort --no-preview" # Separate opts for history widget
 
 export $(dbus-launch)
-
-# Start X11 on login
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-    startx
-fi
