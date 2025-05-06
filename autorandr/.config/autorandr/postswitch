@@ -1,4 +1,4 @@
 #! /bin/sh
 
 notify-send -i display "Display profile" "$AUTORANDR_CURRENT_PROFILE"
-wallshuffle
+sh $HOME/.fehbg
