@@ -185,12 +185,12 @@ bindsym $mod+Shift+e exec "i3-nagbar -f 'pango: monospace 11' -t warning -m 'You
 bindsym $mod+Control+l exec --no-startup-id i3lock
 
 # Volume
-bindsym XF86AudioRaiseVolume exec $sd/wm/volume_brightness.sh volume_up
-bindsym XF86AudioLowerVolume exec $sd/wm/volume_brightness.sh volume_down
-bindsym XF86AudioMute exec $sd/wm/volume_brightness.sh volume_mute
+bindsym XF86AudioRaiseVolume exec $sd/buttons.sh volume_up
+bindsym XF86AudioLowerVolume exec $sd/buttons.sh volume_down
+bindsym XF86AudioMute exec $sd/buttons.sh volume_mute
 
 # Toggle mute microphone
-bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle | grep '\[off\]' && notify-send "Microphone: switched OFF" || notify-send "Microphone: switched ON"
+bindsym XF86AudioMicMute exec $sd/buttons.sh mic_mute
 
 # Media
 bindsym XF86AudioNext exec playerctl next
@@ -198,8 +198,8 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioPlay exec playerctl pause
 
 # Screen brightness
-bindsym XF86MonBrightnessUp exec $sd/wm/volume_brightness.sh brightness_up
-bindsym XF86MonBrightnessDown exec $sd/wm/volume_brightness.sh brightness_down
+bindsym XF86MonBrightnessUp exec $sd/buttons.sh brightness_up
+bindsym XF86MonBrightnessDown exec $sd/buttons.sh brightness_down
 
 # Take a screenshot of the whole screen
 bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/screenshots/screenshot $(date '+%F %T').jpg" && notify-send "Screenshot taken"
