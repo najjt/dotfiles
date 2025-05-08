@@ -19,8 +19,12 @@ exec --no-startup-id pasystray
 # Compositing
 exec --no-startup-id picom --experimental-backends
 
-# Lock & suspend after 5 mins of inactivity
-exec --no-startup-id xss-lock -- ~/.config/i3/lock.sh
+# Lock on suspend
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# Lower brightness after 90 seconds idle, suspend after 2 minutes
+# unless playing audio or in fullscreen application
+exec --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer 90 'light -S 5' 'light -S 50' --timer 30 'light -S 50; systemctl suspend' ''
 
 # Monitor setup
 exec --no-startup-id autorandr --change
@@ -181,8 +185,8 @@ bindsym $mod+Control+Shift+e restart
 # Exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -f 'pango: monospace 11' -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# Lock and suspend directly
-bindsym $mod+Control+l exec --no-startup-id i3lock
+# Lock directly
+bindsym $mod+Control+l exec --no-startup-id loginctl lock-session
 
 # Volume
 bindsym XF86AudioRaiseVolume exec $sd/buttons.sh volume_up
