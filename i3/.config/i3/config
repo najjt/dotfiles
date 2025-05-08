@@ -174,7 +174,7 @@ bindsym $mod+p move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+Shift+p scratchpad show
 
-## Basics
+## System
 
 # Reload the configuration file
 bindsym $mod+Control+Shift+r reload
