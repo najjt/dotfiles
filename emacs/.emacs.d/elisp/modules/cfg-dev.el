@@ -65,8 +65,8 @@
 
 ;; Highlight vc diff in buffers
 (use-package diff-hl
+  :hook ((magit-post-refresh . diff-hl-magit-post-refresh)
   :config
-  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
   (global-diff-hl-mode)
   (diff-hl-margin-mode))
 
