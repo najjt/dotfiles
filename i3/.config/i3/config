@@ -22,9 +22,9 @@ exec --no-startup-id picom --experimental-backends
 # Lock on suspend
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-# Lower brightness after 90 seconds idle, suspend after 2 minutes
-# unless playing audio or in fullscreen application
-exec --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer 90 'light -S 5' 'light -S 50' --timer 30 'light -S 50; systemctl suspend' ''
+# Lower brightness after 90 seconds idle,
+# suspend after 2 minutes, unless in fullscreen application
+exec --no-startup-id xidlehook --not-when-fullscreen --timer 90 'light -S 5' 'light -S 50' --timer 30 'light -S 50; systemctl suspend' ''
 
 # Monitor setup
 exec --no-startup-id autorandr --change
