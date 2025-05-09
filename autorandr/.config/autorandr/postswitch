@@ -5,6 +5,3 @@ notify-send -i display "Display profile" "$AUTORANDR_CURRENT_PROFILE"
 
 # Re-apply current wallpaper
 sh $HOME/.fehbg
-
-# Reload polybar
-sh $HOME/.config/polybar/launch.sh &
