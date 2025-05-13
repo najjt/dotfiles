@@ -21,9 +21,15 @@
 (setq-default tab-width 4 indent-tabs-mode nil)
 
 ;; Visualize color codes in text
-(use-package rainbow-mode
+(use-package colorful-mode
   :diminish
-  :hook (prog-mode text-mode fundamental-mode))
+  :custom
+  (colorful-use-prefix t)
+  (colorful-only-strings 'only-prog)
+  (css-fontify-colors nil)
+  :config
+  (global-colorful-mode t)
+  (add-to-list 'global-colorful-modes 'helpful-mode))
 
 (use-package go-translate
   :bind ("C-c o" . gt-do-translate)
