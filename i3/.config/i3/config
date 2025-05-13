@@ -90,11 +90,8 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 bindsym $mod+t floating toggle
 
-# Split in horizontal orientation
-bindsym $mod+b split h
-
-# Split in vertical orientation
-bindsym $mod+v split v
+# Toggle split direction
+bindsym $mod+b split toggle
 
 # Move windows with $mod + left mouse button, resize with $mod + right mouse button
 floating_modifier $mod
