@@ -19,6 +19,9 @@
 (setq history-length 25)
 (savehist-mode 1)
 
+;; Save place in files
+(save-place-mode 1)
+
 ;; Remember recently edited files
 (recentf-mode 1)
 
