@@ -7,6 +7,7 @@
 
 ;; Search and navigation commands
 (use-package consult
+  :defer nil
   :bind (("C-c r" . consult-ripgrep)
          ("C-c f" . consult-find)
          ("C-c F" . my/consult-find-home-dir))
