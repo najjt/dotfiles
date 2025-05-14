@@ -38,6 +38,8 @@
                 emms-browser-mode-hook
                 emms-playlist-mode-hook
                 org-agenda-mode-hook
+                Info-mode-hook
+                messages-buffer-mode-hook
                 elfeed-show-mode-hook))
   (add-hook hook 'hl-line-mode))
 
