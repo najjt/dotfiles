@@ -2,7 +2,7 @@ configuration {
         font: "Noto Sans Mono 11";
 }
 
-@theme "light_theme.rasi"
+@theme "dark_theme.rasi"
 
 listview {
         lines: 10;
