@@ -67,7 +67,7 @@ font pango:$font $font_size
 
 focus_follows_mouse yes
 
-gaps inner 0
+gaps inner 5
 
 default_border pixel 4
 default_floating_border pixel 3
