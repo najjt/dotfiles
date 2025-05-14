@@ -43,6 +43,7 @@
 
 ;; Provides commands to run based on current context
 (use-package embark
+  :defer nil
   :bind ("M-;" . embark-act))
 
 ;; Integrate embark with consult
