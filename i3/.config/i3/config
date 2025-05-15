@@ -209,7 +209,7 @@ bindsym Print exec --no-startup-id maim -o "/home/$USER/Pictures/screenshots/scr
 bindsym Shift+Print exec --no-startup-id maim -o --select "/home/$USER/Pictures/screenshots/screenshot $(date '+%F %T').jpg" && notify-send "Screenshot taken"
 
 # Windows that should be floating by default
-for_window [class="Emacs" instance="Global_Popup"] floating enable
+for_window [class="Emacs" title="Global Popup"] floating enable
 for_window [class="Bitwarden" instance="bitwarden"] floating enable
 
 ## Status bar
