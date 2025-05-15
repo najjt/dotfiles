@@ -24,7 +24,7 @@
 (use-package colorful-mode
   :diminish
   :custom
-  (colorful-use-prefix t)
+  (colorful-use-prefix nil)
   (colorful-only-strings 'only-prog)
   (css-fontify-colors nil)
   :config
