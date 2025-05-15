@@ -19,7 +19,7 @@
 
     /* Selected */
     selected-normal-background:  @pink;
-    selected-normal-foreground:  @white;
+    selected-normal-foreground:  @black;
     selected-urgent-background:  rgba ( 255, 82, 82, 100 % );
     selected-active-background:  rgba ( 0, 150, 136, 100 % );
 
