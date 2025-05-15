@@ -214,4 +214,4 @@ for_window [class="Bitwarden" instance="bitwarden"] floating enable
 for_window [class="discord" instance="discord"] floating enable
 
 ## Status bar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/scripts/launch.sh
