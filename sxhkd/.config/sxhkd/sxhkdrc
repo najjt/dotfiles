@@ -8,7 +8,7 @@ control + shift + Return
 
 # Open application launcher
 alt + space
-    rofi -modi run,drun -show run
+    rofi -modi "window,run,search:~/.config/rofi/scripts/web_search.sh" -show run
 
 # Open Org Mode capture frame
 shift + alt + c
