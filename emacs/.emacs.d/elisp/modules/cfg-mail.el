@@ -91,6 +91,8 @@
 
    ;; Re-flow mail so it's not hard wrapped
    mu4e-compose-format-flowed t
+   ;; The column beyond which flowed lines are wrapped
+   fill-flowed-encode-column 80)
 
   ;; Move messages to the trash folder instead of completely deleting it
   (fset 'my/move-to-trash "mTrash")
