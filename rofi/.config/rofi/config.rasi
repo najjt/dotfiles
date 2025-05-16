@@ -5,9 +5,23 @@ configuration {
 @theme "dark_theme.rasi"
 
 listview {
-        lines: 10;
+        lines: 7;
+        padding: 10;
+}
+
+scrollbar {
+        margin: 2;
+}
+
+element {
+        padding: 4;
+}
+
+inputbar {
+        padding: 5;
 }
 
 window {
         width: 30%;
+        padding: 10;
 }
