@@ -4,6 +4,10 @@
 (setq user-full-name "Martin Lönn Andersson")
 (setq user-mail-address "martin@malon.se")
 
+;; Set default browser
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "qutebrowser")
+
 ;; Get environment variables from your shell
 (use-package exec-path-from-shell
   :config
