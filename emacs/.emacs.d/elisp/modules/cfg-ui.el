@@ -227,4 +227,14 @@ to if called with ARG, or any prefix argument."
   (add-hook 'org-mode-hook #'my/olivetti-conditional-enable)
   (add-hook 'markdown-mode-hook #'my/olivetti-conditional-enable))
 
+;; Show full path to file in header line
+(defun my/set-header-line-for-files-only ()
+  "Set `header-line-format` to show bold file name info only in file-visiting buffers."
+  (setq header-line-format
+        (when buffer-file-name
+          (let ((file-name (abbreviate-file-name buffer-file-name)))
+            (concat (propertize file-name 'face 'bold))))))
+
+(add-hook 'after-change-major-mode-hook #'my/set-header-line-for-files-only)
+
 (provide 'cfg-ui)
