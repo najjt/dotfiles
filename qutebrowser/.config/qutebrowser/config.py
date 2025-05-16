@@ -487,6 +487,12 @@ c.fonts.default_size = '11pt'
 # Type: Int
 c.fonts.web.size.default = 11
 
+c.tabs.padding = {'top': 2, 'bottom': 2, 'left': 9, 'right': 9}
+c.tabs.indicator.width = 0 # no tab indicators
+c.tabs.width = '7%'
+
+c.statusbar.padding = {'top': 2, 'bottom': 2, 'left': 9, 'right': 9}
+
 #
 # Keybindings for normal mode
 #
