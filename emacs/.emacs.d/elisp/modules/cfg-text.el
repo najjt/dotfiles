@@ -29,7 +29,6 @@
   (css-fontify-colors nil)
   :config
   (global-colorful-mode t)
-  (add-to-list 'global-colorful-modes 'helpful-mode))
 
 (use-package go-translate
   :bind ("C-c o" . gt-do-translate)

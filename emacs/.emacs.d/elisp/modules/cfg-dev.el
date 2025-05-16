@@ -83,6 +83,8 @@
 
 (use-package lua-mode)
 
+(use-package markdown-mode)
+
 (use-package prog-mode
   :ensure nil
   :hook (prog-mode . subword-mode)

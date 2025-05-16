@@ -55,14 +55,6 @@
   :after embark
   :hook (embark-collect-mode-hook . embark-consult-preview-minor-mode))
 
-;; More markdown support
-(use-package markdown-mode
-  :defer t)
-
-;; Set default browser
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "librewolf")
-
 ;; Increase large file warning threshold
 (setq large-file-warning-threshold 100000000)
 
@@ -125,7 +117,6 @@
 
 (use-package isearch
   :ensure nil
-  :defer t
   :hook (occur-mode . turn-off-evil-mode)
   :config
 
@@ -267,5 +258,11 @@
   :config
   ;; Dedicated terminal height
   (setq multi-vterm-dedicated-window-height-percent 30))
+
+
+;; Focus new frames
+(defun my/focus-new-client-frame ()
+  (select-frame-set-input-focus (selected-frame)))
+(add-hook 'server-after-make-frame-hook #'my/focus-new-client-frame)
 
 (provide 'cfg-general)

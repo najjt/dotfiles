@@ -205,6 +205,7 @@ to if called with ARG, or any prefix argument."
                            (_ 100))))))
     (set-frame-parameter nil 'alpha-background transparency)))
 
+;; Center buffers
 (use-package olivetti
   :defer t
   :commands (olivetti-mode)

@@ -39,7 +39,6 @@
   (marginalia-mode 1))
 
 (use-package nerd-icons-completion
-  :ensure t
   :after marginalia
   :config
   (nerd-icons-completion-mode)

@@ -7,13 +7,13 @@ set $sd ~/scripts/wm
 
 ## Background processes
 
-# Network manager system tray icon
+# Network manager system tray entry
 exec --no-startup-id nm-applet
 
-# Bluetooth system tray item
+# Bluetooth system tray entry
 exec --no-startup-id blueman-applet
 
-# Pulse audio system tray item
+# Pulse audio system tray entry
 exec --no-startup-id pasystray
 
 # Compositing
