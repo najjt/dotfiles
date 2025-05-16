@@ -355,7 +355,7 @@ c.tabs.show = 'multiple'
 # web page. * `{protocol}`: Protocol (http/https/...) of the current web
 # page. * `{audio}`: Indicator for audio/mute status.
 # Type: FormatString
-c.tabs.title.format = '{index}: {audio}{current_title}'
+c.tabs.title.format = '{audio}{current_title}'
 
 # Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
 # for a blank page.
