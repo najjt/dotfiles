@@ -11,7 +11,7 @@ configuration {
 
 listview {
         lines: 7;
-        padding: 10;
+        padding: 5;
 }
 
 scrollbar {
@@ -19,7 +19,7 @@ scrollbar {
 }
 
 element {
-        padding: 4;
+        padding: 3;
 }
 
 inputbar {
