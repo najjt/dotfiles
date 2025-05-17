@@ -21,17 +21,17 @@
     show_indicators = false
 
 [urgency_low]
-    foreground = "#F1F1F1"
+    foreground = "#CECECE"
     background = "#1E1E1E"
     timeout = 3
 
 [urgency_normal]
-    foreground = "#F1F1F1"
+    foreground = "#CECECE"
     background = "#1E1E1E"
     timeout = 5
 
 [urgency_critical]
-    foreground = "#F1F1F1"
+    foreground = "#CECECE"
     background = "#1E1E1E"
     frame_color = "#FF0000"
     timeout = 15
