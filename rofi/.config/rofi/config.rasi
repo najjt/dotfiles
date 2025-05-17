@@ -2,7 +2,12 @@ configuration {
         font: "Noto Sans 11";
 }
 
-@theme "dark_theme.rasi"
+@theme "android_notification"
+
+* {
+    black: rgba ( 30, 30, 30, 100 %);
+    white: rgba (206, 206, 206, 100 %);
+}
 
 listview {
         lines: 7;
@@ -23,5 +28,23 @@ inputbar {
 
 window {
         width: 30%;
-        padding: 10;
+        padding: 5;
+        background-color: @black;
+}
+
+message {
+        border-color: @white;
+}
+
+element.normal.normal {
+        background-color: @black;
+}
+
+element.alternate.normal {
+        background-color: @black;
+}
+
+element.selected.normal {
+        background-color: @white;
+        text-color: @black;
 }
