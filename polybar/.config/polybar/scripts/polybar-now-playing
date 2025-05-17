@@ -10,7 +10,7 @@ from unicodedata import east_asian_width
 message_display_len = 20
 
 # (int) : Font index of polybar. this value should be 1 more than the font value specified in polybar config.
-font_index = 4
+font_index = 1
 
 # (float) : Update speed of the text in seconds.
 update_delay = 0.6
