@@ -28,7 +28,7 @@
   (colorful-only-strings 'only-prog)
   (css-fontify-colors nil)
   :config
-  (global-colorful-mode t)
+  (global-colorful-mode t))
 
 (use-package go-translate
   :bind ("C-c o" . gt-do-translate)
