@@ -44,6 +44,9 @@ c.url.searchengines = {'DEFAULT': 'https://www.google.com/search?q={}', 'aw': 'h
 # Page(s) to open at the start.
 c.url.start_pages = 'about:blank'
 
+# Page to open if :open -t/-b/-w is used without URL.
+c.url.default_page = 'about:blank'
+
 # Hide the window decoration.
 c.window.hide_decoration = False
 
@@ -52,6 +55,7 @@ c.window.title_format = '{current_title} - qutebrowser'
 
 # Default zoom level.
 c.zoom.default = '110%'
+
 
 #
 # Colors
