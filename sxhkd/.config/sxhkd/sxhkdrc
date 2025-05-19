@@ -7,8 +7,8 @@ control + shift + Return
     qutebrowser
 
 # Open application launcher
-alt + space
-    rofi -modi "window,run,search:~/.config/rofi/scripts/web_search.sh" -show run
+alt + r
+    rofi -modi "run,search:~/.config/rofi/scripts/web_search.sh,power:~/.config/rofi/scripts/rofi-power-menu" -show run
 
 # Open Org Mode capture frame
 shift + alt + c
