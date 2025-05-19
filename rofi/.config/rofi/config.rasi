@@ -5,25 +5,43 @@ configuration {
 @theme "android_notification"
 
 * {
-    black: rgba ( 30, 30, 30, 100 %);
-    white: rgba (206, 206, 206, 100 %);
+        black: rgba ( 30, 30, 30, 100 %);
+        white: rgba (206, 206, 206, 100 %);
+}
+
+window {
+        width: 20%;
+        background-color: @black;
+        border: 2px;
+}
+
+mainbox {
+        padding: 1;
+}
+
+inputbar {
+        padding: 2;
+        margin: 2;
+}
+
+message {
+        border-color: @white;
 }
 
 listview {
         lines: 7;
-        padding: 5;
-}
-
-scrollbar {
-        margin: 2;
+        padding: 40;
+        scrollbar: false;
+        border: 0px;
 }
 
 element {
         padding: 3;
+        margin: 0;
 }
 
 element-text {
-        highlight: bold;
+        highlight: none;
 }
 
 element.normal.normal {
@@ -35,20 +53,6 @@ element.alternate.normal {
 }
 
 element.selected.normal {
-        background-color: @white;
-        text-color: @black;
-}
-
-inputbar {
-        padding: 5;
-}
-
-window {
-        width: 30%;
-        padding: 5;
         background-color: @black;
-}
-
-message {
-        border-color: @white;
+        text-color: ForestGreen;
 }
