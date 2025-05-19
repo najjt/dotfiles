@@ -55,7 +55,7 @@ set $ws9 "9"
 set $ws10 "10"
 
 # Font
-set $font monospace
+set $font Unifont
 set $font_size 11
 
 
