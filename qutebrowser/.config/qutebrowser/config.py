@@ -112,6 +112,8 @@ c.tabs.width = '7%'
 
 c.statusbar.padding = {'top': 2, 'bottom': 2, 'left': 9, 'right': 9}
 
+c.editor.command = ['emacsclient', '+{line}:{column}', '{file}']
+
 #
 # Keybindings for normal mode
 #
