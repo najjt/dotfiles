@@ -22,18 +22,6 @@ element {
         padding: 3;
 }
 
-inputbar {
-        padding: 5;
-}
-
-window {
-        width: 30%;
-        padding: 5;
-        background-color: @black;
-}
-
-message {
-        border-color: @white;
 }
 
 element.normal.normal {
@@ -47,4 +35,18 @@ element.alternate.normal {
 element.selected.normal {
         background-color: @white;
         text-color: @black;
+}
+
+inputbar {
+        padding: 5;
+}
+
+window {
+        width: 30%;
+        padding: 5;
+        background-color: @black;
+}
+
+message {
+        border-color: @white;
 }
