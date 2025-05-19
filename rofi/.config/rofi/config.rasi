@@ -22,6 +22,8 @@ element {
         padding: 3;
 }
 
+element-text {
+        highlight: bold;
 }
 
 element.normal.normal {
