@@ -57,7 +57,7 @@ Returns the path to the album art or a default image if no album art is found."
       (call-process "notify-send"
                     nil nil nil
                     "-i" album-art
-                    (format "\uf001 %s" title)
+                    (format "🎝 %s" title)
                     (format "%s\n<i>%s</i>" artist album))))
 
   (add-hook 'emms-player-started-hook #'emms-notify-track-description))

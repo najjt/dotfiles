@@ -1,5 +1,5 @@
 configuration {
-        font: "Unifont 14";
+        font: "UnifontExMono 14";
 }
 
 @theme "android_notification"
