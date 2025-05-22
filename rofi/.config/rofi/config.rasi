@@ -30,7 +30,7 @@ message {
 
 listview {
         lines: 7;
-        padding: 40;
+        padding: 20;
         scrollbar: false;
         border: 0px;
 }
