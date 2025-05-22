@@ -20,9 +20,8 @@
 (setq display-line-numbers-type 'relative
       display-line-numbers-width-start t)
 
-;; Display relative line numbers in the below modes
-(dolist (hook '(fundamental-mode
-                conf-mode-hook
+;; Display line numbers in the below modes
+(dolist (hook '(conf-mode-hook
                 prog-mode-hook
                 text-mode-hook
                 markdown-mode-hook
