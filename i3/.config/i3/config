@@ -203,10 +203,10 @@ bindsym XF86MonBrightnessUp exec $sd/buttons.sh brightness_up
 bindsym XF86MonBrightnessDown exec $sd/buttons.sh brightness_down
 
 # Take a screenshot of the whole screen
-bindsym Print exec --no-startup-id maim -o "/home/$USER/Pictures/screenshots/screenshot $(date '+%F %T').jpg" && notify-send "Screenshot taken"
+bindsym Print exec --no-startup-id maim -m 7 -o "/home/$USER/Pictures/screenshots/screenshot $(date '+%F %T').jpg" && notify-send "Screenshot taken"
 
 # Take a screenshot of a selected part
-bindsym Shift+Print exec --no-startup-id maim -o --select "/home/$USER/Pictures/screenshots/screenshot $(date '+%F %T').jpg" && notify-send "Screenshot taken"
+bindsym Shift+Print exec --no-startup-id maim -m 7 -o --select "/home/$USER/Pictures/screenshots/screenshot $(date '+%F %T').jpg" && notify-send "Screenshot taken"
 
 # Windows that should be floating by default
 for_window [class="Emacs" title="Global Popup"] floating enable
