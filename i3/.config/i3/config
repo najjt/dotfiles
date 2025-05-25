@@ -41,10 +41,11 @@ font pango:$font $font_size
 
 focus_follows_mouse yes
 
-gaps inner 5
-
 default_border pixel 4
 default_floating_border pixel 3
+
+# Set default border of the focused window to be white (last hex code)
+client.focused #4c7899 #285577 #ffffff #2e9ef4 #ffffff
 
 
 #
