@@ -100,9 +100,9 @@ c.colors.statusbar.private.bg = '#6232a8'
 # Value to use for `prefers-color-scheme:` for websites.
 c.colors.webpage.preferred_color_scheme = 'dark'
 
-c.fonts.default_family = 'Noto Sans Mono'
+c.fonts.default_family = 'Liberation Mono'
 
-c.fonts.default_size = '11pt'
+c.fonts.default_size = '12pt'
 
 c.fonts.web.size.default = 11
 
