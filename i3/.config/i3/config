@@ -45,7 +45,7 @@ default_border pixel 2
 default_floating_border pixel 2
 
 # Set default border of the focused window to be white (last hex code)
-client.focused #4c7899 #285577 #ffffff #2e9ef4 #ffffff
+client.focused #4c7899 #285577 #cecece #2e9ef4 #cecece
 
 
 #
