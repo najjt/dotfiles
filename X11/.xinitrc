@@ -8,16 +8,36 @@ xset r rate 300 25
 xset -dpms
 
 # Hotkey daemon
-sxhkd &
+which sxhkd && if pgrep -x sxhkd ; then
+    echo sxhkd already running
+else
+    sxhkd &
+    disown
+fi
 
 # Clipboard manager
-greenclip daemon &
+which greenclip && if pgrep -x greenclip ; then
+    echo greenclip already running
+else
+    greenclip daemon &
+    disown
+fi
 
 # Notifications
-dunst &
+which dunst && if pgrep -x dunst ; then
+    echo dunst already running
+else
+    dunst &
+    disown
+fi
 
 # Hide mouse cursor when not in use
-unclutter &
+which unclutter && if pgrep -x unclutter ; then
+    echo unclutter already running
+else
+    unclutter &
+    disown
+fi
 
 # Choose session,
 # KDE Plasma kept as default
