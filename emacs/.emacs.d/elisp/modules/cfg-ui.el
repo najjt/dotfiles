@@ -82,7 +82,8 @@
 ;; Popup buffers
 (use-package popper
   :bind
-  ("C-`"     . popper-toggle)
+  ("C-`"     . popper-toggle) ; US kb layout
+  ("C-§"     . popper-toggle) ; SV kb layout
   ("M-`"     . popper-cycle)
   ("C-M-`"   . popper-toggle-type)
   ("C-c p d" . popper-kill-latest-popup)
