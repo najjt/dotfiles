@@ -30,7 +30,7 @@ set $ws10 "10"
 
 # Font
 set $font UnifontExMono
-set $font_size 11
+set $font_size 12
 
 
 #
