@@ -56,10 +56,11 @@ c.window.title_format = '{current_title} - qutebrowser'
 # Default zoom level.
 c.zoom.default = '110%'
 
+#
+# Appearance
+#
 
-#
 # Colors
-#
 
 # Foreground color of the statusbar.
 c.colors.statusbar.normal.fg = '#b7bec9'
@@ -97,25 +98,27 @@ c.colors.tabs.selected.even.bg = '#747474'
 # Background color of the statusbar in private browsing mode.
 c.colors.statusbar.private.bg = '#6232a8'
 
-# Value to use for `prefers-color-scheme:` for websites.
+# Prefer dark mode
 c.colors.webpage.preferred_color_scheme = 'dark'
 
+
+# Font
 c.fonts.default_family = 'Liberation Mono'
-
 c.fonts.default_size = '12pt'
-
 c.fonts.web.size.default = 11
 
+# Tabs
 c.tabs.padding = {'top': 2, 'bottom': 2, 'left': 9, 'right': 9}
 c.tabs.indicator.width = 0 # no tab indicators
 c.tabs.width = '7%'
 
+# Statusbar
 c.statusbar.padding = {'top': 2, 'bottom': 2, 'left': 9, 'right': 9}
 
 c.editor.command = ['emacsclient', '+{line}:{column}', '{file}']
 
 #
-# Keybindings for normal mode
+# Keybindings
 #
 
 # Unbind keys used in window manager
