@@ -1,9 +1,10 @@
 [global]
     monitor = 0
     follow = keyboard
-    width = (250, 350)
+    origin = bottom-right
+    width = (300, 300)
     height = 100
-    offset = 50x50
+    offset = 50x100
     padding = 5
     horizontal_padding = 5
     gap_size = 3
