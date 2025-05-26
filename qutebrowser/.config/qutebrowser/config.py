@@ -129,17 +129,6 @@ c.editor.command = ['emacsclient', '+{line}:{column}', '{file}']
 # Keybindings
 #
 
-# Unbind keys used in window manager
-config.unbind('<Alt+1>')
-config.unbind('<Alt+2>')
-config.unbind('<Alt+3>')
-config.unbind('<Alt+4>')
-config.unbind('<Alt+5>')
-config.unbind('<Alt+6>')
-config.unbind('<Alt+7>')
-config.unbind('<Alt+8>')
-config.unbind('<Alt+9>')
-
 # Unbind <CTRL-w>
 config.unbind('<Ctrl+w>')
 
