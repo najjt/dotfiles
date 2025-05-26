@@ -111,7 +111,14 @@ has no effect."
   (setq org-agenda-custom-commands
         '(("w" "Week agenda"
            ((agenda "" ((org-agenda-span 'week)))))
-          ("h" "Habits" tags-todo "STYLE=\"habit\"" ((org-agenda-overriding-header "Habits")))))
+          ("h" "Habits" tags-todo "STYLE=\"habit\"" ((org-agenda-overriding-header "Habits")))
+          ("p" "Past events"
+           ((tags "TIMESTAMP<=\"<now>\""))
+           ((org-agenda-files
+             (cl-remove-if
+              (lambda (file)
+                (string-match-p "repeating\\.org$" file))
+              (org-agenda-files)))))))
 
   ;; Date heading settings
   (custom-set-faces
