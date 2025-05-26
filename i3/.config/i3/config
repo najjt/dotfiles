@@ -1,6 +1,11 @@
 #
-# System
+# General
 #
+
+# Modifier key
+set $mod Mod4
+
+focus_follows_mouse yes
 
 # Scripts directory
 set $sd ~/scripts/wm
@@ -10,36 +15,14 @@ exec --no-startup-id $sd/autostart.sh
 
 
 #
-# Variables
+# Appearance
 #
-
-# Modifier keys
-set $mod Mod4
-
-# Workspace names
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
 
 # Font
 set $font UnifontExMono
 set $font_size 12
 
-
-#
-# Appearance
-#
-
 font pango:$font $font_size
-
-focus_follows_mouse yes
 
 default_border pixel 2
 default_floating_border pixel 2
@@ -183,6 +166,10 @@ bindsym Print exec --no-startup-id maim -m 7 -o "/home/$USER/Pictures/screenshot
 # Take a screenshot of a selected part
 bindsym Shift+Print exec --no-startup-id maim -m 7 -o --select "/home/$USER/Pictures/screenshots/screenshot $(date '+%F %T').jpg" && notify-send "Screenshot taken"
 
+#
+# Window rules
+#
+
 # Windows that should be floating by default
 for_window [class="Emacs" title="Global Popup"] floating enable
 for_window [class="Bitwarden" instance="bitwarden"] floating enable
@@ -190,5 +177,8 @@ for_window [class="discord" instance="discord"] floating enable
 for_window [class="Signal" instance="signal"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 
-## Status bar
+#
+# Status bar
+#
+
 exec_always --no-startup-id $HOME/.config/polybar/scripts/launch.sh
