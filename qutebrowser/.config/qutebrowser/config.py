@@ -42,7 +42,7 @@ c.tabs.title.format = '{audio}{current_title}'
 c.url.searchengines = {'DEFAULT': 'https://www.google.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'w': 'https://en.wikipedia.org/?search={}', 'wt': 'https://en.wiktionary.org/?search={}', 'l': 'https://letterboxd.com/search/{}', 'yt': 'https://www.youtube.com/results?search_query={}'}
 
 # Page(s) to open at the start.
-c.url.start_pages = 'about:blank'
+c.url.start_pages = 'https://qutebrowser.com/'
 
 # Page to open if :open -t/-b/-w is used without URL.
 c.url.default_page = 'about:blank'
