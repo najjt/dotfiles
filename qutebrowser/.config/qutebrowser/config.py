@@ -81,19 +81,25 @@ c.colors.tabs.indicator.stop = '#638e8a'
 c.colors.tabs.odd.fg = '#b7bec9'
 
 # Background color of unselected odd tabs.
-c.colors.tabs.odd.bg = '#000000'
+c.colors.tabs.odd.bg = '#1e1e1e'
 
 # Foreground color of unselected even tabs.
 c.colors.tabs.even.fg = '#b7bec9'
 
 # Background color of unselected even tabs.
-c.colors.tabs.even.bg = '#000000'
+c.colors.tabs.even.bg = '#343434'
+
+# Foreground color of selected odd tabs.
+c.colors.tabs.selected.odd.fg = '#000000'
 
 # Background color of selected odd tabs.
-c.colors.tabs.selected.odd.bg = '#747474'
+c.colors.tabs.selected.odd.bg = '#cecece'
+
+# Foreground color of selected even tabs.
+c.colors.tabs.selected.even.fg = '#000000'
 
 # Background color of selected even tabs.
-c.colors.tabs.selected.even.bg = '#747474'
+c.colors.tabs.selected.even.bg = '#cecece'
 
 # Background color of the statusbar in private browsing mode.
 c.colors.statusbar.private.bg = '#6232a8'
@@ -101,6 +107,8 @@ c.colors.statusbar.private.bg = '#6232a8'
 # Prefer dark mode
 c.colors.webpage.preferred_color_scheme = 'dark'
 
+# Use black as default background color
+c.colors.webpage.bg = '#1e1e1e'
 
 # Font
 c.fonts.default_family = 'Liberation Mono'
