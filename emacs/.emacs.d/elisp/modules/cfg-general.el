@@ -265,4 +265,8 @@
   (select-frame-set-input-focus (selected-frame)))
 (add-hook 'server-after-make-frame-hook #'my/focus-new-client-frame)
 
+;; Use Emacs minibuffer for GPG pinentry
+(setq epa-pinentry-mode 'loopback)
+(setq epg-pinentry-mode 'loopback)
+
 (provide 'cfg-general)
