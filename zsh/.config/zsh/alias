@@ -45,3 +45,5 @@ alias ec="emacsclient -c -nw"
 # Systemd services
 alias ecre="systemctl --user restart emacs"     # Restart Emacs service
 alias stre="systemctl --user restart syncthing" # Restart Syncthing service
+
+alias startx="startx ~/.xinitrc"
