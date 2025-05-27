@@ -182,7 +182,8 @@
              org-indent-mode
              abbrev-mode
              subword-mode
-             flymake-mode))
+             flymake-mode
+             hs-minor-mode))
 
 ;; Enable background transparency
 (add-to-list 'default-frame-alist '(alpha-background . 90))
