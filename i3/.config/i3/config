@@ -8,10 +8,10 @@ set $mod Mod4
 focus_follows_mouse yes
 
 # Scripts directory
-set $sd ~/scripts/wm
+set $sd ~/scripts
 
 # Background processes
-exec --no-startup-id $sd/autostart.sh
+exec --no-startup-id $sd/autostart
 
 
 #
@@ -169,12 +169,12 @@ bindsym $mod+Shift+e exec "i3-nagbar -f 'pango: monospace 11' -t warning -m 'You
 bindsym $mod+Control+l exec --no-startup-id loginctl lock-session
 
 # Volume
-bindsym XF86AudioRaiseVolume exec $sd/buttons.sh volume_up
-bindsym XF86AudioLowerVolume exec $sd/buttons.sh volume_down
-bindsym XF86AudioMute exec $sd/buttons.sh volume_mute
+bindsym XF86AudioRaiseVolume exec $sd/buttons volume_up
+bindsym XF86AudioLowerVolume exec $sd/buttons volume_down
+bindsym XF86AudioMute exec $sd/buttons volume_mute
 
 # Toggle mute microphone
-bindsym XF86AudioMicMute exec $sd/buttons.sh mic_mute
+bindsym XF86AudioMicMute exec $sd/buttons mic_mute
 
 # Media
 bindsym XF86AudioNext exec playerctl next
@@ -182,8 +182,8 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioPlay exec playerctl pause
 
 # Screen brightness
-bindsym XF86MonBrightnessUp exec $sd/buttons.sh brightness_up
-bindsym XF86MonBrightnessDown exec $sd/buttons.sh brightness_down
+bindsym XF86MonBrightnessUp exec $sd/buttons brightness_up
+bindsym XF86MonBrightnessDown exec $sd/buttons brightness_down
 
 # Take a screenshot of the whole screen
 bindsym Print exec --no-startup-id maim -m 7 -o "/home/$USER/Pictures/screenshots/screenshot $(date '+%F %T').jpg" && notify-send "Screenshot taken"
