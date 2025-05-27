@@ -3,7 +3,7 @@ Description=KMonad for HHKB
 
 [Service]
 Type=simple
-ExecStart=%h/scripts/kmonad_hhkb.sh
+ExecStart=%h/scripts/kmonad_hhkb
 Restart=always
 RestartSec=5
 
