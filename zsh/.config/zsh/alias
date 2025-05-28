@@ -5,7 +5,7 @@
 # Make aliases work correctly with sudo
 alias sudo='sudo '
 
-# If user is not root, pass all commands via sudo
+# If user is not root, pass these commands via sudo
 if [ $UID -ne 0 ]; then
     alias reboot='sudo reboot'
     alias shutdown="sudo shutdown -h now"
@@ -46,4 +46,5 @@ alias ec="emacsclient -c -nw"
 alias ecre="systemctl --user restart emacs"     # Restart Emacs service
 alias stre="systemctl --user restart syncthing" # Restart Syncthing service
 
+# X11
 alias startx="startx ~/.xinitrc"
