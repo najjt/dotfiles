@@ -210,7 +210,7 @@ to if called with ARG, or any prefix argument."
 (use-package olivetti
   :defer t
   :commands (olivetti-mode)
-  :custom (olivetti-body-width 82)
+  :custom (olivetti-body-width 85)
   :init
   (defun my/olivetti-conditional-enable ()
     "Enable `olivetti-mode` only in Org or Markdown buffers."
