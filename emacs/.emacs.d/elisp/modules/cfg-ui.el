@@ -238,4 +238,8 @@ to if called with ARG, or any prefix argument."
 
 (add-hook 'after-change-major-mode-hook #'my/set-header-line-for-files-only)
 
+;; Ensure tabs use fixed pitch font
+(custom-set-faces
+ '(tab-bar ((t (:inherit fixed-pitch :height 0.8)))))
+
 (provide 'cfg-ui)
