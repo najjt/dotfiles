@@ -117,9 +117,13 @@ c.colors.statusbar.private.bg = '#6232a8'
 c.colors.webpage.preferred_color_scheme = 'dark'
 
 # Font
-c.fonts.default_family = 'Liberation Mono'
+c.fonts.default_family = []
 c.fonts.default_size = '12pt'
-c.fonts.web.size.default = 11
+c.fonts.web.size.default = 18
+c.fonts.web.family.fixed = 'monospace'
+c.fonts.web.family.sans_serif = 'sans'
+c.fonts.web.family.serif = 'serif'
+c.fonts.web.family.standard = 'sans'
 
 # Tabs
 c.tabs.padding = {'top': 2, 'bottom': 2, 'left': 9, 'right': 9}
