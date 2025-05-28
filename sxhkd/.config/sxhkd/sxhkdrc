@@ -1,6 +1,6 @@
 # Open Emacs client
 control + alt + Return
-    emacsclient -c -n -e '(recentf-open-files)'
+    emacsclient -cn
 
 # Open web browser
 control + shift + Return
