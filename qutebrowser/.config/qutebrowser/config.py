@@ -15,28 +15,14 @@ c.content.notifications.enabled = False
 # hints.
 c.hints.selectors = {'all': ['a', 'area', 'textarea', 'select', 'input:not([type="hidden"])', 'button', 'frame', 'iframe', 'img', 'link', 'summary', '[contenteditable]:not([contenteditable="false"])', '[onclick]', '[onmousedown]', '[role="link"]', '[role="option"]', '[role="button"]', '[role="tab"]', '[role="checkbox"]', '[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]', '[role="treeitem"]', '[aria-haspopup]', '[ng-click]', '[ngClick]', '[data-ng-click]', '[x-ng-click]', '[tabindex]:not([tabindex="-1"])'], 'links': ['a[href]', 'area[href]', 'link[href]', '[role="link"][href]'], 'images': ['img'], 'media': ['audio', 'img', 'video'], 'url': ['[src]', '[href]'], 'inputs': ['input[type="text"]', 'input[type="date"]', 'input[type="datetime-local"]', 'input[type="email"]', 'input[type="month"]', 'input[type="number"]', 'input[type="password"]', 'input[type="search"]', 'input[type="tel"]', 'input[type="time"]', 'input[type="url"]', 'input[type="week"]', 'input:not([type])', '[contenteditable]:not([contenteditable="false"])', 'textarea'], 'code': [':not(pre) > code', 'pre']}
 
-# When/how to show the scrollbar.
-c.scrolling.bar = 'never'
-
 # Languages to use for spell checking. You can check for available
 # languages and install dictionaries using scripts/dictcli.py. Run the
 # script with -h/--help for instructions.
 c.spellcheck.languages = ['sv-SE', 'en-US']
 
-# Position of the status bar.
-c.statusbar.position = 'bottom'
-
 # How to behave when the last tab is closed.
 c.tabs.last_close = 'ignore'
 
-# Position of the tab bar.
-c.tabs.position = 'top'
-
-# When to show the tab bar.
-c.tabs.show = 'multiple'
-
-# Format to use for the tab title.
-c.tabs.title.format = '{audio}{current_title}'
 
 # Search engines which can be used via the address bar.
 c.url.searchengines = {'DEFAULT': 'https://www.google.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'w': 'https://en.wikipedia.org/?search={}', 'wt': 'https://en.wiktionary.org/?search={}', 'l': 'https://letterboxd.com/search/{}', 'yt': 'https://www.youtube.com/results?search_query={}'}
@@ -47,6 +33,25 @@ c.url.start_pages = 'https://qutebrowser.com/'
 # Page to open if :open -t/-b/-w is used without URL.
 c.url.default_page = 'about:blank'
 
+#
+# Appearance
+#
+
+# Position of the status bar.
+c.statusbar.position = 'bottom'
+
+# Position of the tab bar.
+c.tabs.position = 'top'
+
+# When to show the tab bar.
+c.tabs.show = 'multiple'
+
+# Format to use for the tab title.
+c.tabs.title.format = '{audio}{current_title}'
+
+# When/how to show the scrollbar.
+c.scrolling.bar = 'never'
+
 # Hide the window decoration.
 c.window.hide_decoration = False
 
@@ -56,9 +61,6 @@ c.window.title_format = '{current_title} - qutebrowser'
 # Default zoom level.
 c.zoom.default = '110%'
 
-#
-# Appearance
-#
 
 # Colors
 
