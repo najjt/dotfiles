@@ -68,9 +68,6 @@ c.window.hide_decoration = False
 # Format to use for the window title.
 c.window.title_format = '{current_title} - qutebrowser'
 
-# Default zoom level.
-c.zoom.default = '110%'
-
 
 # Colors
 
@@ -118,9 +115,6 @@ c.colors.statusbar.private.bg = '#6232a8'
 
 # Prefer dark mode
 c.colors.webpage.preferred_color_scheme = 'dark'
-
-# Use black as default background color
-c.colors.webpage.bg = '#1e1e1e'
 
 # Font
 c.fonts.default_family = 'Liberation Mono'
