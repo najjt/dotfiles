@@ -123,13 +123,13 @@
   [_j_] Increase height
   [_k_] Decrease height
   [_l_] Increase width
-  [_e_] Balance window sizes
+  [_b_] Balance window sizes
 "
     ("h" (my/window-width-decrease)  nil)
     ("j" (my/window-height-increase) nil)
     ("k" (my/window-height-decrease) nil)
     ("l" (my/window-width-increase)  nil)
-    ("e" (balance-windows)  nil)
+    ("b" (balance-windows)  nil)
     ("q" nil nil :exit t)))
 
 ;; Resizes the window width based on the input
