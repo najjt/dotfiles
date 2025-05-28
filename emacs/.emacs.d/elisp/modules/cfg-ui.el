@@ -39,6 +39,7 @@
                 org-agenda-mode-hook
                 Info-mode-hook
                 messages-buffer-mode-hook
+                mu4e-view-mode-hook
                 elfeed-show-mode-hook))
   (add-hook hook 'hl-line-mode))
 
