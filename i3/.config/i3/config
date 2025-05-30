@@ -13,6 +13,9 @@ set $sd ~/scripts
 # Background processes
 exec --no-startup-id $sd/autostart
 
+# Don't move to opposite window if moving focus towards screen border
+focus_wrapping no
+
 
 #
 # Appearance
