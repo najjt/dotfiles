@@ -38,7 +38,7 @@ metadata_separator = "-"
 # (bool) : Hide text when no player is available? True disables the output for no players.
 hide_output = True
 
-# Defult initialization
+# Default initialization
 current_player = None
 player_names = None
 players = None
