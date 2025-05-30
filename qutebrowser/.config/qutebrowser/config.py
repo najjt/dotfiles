@@ -72,43 +72,40 @@ c.window.title_format = '{current_title} - qutebrowser'
 # Colors
 
 # Foreground color of the statusbar.
-c.colors.statusbar.normal.fg = '#b7bec9'
+c.colors.statusbar.normal.fg = '#cecece'
 
 # Background color of the statusbar.
 c.colors.statusbar.normal.bg = '#000000'
 
 # Foreground color of the statusbar in command mode.
-c.colors.statusbar.command.fg = '#b7bec9'
+c.colors.statusbar.command.fg = '#cecece'
 
 # Background color of the statusbar in command mode.
 c.colors.statusbar.command.bg = '#000000'
 
-# Color gradient end for the tab indicator.
-c.colors.tabs.indicator.stop = '#638e8a'
-
 # Foreground color of unselected odd tabs.
-c.colors.tabs.odd.fg = '#b7bec9'
+c.colors.tabs.odd.fg = '#000000'
 
 # Background color of unselected odd tabs.
-c.colors.tabs.odd.bg = '#1e1e1e'
+c.colors.tabs.odd.bg = '#808080'
 
 # Foreground color of unselected even tabs.
-c.colors.tabs.even.fg = '#b7bec9'
+c.colors.tabs.even.fg = '#000000'
 
 # Background color of unselected even tabs.
-c.colors.tabs.even.bg = '#343434'
+c.colors.tabs.even.bg = '#a0a0a0'
 
 # Foreground color of selected odd tabs.
 c.colors.tabs.selected.odd.fg = '#000000'
 
 # Background color of selected odd tabs.
-c.colors.tabs.selected.odd.bg = '#cecece'
+c.colors.tabs.selected.odd.bg = '#e9e4d1'
 
 # Foreground color of selected even tabs.
 c.colors.tabs.selected.even.fg = '#000000'
 
 # Background color of selected even tabs.
-c.colors.tabs.selected.even.bg = '#cecece'
+c.colors.tabs.selected.even.bg = '#e9e4d1'
 
 # Background color of the statusbar in private browsing mode.
 c.colors.statusbar.private.bg = '#6232a8'
