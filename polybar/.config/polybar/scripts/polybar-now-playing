@@ -78,7 +78,7 @@ def get_metadata(player):
     return metadata
 
 def update_prefix_suffix(player_name="", status=""):
-    global display_prefix, display_suffix, status_paused
+    global display_prefix, status_paused
 
     player_option = ""
     if player_name != "":
@@ -89,23 +89,14 @@ def update_prefix_suffix(player_name="", status=""):
     pause_button = "%%{A:playerctl %s pause :}%c%%{A}"      %(player_option,control_chars[2])
     next_button = "%%{A:playerctl %s next :}%c%%{A}"        %(player_option,control_chars[3])
 
-    suffix = " " + prev_button
+    prefix = ""
     if status == "Playing":
-        suffix += " "+pause_button
+        prefix += " "+pause_button
         status_paused = False
     else:
-        suffix += " "+play_button
+        prefix += " "+play_button
         status_paused = True
-    suffix += " "+next_button
-    # print(suffix)
-    display_suffix = suffix
-
-    for key in display_player_prefix.keys():
-        if key in player_name:
-            display_prefix = display_player_prefix[key]
-            break
-    else:
-        display_prefix = display_player_prefix["default"]
+    display_prefix = prefix
 
 def update_players():
     global player_names, players, session_bus, current_player, last_player_name
