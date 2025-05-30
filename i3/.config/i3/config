@@ -202,6 +202,8 @@ for_window [class="Bitwarden" instance="bitwarden"] floating enable
 for_window [class="discord" instance="discord"] floating enable
 for_window [class="Signal" instance="signal"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
+for_window [class="Blueman-manager" instance="blueman-manager"] floating enable
+
 
 #
 # Status bar
