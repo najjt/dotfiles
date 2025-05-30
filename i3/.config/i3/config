@@ -27,11 +27,13 @@ set $font_size 12
 
 font pango:$font $font_size
 
-default_border pixel 2
+default_border normal 2
 default_floating_border pixel 2
 
-# Set default border of the focused window to be white (last hex code)
-client.focused #4c7899 #285577 #cecece #2e9ef4 #cecece
+## Colors
+
+# Set window border and title bar to be white with black text
+client.focused #cecece #cecece #000000 #2e9ef4 #cecece
 
 
 #
