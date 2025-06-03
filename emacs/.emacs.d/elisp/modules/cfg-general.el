@@ -269,4 +269,39 @@
 (setq epa-pinentry-mode 'loopback)
 (setq epg-pinentry-mode 'loopback)
 
+;; Refresh packages when using package-install
+;; if last refresh was longer than 24 hours ago
+;; Source: https://andreyor.st/posts/2022-07-15-refresh-package-contents-automatically/
+(defcustom package-last-refresh-date nil
+  "Date and time when package lists have been refreshed.
+
+  This variable is then used to check whether
+  `package-refresh-contents' call is needed before calling
+  `package-install'. The value of this variable is updated when
+  `package-refresh-contents' is called.
+
+  See `package-refresh-hour-threshold' for the amount of time needed to
+  trigger a refresh."
+  :type 'string
+  :group 'package)
+
+(defcustom package-automatic-refresh-threshold 24
+  "Amount of hours since last `package-refresh-contents' call
+  needed to trigger automatic refresh before calling `package-install'."
+  :type 'number
+  :group 'package)
+
+(define-advice package-install (:before (&rest _) package-refresh-contents-maybe)
+  (when (or (null package-last-refresh-date)
+            (> (/ (float-time
+                   (time-subtract (date-to-time (format-time-string "%Y-%m-%dT%H:%M"))
+                                  (date-to-time package-last-refresh-date)))
+                  3600)
+               package-automatic-refresh-threshold))
+    (package-refresh-contents)))
+
+(define-advice package-refresh-contents (:after (&rest _) update-package-refresh-date)
+  (customize-save-variable 'package-last-refresh-date
+                           (format-time-string "%Y-%m-%dT%H:%M")))
+
 (provide 'cfg-general)
