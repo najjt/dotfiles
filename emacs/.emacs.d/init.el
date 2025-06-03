@@ -65,3 +65,8 @@
 
 ;; Load setup files in .emacs.d/elisp/modules/
 (mapc 'load (file-expand-wildcards "~/.emacs.d/elisp/modules/*.el"))
+
+;; Send success notification if current
+;; process is a daemon and in a graphical environment
+(if (and (daemonp) (display-graphic-p))
+    (shell-command "notify-send -i '/usr/share/icons/hicolor/scalable/apps/emacs.svg' 'Emacs daemon is running'"))
