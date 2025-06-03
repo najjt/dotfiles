@@ -22,10 +22,15 @@
   ;; No infinite dired buffers!
   (dired-kill-when-opening-new-dired-buffer t))
 
-;; Use nerd icons in dired
+;; Use nerd icons in dired...
 (use-package nerd-icons-dired
   :diminish
-  :hook (dired-mode . nerd-icons-dired-mode))
+  :hook (dired-mode . my/enable-nerd-icons-dired))
+
+;; ... if in a graphical environment
+(defun my/enable-nerd-icons-dired ()
+  (when (display-graphic-p)
+    (nerd-icons-dired-mode)))
 
 (use-package browse-url
   :ensure nil
