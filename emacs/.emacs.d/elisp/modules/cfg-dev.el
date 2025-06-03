@@ -89,7 +89,7 @@
   :ensure nil
   :hook (prog-mode . (lambda ()
                        (subword-mode)    ; consider e.g. oneWord to be two words for text editing
-                       (hs-minor-mode))) ; enable folding code blocks
+                       )) ; enable folding code blocks
   :mode ("\\.rasi\\'"
          "\\.edn\\'"))
 
