@@ -57,9 +57,6 @@
   (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.2)
   (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.2))
 
-(use-package modus-themes
-  :defer t)
-
 (defun my/disable-all-themes ()
   "Disable all active themes."
   (dolist (theme custom-enabled-themes)
@@ -70,15 +67,12 @@
   (interactive
    (list (completing-read "Choose theme: " (mapcar #'symbol-name (custom-available-themes)))))
   (my/disable-all-themes)
-  (load-theme (intern theme) t)
-  (customize-save-variable 'my-chosen-theme theme))
+  (load-theme (intern theme) t))
 
-;; Remember last used theme between sessions
-(add-hook 'after-init-hook
-          (lambda ()
-            (if (boundp 'my-chosen-theme)
-                (my/enable-theme my-chosen-theme)
-              (my/enable-theme 'modus-vivendi))))
+(use-package modus-themes
+  :ensure t)
+
+(my/enable-theme "modus-vivendi")
 
 ;; Popup buffers
 (use-package popper
