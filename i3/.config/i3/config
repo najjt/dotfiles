@@ -75,7 +75,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+t floating toggle
 
 # Toggle split direction
-bindsym $mod+b split toggle
+bindsym $mod+u split toggle
 
 # Move windows with $mod + left mouse button, resize with $mod + right mouse button
 floating_modifier $mod
