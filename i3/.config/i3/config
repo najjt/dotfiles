@@ -164,7 +164,7 @@ bindsym $mod+Control+Shift+r reload
 bindsym $mod+Control+Shift+e restart
 
 # Exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -f 'pango: monospace 11' -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -f 'pango: $font $font_size' -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Lock directly
 bindsym $mod+Control+l exec --no-startup-id loginctl lock-session
