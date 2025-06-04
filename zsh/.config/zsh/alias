@@ -53,3 +53,7 @@ alias startx="startx ~/.xinitrc"
 alias ltar="tar -ztvf"  # Lists
 alias untar="tar -zxvf" # Unpacks
 alias ctar="tar -cvzf"  # Creates
+
+# Update
+alias apt-up="sudo apt update && sudo apt upgrade"
+alias fp-up="flatpak update"
