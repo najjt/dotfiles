@@ -42,11 +42,9 @@
   :after marginalia
   :config
   (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup)
-  (add-hook 'minibuffer-setup-hook 'my/enable-nerd-icons-completion))
-
-(defun my/enable-nerd-icons-completion ()
-  (when (display-graphic-p)
-    (nerd-icons-completion-mode)))
+  (add-hook 'minibuffer-setup-hook (lambda ()
+                                     (when (display-graphic-p)
+                                       (nerd-icons-completion-mode)))))
 
 ;; More detailed help buffers
 (use-package helpful
