@@ -71,7 +71,7 @@ bindkey -e '\ew' x-copy-region-as-kill
 bindkey -e '^W' x-kill-region
 bindkey -e '^Y' x-yank
 
-# View man pages in Emacs
+# Read man pages in Emacs client
 function man () {
     emacsclient -nw -e '(man "'$1'")'
 }
