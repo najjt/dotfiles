@@ -51,7 +51,7 @@ config.set("content.cookies.store", True)
 c.statusbar.position = 'bottom'
 
 # Position of the tab bar.
-c.tabs.position = 'top'
+c.tabs.position = 'bottom'
 
 # When to show the tab bar.
 c.tabs.show = 'multiple'
