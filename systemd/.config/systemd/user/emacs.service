@@ -1,7 +1,6 @@
 [Unit]
 Description=Emacs daemon
 Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
-After=graphical-session.target
 
 [Service]
 Type=forking
