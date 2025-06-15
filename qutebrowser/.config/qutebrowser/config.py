@@ -43,6 +43,8 @@ config.set("content.webrtc_ip_handling_policy", "default-public-interface-only")
 config.set("content.cookies.accept", "all")
 config.set("content.cookies.store", True)
 
+c.editor.command = ['emacsclient', '-c', '+{line}:{column}', '{file}']
+
 #
 # Appearance
 #
