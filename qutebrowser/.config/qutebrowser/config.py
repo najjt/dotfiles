@@ -103,6 +103,7 @@ config.bind('ca', 'set -t content.javascript.clipboard access ;; cmd-later 10s s
 # Userscripts
 #
 
+
 # mpv
 config.bind('zM', 'hint links spawn mpv {hint-url}')
 config.bind('zm', 'spawn mpv {url}')
