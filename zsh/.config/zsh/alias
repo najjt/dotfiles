@@ -19,8 +19,6 @@ alias ..="cd .."
 
 ## Colorize the grep command output for ease of use
 alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
 
 # Create parent directories if necessary,
 # and list them as they are created
