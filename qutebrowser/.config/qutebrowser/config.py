@@ -56,64 +56,10 @@ c.tabs.position = 'bottom'
 # When to show the tab bar.
 c.tabs.show = 'multiple'
 
-# Format to use for the tab title.
-c.tabs.title.format = '{audio}{current_title}'
-
 # When/how to show the scrollbar.
 c.scrolling.bar = 'never'
 
-# Hide the window decoration.
-c.window.hide_decoration = False
-
-# Format to use for the window title.
-c.window.title_format = '{current_title} - qutebrowser'
-
-
-# Colors
-
-# Foreground color of the statusbar.
-c.colors.statusbar.normal.fg = '#cecece'
-
-# Background color of the statusbar.
-c.colors.statusbar.normal.bg = '#000000'
-
-# Foreground color of the statusbar in command mode.
-c.colors.statusbar.command.fg = '#cecece'
-
-# Background color of the statusbar in command mode.
-c.colors.statusbar.command.bg = '#000000'
-
-# Foreground color of unselected odd tabs.
-c.colors.tabs.odd.fg = '#000000'
-
-# Background color of unselected odd tabs.
-c.colors.tabs.odd.bg = '#808080'
-
-# Foreground color of unselected even tabs.
-c.colors.tabs.even.fg = '#000000'
-
-# Background color of unselected even tabs.
-c.colors.tabs.even.bg = '#a0a0a0'
-
-# Foreground color of selected odd tabs.
-c.colors.tabs.selected.odd.fg = '#000000'
-
-# Background color of selected odd tabs.
-c.colors.tabs.selected.odd.bg = '#e9e4d1'
-
-# Foreground color of selected even tabs.
-c.colors.tabs.selected.even.fg = '#000000'
-
-# Background color of selected even tabs.
-c.colors.tabs.selected.even.bg = '#e9e4d1'
-
-# Background color of the statusbar in private browsing mode.
-c.colors.statusbar.private.bg = '#6232a8'
-
-# Prefer dark mode
-c.colors.webpage.preferred_color_scheme = 'dark'
-
-# Font
+# Fonts
 c.fonts.default_family = []
 c.fonts.default_size = '12pt'
 c.fonts.web.size.default = 18
@@ -122,15 +68,6 @@ c.fonts.web.family.sans_serif = 'sans'
 c.fonts.web.family.serif = 'serif'
 c.fonts.web.family.standard = 'sans'
 
-# Tabs
-c.tabs.padding = {'top': 2, 'bottom': 2, 'left': 9, 'right': 9}
-c.tabs.indicator.width = 0 # no tab indicators
-c.tabs.width = '7%'
-
-# Statusbar
-c.statusbar.padding = {'top': 2, 'bottom': 2, 'left': 9, 'right': 9}
-
-c.editor.command = ['emacsclient', '-c', '+{line}:{column}', '{file}']
 
 #
 # Keybindings
