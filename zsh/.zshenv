@@ -22,7 +22,7 @@ export LC_ALL="en_IE.UTF-8"
 export LC_CTYPE="en_IE.UTF-8"
 
 # Path
-export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin:/usr/local/go/bin:$HOME/scripts"
+export PATH="$HOME/.local/bin:$HOME/go/bin:/usr/local/go/bin:$HOME/scripts:$PATH"
 
 # Change default .zshrc location to ~/.config/zsh/.zshrc, any other zsh config files can also reside here
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
