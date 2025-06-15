@@ -45,6 +45,8 @@ config.set("content.cookies.store", True)
 
 c.editor.command = ['emacsclient', '-c', '+{line}:{column}', '{file}']
 
+c.downloads.open_dispatcher = "mimeopen"
+
 #
 # Appearance
 #
