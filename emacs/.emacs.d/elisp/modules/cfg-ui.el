@@ -77,11 +77,14 @@
 ;; Popup buffers
 (use-package popper
   :bind
-  ("C-`"     . popper-toggle) ; US kb layout
-  ("C-§"     . popper-toggle) ; SV kb layout
   ("M-`"     . popper-cycle)
-  ("C-M-`"   . popper-toggle-type)
   ("C-c p d" . popper-kill-latest-popup)
+  ;; US kb layout
+  ("C-`"     . popper-toggle)
+  ("C-M-`"   . popper-toggle-type)
+  ;; SV kb layout
+  ("C-§"     . popper-toggle)
+  ("C-M-§"   . popper-toggle-type)
   :init
   (setq popper-reference-buffers
         '("\\*Compile-Log\\*"
