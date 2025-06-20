@@ -3,9 +3,7 @@
 (use-package emms
   :defer t
   :bind (("C-c e e" . emms-smart-browse)
-         ("C-c e p" . emms-playlist-mode-go-popup)
-         :map emms-browser-mode-map
-         ("C-a" . emms-browser-add-tracks-and-play))
+         ("C-c e p" . emms-playlist-mode-go-popup))
   :config
   (emms-all)
   (setq emms-player-list '(emms-player-vlc)
