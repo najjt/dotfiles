@@ -304,4 +304,8 @@
   (customize-save-variable 'package-last-refresh-date
                            (format-time-string "%Y-%m-%dT%H:%M")))
 
+;; Set default alert style to send
+;; desktop notifications
+(setq alert-default-style 'libnotify)
+
 (provide 'cfg-general)
