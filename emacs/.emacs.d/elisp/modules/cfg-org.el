@@ -11,7 +11,7 @@
   (setq org-directory "~/notes/org"
         org-default-notes-file (concat org-directory "/refile.org")
         org-todo-keywords '((sequence "TODO" "|" "DONE"))
-        org-refile-targets (quote (("personal.org"            :maxlevel   . 2)
+        org-refile-targets (quote (("todo.org"                :maxlevel   . 2)
                                    ("stash.org"               :maxlevel   . 2)
                                    ("repeating.org"           :maxlevel   . 2)
                                    ("calendar.org"            :level      . 0)
