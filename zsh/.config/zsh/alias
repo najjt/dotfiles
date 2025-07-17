@@ -53,5 +53,5 @@ alias untar="tar -zxvf" # Unpacks
 alias ctar="tar -cvzf"  # Creates
 
 # Update
-alias apt-up="sudo apt update && sudo apt upgrade"
+alias apt-up="sudo apt update && sudo apt upgrade -y"
 alias fp-up="flatpak update"
