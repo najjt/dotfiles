@@ -109,6 +109,15 @@
   (define-key mu4e-headers-mode-map (kbd "d") 'my/move-to-trash)
   (define-key mu4e-view-mode-map (kbd "d") 'my/move-to-trash)
 
+  ;; Update on quitting
+  (defun my/mu4e-quit ()
+    (interactive)
+    (mu4e-update-mail-and-index t)
+    (mu4e-quit))
+
+  (with-eval-after-load 'mu4e
+    (evil-define-key 'normal mu4e-main-mode-map (kbd "q") #'my/mu4e-quit))
+
   ;; Prefer plain text
   (with-eval-after-load "mm-decode"
     (add-to-list 'mm-discouraged-alternatives "text/html")
