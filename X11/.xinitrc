@@ -7,6 +7,9 @@ xset r rate 300 25
 # Disable monitor power saving
 xset -dpms
 
+# Disable screen saver
+xset s off
+
 # Hotkey daemon
 which sxhkd && if pgrep -x sxhkd ; then
     echo sxhkd already running
