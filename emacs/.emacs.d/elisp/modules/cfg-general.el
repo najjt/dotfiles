@@ -99,8 +99,8 @@
 ;; Don't open a new window for ediff
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
-;; Open man pages in current window
-(setq Man-notify-method 'pushy)
+;; Open man pages in other window
+(setq Man-notify-method 'aggressive)
 
 ;; Use a single buffer for the dictionary
 (setq dictionary-use-single-buffer t)
