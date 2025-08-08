@@ -9,19 +9,13 @@
 (use-package consult
   :defer nil
   :bind (("C-c r" . consult-ripgrep)
-         ("C-c f" . consult-find)
-         ("C-c F" . my/consult-find-home-dir))
+         ("C-c f" . consult-find))
   :config
   (with-eval-after-load 'consult
     (setq consult-ripgrep-args
           (concat consult-ripgrep-args " --hidden")))
 
   (setq-default consult-find-args "find .")
-
-  (defun my/consult-find-home-dir ()
-    "Search for files with `consult-find` in users home directory"
-    (interactive)
-    (consult-find (expand-file-name "~")))
 
   (global-set-key [remap switch-to-buffer] 'consult-buffer)
   (global-set-key [remap switch-to-buffer-other-window] 'consult-buffer-other-window)
