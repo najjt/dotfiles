@@ -1,9 +1,6 @@
 # Set keyboard layouts and layout switching shortcut
 setxkbmap -layout us,se -option grp:rshift_toggle
 
-# Set keyboard repeat delay and rate
-xset r rate 300 25
-
 # Disable monitor power saving
 xset -dpms
 

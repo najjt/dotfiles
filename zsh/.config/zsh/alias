@@ -44,9 +44,6 @@ alias ec="emacsclient -c -nw"
 alias ecre="systemctl --user restart emacs"     # Restart Emacs service
 alias stre="systemctl --user restart syncthing" # Restart Syncthing service
 
-# X11
-alias startx="startx ~/.xinitrc"
-
 # Archives
 alias ltar="tar -ztvf"  # Lists
 alias untar="tar -zxvf" # Unpacks

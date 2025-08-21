@@ -82,6 +82,17 @@ export LESS_TERMCAP_se=$'\e[0m'        # reset reverse video
 export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
 export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 
+# X11
+startx() {
+    if [ "$#" -lt 1 ]; then
+        echo "Usage: startx <session>"
+        return 1
+    fi
+
+    # Run startx with the provided session and set keyboard repeat delay and rate
+    exec /usr/bin/startx ~/.xinitrc "$@" -- -ardelay 300 -arinterval 25
+}
+
 #
 # Plugins
 #
