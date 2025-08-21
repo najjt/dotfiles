@@ -8,7 +8,7 @@ control + shift + Return
 
 # Open application launcher
 alt + r
-    rofi -modi "run,power:~/.config/rofi/scripts/rofi-power-menu" -show run
+    rofi -modi "run" -show run
 
 # Open Org Mode capture frame
 shift + alt + c
