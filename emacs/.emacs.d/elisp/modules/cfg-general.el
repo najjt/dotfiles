@@ -115,53 +115,6 @@
     :config
     (xclip-mode)))
 
-(use-package isearch
-  :ensure nil
-  :hook (occur-mode . turn-off-evil-mode)
-  :config
-
-  ;; Open occurrences of current isearch in new buffer
-  ;; Source: https://blog.chmouel.com/posts/emacs-isearch/
-  (defun my/occur-from-isearch ()
-    (interactive)
-    (let ((query (if isearch-regexp
-                     isearch-string
-                   (regexp-quote isearch-string))))
-      (isearch-update-ring isearch-string isearch-regexp)
-      (let (search-nonincremental-instead)
-        (ignore-errors (isearch-done t t)))
-      (occur query)))
-
-  ;; Use selection to search
-  ;; Source: https://blog.chmouel.com/posts/emacs-isearch/
-  (defadvice isearch-mode (around isearch-mode-default-string (forward &optional regexp op-fun recursive-edit word-p) activate)
-    (if (and transient-mark-mode mark-active (not (eq (mark) (point))))
-        (progn
-          (isearch-update-ring (buffer-substring-no-properties (mark) (point)))
-          (deactivate-mark)
-          ad-do-it
-          (if (not forward)
-              (isearch-repeat-backward)
-            (goto-char (mark))
-            (isearch-repeat-forward)))
-      ad-do-it))
-
-  :bind
-  (:map isearch-mode-map
-        ("C-o" . my/occur-from-isearch)
-        ("C-d" . isearch-forward-symbol-at-point)))
-
-(defun my/select-window (window &rest _)
-  "Select WINDOW for display-buffer-alist"
-  (select-window window))
-
-(setq display-buffer-alist
-      '(((or . ((derived-mode . occur-mode)))
-         (display-buffer-reuse-mode-window display-buffer-at-bottom)
-         (body-function . my/select-window)
-         (dedicated . t)
-         (preserve-size . (t . t)))))
-
 ;; Use minibuffer for epa password interface
 (setq egp-pinentry-mode 'loopback)
 
