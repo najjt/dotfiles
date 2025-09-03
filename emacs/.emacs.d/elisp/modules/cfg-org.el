@@ -10,6 +10,11 @@
   ;; Basic settings
   (setq org-directory "~/notes/org"
         org-todo-keywords '((sequence "TODO" "|" "DONE"))
+        org-M-RET-may-split-line '((default . nil))
+        org-insert-heading-respect-content t
+        org-log-done 'time
+        org-log-into-drawer t)
+
   ;; Refile settings
   (setq org-default-notes-file (concat org-directory "/refile.org")
         org-refile-targets (quote (("todo.org"                :maxlevel   . 2)
@@ -24,6 +29,7 @@
   (setq org-tags-column 0               ; Position tags next to heading
         org-startup-folded t
         org-src-preserve-indentation t  ; Don't add unnecessary indentation
+        org-ellipsis "⤵"
         ;; Empty line before headings
         org-blank-before-new-entry (quote ((heading . auto)
                                            (plain-list-item . nil))))
