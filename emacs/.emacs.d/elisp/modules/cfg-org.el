@@ -77,14 +77,7 @@
 
   (setq org-agenda-custom-commands
         '(("w" "Week agenda"
-           ((agenda "" ((org-agenda-span 'week)))))
-          ("p" "Past events"
-           ((tags "TIMESTAMP<=\"<now>\""))
-           ((org-agenda-files
-             (cl-remove-if
-              (lambda (file)
-                (string-match-p "repeating\\.org$" file))
-              (org-agenda-files)))))))
+           ((agenda "" ((org-agenda-span 'week)))))))
 
   ;; Date heading settings
   (custom-set-faces
