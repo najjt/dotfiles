@@ -29,7 +29,7 @@
   (setq org-tags-column 0               ; Position tags next to heading
         org-startup-folded t
         org-src-preserve-indentation t  ; Don't add unnecessary indentation
-        org-ellipsis "⤵"
+        org-ellipsis " ▾"
         ;; Empty line before headings
         org-blank-before-new-entry (quote ((heading . auto)
                                            (plain-list-item . nil))))
