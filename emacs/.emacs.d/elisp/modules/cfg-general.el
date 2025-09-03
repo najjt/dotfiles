@@ -234,8 +234,7 @@
   (setq elfeed-feeds
         '(;; Bread on Penguins's youtube channel
           "https://www.youtube.com/feeds/videos.xml?channel_id=UCwHwDuNd9lCdA7chyyquDXw"
-          "https://www.privacyguides.org/articles/feed_rss_created.xml"
-          )))
+          "https://www.privacyguides.org/articles/feed_rss_created.xml")))
 
 (use-package vterm
   :custom

@@ -16,12 +16,12 @@
 
   ;; Maildir setup
   (setq
-   mu4e-maildir "~/.mail"
+   mu4e-maildir        "~/.mail"
    mu4e-attachment-dir "~/Downloads"
-   mu4e-refile-folder "/Archive"
-   mu4e-sent-folder "/Sent"
-   mu4e-drafts-folder "/Drafts"
-   mu4e-trash-folder "/Trash"
+   mu4e-refile-folder  "/Archive"
+   mu4e-sent-folder    "/Sent"
+   mu4e-drafts-folder  "/Drafts"
+   mu4e-trash-folder   "/Trash"
 
    mu4e-maildir-shortcuts
    '((:maildir "/INBOX"   :key ?i)

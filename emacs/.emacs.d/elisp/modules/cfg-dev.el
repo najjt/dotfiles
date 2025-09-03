@@ -88,10 +88,8 @@
 (use-package prog-mode
   :ensure nil
   :hook (prog-mode . (lambda ()
-                       (subword-mode)    ; consider e.g. oneWord to be two words for text editing
-                       )) ; enable folding code blocks
+                       (subword-mode)))
   :mode ("\\.rasi\\'"
          "\\.edn\\'"))
-
 
 (provide 'cfg-dev)

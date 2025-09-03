@@ -9,16 +9,15 @@
   :config
   ;; Basic settings
   (setq org-directory "~/notes/org"
-        org-default-notes-file (concat org-directory "/refile.org")
         org-todo-keywords '((sequence "TODO" "|" "DONE"))
+  ;; Refile settings
+  (setq org-default-notes-file (concat org-directory "/refile.org")
         org-refile-targets (quote (("todo.org"                :maxlevel   . 2)
                                    ("stash.org"               :maxlevel   . 2)
                                    ("repeating.org"           :maxlevel   . 2)
                                    ("calendar.org"            :level      . 0)
-                                   ("../misc/computer.org"    :maxlevel   . 1))))
-
-  ;; Refile settings
-  (setq org-refile-use-outline-path 'file       ; Provide refile targets as path
+                                   ("../misc/dator.org"    :maxlevel   . 1)))
+        org-refile-use-outline-path 'file       ; Provide refile targets as path
         org-outline-path-complete-in-steps nil) ; Refile in a single go
 
   ;; Appearance
@@ -68,8 +67,7 @@
         '((daily today require-timed remove-match)
           (800 1000 1200 1400 1600 1800 2000)
           "...." "------------")
-        org-agenda-current-time-string
-        "← now")
+        org-agenda-current-time-string "← now")
 
   (setq org-agenda-custom-commands
         '(("w" "Week agenda"

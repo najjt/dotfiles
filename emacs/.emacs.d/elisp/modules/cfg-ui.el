@@ -219,4 +219,14 @@
 (custom-set-faces
  '(tab-bar ((t (:inherit fixed-pitch :height 0.8)))))
 
+;; Visualize color codes in text
+(use-package colorful-mode
+  :diminish
+  :custom
+  (colorful-use-prefix nil)
+  (colorful-only-strings 'only-prog)
+  (css-fontify-colors nil)
+  :config
+  (global-colorful-mode t))
+
 (provide 'cfg-ui)

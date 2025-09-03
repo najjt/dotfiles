@@ -20,16 +20,6 @@
 ;; Tabs are four spaces
 (setq-default tab-width 4 indent-tabs-mode nil)
 
-;; Visualize color codes in text
-(use-package colorful-mode
-  :diminish
-  :custom
-  (colorful-use-prefix nil)
-  (colorful-only-strings 'only-prog)
-  (css-fontify-colors nil)
-  :config
-  (global-colorful-mode t))
-
 (use-package go-translate
   :bind ("C-c o" . gt-do-translate)
   :config
