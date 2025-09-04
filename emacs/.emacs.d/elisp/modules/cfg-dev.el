@@ -87,8 +87,7 @@
 
 (use-package prog-mode
   :ensure nil
-  :hook (prog-mode . (lambda ()
-                       (subword-mode)))
+  :hook (prog-mode . subword-mode)
   :mode ("\\.rasi\\'"
          "\\.edn\\'"))
 
