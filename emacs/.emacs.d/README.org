@@ -1,6 +1,6 @@
 These are my configuration files for Emacs.
 
-=[[file:early-init.el][early-init.el]]= and =[[file:init.el][init.el]]= both contain settings executed at
-initialization. The =[[file:elisp/][elisp]]= directory contains two subdirs; =[[file:elisp/modules/][modules]]=, which
-holds my modularized configuration files, and =[[file:elisp/packages/][packages]]=, which just contains
+[[file:early-init.el][early-init.el]] and [[file:init.el][init.el]] both contain settings executed at
+initialization. The [[file:elisp/][elisp]] directory contains two subdirs; [[file:elisp/modules/][modules]], which
+holds my modularized configuration files, and [[file:elisp/packages/][packages]], which just contains
 packages I downloaded that weren't available from a package archive.
