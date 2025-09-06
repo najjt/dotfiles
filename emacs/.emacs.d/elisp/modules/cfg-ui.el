@@ -67,12 +67,18 @@
   (interactive
    (list (completing-read "Choose theme: " (mapcar #'symbol-name (custom-available-themes)))))
   (my/disable-all-themes)
-  (load-theme (intern theme) t))
+  (load-theme (intern theme) t)
+  (customize-save-variable 'my-chosen-theme theme))
+
+;; Remember last used theme between sessions
+(add-hook 'after-init-hook
+          (lambda ()
+            (if (boundp 'my-chosen-theme)
+                (my/enable-theme my-chosen-theme)
+              (my/enable-theme 'modus-vivendi))))
 
 (use-package modus-themes
   :ensure t)
-
-(my/enable-theme "modus-vivendi")
 
 ;; Popup buffers
 (use-package popper
