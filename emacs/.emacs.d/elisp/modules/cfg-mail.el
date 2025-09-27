@@ -123,4 +123,12 @@
     (add-to-list 'mm-discouraged-alternatives "text/html")
     (add-to-list 'mm-discouraged-alternatives "text/richtext")))
 
+;; Use org mode to send HTML emails
+(use-package org-mime
+  :bind (:map mu4e-compose-mode-map
+              ("C-c C-o" . org-mime-edit-mail-in-org-mode)
+              ("C-c h"   . org-mime-htmlize))
+  :config
+  ;; Ask before sending email if it should be HTML
+  (add-hook 'message-send-hook 'org-mime-confirm-when-no-multipart))
 (provide 'cfg-mail)
