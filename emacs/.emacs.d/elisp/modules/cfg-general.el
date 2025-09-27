@@ -190,6 +190,9 @@
           "https://www.privacyguides.org/articles/feed_rss_created.xml")))
 
 (use-package vterm
+  :hook (vterm-mode . (lambda ()
+                        (setq-local evil-insert-state-cursor 'box)
+                        (evil-insert-state)))
   :custom
   (term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
   (vterm-shell "zsh")
@@ -197,9 +200,6 @@
 
 ;; Open multiple vterm buffers
 (use-package multi-vterm
-  :hook (vterm-mode . (lambda ()
-                        (setq-local evil-insert-state-cursor 'box)
-                        (evil-insert-state)))
   :bind
   ("C-c t" . multi-vterm-dedicated-toggle)
   ("C-c T" . multi-vterm)
