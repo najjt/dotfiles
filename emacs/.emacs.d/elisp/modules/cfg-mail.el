@@ -131,4 +131,12 @@
   :config
   ;; Ask before sending email if it should be HTML
   (add-hook 'message-send-hook 'org-mime-confirm-when-no-multipart))
+
+;; Add attachments from dired
+(use-package gnus-dired
+  :ensure nil
+  :after message
+  :hook
+  (dired-mode . turn-on-gnus-dired-mode))
+
 (provide 'cfg-mail)
