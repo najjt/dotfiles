@@ -12,7 +12,7 @@
         emms-info-functions '(emms-info-native)
         emms-source-file-default-directory "~/Music/"
         emms-browser-covers 'emms-browser-cache-thumbnail-async
-        emms-playlist-mode-window-width 75
+        emms-playlist-mode-window-width 60
         emms-mode-line-format "")
 
   (defun emms-get-album-art (track-path)
