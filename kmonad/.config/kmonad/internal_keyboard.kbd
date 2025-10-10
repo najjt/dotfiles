@@ -10,29 +10,8 @@
   ;; Tap for esc, hold for ctrl
   ec (tap-hold-next-release 200 esc lctl)
 
-  ;; Layers
-;;a (tap-hold-next-release 200 d (layer-toggle arithmetic))
-;;p (tap-hold-next-release 200 s (layer-toggle punctuation))
-;;c (tap-hold-next-release 200 c (layer-toggle symbols))
-;;d (tap-hold-next-release 200 f (layer-toggle delimiters))
-;;r (tap-hold-next-release 200 r (layer-toggle deletion))
-;;e (tap-hold-next-release 200 e (layer-toggle navigation))
-;;w (tap-hold-next-release 200 w (layer-toggle selection))
+  ;; Vi layer
   v (tap-hold-next-release 200 a (layer-toggle vi))
-
-  ;;  Aliases for deletion
-  cb C-bspc
-  scb S-C-bspc
-
-  ;; Aliases for navigation
-  cl C-left
-  cr C-right
-
-  ;; Aliases for selection
-  scl S-C-left
-  scr S-C-right
-  sl S-left
-  sr S-right
 )
 
 (defsrc
@@ -59,62 +38,6 @@
   @ec @v   s   d   f    g    h    j    k    l
   lsft z    x  c   v    b    n    m    ,    .    /    rsft
   lctl lmet lalt           spc            ralt rmet cmp rctrl
-)
-
-(deflayer arithmetic
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    <    >    #    _
-  _    _    _    _    _    _    _    +    -    =
-  _    _    _    _    _    _    _    *    /    %    _    _
-  _    _    _              _              _    _    _    _
-)
-
-(deflayer punctuation
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    '    "    `    _
-  _    _    _    _    _    _    _    ,    .    &
-  _    _    _    _    _    _    _    ;    :    ~    _    _
-  _    _    _              _              _    _    _    _
-)
-
-(deflayer delimiters
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    {    }    !    _
-  _    _    _    _    _    _    _   \(   \)    ?
-  _    _    _    _    _    _    _    [    ]    $    _    _
-  _    _    _              _              _    _    _    _
-)
-
-(deflayer symbols
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    ^    _    _    _
-  _    _    _    _    _    _    _    |    @    _
-  _    _    _    _    _    _    _    \\   \_   _    _    _
-  _    _    _              _              _    _    _    _
-)
-
-(deflayer selection
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _  @scl  @sl  @sr  @scr
-  _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _              _              _    _    _    _
-)
-
-(deflayer navigation
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _   @cl  left right @cr
-  _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _              _              _    _    _    _
-)
-
-(deflayer deletion
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _   bspc  _    _    _
-  _    _    _    _    _    _    _   @cb   _    _
-  _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _              _              _    _    _    _
 )
 
 (deflayer vi
