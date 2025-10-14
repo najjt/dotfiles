@@ -32,8 +32,6 @@ default_floating_border pixel 2
 
 gaps inner 10
 
-## Colors
-
 # Set window border and title bar to be white with black text
 client.focused #cecece #cecece #000000 #2e9ef4 #cecece
 
@@ -150,11 +148,10 @@ bindsym $mod+o focus mode_toggle
 
 ## Scratchpad
 
-# Move the currently focused window to the scratchpad
+# Move currently focused window to scratchpad
 bindsym $mod+p move scratchpad
 
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
+# Cycle through scratchpad windows
 bindsym $mod+Shift+p scratchpad show
 
 ## System
