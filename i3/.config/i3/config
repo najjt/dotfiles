@@ -82,12 +82,6 @@ bindsym $mod+u split toggle
 # Move windows with $mod + left mouse button, resize with $mod + right mouse button
 floating_modifier $mod
 
-# Move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
@@ -121,6 +115,19 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+# Move windows
+mode "move" {
+   bindsym h move left
+   bindsym j move down
+   bindsym k move up
+   bindsym l move right
+
+   # Return to default mode
+   bindsym Return mode "default"
+   bindsym Escape mode "default"
+}
+bindsym $mod+m mode "move" focus floating
 
 ## Focus
 
