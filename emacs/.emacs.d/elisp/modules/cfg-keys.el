@@ -1,5 +1,8 @@
 ;; -*- lexical-binding: t; -*-
 
+;; Additional keybinding for M-x
+(global-set-key (kbd "C-c x") 'execute-extended-command)
+
 ;; Increase/decrease text scale
 (keymap-global-set "C-=" #'text-scale-increase)
 (keymap-global-set "C-+" #'text-scale-increase)
