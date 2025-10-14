@@ -10,8 +10,17 @@
   ;; Tap for esc, hold for ctrl
   ec (tap-hold-next-release 200 esc lctl)
 
+  ;; Tap for a, hold for meta
+  am (tap-hold-next-release 200 a lmet)
+
+  ;; Tap for s, hold for alt
+  sa (tap-hold-next-release 200 s lalt)
+
+  ;; Tap for d, hold for right alt
+  da (tap-hold-next-release 200 d ralt)
+
   ;; Vi layer
-  v (tap-hold-next-release 200 a (layer-toggle vi))
+  v (tap-hold-next-release 200 z (layer-toggle vi))
 )
 
 (defsrc
@@ -33,10 +42,10 @@
 |#
 
 (deflayer base
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  grv  1   2   3   4    5    6    7    8    9    0    -    =    bspc
   tab  q   w   e   r    t    y    u    i    o    p
-  @ec @v   s   d   f    g    h    j    k    l
-  lsft z    x  c   v    b    n    m    ,    .    /    rsft
+  @ec @am @sa @da  f    g    h    j    k    l
+  lsft @v  x   c   v    b    n    m    ,    .    /    rsft
   lctl lmet lalt           spc            ralt rmet cmp rctrl
 )
 
