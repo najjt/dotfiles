@@ -70,16 +70,6 @@
                      (message-signature      .
                                              (concat
                                               "Kind regards,\n"
-                                              "Martin\n"))))
-           ,(make-mu4e-context
-             :name "Other mask"
-             :enter-func (lambda () (mu4e-message "Switch to the OTHER MASK context"))
-             ;; no leave-func
-             :vars '((user-mail-address      . "kind.sand2320@fastmail.com")
-                     (user-full-name         . "Martin")
-                     (message-signature      .
-                                             (concat
-                                              "Kind regards,\n"
                                               "Martin\n"))))))
 
   ;; start with the first (default) context
