@@ -8,7 +8,6 @@
   (:map mu4e-compose-mode-map
         ("C-c C-a" . mail-add-attachment))
   (:map mu4e-view-mode-map
-        ("C-c E"   . mu4e-compose-edit) ; Edit a draft
         ("e"       . mu4e-view-save-attachment))
   :config
   (setq mail-user-agent 'mu4e-user-agent) ; Make mu4e default email client
