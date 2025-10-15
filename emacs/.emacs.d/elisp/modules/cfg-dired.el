@@ -33,16 +33,4 @@
 (use-package dired-du
   :custom (dired-du-size-format t)) ; Use human-readable format
 
-;; Source: https://emacs.stackexchange.com/a/67915
-;; Instruct dired-du to use duc to speed up
-;; Index the filesystem regularly
-(when (executable-find "duc")
- (run-with-timer 0 3600
-  (defun my-index-duc ()
-   (start-process "duc" nil "duc" "index" "/home"))))
-
-(when (and (executable-find "duc")
-           (not (string-match-p "Error" (shell-command-to-string "duc info"))))
-  (setq dired-du-used-space-program '("duc" "ls -bD")))
-
 (provide 'cfg-dired)
