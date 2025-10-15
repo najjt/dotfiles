@@ -129,7 +129,9 @@
               ("C-c h"   . org-mime-htmlize))
   :config
   ;; Ask before sending email if it should be HTML
-  (add-hook 'message-send-hook 'org-mime-confirm-when-no-multipart))
+  (add-hook 'message-send-hook 'org-mime-confirm-when-no-multipart)
+  (setq org-mime-export-options '(:section-numbers nil :with-author nil :with-toc nil)
+        org-mime-export-ascii 'ascii))
 
 ;; Add attachments from dired
 (use-package gnus-dired
