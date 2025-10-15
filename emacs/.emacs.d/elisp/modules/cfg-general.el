@@ -41,9 +41,7 @@
 ;; Edit files with sudo privileges
 (use-package sudo-edit
   :defer t
-  :diminish
-  :bind (("C-c C-r" . sudo-edit)
-         ("C-c C-t" . sudo-edit-find-file)))
+  :diminish)
 
 ;; Provides commands to run based on current context
 (use-package embark
