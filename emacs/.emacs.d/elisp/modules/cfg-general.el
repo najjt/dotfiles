@@ -201,7 +201,7 @@
 ;; Open multiple vterm buffers
 (use-package multi-vterm
   :bind
-  ("C-c C-c t" . multi-vterm-dedicated-toggle)
+  ("C-c C-t" . multi-vterm-dedicated-toggle)
   ("C-c t" . multi-vterm)
   :config
   ;; Dedicated terminal height
