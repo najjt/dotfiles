@@ -21,7 +21,6 @@
                                    ("stash.org"         :maxlevel . 2)
                                    ("repeating.org"     :maxlevel . 2)
                                    ("misc.org"          :maxlevel . 1)
-                                   ("../misc/dator.org" :maxlevel . 1)
                                    ("calendar.org"      :level    . 0)))
         org-refile-use-outline-path 'file       ; Provide refile targets as path
         org-outline-path-complete-in-steps nil) ; Refile in a single go
@@ -65,8 +64,6 @@
         org-agenda-skip-deadline-if-done t
         org-agenda-skip-scheduled-if-done t
         org-agenda-todo-list-sublevels t
-        ;; org element cache often produced errors, so I disabled it
-        org-element-use-cache nil
         org-agenda-files '("~/notes/org")
 
         ;; Time grid settings
