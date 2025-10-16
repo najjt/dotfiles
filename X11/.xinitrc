@@ -16,7 +16,7 @@ fi
 which greenclip && if pgrep -x greenclip ; then
     echo greenclip already running
 else
-    greenclip daemon &
+    greenclip clear && greenclip daemon &
     disown
 fi
 
