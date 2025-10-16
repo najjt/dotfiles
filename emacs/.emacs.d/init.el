@@ -57,8 +57,9 @@
 ;; Initialize the package manager
 (package-initialize)
 
-;; Report about loading and config details
-(setq use-package-verbose t)
+(setq
+ use-package-always-ensure t
+ use-package-verbose t)
 
 ;; Add packages to load path
 (add-to-list 'load-path '"~/.emacs.d/elisp/packages")
