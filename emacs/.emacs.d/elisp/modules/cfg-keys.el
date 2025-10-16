@@ -55,10 +55,11 @@
     (evil-terminal-cursor-changer-activate))
 
   ;; Clearer indications of current evil state in modeline
-  (setq evil-emacs-state-tag         (propertize "-- EMACS --"        'face '((:background "dark orange" :foreground "black")))
-        evil-insert-state-tag        (propertize "-- INSERT --"      'face '((:background "light green"  :foreground "black")))
-        evil-visual-state-tag        (propertize "-- VISUAL --"      'face '((:background "pink"   :foreground "black")))
-        evil-visual-line-state-tag   (propertize "-- VISUAL LINE --" 'face '((:background "red"    :foreground "black"))))
+  (setq evil-emacs-state-tag         (propertize "-- EMACS --"        'face '((:background "dark orange"  :foreground "black")))
+        evil-insert-state-tag        (propertize "-- INSERT --"       'face '((:background "light green"  :foreground "black")))
+        evil-visual-char-tag         (propertize "-- VISUAL --"       'face '((:background "pink"         :foreground "black")))
+        evil-visual-line-tag         (propertize "-- VISUAL LINE --"  'face '((:background "beige"        :foreground "black")))
+        evil-visual-block-tag        (propertize "-- VISUAL BLOCK --" 'face '((:background "purple"       :foreground "black"))))
 
   :custom
   ;; Horizontal movement crosses lines
