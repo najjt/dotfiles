@@ -2,8 +2,8 @@
 
 (use-package emms
   :defer t
-  :bind (("C-c e" . emms-browser)
-         ("C-c C-c e" . emms-playlist-mode-go-popup)
+  :bind (("C-c e"   . emms-browser)
+         ("C-c C-e" . emms-playlist-mode-go-popup)
          :map emms-browser-mode-map
          ("<normal-state> q" . emms-filters-pop-cache))
   :config
