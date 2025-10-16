@@ -26,7 +26,7 @@
   :init
   (setq evil-want-integration t
         evil-want-keybinding nil
-        evil-want-C-u-scroll nil
+        evil-want-C-u-scroll t
         evil-want-C-i-jump nil)
 
   :config
