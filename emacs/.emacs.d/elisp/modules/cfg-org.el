@@ -237,10 +237,10 @@ If TEXT does not have a range, return nil."
 (defun my/custom-open-calendar ()
   "Open calendar with two weeks view"
   (interactive)
-  (cfw:open-calendar-buffer
+  (calfw-open-calendar-buffer
    :contents-sources
    (list
-    (cfw:org-create-source "medium purple"))
+    (calfw-org-create-source "medium purple"))
    :view 'two-weeks))
 
 ;; Generate mind maps from org files
