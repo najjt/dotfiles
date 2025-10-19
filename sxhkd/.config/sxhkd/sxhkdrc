@@ -1,9 +1,9 @@
 # Open Emacs client
-control + alt + Return
+super + m
     emacsclient -cn
 
 # Open web browser
-control + shift + Return
+super + n
     qutebrowser
 
 # Open application launcher
