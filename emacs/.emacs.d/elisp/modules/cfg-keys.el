@@ -8,9 +8,6 @@
 (keymap-global-set "C-+" #'text-scale-increase)
 (keymap-global-set "C--" #'text-scale-decrease)
 
-;; Open calendar
-(keymap-global-set "C-c k" 'my/custom-open-calendar)
-
 ;; Make escape quit prompts
 (keymap-global-set "<escape>" 'keyboard-escape-quit)
 
