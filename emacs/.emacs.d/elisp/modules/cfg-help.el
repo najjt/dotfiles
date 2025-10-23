@@ -25,7 +25,27 @@
 ;; Better completion style
 (use-package orderless
   :config
-  (setq completion-styles '(orderless)))
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles partial-completion))))
+  (completion-category-defaults nil) ;; Disable defaults, use orderless settings
+  (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
+
+;; Completion extensions
+(use-package cape
+  :init
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-file)
+  (add-hook 'completion-at-point-functions #'cape-elisp-block))
+
+;; Completions
+(use-package corfu
+  ;; :hook (prog-mode . corfu-mode)
+  :init (global-corfu-mode)
+  :config
+  ;; Use <TAB> for both indentation & completion
+  (setq tab-always-indent 'complete
+        completion-cycle-threshold 3))
 
 ;; Annotations for the minibuffer
 (use-package marginalia
