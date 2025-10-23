@@ -47,6 +47,8 @@ c.editor.command = ['emacsclient', '-c', '+{line}:{column}', '{file}']
 
 c.downloads.open_dispatcher = "mimeopen"
 
+config.set("scrolling.smooth", True)
+
 #
 # Appearance
 #
