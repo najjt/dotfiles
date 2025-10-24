@@ -5,7 +5,8 @@
   :bind (("C-c e"   . emms-browser)
          ("C-c C-x e" . emms-playlist-mode-go-popup)
          :map emms-browser-mode-map
-         ("<normal-state> q" . emms-filters-pop-cache))
+         ("<normal-state> q" . emms-filters-pop-cache)
+         ("q" . emms-filters-pop-cache))
   :config
   (emms-all)
   (setq emms-player-list '(emms-player-vlc)
