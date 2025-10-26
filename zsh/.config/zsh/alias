@@ -7,7 +7,7 @@ alias sudo='sudo '
 
 # If user is not root, pass these commands via sudo
 if [ $UID -ne 0 ]; then
-    alias reboot='sudo reboot'
+    alias reboot="sudo reboot"
     alias shutdown="sudo shutdown -h now"
 fi
 
