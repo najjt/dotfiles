@@ -1,10 +1,6 @@
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
 
-# Set PATH
-import os
-os.environ['PATH'] = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/najjt/.local/bin'
-
 # Automatically start playing `<video>` elements.
 c.content.autoplay = False
 
