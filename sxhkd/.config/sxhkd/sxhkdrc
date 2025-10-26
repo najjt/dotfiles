@@ -8,11 +8,11 @@ super + n
 
 # Open application launcher
 super + d
-    rofi -modi "run" -show run
+    dmenu_run -fn 'Unifont-12'
 
 # Clipboard history
 super + i
-    rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+    dmenu_clip
 
 # Open Org Mode capture frame
 super + c
