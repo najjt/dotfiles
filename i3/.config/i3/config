@@ -16,6 +16,8 @@ exec --no-startup-id $sd/autostart
 # Don't move to opposite window if moving focus towards screen border
 focus_wrapping no
 
+workspace_layout tabbed
+
 
 #
 # Appearance
