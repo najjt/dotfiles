@@ -199,8 +199,8 @@
 ;; Open multiple vterm buffers
 (use-package multi-vterm
   :bind
-  ("C-c C-t" . multi-vterm-dedicated-toggle)
-  ("C-c t" . multi-vterm)
+  ("C-c t" . multi-vterm-dedicated-toggle)
+  ("C-c C-x t" . multi-vterm)
   :config
   ;; Dedicated terminal height
   (setq multi-vterm-dedicated-window-height-percent 30))
