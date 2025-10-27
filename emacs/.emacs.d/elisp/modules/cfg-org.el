@@ -130,28 +130,6 @@
         ("e" . "example")
         ("q" . "quote")))
 
-;; Calendar framework
-(use-package calfw
-  :config
-  ;; Use Swedish calendar
-  (load "sv-kalender"))
-
-;; Integrate calfw with org
-(use-package calfw-org
-  :after calfw)
-
-(defun my/custom-open-calendar ()
-  "Open calendar with two weeks view"
-  (interactive)
-  (calfw-open-calendar-buffer
-   :contents-sources
-   (list
-    (calfw-org-create-source "medium purple"))
-   :view 'two-weeks))
-
-;; Open calendar
-(keymap-global-set "C-c k" 'my/custom-open-calendar)
-
 ;; Generate mind maps from org files
 (use-package org-mind-map
   :init
