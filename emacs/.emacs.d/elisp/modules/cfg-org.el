@@ -113,7 +113,7 @@
   :after org
   :pin melpa
   :defer t
-  :custom (org-contacts-files '("~/notes/org/contacts.org")))
+  :custom (org-contacts-files '("~/notes/org/kontakter.org")))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
