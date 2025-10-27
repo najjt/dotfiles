@@ -1,30 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package lsp-mode
-  :commands (lsp lsp-deferred)
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :config
-  ;; Only show diagnostics for the current file
-  (setq lsp-modeline-diagnostics-scope :file
-        ;; Hide icons in the breadcrumb
-        lsp-headerline-breadcrumb-icons-enable nil)
-  (lsp-enable-which-key-integration t))
-
-;; Tree view for different aspects of your code
-(use-package lsp-treemacs
-  :after lsp)
-
-;; UI enhancements for lsp mode
-(use-package lsp-ui
-  :hook (lsp-mode . lsp-ui-mode)
-  :custom
-  (lsp-ui-doc-position 'bottom))
-
-;; Java support for lsp mode
-(use-package lsp-java
-  :hook (java-mode . lsp-deferred))
-
 ;; Better commenting functionality
 (use-package evil-nerd-commenter
   :defer t
