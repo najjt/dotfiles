@@ -72,6 +72,10 @@
   (global-set-key (kbd "C-h k") #'helpful-key)
   (global-set-key (kbd "C-h x") #'helpful-command))
 
-(which-key-mode 1)
+;; Display help for next command keystroke
+(use-package which-key
+  :ensure nil
+  :diminish
+  :config (which-key-mode 1))
 
 (provide 'cfg-help)
