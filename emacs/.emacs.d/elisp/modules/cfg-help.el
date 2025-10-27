@@ -72,11 +72,6 @@
   (global-set-key (kbd "C-h k") #'helpful-key)
   (global-set-key (kbd "C-h x") #'helpful-command))
 
-;; Display help for next command keystroke
-(use-package which-key
-  :diminish
-  :config (which-key-mode 1))
-
 (defun isearch-occur ()
   "Invoke `occur' from within isearch and switch to the occur window."
   (interactive)
