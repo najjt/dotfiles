@@ -77,9 +77,6 @@
                 (my/enable-theme my-chosen-theme)
               (my/enable-theme 'modus-vivendi))))
 
-(use-package modus-themes
-  :ensure t)
-
 ;; Popup buffers
 (use-package popper
   :bind
