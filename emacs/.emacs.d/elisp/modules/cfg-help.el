@@ -45,6 +45,11 @@
   (setq tab-always-indent 'complete
         completion-cycle-threshold 3))
 
+(use-package nerd-icons-corfu
+  :defer t
+  :config
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+
 ;; Annotations for the minibuffer
 (use-package marginalia
   :config
