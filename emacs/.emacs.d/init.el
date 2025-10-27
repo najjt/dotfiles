@@ -12,7 +12,7 @@
 (add-hook 'emacs-startup-hook
       (lambda () (setq gc-cons-threshold better-gc-cons-threshold)))
 
-;; Garbage Collect when Emacs is out of focus and avoid garbage
+;; Garbage collect when Emacs is out of focus and avoid garbage
 ;; collection when using the minibuffer
 (add-hook 'emacs-startup-hook
       (lambda ()
