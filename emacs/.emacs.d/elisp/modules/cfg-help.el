@@ -76,10 +76,7 @@
   "Invoke `occur' from within isearch and switch to the occur window."
   (interactive)
   (let ((case-fold-search isearch-case-fold-search))
-    (occur (if isearch-regexp isearch-string (regexp-quote isearch-string)))
-    (let ((occur-window (get-buffer-window "*Occur*")))
-      (when occur-window
-        (select-window occur-window)))))
+    (occur (if isearch-regexp isearch-string (regexp-quote isearch-string)))))
 
 (define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
 
