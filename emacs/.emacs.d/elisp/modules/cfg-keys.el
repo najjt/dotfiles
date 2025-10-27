@@ -65,7 +65,7 @@
 ;; More vim keybindings (in non-file buffers)
 (use-package evil-collection
   :after evil
-  :diminish evil-collection-unimpaired-mode
+  :diminish
   :config
   (evil-collection-init)
 

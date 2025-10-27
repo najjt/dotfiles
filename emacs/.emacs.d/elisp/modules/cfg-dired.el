@@ -16,8 +16,7 @@
 ;; Use nerd icons in dired...
 (use-package nerd-icons-dired
   :diminish
-  :hook ((dired-mode . my/enable-nerd-icons-dired)
-         (dired-after-readin . my/enable-nerd-icons-dired)))
+  :hook ((dired-mode dired-after-readin). my/enable-nerd-icons-dired))
 
 ;; ... if in a graphical environment
 (defun my/enable-nerd-icons-dired ()

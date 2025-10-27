@@ -38,10 +38,9 @@
      ("date:7d..now AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Last 7 days" ?w)))
 
   ;; Fetch mail
-  (setq
-   mu4e-get-mail-command "mbsync -a"
-   mu4e-change-filenames-when-moving t   ; Needed for mbsync
-   mu4e-update-interval 300)             ; Update every 5 minutes
+  (setq mu4e-get-mail-command "mbsync -a"
+        mu4e-change-filenames-when-moving t   ; Needed for mbsync
+        mu4e-update-interval 300)             ; Update every 5 minutes
 
   ;; Send mail
   (setq sendmail-program "/usr/bin/msmtp"
@@ -76,22 +75,18 @@
   (setq mu4e-context-policy 'pick-first)
 
   ;; Other options
-  (setq
-   mu4e-confirm-quit nil
-   mu4e-headers-skip-duplicates t
-   mu4e-display-update-status-in-modeline t
-   mu4e-view-show-images t
-   mu4e-view-show-addresses t
-   mu4e-date-format "%d/%m/%y"
-   mu4e-headers-date-format "%d/%m/%Y"
-   mu4e-compose-dont-reply-to-self t
-   mu4e-view-fields '(:from :to :cc :bcc :subject :flags :date :maildir :mailing-list :tags :attachments :signature :decryption)
-   mu4e-headers-fields '((:human-date . 12) (:flags . 6) (:from . 22) (:subject))
-
-   ;; Re-flow mail so it's not hard wrapped
-   mu4e-compose-format-flowed t
-   ;; The column beyond which flowed lines are wrapped
-   fill-flowed-encode-column 80)
+  (setq mu4e-confirm-quit nil
+        mu4e-headers-skip-duplicates t
+        mu4e-display-update-status-in-modeline t
+        mu4e-view-show-images t
+        mu4e-view-show-addresses t
+        mu4e-date-format "%d/%m/%y"
+        mu4e-headers-date-format "%d/%m/%Y"
+        mu4e-compose-dont-reply-to-self t
+        mu4e-view-fields '(:from :to :cc :bcc :subject :flags :date :maildir :mailing-list :tags :attachments :signature :decryption)
+        mu4e-headers-fields '((:human-date . 12) (:flags . 6) (:from . 22) (:subject))
+        mu4e-compose-format-flowed t  ; Re-flow mail so it's not hard wrapped
+        fill-flowed-encode-column 80) ; The column beyond which flowed lines are wrapped
 
   ;; Move messages to the trash folder instead of completely deleting it
   (fset 'my/move-to-trash "mTrash")

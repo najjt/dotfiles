@@ -15,19 +15,10 @@
   (setq jinx-languages "sv en_US"))
 
 ;; Undo functionality
-(use-package vundo)
+(use-package vundo
+  :defer t)
 
 ;; Tabs are four spaces
 (setq-default tab-width 4 indent-tabs-mode nil)
-
-(use-package go-translate
-  :bind ("C-c o" . gt-do-translate)
-  :config
-  (setq gt-langs '(en sv))
-  (setq gt-default-translator
-        (gt-translator
-         :taker   (gt-taker :text 'word :prompt t)
-         :engines (gt-google-engine)
-         :render  (gt-buffer-render))))
 
 (provide 'cfg-text)

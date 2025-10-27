@@ -2,7 +2,7 @@
 
 ;; Show completions in a vertical UI
 (use-package vertico
-  :init
+  :config
   (vertico-mode))
 
 ;; Search and navigation commands
@@ -11,9 +11,8 @@
   :bind (("C-c r" . consult-ripgrep)
          ("C-c f" . consult-find))
   :config
-  (with-eval-after-load 'consult
-    (setq consult-ripgrep-args
-          (concat consult-ripgrep-args " --hidden")))
+  (setq consult-ripgrep-args
+        (concat consult-ripgrep-args " --hidden"))
 
   (setq-default consult-find-args "find .")
 
@@ -28,8 +27,8 @@
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles partial-completion))))
-  (completion-category-defaults nil) ;; Disable defaults, use orderless settings
-  (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
+  (completion-category-defaults nil)   ; Disable defaults, use orderless settings
+  (completion-pcm-leading-wildcard t)) ; Emacs 31: partial-completion behaves like substring
 
 ;; Completion extensions
 (use-package cape
@@ -40,7 +39,6 @@
 
 ;; Completions
 (use-package corfu
-  ;; :hook (prog-mode . corfu-mode)
   :init (global-corfu-mode)
   :config
   ;; Use <TAB> for both indentation & completion
@@ -67,7 +65,6 @@
   ;; and macros. `helpful-function' is functions only, so we provide
   ;; `helpful-callable' as a drop-in replacement.
   (global-set-key (kbd "C-h f") #'helpful-callable)
-
   (global-set-key (kbd "C-h v") #'helpful-variable)
   (global-set-key (kbd "C-h k") #'helpful-key)
   (global-set-key (kbd "C-h x") #'helpful-command))

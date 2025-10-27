@@ -1,8 +1,8 @@
 ;; -*- lexical-binding: t; -*-
 
 ;; User information
-(setq user-full-name "Martin Lönn Andersson")
-(setq user-mail-address "martin@malon.se")
+(setq user-full-name "Martin Lönn Andersson"
+      user-mail-address "martin@malon.se")
 
 ;; Set default browser
 (setq browse-url-browser-function 'browse-url-generic
@@ -30,9 +30,9 @@
 (recentf-mode 1)
 
 ;; Automatically reread files when changed
-(setopt auto-revert-avoid-polling t)
-(setopt auto-revert-interval 5)
-(setopt auto-revert-check-vc-info t)
+(setopt auto-revert-avoid-polling t
+        auto-revert-interval 5
+        auto-revert-check-vc-info t)
 (global-auto-revert-mode t)
 
 ;; Automatically reload non-file buffers
@@ -100,12 +100,9 @@
 ;; Open man pages in other window
 (setq Man-notify-method 'aggressive)
 
-;; Use a single buffer for the dictionary
-(setq dictionary-use-single-buffer t)
-
-;; Use local dictionary server
-;; See https://www.masteringemacs.org/article/wordsmithing-in-emacs
-(setq dictionary-server "localhost")
+;; Dictionary
+(setq dictionary-use-single-buffer t ; Use a single buffer for the dictionary
+      dictionary-server "localhost") ; Use local dictionary server
 
 ;; Copy to system clipboard in terminal
 (unless (display-graphic-p)
@@ -167,7 +164,6 @@
 (global-set-key (kbd "C-x |") 'toggle-window-split)
 
 (use-package pdf-tools
-  :defer t
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :bind (:map pdf-view-mode-map
               ("M-n" . pdf-view-next-page)
@@ -205,15 +201,14 @@
   ;; Dedicated terminal height
   (setq multi-vterm-dedicated-window-height-percent 30))
 
-
 ;; Focus new frames
 (defun my/focus-new-client-frame ()
   (select-frame-set-input-focus (selected-frame)))
 (add-hook 'server-after-make-frame-hook #'my/focus-new-client-frame)
 
 ;; Use Emacs minibuffer for GPG pinentry
-(setq epa-pinentry-mode 'loopback)
-(setq epg-pinentry-mode 'loopback)
+(setq epa-pinentry-mode 'loopback
+      epg-pinentry-mode 'loopback)
 
 ;; Refresh packages when using package-install
 ;; if last refresh was longer than 24 hours ago
