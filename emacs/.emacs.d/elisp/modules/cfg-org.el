@@ -15,6 +15,8 @@
         org-log-done 'time
         org-log-into-drawer t)
 
+  (load "sv-kalender")
+
   ;; Refile settings
   (setq org-default-notes-file (concat org-directory "/refile.org")
         org-refile-targets (quote (("todo.org"          :maxlevel . 2)
