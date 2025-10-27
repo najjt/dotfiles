@@ -294,4 +294,7 @@
         ("C-d" . isearch-forward-symbol-at-point)
         ("C-h" . isearch-query-replace)))
 
+(when (eq system-type 'gnu/linux)
+  (use-package sxhkdrc-mode))
+
 (provide 'cfg-general)
