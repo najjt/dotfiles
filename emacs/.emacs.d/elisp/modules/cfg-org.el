@@ -101,10 +101,10 @@
      ("n" "Note" entry (file "")
       "* %?\n%i\n")
 
-     ("e" "Calendar event" entry (file "calendar.org")
+     ("e" "Calendar event" entry (file "kalender.org")
       "* %?\n%^t")
 
-     ("c" "Contact" entry (file "contacts.org")
+     ("c" "Contact" entry (file "kontakter.org")
       "* %? \n:PROPERTIES:\n:PHONE: %^{Phone number}\n:END:"))))
 
 (use-package org-contacts
