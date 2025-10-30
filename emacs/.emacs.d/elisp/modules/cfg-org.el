@@ -75,6 +75,12 @@
           "...." "------------")
         org-agenda-current-time-string "← now")
 
+  (setq org-agenda-custom-commands
+        '(("w" "Week agenda"
+           ((agenda "" ((org-agenda-span 'week)))))
+          ("k" "Month agenda"
+           ((agenda "" ((org-agenda-span 'month)))))))
+
   ;; Date heading settings
   (custom-set-faces
    '(org-agenda-date ((t (:height 1.0 :weight bold :background unspecified))))
