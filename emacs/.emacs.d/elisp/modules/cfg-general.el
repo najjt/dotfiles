@@ -297,4 +297,14 @@
 (when (eq system-type 'gnu/linux)
   (use-package sxhkdrc-mode))
 
+;; Search and navigation commands
+(use-package consult
+  :defer nil
+  :bind ("C-c f" . consult-find)
+  :config
+  (global-set-key [remap switch-to-buffer] 'consult-buffer)
+  (global-set-key [remap switch-to-buffer-other-window] 'consult-buffer-other-window)
+  (global-set-key [remap switch-to-buffer-other-frame] 'consult-buffer-other-frame)
+  (global-set-key [remap goto-line] 'consult-goto-line))
+
 (provide 'cfg-general)

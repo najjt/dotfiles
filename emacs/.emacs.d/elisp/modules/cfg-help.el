@@ -5,22 +5,6 @@
   :config
   (vertico-mode))
 
-;; Search and navigation commands
-(use-package consult
-  :defer nil
-  :bind (("C-c r" . consult-ripgrep)
-         ("C-c f" . consult-find))
-  :config
-  (setq consult-ripgrep-args
-        (concat consult-ripgrep-args " --hidden"))
-
-  (setq-default consult-find-args "find .")
-
-  (global-set-key [remap switch-to-buffer] 'consult-buffer)
-  (global-set-key [remap switch-to-buffer-other-window] 'consult-buffer-other-window)
-  (global-set-key [remap switch-to-buffer-other-frame] 'consult-buffer-other-frame)
-  (global-set-key [remap goto-line] 'consult-goto-line))
-
 ;; Better completion style
 (use-package orderless
   :config
