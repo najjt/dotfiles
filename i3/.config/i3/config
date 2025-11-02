@@ -64,7 +64,7 @@ workspace $ws9 output eDP-1
 ## Window management
 
 # Kill focused window
-bindsym $mod+Shift+d kill
+bindsym $mod+Shift+x kill
 
 # Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
