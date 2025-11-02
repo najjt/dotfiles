@@ -43,16 +43,6 @@
   :defer t
   :diminish)
 
-;; Provides commands to run based on current context
-(use-package embark
-  :defer nil
-  :bind ("M-;" . embark-act))
-
-;; Integrate embark with consult
-(use-package embark-consult
-  :after embark
-  :hook (embark-collect-mode-hook . embark-consult-preview-minor-mode))
-
 ;; Increase large file warning threshold
 (setq large-file-warning-threshold 100000000)
 
