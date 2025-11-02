@@ -20,8 +20,8 @@
   ;; Refile settings
   (setq org-default-notes-file (concat org-directory "/refile.org")
         org-refile-targets (quote (("todo.org"          :maxlevel . 2)
-                                   ("arkiv.org"         :maxlevel . 2)
-                                   ("repeat.org"        :maxlevel . 2)
+                                   ("repeat.org"        :maxlevel . 1)
+                                   ("arkiv.org"         :maxlevel . 1)
                                    ("misc.org"          :maxlevel . 1)
                                    ("kalender.org"      :level    . 0)))
         org-refile-use-outline-path 'file       ; Provide refile targets as path
