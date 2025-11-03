@@ -280,6 +280,8 @@
   :defer nil
   :bind ("C-c f" . consult-find)
   :config
+  (setq-default consult-find-args "find .")
+
   (global-set-key [remap switch-to-buffer] 'consult-buffer)
   (global-set-key [remap switch-to-buffer-other-window] 'consult-buffer-other-window)
   (global-set-key [remap switch-to-buffer-other-frame] 'consult-buffer-other-frame)
