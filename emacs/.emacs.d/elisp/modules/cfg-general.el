@@ -239,18 +239,6 @@
 ;; desktop notifications
 (setq alert-default-style 'libnotify)
 
-(defun my/select-window (window &rest _)
-  "Select WINDOW for display-buffer-alist"
-  (select-window window))
-
-;; Settings for occur window
-(setq display-buffer-alist
-      '(((or . ((derived-mode . occur-mode)))
-         (display-buffer-reuse-mode-window display-buffer-at-bottom)
-         (body-function . my/select-window)
-         (dedicated . t)
-         (preserve-size . (t . t)))))
-
 (use-package isearch
   :ensure nil
   :defer t

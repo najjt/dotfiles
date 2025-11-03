@@ -253,4 +253,22 @@ to if called with ARG, or any prefix argument."
   :config
   (global-colorful-mode t))
 
+(defun my/select-window (window &rest _)
+  "Select WINDOW for display-buffer-alist"
+  (select-window window))
+
+;; Settings for displaying buffers
+(setq display-buffer-alist
+      '(((or . ((derived-mode . occur-mode)))
+         (display-buffer-reuse-mode-window display-buffer-at-bottom)
+         (body-function . my/select-window)
+         (dedicated . t)
+         (preserve-size . (t . t)))
+
+         ("\\*grep\\*"
+         (display-buffer-reuse-mode-window)
+         (body-function . my/select-window)
+         (dedicated . t)
+         (preserve-size . (t . t)))))
+
 (provide 'cfg-ui)
