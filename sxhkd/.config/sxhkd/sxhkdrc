@@ -7,7 +7,7 @@ super + n
     qutebrowser
 
 # Open application launcher
-super + d
+super + k
     rofi -modi "run" -show run
 
 # Clipboard history
