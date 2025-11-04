@@ -1,58 +1,8 @@
 configuration {
-        font: "UnifontExMono 14";
-}
-
-@theme "android_notification"
-
-* {
-        black: rgba ( 30, 30, 30, 100 %);
-        white: rgba (206, 206, 206, 100 %);
+        font: "UnifontExMono 13";
 }
 
 window {
-        width: 20%;
-        background-color: @black;
-        border: 2px;
-}
-
-mainbox {
-        padding: 1;
-}
-
-inputbar {
-        padding: 2;
-        margin: 2;
-}
-
-message {
-        border-color: @white;
-}
-
-listview {
-        lines: 7;
-        padding: 20;
-        scrollbar: false;
-        border: 0px;
-}
-
-element {
-        padding: 3;
-        margin: 0;
-}
-
-element-text {
-        highlight: none;
-}
-
-element.normal.normal {
-        background-color: @black;
-}
-
-element.alternate.normal {
-        background-color: @black;
-}
-
-element.selected.normal {
-        background-color: @black;
-        text-color: ForestGreen;
+        width: 30%;
+        height: 30%;
 }
