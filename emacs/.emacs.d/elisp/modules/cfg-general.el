@@ -94,8 +94,6 @@
     :config
     (xclip-mode)))
 
-(global-set-key (kbd "C-x |") 'toggle-window-split)
-
 (use-package pdf-tools
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :bind (:map pdf-view-mode-map
