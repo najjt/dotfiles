@@ -182,11 +182,6 @@ to if called with ARG, or any prefix argument."
                                      (when (display-graphic-p)
                                        (nerd-icons-completion-mode)))))
 
-(use-package nerd-icons-mode-line
-  :ensure t
-  :vc (:url "https://github.com/grolongo/nerd-icons-mode-line")
-  :config (nerd-icons-mode-line-global-mode t))
-
 (use-package nerd-icons-corfu
   :after corfu
   :init
