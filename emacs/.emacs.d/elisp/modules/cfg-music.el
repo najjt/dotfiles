@@ -5,7 +5,8 @@
          ("C-c C-x e" . emms-playlist-mode-go-popup)
          :map emms-browser-mode-map
          ("<normal-state> q" . emms-filters-pop-cache)
-         ("q" . emms-filters-pop-cache))
+         ("q" . emms-filters-pop-cache)
+         ("C-<return>" . my/emms-browser-add-tracks-and-play))
   :config
   (emms-all)
   (setq emms-player-list '(emms-player-vlc)
@@ -60,6 +61,12 @@ Returns the path to the album art or a default image if no album art is found."
                     (format "🎝 %s" title)
                     (format "%s\n<i>%s</i>" artist album))))
 
-  (add-hook 'emms-player-started-hook #'emms-notify-track-description))
+  (add-hook 'emms-player-started-hook #'emms-notify-track-description)
+
+  (defun my/emms-browser-add-tracks-and-play ()
+    "Add all tracks at point, play the first added track, and open the playlist buffer."
+    (interactive)
+    (emms-browser-add-tracks-and-play)
+    (emms-playlist-mode-go-popup)))
 
 (provide 'cfg-music)
