@@ -77,40 +77,6 @@
                 (my/enable-theme my-chosen-theme)
               (my/enable-theme 'modus-vivendi))))
 
-;; Popup buffers
-(use-package popper
-  :bind
-  ("M-`"     . popper-cycle)
-  ("C-c p d" . popper-kill-latest-popup)
-  ;; US kb layout
-  ("C-`"     . popper-toggle)
-  ("C-M-`"   . popper-toggle-type)
-  ;; SV kb layout
-  ("C-§"     . popper-toggle)
-  ("C-M-§"   . popper-toggle-type)
-  :init
-  (setq popper-reference-buffers
-        '("\\*Compile-Log\\*"
-          "^\\*compilation.*\\*$"
-          "Output\\*$"
-          "\\*Async Shell Command\\*"
-          "^\\*tex-shell.*\\*$"
-          "^\\*Flycheck.*\\*$"
-          "^\\*LSP Error List*\\*$"
-          "^\\*vterminal - dedicated\\*$"
-          magit-mode
-          comint-mode
-          shell-mode
-          term-mode
-          help-mode
-          helpful-mode
-          compilation-mode))
-  :config
-  (setq popper-mode-line " POP " ; Let it breathe a bit
-        popper-window-height 15)
-  (popper-mode 1)
-  (popper-echo-mode 1))
-
 ;; Hide minor modes in modeline
 (use-package diminish
   :diminish (auto-fill-function
@@ -202,7 +168,7 @@ to if called with ARG, or any prefix argument."
          (dedicated . t)
          (preserve-size . (t . t)))
 
-         ("\\*grep\\*"
+        ("\\*grep\\*"
          (display-buffer-reuse-mode-window)
          (body-function . my/select-window)
          (dedicated . t)
