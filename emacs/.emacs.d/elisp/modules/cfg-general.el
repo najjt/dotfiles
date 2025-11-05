@@ -94,9 +94,6 @@
     :config
     (xclip-mode)))
 
-;; Use minibuffer for epa password interface
-(setq egp-pinentry-mode 'loopback)
-
 (global-set-key (kbd "C-x |") 'toggle-window-split)
 
 (use-package pdf-tools
