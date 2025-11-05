@@ -29,10 +29,10 @@ else
 fi
 
 # Hide mouse cursor when not in use
-which unclutter && if pgrep -x unclutter ; then
-    echo unclutter already running
+which xbanish && if pgrep -x xbanish ; then
+    echo xbanish already running
 else
-    unclutter &
+    xbanish -t 5 -s &
     disown
 fi
 
