@@ -271,4 +271,29 @@ to if called with ARG, or any prefix argument."
          (dedicated . t)
          (preserve-size . (t . t)))))
 
+(use-package nerd-icons-completion
+  :after marginalia
+  :config
+  (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup)
+  (add-hook 'minibuffer-setup-hook (lambda ()
+                                     (when (display-graphic-p)
+                                       (nerd-icons-completion-mode)))))
+
+(use-package nerd-icons-mode-line
+  :ensure t
+  :vc (:url "https://github.com/grolongo/nerd-icons-mode-line")
+  :custom
+  (nerd-icons-mode-line-v-adjust 0.1) ; default value
+  (nerd-icons-mode-line-size 1.0) ; default value
+  :config (nerd-icons-mode-line-global-mode t))
+
+(use-package nerd-icons-corfu
+  :after corfu
+  :init
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+
+(use-package nerd-icons-dired
+  :diminish
+  :hook (dired-mode . nerd-icons-dired-mode))
+
 (provide 'cfg-ui)

@@ -13,17 +13,6 @@
   ;; No infinite dired buffers!
   (dired-kill-when-opening-new-dired-buffer t))
 
-;; Use nerd icons in dired...
-(use-package nerd-icons-dired
-  :diminish
-  :hook ((dired-mode dired-after-readin). my/enable-nerd-icons-dired))
-
-;; ... if in a graphical environment
-(defun my/enable-nerd-icons-dired ()
-  (when (display-graphic-p)
-    (nerd-icons-dired-mode)
-    (nerd-icons-dired--refresh)))
-
 (use-package browse-url
   :ensure nil
   :custom  (browse-url-handlers '(("\\`file:" . browse-url-default-browser))))

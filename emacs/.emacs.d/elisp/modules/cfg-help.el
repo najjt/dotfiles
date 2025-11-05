@@ -29,22 +29,10 @@
   (setq tab-always-indent 'complete
         completion-cycle-threshold 3))
 
-(use-package nerd-icons-corfu
-  :init
-  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
-
 ;; Annotations for the minibuffer
 (use-package marginalia
   :config
   (marginalia-mode 1))
-
-(use-package nerd-icons-completion
-  :after marginalia
-  :config
-  (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup)
-  (add-hook 'minibuffer-setup-hook (lambda ()
-                                     (when (display-graphic-p)
-                                       (nerd-icons-completion-mode)))))
 
 ;; More detailed help buffers
 (use-package helpful
