@@ -130,6 +130,7 @@
 (setq org-structure-template-alist
       '(("l" . "src emacs-lisp")
         ("j" . "src java")
+        ("h" . "src sh")
         ("s" . "src")
         ("e" . "example")
         ("q" . "quote")))
