@@ -1,5 +1,8 @@
 ;; -*- lexical-binding: t; -*-
 
+;; Undo and redo changes in window layout
+(winner-mode 1)
+
 ;; Manage windows
 (use-package ace-window
   :bind ("M-o" . ace-window)

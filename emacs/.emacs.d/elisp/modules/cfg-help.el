@@ -50,4 +50,10 @@
   :diminish
   :config (which-key-mode 1))
 
+;; Display current and total matches
+(use-package anzu
+  :diminish
+  :config
+  (global-anzu-mode 1))
+
 (provide 'cfg-help)
