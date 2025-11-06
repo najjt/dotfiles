@@ -39,7 +39,7 @@
 ;; Automatically reload non-file buffers
 (setq global-auto-revert-non-file-buffers t)
 
-;; Edit files with sudo privileges
+;; sudo privileges
 (use-package sudo-edit
   :defer t
   :diminish)
@@ -47,8 +47,7 @@
 ;; Increase large file warning threshold
 (setq large-file-warning-threshold 100000000)
 
-;; Clean up unneccesary whitespace on save,
-;; unless in markdown mode
+;; Clean up unneccesary whitespace on save, unless in markdown mode
 (defun my/whitespace-cleanup ()
   (unless (derived-mode-p 'markdown-mode)
     (whitespace-cleanup)))
@@ -81,7 +80,7 @@
       auto-window-vscroll nil
       fast-but-imprecise-scrolling nil
       mouse-wheel-scroll-amount '(1 ((shift) . 1))
-      mouse-wheel-progressive-speed nil
+      mouse-wheel-progressive-speed t
       hscroll-step 3
       hscroll-margin 3)
 
@@ -90,10 +89,10 @@
       dictionary-server "localhost") ; Use local dictionary server
 
 ;; Copy to system clipboard in terminal
-(unless (display-graphic-p)
-  (use-package xclip
-    :config
-    (xclip-mode)))
+(use-package xclip
+  :if (not (display-graphic-p))
+  :config
+  (xclip-mode))
 
 (use-package pdf-tools
   :mode ("\\.pdf\\'" . pdf-view-mode)
@@ -127,7 +126,7 @@
 ;; Open multiple vterm buffers
 (use-package multi-vterm
   :bind
-  ("C-c t" . multi-vterm-dedicated-toggle)
+  ("C-c t"     . multi-vterm-dedicated-toggle)
   ("C-c C-x t" . multi-vterm)
   :config
   ;; Dedicated terminal height
@@ -177,8 +176,7 @@
   (customize-save-variable 'package-last-refresh-date
                            (format-time-string "%Y-%m-%dT%H:%M")))
 
-;; Set default alert style to send
-;; desktop notifications
+;; Set default alert style to send desktop notifications
 (setq alert-default-style 'libnotify)
 
 (use-package isearch
@@ -196,7 +194,7 @@
         (ignore-errors (isearch-done t t)))
       (occur query)))
 
-  ;; use selection to search
+  ;; Use selection to search
   (defadvice isearch-mode (around isearch-mode-default-string (forward &optional regexp op-fun recursive-edit word-p) activate)
     (if (and transient-mark-mode mark-active (not (eq (mark) (point))))
         (progn
@@ -223,7 +221,6 @@
   :bind ("C-c f" . consult-find)
   :config
   (setq-default consult-find-args "find .")
-
   (global-set-key [remap switch-to-buffer] 'consult-buffer)
   (global-set-key [remap switch-to-buffer-other-window] 'consult-buffer-other-window)
   (global-set-key [remap switch-to-buffer-other-frame] 'consult-buffer-other-frame)

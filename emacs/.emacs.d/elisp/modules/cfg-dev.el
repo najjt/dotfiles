@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-;; Better commenting functionality
+;; Better commenting
 (use-package evil-nerd-commenter
   :defer t
   :bind ("M-/" . evilnc-comment-or-uncomment-lines))
@@ -31,15 +31,10 @@
 
 ;; Common file types
 (use-package yaml-mode)
-
 (use-package json-mode)
-
 (use-package csv-mode)
-
 (use-package markdown-mode)
-
 (use-package lua-mode)
-
 (use-package markdown-mode)
 
 (use-package prog-mode

@@ -1,12 +1,12 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package emms
-  :bind (("C-c e"   . emms-browser)
-         ("C-c C-x e" . emms-playlist-mode-go-popup)
+  :bind (("C-c e"            . emms-browser)
+         ("C-c C-x e"        . emms-playlist-mode-go-popup)
          :map emms-browser-mode-map
          ("<normal-state> q" . emms-filters-pop-cache)
-         ("q" . emms-filters-pop-cache)
-         ("C-<return>" . my/emms-browser-add-tracks-and-play))
+         ("q"                . emms-filters-pop-cache)
+         ("C-<return>"       . my/emms-browser-add-tracks-and-play))
   :config
   (emms-all)
   (setq emms-player-list '(emms-player-vlc)

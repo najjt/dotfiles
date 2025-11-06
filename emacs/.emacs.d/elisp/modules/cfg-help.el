@@ -14,19 +14,19 @@
   (completion-category-defaults nil)   ; Disable defaults, use orderless settings
   (completion-pcm-leading-wildcard t)) ; Emacs 31: partial-completion behaves like substring
 
-;; Completion extensions
-(use-package cape
-  :init
-  (add-hook 'completion-at-point-functions #'cape-dabbrev)
-  (add-hook 'completion-at-point-functions #'cape-file)
-  (add-hook 'completion-at-point-functions #'cape-elisp-block))
-
 ;; Completions
 (use-package corfu
   :init (global-corfu-mode)
   :config
   ;; Use <TAB> for both indentation & completion
   (setq tab-always-indent 'complete))
+
+;; Completion extensions
+(use-package cape
+  :init
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-file)
+  (add-hook 'completion-at-point-functions #'cape-elisp-block))
 
 ;; Annotations for the minibuffer
 (use-package marginalia
