@@ -88,28 +88,6 @@
              flymake-mode
              hs-minor-mode))
 
-;; Center buffers
-(use-package olivetti
-  :defer t
-  :commands (olivetti-mode)
-  :custom (olivetti-body-width 85)
-  :init
-  (defun my/olivetti-conditional-enable ()
-    "Enable `olivetti-mode` only in Org or Markdown buffers."
-    (when (derived-mode-p 'org-mode 'markdown-mode)
-      (olivetti-mode 1)))
-
-  (defun my/olivetti-conditional-disable ()
-    "Disable `olivetti-mode` if not in Org or Markdown buffers."
-    (unless (derived-mode-p 'org-mode 'markdown-mode)
-      (when (bound-and-true-p olivetti-mode)
-        (olivetti-mode -1))))
-
-  ;; Add hooks globally at init time
-  (add-hook 'after-change-major-mode-hook #'my/olivetti-conditional-disable)
-  (add-hook 'org-mode-hook #'my/olivetti-conditional-enable)
-  (add-hook 'markdown-mode-hook #'my/olivetti-conditional-enable))
-
 ;; Show full path to file in header line
 (defun my/set-header-line-for-files-only ()
   "Set `header-line-format` to show bold file name info only in file-visiting buffers."
