@@ -59,6 +59,9 @@
 ;; Open man pages in other window
 (setq Man-notify-method 'aggressive)
 
+;; Auto focus help-mode windows
+(setq help-window-select t)
+
 ;; Popup windows
 (use-package popper
   :bind
