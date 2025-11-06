@@ -26,8 +26,7 @@
   :init (global-corfu-mode)
   :config
   ;; Use <TAB> for both indentation & completion
-  (setq tab-always-indent 'complete
-        completion-cycle-threshold 3))
+  (setq tab-always-indent 'complete))
 
 ;; Annotations for the minibuffer
 (use-package marginalia
