@@ -74,8 +74,7 @@
 (add-hook 'after-init-hook
           (lambda ()
             (if (boundp 'my-chosen-theme)
-                (my/enable-theme my-chosen-theme)
-              (my/enable-theme 'modus-vivendi))))
+                (my/enable-theme my-chosen-theme))))
 
 ;; Hide minor modes in modeline
 (use-package diminish
