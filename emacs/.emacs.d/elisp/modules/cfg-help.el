@@ -19,7 +19,8 @@
   :init (global-corfu-mode)
   :config
   ;; Use <TAB> for both indentation & completion
-  (setq tab-always-indent 'complete))
+  (setq tab-always-indent 'complete
+        completion-cycle-threshold 1))
 
 ;; Completion extensions
 (use-package cape
