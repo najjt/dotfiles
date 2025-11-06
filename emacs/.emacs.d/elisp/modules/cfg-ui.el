@@ -89,27 +89,6 @@
              flymake-mode
              hs-minor-mode))
 
-;; Enable background transparency
-(add-to-list 'default-frame-alist '(alpha-background . 90))
-
-;; Toggle window transparency
-;; Source: https://kristofferbalintona.me/posts/202206071000/
-(defun my/toggle-window-transparency (arg)
-  "Toggle the value of `alpha-background`.
-
-Toggles between 100 and 90 by default. Can choose which value to change
-to if called with ARG, or any prefix argument."
-  (interactive "P")
-  (let ((transparency (pcase arg
-                        ((pred numberp) arg)
-                        ((pred consp) (read-number "Change the transparency to which value (0-100)? "))
-                        (_
-                         (pcase (frame-parameter nil 'alpha-background)
-                           (90 100)
-                           (100 90)
-                           (_ 100))))))
-    (set-frame-parameter nil 'alpha-background transparency)))
-
 ;; Center buffers
 (use-package olivetti
   :defer t
