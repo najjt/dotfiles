@@ -36,6 +36,7 @@
 (use-package markdown-mode)
 (use-package lua-mode)
 (use-package markdown-mode)
+(use-package ini-mode)
 
 (use-package prog-mode
   :ensure nil
