@@ -187,8 +187,4 @@ to if called with ARG, or any prefix argument."
   :init
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
-(use-package nerd-icons-dired
-  :diminish
-  :hook (dired-mode . nerd-icons-dired-mode))
-
 (provide 'cfg-ui)
