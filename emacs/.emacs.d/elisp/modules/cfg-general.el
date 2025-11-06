@@ -65,34 +65,15 @@
 ;; Automatically kill all active processes when closing Emacs
 (setq confirm-kill-processes nil)
 
-;; Add a newline automatically at the end of the file upon save
-(setq require-final-newline t)
-
 ;; Make switching buffers more consistent
 (setopt switch-to-buffer-obey-display-actions t)
 
-;; Smooth scrolling
-(setq scroll-step 10
-      scroll-margin 10
-      scroll-conservatively 101
-      scroll-up-aggressively 0.01
-      scroll-down-aggressively 0.01
-      auto-window-vscroll nil
-      fast-but-imprecise-scrolling nil
-      mouse-wheel-scroll-amount '(1 ((shift) . 1))
-      mouse-wheel-progressive-speed t
-      hscroll-step 3
-      hscroll-margin 3)
+;; Use minibuffer whilst in the minibuffer
+(setopt enable-recursive-minibuffers t)
 
 ;; Dictionary
 (setq dictionary-use-single-buffer t ; Use a single buffer for the dictionary
       dictionary-server "localhost") ; Use local dictionary server
-
-;; Copy to system clipboard in terminal
-(use-package xclip
-  :if (not (display-graphic-p))
-  :config
-  (xclip-mode))
 
 (use-package pdf-tools
   :mode ("\\.pdf\\'" . pdf-view-mode)
@@ -179,46 +160,14 @@
 ;; Set default alert style to send desktop notifications
 (setq alert-default-style 'libnotify)
 
-(use-package isearch
-  :ensure nil
-  :defer t
-  :config
-  ;; Open occur from current isearch results
-  (defun my/occur-from-isearch ()
-    (interactive)
-    (let ((query (if isearch-regexp
-               isearch-string
-             (regexp-quote isearch-string))))
-      (isearch-update-ring isearch-string isearch-regexp)
-      (let (search-nonincremental-instead)
-        (ignore-errors (isearch-done t t)))
-      (occur query)))
-
-  ;; Use selection to search
-  (defadvice isearch-mode (around isearch-mode-default-string (forward &optional regexp op-fun recursive-edit word-p) activate)
-    (if (and transient-mark-mode mark-active (not (eq (mark) (point))))
-        (progn
-          (isearch-update-ring (buffer-substring-no-properties (mark) (point)))
-          (deactivate-mark)
-          ad-do-it
-          (if (not forward)
-              (isearch-repeat-backward)
-            (goto-char (mark))
-            (isearch-repeat-forward)))
-      ad-do-it))
-  :bind
-  (:map isearch-mode-map
-        ("C-o" . my/occur-from-isearch)
-        ("C-d" . isearch-forward-symbol-at-point)
-        ("C-h" . isearch-query-replace)))
-
 (when (eq system-type 'gnu/linux)
   (use-package sxhkdrc-mode))
 
 ;; Search and navigation commands
 (use-package consult
   :defer nil
-  :bind ("C-c f" . consult-find)
+  :bind (("C-c f" . consult-find)
+         ("M-y"   . consult-yank-pop))
   :config
   (setq-default consult-find-args "find .")
   (global-set-key [remap switch-to-buffer] 'consult-buffer)

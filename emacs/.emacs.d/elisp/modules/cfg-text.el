@@ -6,6 +6,9 @@
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (setq-default fill-column 80)
 
+;; Add a newline automatically at the end of the file upon save
+(setq require-final-newline t)
+
 ;; Spell checking
 (use-package jinx
   :diminish
@@ -20,5 +23,47 @@
 
 ;; Tabs are four spaces
 (setq-default tab-width 4 indent-tabs-mode nil)
+
+(use-package isearch
+  :ensure nil
+  :defer t
+  :config
+  ;; Open occur from current isearch results
+  (defun my/occur-from-isearch ()
+    (interactive)
+    (let ((query (if isearch-regexp
+               isearch-string
+             (regexp-quote isearch-string))))
+      (isearch-update-ring isearch-string isearch-regexp)
+      (let (search-nonincremental-instead)
+        (ignore-errors (isearch-done t t)))
+      (occur query)))
+
+  ;; Use selection to search
+  (defadvice isearch-mode (around isearch-mode-default-string (forward &optional regexp op-fun recursive-edit word-p) activate)
+    (if (and transient-mark-mode mark-active (not (eq (mark) (point))))
+        (progn
+          (isearch-update-ring (buffer-substring-no-properties (mark) (point)))
+          (deactivate-mark)
+          ad-do-it
+          (if (not forward)
+              (isearch-repeat-backward)
+            (goto-char (mark))
+            (isearch-repeat-forward)))
+      ad-do-it))
+  :bind
+  (:map isearch-mode-map
+        ("C-o" . my/occur-from-isearch)
+        ("C-d" . isearch-forward-symbol-at-point)
+        ("C-h" . isearch-query-replace)))
+
+;; Copy to system clipboard in terminal
+(use-package xclip
+  :if (not (display-graphic-p))
+  :config
+  (xclip-mode))
+
+;; Writable grep buffers
+(use-package wgrep)
 
 (provide 'cfg-text)
