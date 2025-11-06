@@ -90,4 +90,66 @@
   (popper-mode 1)
   (popper-echo-mode 1))
 
+(use-package hydra
+  :bind ("C-c q" . hydra-window/body)
+  :config
+  ;; Resize window
+  (defhydra hydra-window (:timeout 4)
+    "
+  Resize window:
+  -------------
+  [_h_] Decrease width
+  [_j_] Increase height
+  [_k_] Decrease height
+  [_l_] Increase width
+  [_b_] Balance window sizes
+"
+    ("h" (my/window-width-decrease)  nil)
+    ("j" (my/window-height-increase) nil)
+    ("k" (my/window-height-decrease) nil)
+    ("l" (my/window-width-increase)  nil)
+    ("b" (balance-windows)  nil)
+    ("q" nil nil :exit t)))
+
+;; Resizes the window width based on the input
+(defun my/resize-window-width (w)
+  "Resizes the window width based on W."
+  (interactive (list (if (> (count-windows) 1)
+                         (read-number "Set the current window width in [1~9]x10%: ")
+                       (error "You need more than 1 window to execute this function!")))
+               (message "%s" w)
+               (window-resize nil (- (truncate (* (/ w 10.0) (frame-width))) (window-total-width)) t)))
+
+;; Resizes the window height based on the input
+(defun my/resize-window-height (h)
+  "Resizes the window height based on H."
+  (interactive (list (if (> (count-windows) 1)
+                         (read-number "Set the current window height in [1~9]x10%: ")
+                       (error "You need more than 1 window to execute this function!")))
+               (message "%s" h)
+               (window-resize nil (- (truncate (* (/ h 10.0) (frame-height))) (window-total-height)) nil)))
+
+(defun my/resize-window (width delta)
+  "Resize the current window's size.  If WIDTH is non-nil, resize width by some DELTA."
+  (if (> (count-windows) 1)
+      (window-resize nil delta width)
+    (error "You need more than 1 window to execute this function!")))
+
+;; Shorcuts for window resize width and height
+(defun my/window-width-increase ()
+  (interactive)
+  (my/resize-window t 5))
+
+(defun my/window-width-decrease ()
+  (interactive)
+  (my/resize-window t -5))
+
+(defun my/window-height-increase ()
+  (interactive)
+  (my/resize-window nil 5))
+
+(defun my/window-height-decrease ()
+  (interactive)
+  (my/resize-window nil -5))
+
 (provide 'cfg-win)
