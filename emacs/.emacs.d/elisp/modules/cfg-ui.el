@@ -38,9 +38,10 @@
                 emms-playlist-mode-hook
                 org-agenda-mode-hook
                 Info-mode-hook
-                messages-buffer-mode-hook
                 mu4e-view-mode-hook
-                elfeed-show-mode-hook))
+                elfeed-show-mode-hook
+                help-mode-hook
+                helpful-mode-hook
   (add-hook hook 'hl-line-mode))
 
 ;; Make keybindings in minibuffer look like other text
