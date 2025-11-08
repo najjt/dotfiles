@@ -89,7 +89,8 @@
           term-mode
           help-mode
           helpful-mode
-          compilation-mode))
+          compilation-mode
+          mpdel-song-mode))
   :config
   (setq popper-mode-line " POP " ; Let it breathe a bit
         popper-window-height 15)
