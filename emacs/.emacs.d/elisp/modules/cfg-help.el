@@ -45,11 +45,10 @@
   (global-set-key (kbd "C-h k") #'helpful-key)
   (global-set-key (kbd "C-h x") #'helpful-command))
 
-;; Display help for next command keystroke
-(use-package which-key
-  :ensure nil
-  :diminish
-  :config (which-key-mode 1))
+(use-package embark
+  :config
+  ;; Use Embark to help with command discovery
+  (setq prefix-help-command #'embark-prefix-help-command))
 
 ;; Display current and total matches
 (use-package anzu
