@@ -27,6 +27,7 @@
 (use-package isearch
   :ensure nil
   :defer t
+  :custom (isearch-lazy-count t) ; Show match numbers in search prompt
   :config
   ;; Open occur from current isearch results
   (defun my/occur-from-isearch ()

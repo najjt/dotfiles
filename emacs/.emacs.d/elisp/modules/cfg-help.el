@@ -50,10 +50,4 @@
   ;; Use Embark to help with command discovery
   (setq prefix-help-command #'embark-prefix-help-command))
 
-;; Display current and total matches
-(use-package anzu
-  :diminish
-  :config
-  (global-anzu-mode 1))
-
 (provide 'cfg-help)
