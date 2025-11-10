@@ -5,13 +5,6 @@
   :defer t
   :bind ("M-/" . evilnc-comment-or-uncomment-lines))
 
-;; Match delimiters
-(use-package highlight-parentheses
-  :diminish
-  :hook (prog-mode . (lambda ()
-                       (highlight-parentheses-mode)
-                       (electric-pair-mode))))
-
 ;; Git interface
 (use-package magit
   :defer t
@@ -40,7 +33,10 @@
 
 (use-package prog-mode
   :ensure nil
-  :hook (prog-mode . subword-mode)
+  :hook (prog-mode . (lambda ()
+                       (subword-mode)         ; Toggle subword movement
+                       (show-paren-mode)      ; Highlight matching parentheses
+                       (electric-pair-mode))) ; Insert matching delimiters
   :mode ("\\.rasi\\'"
          "\\.edn\\'"))
 
