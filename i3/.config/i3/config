@@ -192,4 +192,4 @@ for_window [class="konsole" instance="konsole"] floating enable
 # Status bar
 #
 
-exec_always --no-startup-id $HOME/.config/polybar/scripts/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
