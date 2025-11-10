@@ -31,6 +31,11 @@
   (setq org-tags-column 0               ; Position tags next to heading
         org-startup-folded t
         org-src-preserve-indentation t  ; Don't add unnecessary indentation
+        org-agenda-prefix-format        ; Hide file names in agenda buffer
+        '((agenda . " %i %?-12t% s")
+          (todo   . " %i %-12:c")
+          (tags   . " %i %-12:c")
+          (search . " %i %-12:c"))
         org-ellipsis " ▾"
         ;; Empty line before headings
         org-blank-before-new-entry (quote ((heading . auto)
