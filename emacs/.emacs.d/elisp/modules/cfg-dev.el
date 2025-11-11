@@ -15,7 +15,6 @@
 
 ;; Highlight vc diff in buffers and dired
 (use-package diff-hl
-  :defer nil
   :hook ((magit-post-refresh . diff-hl-magit-post-refresh)
          (dired-mode . diff-hl-dired-mode))
   :config

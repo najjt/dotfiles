@@ -33,8 +33,8 @@
   (defun my/occur-from-isearch ()
     (interactive)
     (let ((query (if isearch-regexp
-               isearch-string
-             (regexp-quote isearch-string))))
+                     isearch-string
+                   (regexp-quote isearch-string))))
       (isearch-update-ring isearch-string isearch-regexp)
       (let (search-nonincremental-instead)
         (ignore-errors (isearch-done t t)))
