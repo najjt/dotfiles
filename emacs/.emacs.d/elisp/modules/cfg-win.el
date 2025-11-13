@@ -81,7 +81,6 @@
           "^\\*tex-shell.*\\*$"
           "^\\*Flycheck.*\\*$"
           "^\\*LSP Error List*\\*$"
-          "^\\*vterminal - dedicated\\*$"
           magit-mode
           comint-mode
           shell-mode
