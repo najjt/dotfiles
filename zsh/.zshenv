@@ -23,7 +23,7 @@ export LC_ALL="en_IE.UTF-8"
 export LC_CTYPE="en_IE.UTF-8"
 
 # Path
-export PATH="$HOME/.local/bin:$HOME/scripts:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$HOME/.local/bin:$HOME/scripts:$PATH"
 
 # Change default .zshrc location to ~/.config/zsh/.zshrc, any other zsh config files can also reside here
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
