@@ -2,7 +2,7 @@
 
 (use-package mu4e
   :commands (mu4e make-mu4e-context)
-  :load-path "/usr/share/emacs/site-lisp/elpa-src/mu4e-1.8.14"
+  :load-path "/usr/share/emacs/site-lisp/elpa-src/mu4e-1.12.9"
   :bind
   ("C-c m" . mu4e)
   (:map mu4e-compose-mode-map
