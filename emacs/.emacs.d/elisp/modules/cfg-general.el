@@ -111,7 +111,7 @@
   ("C-c C-x t" . multi-vterm)
   :config
   ;; Dedicated terminal height
-  (setq multi-vterm-dedicated-window-height-percent 30))
+  (setq multi-vterm-dedicated-window-height-percent 50))
 
 ;; Focus new frames
 (defun my/focus-new-client-frame ()
