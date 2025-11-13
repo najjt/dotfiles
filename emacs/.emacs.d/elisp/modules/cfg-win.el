@@ -67,12 +67,11 @@
   :bind
   ("M-`"     . popper-cycle)
   ("C-c p d" . popper-kill-latest-popup)
+  ("C-c p t" . popper-toggle-type)
   ;; US kb layout
   ("C-`"     . popper-toggle)
-  ("C-M-`"   . popper-toggle-type)
   ;; SV kb layout
   ("C-§"     . popper-toggle)
-  ("C-M-§"   . popper-toggle-type)
   :init
   (setq popper-reference-buffers
         '("\\*Compile-Log\\*"
