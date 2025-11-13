@@ -31,9 +31,6 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 # Java
 export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
 
-# Cargo
-. "$HOME/.cargo/env"
-
 # fzf default options
 export FZF_DEFAULT_OPTS="--color 16 --layout=reverse --height 30% --preview='batcat -p --color=always {}'"
 export FZF_CTRL_R_OPTS="--color 16 --info inline --no-sort --no-preview" # Separate opts for history widget
