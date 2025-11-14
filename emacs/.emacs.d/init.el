@@ -61,7 +61,7 @@
       use-package-verbose t)
 
 ;; Add packages to load path
-(add-to-list 'load-path '"~/.emacs.d/elisp/packages")
+(add-to-list 'load-path '"~/.emacs.d/elisp")
 
 ;; Load setup files in .emacs.d/elisp/modules/
 (mapc 'load (file-expand-wildcards "~/.emacs.d/elisp/modules/*.el"))
