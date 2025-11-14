@@ -22,13 +22,10 @@
   :bind
   ("C-c g" . magit-status))
 
-;; Highlight vc diff in buffers and dired
-(use-package diff-hl
-  :hook ((magit-post-refresh . diff-hl-magit-post-refresh)
-         (dired-mode . diff-hl-dired-mode))
+;; Show Git diff in margin
+(use-package git-gutter
   :config
-  (global-diff-hl-mode)
-  (diff-hl-margin-mode))
+  (global-git-gutter-mode))
 
 ;; Common file types
 (use-package yaml-mode)
