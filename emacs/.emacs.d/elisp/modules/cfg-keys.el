@@ -47,7 +47,6 @@
 
   ;; Indicate current evil state in terminal environment
   (unless (display-graphic-p)
-    (require 'evil-terminal-cursor-changer)
     (evil-terminal-cursor-changer-activate))
 
   ;; Clearer indications of current evil state in modeline
@@ -86,6 +85,9 @@
   :config
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
+
+;; Indicate current evil state in terminal environment
+(use-package evil-terminal-cursor-changer)
 
 (global-set-key (kbd "C-c r") 'rgrep)
 
