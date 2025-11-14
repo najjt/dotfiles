@@ -1,5 +1,14 @@
 ;; -*- lexical-binding: t; -*-
 
+(use-package prog-mode
+  :ensure nil
+  :hook (prog-mode . (lambda ()
+                       (subword-mode)         ; Toggle subword movement
+                       (show-paren-mode)      ; Highlight matching parentheses
+                       (electric-pair-mode))) ; Insert matching delimiters
+  :mode ("\\.rasi\\'"
+         "\\.edn\\'"))
+
 ;; Better commenting
 (use-package evil-nerd-commenter
   :defer t
@@ -29,14 +38,5 @@
 (use-package lua-mode)
 (use-package markdown-mode)
 (use-package ini-mode)
-
-(use-package prog-mode
-  :ensure nil
-  :hook (prog-mode . (lambda ()
-                       (subword-mode)         ; Toggle subword movement
-                       (show-paren-mode)      ; Highlight matching parentheses
-                       (electric-pair-mode))) ; Insert matching delimiters
-  :mode ("\\.rasi\\'"
-         "\\.edn\\'"))
 
 (provide 'cfg-prog)
