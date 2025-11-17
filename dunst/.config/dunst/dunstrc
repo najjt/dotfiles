@@ -3,8 +3,8 @@
     follow = keyboard
     origin = bottom-right
     width = (300, 300)
-    height = 100
-    offset = 50x100
+    height = (0,100)
+    offset = (50,100)
     padding = 5
     horizontal_padding = 5
     gap_size = 3
