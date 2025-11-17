@@ -1,5 +1,5 @@
 configuration {
-        font: "monospace 12";
+        font: "monospace 11";
 }
 
 window {

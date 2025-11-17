@@ -60,8 +60,8 @@ c.scrolling.bar = 'never'
 
 # Fonts
 c.fonts.default_family        = []
-c.fonts.default_size          = '11pt'
-c.fonts.web.size.default      = 18
+c.fonts.default_size          = '11.5pt'
+c.fonts.web.size.default      = 16
 c.fonts.web.family.fixed      = 'monospace'
 c.fonts.web.family.sans_serif = 'sans'
 c.fonts.web.family.serif      = 'serif'

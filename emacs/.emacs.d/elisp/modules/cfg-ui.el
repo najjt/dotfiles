@@ -58,9 +58,9 @@
 ;; Set font
 (let ((mono-spaced-font "monospace")
       (proportionately-spaced-font "sans"))
-  (set-face-attribute 'default nil :family mono-spaced-font :height 110)
-  (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.1)
-  (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.1))
+  (set-face-attribute 'default nil :family mono-spaced-font :height 115)
+  (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.15)
+  (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.2))
 
 (defun my/disable-all-themes ()
   "Disable all active themes."
