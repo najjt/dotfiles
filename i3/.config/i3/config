@@ -24,8 +24,8 @@ workspace_layout tabbed
 #
 
 # Font
-set $font Unifont
-set $font_size 12
+set $font sans
+set $font_size 11
 
 font pango:$font $font_size
 

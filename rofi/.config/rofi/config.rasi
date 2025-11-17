@@ -1,5 +1,5 @@
 configuration {
-        font: "Unifont 13";
+        font: "monospace 12";
 }
 
 window {

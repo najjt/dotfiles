@@ -59,13 +59,13 @@ c.tabs.show = 'multiple'
 c.scrolling.bar = 'never'
 
 # Fonts
-c.fonts.default_family = []
-c.fonts.default_size = '12pt'
-c.fonts.web.size.default = 18
-c.fonts.web.family.fixed = 'monospace'
+c.fonts.default_family        = []
+c.fonts.default_size          = '11pt'
+c.fonts.web.size.default      = 18
+c.fonts.web.family.fixed      = 'monospace'
 c.fonts.web.family.sans_serif = 'sans'
-c.fonts.web.family.serif = 'serif'
-c.fonts.web.family.standard = 'sans'
+c.fonts.web.family.serif      = 'serif'
+c.fonts.web.family.standard   = 'sans'
 
 
 #

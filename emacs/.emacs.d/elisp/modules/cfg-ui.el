@@ -56,11 +56,11 @@
                     :inherit nil)
 
 ;; Set font
-(let ((mono-spaced-font "Liberation Mono")
-      (proportionately-spaced-font "Libertinus Sans"))
-  (set-face-attribute 'default nil :family mono-spaced-font :height 120)
-  (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.2)
-  (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.2))
+(let ((mono-spaced-font "monospace")
+      (proportionately-spaced-font "sans"))
+  (set-face-attribute 'default nil :family mono-spaced-font :height 110)
+  (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.1)
+  (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.1))
 
 (defun my/disable-all-themes ()
   "Disable all active themes."

@@ -10,8 +10,8 @@
     gap_size = 3
     frame_width = 1
     frame_color = "#F1F1F1"
-    font = Unifont 14
     format = "<b>%s</b>\n%b"
+    font = monospace 12
     corner_radius = 5
     icon_position = off
     icon_position = left
