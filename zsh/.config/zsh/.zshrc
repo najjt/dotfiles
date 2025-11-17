@@ -36,7 +36,7 @@ HISTCONTROL=ignoreboth                 # Consecutive duplicates & commands start
 
 # Prompt style
 NEWLINE=$'\n'
-PROMPT="${NEWLINE}%K{#3b4252}%F{#ECEFF4} %n %K{#4c566a} %~ %f%k ${NEWLINE}%F{green} ❯%F{reset_color} "
+PROMPT="${NEWLINE}%F{yellow}(%F{green}%n: %F{#dea5a4}%~%F{yellow})%F{reset_color} %# "
 echo -e "$(date +%A\ %d\ %B\ %Y\ %X)"
 
 # Delete to previous slash,
