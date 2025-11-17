@@ -55,11 +55,11 @@
              :enter-func (lambda () (mu4e-message "Entering MAIN context"))
              :leave-func (lambda () (mu4e-message "Leaving MAIN context"))
              :vars '((user-mail-address     . "martin@malon.se")
-                     (user-full-name        . "Martin Lönn andersson")
+                     (user-full-name        . "Martin Lönn Andersson")
                      (message-signature     .
                                             (concat
                                              "Med vänlig hälsning,\n"
-                                             "Martin Lönn Andersson\n"))))
+                                             "Martin Lönn Andersson"))))
            ,(make-mu4e-context
              :name "Mask"
              :enter-func (lambda () (mu4e-message "Switch to the MASK context"))
@@ -69,7 +69,7 @@
                      (message-signature      .
                                              (concat
                                               "Kind regards,\n"
-                                              "Martin\n"))))))
+                                              "Martin"))))))
 
   ;; start with the first (default) context
   (setq mu4e-context-policy 'pick-first)
