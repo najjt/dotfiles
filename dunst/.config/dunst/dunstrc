@@ -16,7 +16,7 @@
     icon_position = off
     icon_position = left
     min_icon_size = 32
-    max_icon_size = 64
+    max_icon_size = 48
     show_indicators = false
 
 [urgency_low]
