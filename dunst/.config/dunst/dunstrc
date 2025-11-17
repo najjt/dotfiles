@@ -12,7 +12,7 @@
     frame_color = "#F1F1F1"
     font = Unifont 14
     format = "<b>%s</b>\n%b"
-    corner_radius = 4
+    corner_radius = 5
     icon_position = off
     icon_position = left
     min_icon_size = 32
