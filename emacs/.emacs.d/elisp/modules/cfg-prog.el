@@ -24,6 +24,7 @@
 
 ;; Show Git diff in margin
 (use-package git-gutter
+  :diminish
   :config
   (global-git-gutter-mode))
 
