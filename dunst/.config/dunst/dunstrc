@@ -12,8 +12,8 @@
     frame_color        = "#cecece"
     foreground         = "#cecece"
     background         = "#282a36"
-    font               = monospace 12
-    format             = "<i>%s</i>\n%b"
+    font               = Terminus 13
+    format             = "<b>%s</b>\n%b"
     corner_radius      = 5
     icon_position      = off
     icon_position      = left
