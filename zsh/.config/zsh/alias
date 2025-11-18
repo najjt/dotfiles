@@ -31,6 +31,7 @@ alias diff='colordiff'
 alias x="exit"
 alias ls='ls -lAhv --group-directories-first --color=always'
 alias python="python3"
+alias wget="wget --hsts-file='$XDG_CACHE_HOME'/wget-hsts"
 
 # Pi
 alias pi="ssh pi@192.168.1.48"                             # ssh to raspberry pi
