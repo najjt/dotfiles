@@ -29,7 +29,7 @@ alias diff='colordiff'
 
 # Other
 alias x="exit"
-alias ls='ls -lh --color=always'
+alias ls='ls -lAhv --group-directories-first --color=always'
 alias python="python3"
 
 # Pi
