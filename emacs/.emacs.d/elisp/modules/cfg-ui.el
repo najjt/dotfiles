@@ -103,7 +103,7 @@
   (setq header-line-format
         (when buffer-file-name
           (let ((file-name (abbreviate-file-name buffer-file-name)))
-            (concat (propertize file-name 'face 'bold))))))
+            (concat (propertize file-name 'face 'italic))))))
 
 (add-hook 'after-change-major-mode-hook #'my/set-header-line-for-files-only)
 
