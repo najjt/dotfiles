@@ -11,7 +11,7 @@
     frame_width = 1
     frame_color = "#F1F1F1"
     font = monospace 12
-    format = "%s\n%b"
+    format = "<i>%s</i>\n%b"
     corner_radius = 5
     icon_position = off
     icon_position = left
