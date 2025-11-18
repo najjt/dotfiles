@@ -28,7 +28,8 @@ export PATH="$HOME/.cargo/bin:$HOME/.nix-profile/bin:/nix/var/nix/profiles/defau
 # ~/ cleanup
 export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
-export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gitkrc-2.0
+export GTK_RC_FILES="$XDG_CONFIG_HOME"/gtk-1.0/gtkrc
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc-2.0
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
