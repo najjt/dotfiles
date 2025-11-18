@@ -166,8 +166,10 @@
 ;; Search and navigation commands
 (use-package consult
   :defer nil
-  :bind (("C-c f" . consult-find)
-         ("M-y"   . consult-yank-pop))
+  :bind (("C-c f"     . consult-find)
+         ("M-y"       . consult-yank-pop)
+         ("C-c C-x f" . consult-recent-file))
+  :custom (consult-preview-key "M-.") ; Preview manually with <M-.>
   :config
   (setq-default consult-find-args "find .")
   (global-set-key [remap switch-to-buffer] 'consult-buffer)
