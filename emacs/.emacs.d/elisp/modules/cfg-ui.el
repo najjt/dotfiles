@@ -62,6 +62,10 @@
   (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.15)
   (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.1))
 
+;; Ensure tabs use fixed pitch font
+(custom-set-faces
+ '(tab-bar ((t (:inherit fixed-pitch :height 0.8)))))
+
 (defun my/disable-all-themes ()
   "Disable all active themes."
   (dolist (theme custom-enabled-themes)
@@ -102,10 +106,6 @@
             (concat (propertize file-name 'face 'bold))))))
 
 (add-hook 'after-change-major-mode-hook #'my/set-header-line-for-files-only)
-
-;; Ensure tabs use fixed pitch font
-(custom-set-faces
- '(tab-bar ((t (:inherit fixed-pitch :height 0.8)))))
 
 ;; Visualize color codes in text
 (use-package colorful-mode
