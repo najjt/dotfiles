@@ -33,7 +33,7 @@
             (add-hook 'minibuffer-exit-hook #'gc-minibuffer-exit-hook)))
 
 ;; Make customize-based setting live in the custom.el file
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file "~/.config/emacs/custom.el")
 (load custom-file 'noerror)
 
 ;; Set backup, autosave and lockfiles
@@ -61,7 +61,7 @@
       use-package-verbose t)
 
 ;; Add packages to load path
-(add-to-list 'load-path '"~/.emacs.d/elisp")
+(add-to-list 'load-path '"~/.config/emacs/elisp")
 
-;; Load setup files in .emacs.d/elisp/modules/
-(mapc 'load (file-expand-wildcards "~/.emacs.d/elisp/modules/*.el"))
+;; Load setup files
+(mapc 'load (file-expand-wildcards "~/.config/emacs/elisp/modules/*.el"))

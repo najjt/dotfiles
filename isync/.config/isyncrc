@@ -12,8 +12,8 @@ Account          fastmail
 
 #                This section describes the local storage
 MaildirStore     fastmail-local
-Path             ~/.mail/
-Inbox            ~/.mail/INBOX
+Path             ~/.local/share/mail/
+Inbox            ~/.local/share/mail/INBOX
 #                The SubFolders option allows to represent all
 #                IMAP subfolders as local subfolders
 SubFolders       Verbatim
