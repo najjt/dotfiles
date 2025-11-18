@@ -9,7 +9,9 @@
     horizontal_padding = 5
     gap_size = 3
     frame_width = 1
-    frame_color = "#F1F1F1"
+    frame_color = "#cecece"
+    foreground = "#cecece"
+    background = "#000000"
     font = monospace 12
     format = "<i>%s</i>\n%b"
     corner_radius = 5
