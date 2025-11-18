@@ -48,10 +48,6 @@
   ;; Indicate current evil state in terminal environment
   (unless (display-graphic-p)
     (evil-terminal-cursor-changer-activate))
-
-  ;; Clearer indication if current state is Emacs
-  (setq evil-emacs-state-tag (propertize "-- EMACS --" 'face '((:background "dark orange" :foreground "black"))))
-
   :custom
   ;; Horizontal movement crosses lines
   (evil-cross-lines t))
