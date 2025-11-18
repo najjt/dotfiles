@@ -1,19 +1,16 @@
 @theme "Monokai"
 
-configuration {
-        font: "monospace 11";
-}
-
 * {
-        separatorcolor: #cecece;
+    separatorcolor: #cecece;
+    font: "monospace 11";
 }
 
 window {
-        width: 30%;
-        height: 25%;
-        background-color: Black;
+    width: 30%;
+    height: 25%;
+    background-color: Black;
 }
 
 listview {
-        scrollbar: false;
+    scrollbar: false;
 }
