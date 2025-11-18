@@ -96,8 +96,8 @@
   ;; Update on quitting
   (defun my/mu4e-quit ()
     (interactive)
-    (mu4e-update-mail-and-index t)
-    (mu4e-quit))
+    (mu4e-quit)
+    (mu4e-update-mail-and-index t))
 
   (with-eval-after-load 'mu4e
     (evil-define-key 'normal mu4e-main-mode-map (kbd "q") #'my/mu4e-quit))
