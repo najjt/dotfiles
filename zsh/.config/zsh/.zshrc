@@ -90,7 +90,7 @@ sx() {
     fi
 
     # Run startx with the provided session and set keyboard repeat delay and rate
-    exec /usr/bin/startx ~/.xinitrc "$@" -- -ardelay 300 -arinterval 25
+    exec /usr/bin/startx $(echo $XINITRC) "$@" -- -ardelay 300 -arinterval 25
 }
 
 #
