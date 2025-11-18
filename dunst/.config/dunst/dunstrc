@@ -20,19 +20,8 @@
     min_icon_size = 32
     max_icon_size = 48
     show_indicators = false
-
-[urgency_low]
-    foreground = "#CECECE"
-    background = "#1E1E1E"
-    timeout = 3
-
-[urgency_normal]
-    foreground = "#CECECE"
-    background = "#1E1E1E"
     timeout = 5
 
 [urgency_critical]
-    foreground = "#CECECE"
-    background = "#1E1E1E"
     frame_color = "#FF0000"
     timeout = 15
