@@ -29,7 +29,7 @@ set $font_size 11
 
 font pango:$font $font_size
 
-default_border normal 2
+default_border pixel 2
 default_floating_border pixel 2
 
 # Set window border and title bar to be white with black text
