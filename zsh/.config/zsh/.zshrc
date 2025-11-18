@@ -83,7 +83,7 @@ export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
 export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 
 # X11
-startx() {
+sx() {
     if [ "$#" -lt 1 ]; then
         echo "Usage: startx <session>"
         return 1
