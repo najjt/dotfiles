@@ -36,6 +36,8 @@
 
 ;; More detailed help buffers
 (use-package helpful
+  :bind (:map helpful-mode-map
+              ("q" . (lambda () (interactive) (quit-window))))
   :config
   ;; Note that the built-in `describe-function' includes both functions
   ;; and macros. `helpful-function' is functions only, so we provide
