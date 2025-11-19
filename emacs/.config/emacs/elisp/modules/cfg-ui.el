@@ -123,7 +123,8 @@
 
 ;; Settings for displaying buffers
 (setq display-buffer-alist
-      '(((or . ((derived-mode . occur-mode)))
+      '(
+        ((or . ((derived-mode . occur-mode)))
          (display-buffer-reuse-mode-window display-buffer-at-bottom)
          (body-function . my/select-window)
          (dedicated . t)
@@ -133,7 +134,15 @@
          (display-buffer-reuse-mode-window)
          (body-function . my/select-window)
          (dedicated . t)
-         (preserve-size . (t . t)))))
+         (preserve-size . (t . t)))
+
+        ((or . ((derived-mode . helpful-mode)))
+         (display-buffer-reuse-mode-window)
+         (dedicated . t))
+
+        ;; Hide compilation windows
+        ("\\*compilation\\*" display-buffer-no-window
+         (allow-no-window . t))))
 
 (use-package nerd-icons-completion
   :after marginalia
