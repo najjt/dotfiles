@@ -56,8 +56,7 @@
   (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.1))
 
 ;; Ensure tabs use fixed pitch font
-(custom-set-faces
- '(tab-bar ((t (:inherit fixed-pitch :height 0.8)))))
+(custom-set-faces '(tab-bar ((t (:inherit fixed-pitch :height 0.8)))))
 
 (defun my/disable-all-themes ()
   "Disable all active themes."
