@@ -65,9 +65,6 @@
 ;; Automatically kill all active processes when closing Emacs
 (setq confirm-kill-processes nil)
 
-;; Make switching buffers more consistent
-(setopt switch-to-buffer-obey-display-actions t)
-
 ;; Use minibuffer whilst in the minibuffer
 (setopt enable-recursive-minibuffers t)
 

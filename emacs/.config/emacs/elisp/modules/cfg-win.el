@@ -3,6 +3,10 @@
 ;; Undo and redo changes in window layout
 (winner-mode 1)
 
+;; Make switching buffers more consistent
+(setopt switch-to-buffer-obey-display-actions t
+        switch-to-buffer-in-dedicated-window 'pop)
+
 ;; Manage windows
 (use-package ace-window
   :bind ("M-o" . ace-window)
