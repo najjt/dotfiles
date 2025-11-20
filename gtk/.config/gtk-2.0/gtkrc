@@ -1,6 +1,6 @@
-gtk-theme-name=Adwaita
+gtk-theme-name=Adwaita-dark
 gtk-icon-theme-name=adwaita
 gtk-cursor-theme-name=adwaita_cursors
 gtk-cursor-theme-size=24
-gtk-application-prefer-dark-theme=false
+gtk-application-prefer-dark-theme=1
 gtk-font-name=sans,  10
