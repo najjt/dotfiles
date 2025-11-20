@@ -29,12 +29,8 @@ set $font_size 11
 
 font pango:$font $font_size
 
-default_border pixel 2
+default_border normal 2
 default_floating_border pixel 2
-
-# Set window border and title bar to be white with black text
-client.focused #cecece #cecece #000000 #2e9ef4 #cecece
-
 
 #
 # Workspaces
@@ -189,7 +185,6 @@ for_window [class="Signal" instance="signal"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="Blueman-manager" instance="blueman-manager"] floating enable
 for_window [class="Alacritty" instance="Alacritty"] floating enable
-
 
 #
 # Status bar
