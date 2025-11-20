@@ -40,9 +40,8 @@ alias pi="ssh root@192.168.1.48"
 alias e="emacs -nw"
 alias ec="emacsclient -c -nw"
 
-# Systemd services
-alias ecre="systemctl --user restart emacs"     # Restart Emacs service
-alias stre="systemctl --user restart syncthing" # Restart Syncthing service
+# Restart Syncthing service
+alias stre="systemctl --user restart syncthing"
 
 # Archives
 alias ltar="tar -ztvf"  # Lists
