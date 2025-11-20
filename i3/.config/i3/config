@@ -32,7 +32,7 @@ workspace 9 output eDP-1
 
 # Font
 set $font sans
-set $font_size 11
+set $font_size 10
 
 font pango:$font $font_size
 
