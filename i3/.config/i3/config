@@ -18,6 +18,14 @@ focus_wrapping no
 
 workspace_layout tabbed
 
+# Workspace monitor assignment
+workspace 1 output HDMI-2 eDP-1
+workspace 2 output HDMI-2 eDP-1
+workspace 3 output HDMI-2 eDP-1
+workspace 7 output eDP-1
+workspace 8 output eDP-1
+workspace 9 output eDP-1
+
 #
 # Appearance
 #
@@ -28,29 +36,7 @@ set $font_size 11
 
 font pango:$font $font_size
 
-default_border normal 2
-default_floating_border pixel 2
-
-#
-# Workspaces
-#
-
-# Workspace names
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-
-# Monitor assignment
-workspace $ws1 output HDMI-2 eDP-1
-workspace $ws2 output HDMI-2 eDP-1
-workspace $ws3 output HDMI-2 eDP-1
-workspace $ws7 output eDP-1
-workspace $ws8 output eDP-1
-workspace $ws9 output eDP-1
-
+title_align center
 
 #
 # Keybindings
@@ -82,12 +68,12 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
 
 # Move focused window to other monitor
 bindsym $mod+Shift+z move container to output left
@@ -114,12 +100,12 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # Switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
 
 # Swap focus between the tiling area and the floating area
 bindsym $mod+o focus mode_toggle
