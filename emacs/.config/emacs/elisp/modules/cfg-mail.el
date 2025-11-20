@@ -109,6 +109,7 @@
 
 ;; Use org mode to send HTML emails
 (use-package org-mime
+  :after mu4e
   :bind (:map mu4e-compose-mode-map
               ("C-c C-o" . org-mime-edit-mail-in-org-mode)
               ("C-c h"   . org-mime-htmlize))
