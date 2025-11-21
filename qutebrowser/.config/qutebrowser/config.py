@@ -102,16 +102,3 @@ config.bind("<Mod1-f>", "fake-key <Ctrl-Right>", "insert")
 config.bind("<Ctrl-p>", "fake-key <Up>", "insert")
 config.bind("<Ctrl-n>", "fake-key <Down>", "insert")
 config.bind("<Ctrl-w>", "fake-key <Ctrl-Backspace>", "insert")
-
-
-#
-# Userscripts
-#
-
-
-# mpv
-config.bind('zM', 'hint links spawn mpv {hint-url}')
-config.bind('zm', 'spawn mpv {url}')
-
-# Bitwarden
-config.bind('zl', 'spawn --userscript qute-bitwarden.sh')
