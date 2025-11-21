@@ -29,18 +29,18 @@ c.url.start_pages = 'https://qutebrowser.com/'
 c.url.default_page = 'about:blank'
 
 # Privacy
-config.set("content.webgl", False, "*")
-config.set("content.canvas_reading", False)
-config.set("content.geolocation", False)
-config.set("content.webrtc_ip_handling_policy", "default-public-interface-only")
-config.set("content.cookies.accept", "all")
-config.set("content.cookies.store", True)
+config.set('content.webgl', False, '*')
+config.set('content.canvas_reading', False)
+config.set('content.geolocation', False)
+config.set('content.webrtc_ip_handling_policy', 'default-public-interface-only')
+config.set('content.cookies.accept', 'all')
+config.set('content.cookies.store', True)
 
 c.editor.command = ['emacsclient', '-c', '+{line}:{column}', '{file}']
 
-c.downloads.open_dispatcher = "mimeopen"
+c.downloads.open_dispatcher = 'mimeopen'
 
-config.set("scrolling.smooth", True)
+config.set('scrolling.smooth', True)
 
 #
 # Appearance
@@ -93,12 +93,12 @@ config.bind('yo', 'yank inline [[{url}][{title}]]')
 # Allow clipboard access for 10 s
 config.bind('ca', 'set -t content.javascript.clipboard access ;; cmd-later 10s set -p content.javascript.clipboard none')
 
-config.bind("<Ctrl-a>", "fake-key <Home>", "insert")
-config.bind("<Ctrl-e>", "fake-key <End>", "insert")
-config.bind("<Ctrl-b>", "fake-key <Left>", "insert")
-config.bind("<Mod1-b>", "fake-key <Ctrl-Left>", "insert")
-config.bind("<Ctrl-f>", "fake-key <Right>", "insert")
-config.bind("<Mod1-f>", "fake-key <Ctrl-Right>", "insert")
-config.bind("<Ctrl-p>", "fake-key <Up>", "insert")
-config.bind("<Ctrl-n>", "fake-key <Down>", "insert")
-config.bind("<Ctrl-w>", "fake-key <Ctrl-Backspace>", "insert")
+config.bind('<Ctrl-a>', 'fake-key <Home>', 'insert')
+config.bind('<Ctrl-e>', 'fake-key <End>', 'insert')
+config.bind('<Ctrl-b>', 'fake-key <Left>', 'insert')
+config.bind('<Mod1-b>', 'fake-key <Ctrl-Left>', 'insert')
+config.bind('<Ctrl-f>', 'fake-key <Right>', 'insert')
+config.bind('<Mod1-f>', 'fake-key <Ctrl-Right>', 'insert')
+config.bind('<Ctrl-p>', 'fake-key <Up>', 'insert')
+config.bind('<Ctrl-n>', 'fake-key <Down>', 'insert')
+config.bind('<Ctrl-w>', 'fake-key <Ctrl-Backspace>', 'insert')
