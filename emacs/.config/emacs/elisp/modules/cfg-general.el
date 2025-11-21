@@ -96,6 +96,8 @@
   :hook (vterm-mode . (lambda ()
                         (setq-local evil-insert-state-cursor 'box)
                         (evil-insert-state)))
+  :bind (:map vterm-mode-map
+         ("C-c C-s" . isearch-forward))
   :custom
   (term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
   (vterm-shell "zsh")
