@@ -84,6 +84,9 @@ config.bind('=', 'zoom-in')
 # Edit url
 config.bind('eu', 'edit-url')
 
+# Open an external editor with the currently selected form field
+config.bind('<Ctrl-o>', 'edit-text', 'insert')
+
 # Open download
 config.bind('ed', 'download-open')
 
