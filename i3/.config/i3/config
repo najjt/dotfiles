@@ -170,6 +170,7 @@ for_window [class="Signal" instance="signal"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="Blueman-manager" instance="blueman-manager"] floating enable
 for_window [class="Alacritty" instance="Alacritty"] floating enable
+for_window [class="Nsxiv" instance="nsxiv"] floating enable
 
 #
 # Status bar
