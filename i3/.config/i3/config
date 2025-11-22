@@ -38,6 +38,8 @@ font pango:$font $font_size
 
 title_align center
 
+default_border pixel 3
+
 #
 # Keybindings
 #
