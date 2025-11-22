@@ -66,14 +66,7 @@
    (list (completing-read "Choose theme: " (mapcar #'symbol-name (custom-available-themes)))))
   (my/disable-all-themes)
   (load-theme (intern theme) t)
-  (customize-save-variable 'my-chosen-theme theme)
-  (my/mode-line-style))
-
-;; Ensure no box around modeline
-(defun my/mode-line-style ()
-  (interactive)
-  (dolist (face '(mode-line-active mode-line-inactive))
-    (set-face-attribute face nil :box nil :inherit nil)))
+  (customize-save-variable 'my-chosen-theme theme))
 
 ;; Remember last used theme between sessions
 (add-hook 'after-init-hook
