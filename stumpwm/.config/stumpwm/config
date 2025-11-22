@@ -1,14 +1,14 @@
 ;; -*-lisp-*-
 
 ;; Initialize quicklisp
-#-quicklisp
-(let ((quicklisp-init (merge-pathnames "quicklisp/setup.lisp"
-                                       (user-homedir-pathname))))
-  (when (probe-file quicklisp-init)
-    (load quicklisp-init)))
+;; #-quicklisp
+;; (let ((quicklisp-init (merge-pathnames "quicklisp/setup.lisp"
+;;                                        (user-homedir-pathname))))
+;;   (when (probe-file quicklisp-init)
+;;     (load quicklisp-init)))
 
-;; Needed for stumptray
-(ql:quickload "xembed")
+;; ;; Needed for stumptray
+;; (ql:quickload "xembed")
 
 ;; Use stumpwm package and declare it as the default
 (in-package :stumpwm)
@@ -23,15 +23,11 @@
 (load-module "end-session") ; Gracefully end programs when ending user session
 (load-module "battery-portable")
 (load-module "cpu")
-(load-module "mem")
-(load-module "stumptray")
-(load-module "pianobar") ; Music modeline module
 
 ;; Don't show a startup message
 (setf *startup-message* nil)
 
 ;; Font
-;; (ql:quickload :clx-truetype)
 (set-font "-xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso8859-15")
 
 ;; Mouse settings
