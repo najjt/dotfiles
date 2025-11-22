@@ -88,3 +88,6 @@ sx() {
 # Set up fzf keybindings and fuzzy completion
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
+
+# Additional zsh completions
+fpath=($HOME/src/zsh-completions/src $fpath)
