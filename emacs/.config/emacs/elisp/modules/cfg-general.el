@@ -179,4 +179,9 @@
 
   (use-package embark-consult))
 
+;; Enable context menu (mouse-click menu)
+(add-hook 'text-mode-hook 'context-menu-mode)
+(add-hook 'prog-mode-hook 'context-menu-mode)
+(add-hook 'dired-mode-hook 'context-menu-mode)
+
 (provide 'cfg-general)
