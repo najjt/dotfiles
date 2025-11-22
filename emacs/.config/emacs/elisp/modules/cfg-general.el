@@ -97,7 +97,8 @@
                         (setq-local evil-insert-state-cursor 'box)
                         (evil-insert-state)))
   :bind (:map vterm-mode-map
-         ("C-c C-s" . isearch-forward))
+         ("C-c C-s" . isearch-forward)
+         ("C-c C-r" . isearch-backward))
   :custom
   (term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
   (vterm-shell "zsh")
