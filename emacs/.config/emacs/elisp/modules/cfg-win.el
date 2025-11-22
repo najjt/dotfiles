@@ -85,6 +85,7 @@
           "^\\*tex-shell.*\\*$"
           "^\\*Flycheck.*\\*$"
           "^\\*LSP Error List*\\*$"
+          "^\\*vterminal - dedicated\\*"
           magit-mode
           comint-mode
           shell-mode
@@ -95,7 +96,7 @@
           mpdel-song-mode))
   :config
   (setq popper-mode-line " POP " ; Let it breathe a bit
-        popper-window-height 15)
+        popper-window-height 19)
   (popper-mode 1)
   (popper-echo-mode 1))
 
