@@ -1,5 +1,5 @@
-gtk-theme-name=Adwaita
-gtk-icon-theme-name=adwaita
+gtk-theme-name=Adwaita-dark
+gtk-icon-theme-name=adwaita-dark
 gtk-cursor-theme-name=adwaita_cursors
 gtk-cursor-theme-size=24
 gtk-application-prefer-dark-theme=1
