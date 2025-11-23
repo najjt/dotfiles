@@ -45,11 +45,6 @@ config.set('content.headers.accept_language', 'en-US,en;q=0.5')
 # Set a common HTTP_ACCEPT header:
 config.set('content.headers.custom', {'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'})
 
-# Disable javascript by default.
-# Use 'tsh' to temporarily allow javascript on page,
-# or 'tSh' to permanently allow javascript for current domain:
-config.set('content.javascript.enabled', False)
-
 c.editor.command = ['emacsclient', '-c', '+{line}:{column}', '{file}']
 
 c.downloads.open_dispatcher = 'mimeopen'
