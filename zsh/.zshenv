@@ -25,8 +25,6 @@ export LC_CTYPE="en_IE.UTF-8"
 # ~/ cleanup
 export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
-export GTK_RC_FILES="$XDG_CONFIG_HOME"/gtk-1.0/gtkrc
-export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
