@@ -12,7 +12,8 @@
 (keymap-global-set "<escape>" 'keyboard-escape-quit)
 
 ;; Look up word at point
-(keymap-global-set "C-c d" 'dictionary-lookup-definition)
+(keymap-global-set "C-c d l" 'dictionary-lookup-definition)
+(keymap-global-set "C-c d s" 'dictionary-search)
 
 ;; vi emulation
 (use-package evil
