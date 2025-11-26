@@ -14,7 +14,6 @@ export TERM=xterm-256color
 export TERMINAL=kitty
 export BROWSER=qutebrowser
 export GPG_TTY=$(tty)
-export GTK_THEME=Adwaita
 
 # Language & locale
 export LANGUAGE="en_IE.UTF-8"
