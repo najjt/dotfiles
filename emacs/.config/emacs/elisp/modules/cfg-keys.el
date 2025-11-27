@@ -15,6 +15,8 @@
 (keymap-global-set "C-c d l" 'dictionary-lookup-definition)
 (keymap-global-set "C-c d s" 'dictionary-search)
 
+(keymap-global-set "C-c R" 'revert-buffer)
+
 ;; vi emulation
 (use-package evil
   :diminish
