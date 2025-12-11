@@ -11,8 +11,6 @@ export SHELL_SESSIONS_DISABLE=1
 # Defaults
 export EDITOR=emacsclient
 export TERM=xterm-256color
-export TERMINAL=kitty
-export BROWSER=qutebrowser
 export GPG_TTY=$(tty)
 
 # Language & locale
@@ -20,14 +18,6 @@ export LANGUAGE="en_IE.UTF-8"
 export LANG="en_IE.UTF-8"
 export LC_ALL="en_IE.UTF-8"
 export LC_CTYPE="en_IE.UTF-8"
-
-# ~/ cleanup
-export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
-export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
-export STACK_ROOT="$XDG_DATA_HOME"/stack
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
-export ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
-export LESSHISTFILE="-"
 
 # Path
 export PATH="$CARGO_HOME/bin:$XDG_DATA_HOME/nix/profile/bin:/nix/var/nix/profiles/default/bin:$HOME/.local/bin:$HOME/scripts:$PATH"
