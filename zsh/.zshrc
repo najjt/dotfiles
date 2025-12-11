@@ -91,3 +91,56 @@ source /usr/share/doc/fzf/examples/completion.zsh
 
 # Additional zsh completions
 fpath=($HOME/src/zsh-completions/src $fpath)
+
+#
+#  Aliases
+#
+
+# Make aliases work correctly with sudo
+alias sudo='sudo '
+
+# If user is not root, pass these commands via sudo
+if [ $UID -ne 0 ]; then
+    alias reboot="sudo reboot"
+    alias shutdown="sudo shutdown -h now"
+fi
+
+# Source zsh config
+alias sz="source $ZDOTDIR/.zshrc && source $HOME/.zshenv"
+
+# Navigation
+alias ..="cd .."
+
+## Colorize the grep command output for ease of use
+alias grep='grep --color=auto'
+
+# Create parent directories if necessary,
+# and list them as they are created
+alias mkdir='mkdir -pv'
+
+# Colorize diff output
+alias diff='colordiff'
+
+# Other
+alias x="exit"
+alias ls='ls -lAhv --group-directories-first --color=always'
+alias python="python3"
+
+# ssh to raspberry pi
+alias pi="ssh root@192.168.1.48"
+
+# Emacs
+alias e="emacs -nw"
+alias ec="emacsclient -c -nw"
+
+# Restart Syncthing service
+alias stre="systemctl --user restart syncthing"
+
+# Archives
+alias ltar="tar -ztvf"  # Lists
+alias untar="tar -zxvf" # Unpacks
+alias ctar="tar -cvzf"  # Creates
+
+# Update
+alias apt-up="sudo apt update && sudo apt upgrade -y"
+alias fp-up="flatpak update"
