@@ -13,7 +13,8 @@
         org-M-RET-may-split-line '((default . nil))
         org-insert-heading-respect-content t
         org-log-done 'time
-        org-log-into-drawer t)
+        org-log-into-drawer t
+        org-element-use-cache nil)
 
   (load "sv-kalender")
 
