@@ -106,7 +106,7 @@ if [ $UID -ne 0 ]; then
 fi
 
 # Source zsh config
-alias sz="source $ZDOTDIR/.zshrc && source $HOME/.zshenv"
+alias sz="source $HOME/.zshrc && source $HOME/.zshenv"
 
 # Navigation
 alias ..="cd .."
