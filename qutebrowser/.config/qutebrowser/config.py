@@ -20,7 +20,7 @@ c.spellcheck.languages = ['sv-SE', 'en-US']
 c.tabs.last_close = 'ignore'
 
 # Search engines which can be used via the address bar.
-c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'g': 'https://google.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'w': 'https://en.wikipedia.org/?search={}', 'wt': 'https://en.wiktionary.org/?search={}', 'l': 'https://letterboxd.com/search/{}', 'yt': 'https://www.youtube.com/results?search_query={}'}
+c.url.searchengines = {'DEFAULT': 'https://google.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'w': 'https://en.wikipedia.org/?search={}', 'wt': 'https://en.wiktionary.org/?search={}', 'l': 'https://letterboxd.com/search/{}', 'yt': 'https://www.youtube.com/results?search_query={}'}
 
 # Page(s) to open at the start.
 c.url.start_pages = 'https://qutebrowser.com/'
