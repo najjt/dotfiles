@@ -70,17 +70,6 @@ bindkey -e '\ew' x-copy-region-as-kill
 bindkey -e '^W' x-kill-region
 bindkey -e '^Y' x-yank
 
-# X11
-sx() {
-    if [ "$#" -lt 1 ]; then
-        echo "Usage: startx <session>"
-        return 1
-    fi
-
-    # Run startx with the provided session and set keyboard repeat delay and rate
-    exec /usr/bin/startx $(echo $XINITRC) "$@" -- -ardelay 300 -arinterval 25
-}
-
 #
 # Plugins
 #
