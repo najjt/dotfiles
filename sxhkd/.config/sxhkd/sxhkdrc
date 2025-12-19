@@ -8,7 +8,7 @@ super + n
 
 # Open application launcher
 super + b
-    rofi -modi "run" -show run
+    rofi -modi "drun" -show drun -show-icons
 
 # Clipboard history
 super + i
