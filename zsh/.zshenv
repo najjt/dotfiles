@@ -31,5 +31,3 @@ export FZF_CTRL_R_OPTS="--color 16 --info inline --no-sort --no-preview" # Separ
 
 # Additional completions
 fpath=(path/to/zsh-completions/src $fpath)
-
-export $(dbus-launch)
