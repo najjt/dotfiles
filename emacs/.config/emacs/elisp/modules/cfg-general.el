@@ -6,8 +6,7 @@
 
 ;; Set default browser
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "qutebrowser"
-      browse-url-generic-args '("--target" "window"))
+      browse-url-generic-program "firefox")
 
 ;; Get environment variables from your shell
 (use-package exec-path-from-shell

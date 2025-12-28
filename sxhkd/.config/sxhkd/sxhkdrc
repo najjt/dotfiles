@@ -4,7 +4,7 @@ super + m
 
 # Open web browser
 super + n
-    qutebrowser
+    firefox &
 
 # Open application launcher
 super + b
