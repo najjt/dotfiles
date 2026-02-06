@@ -34,9 +34,7 @@ HISTFILE="$XDG_CACHE_HOME/zsh_history" # Move histfile to cache
 HISTCONTROL=ignoreboth                 # Consecutive duplicates & commands starting with space are not saved
 
 # Prompt style
-NEWLINE=$'\n'
-PROMPT="${NEWLINE}(%F{green}%n: %F{#dea5a4}%~%F{reset_color}) %# "
-echo -e "$(date +%A\ %d\ %B\ %Y\ %X)"
+PROMPT="[%F{green}%n: %F{#dea5a4}%~%F{reset_color}] %# "
 
 # Delete to previous slash,
 # useful for editing paths
