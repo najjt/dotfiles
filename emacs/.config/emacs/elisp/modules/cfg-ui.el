@@ -44,10 +44,6 @@
                 mpdel-tablist-mode-hook))
   (add-hook hook 'hl-line-mode))
 
-;; Ensure hl-line-mode is visible in terminal Emacs
-(unless (display-graphic-p)
-  (set-face-attribute 'hl-line nil :inverse-video t))
-
 ;; Set font
 (let ((mono-spaced-font "monospace")
       (proportionately-spaced-font "sans"))
