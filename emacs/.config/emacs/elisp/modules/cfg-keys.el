@@ -43,10 +43,6 @@
       :type line
       (let ((line-move-visual (unless count t)))
         (evil-line-move (- (or count 1))))))
-
-  ;; Indicate current evil state in terminal environment
-  (unless (display-graphic-p)
-    (evil-terminal-cursor-changer-activate))
   :custom
   ;; Horizontal movement crosses lines
   (evil-cross-lines t))
@@ -76,9 +72,6 @@
   :config
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
-
-;; Indicate current evil state in terminal environment
-(use-package evil-terminal-cursor-changer)
 
 (global-set-key (kbd "C-c r") 'rgrep)
 
