@@ -67,10 +67,6 @@
 ;; Use minibuffer whilst in the minibuffer
 (setopt enable-recursive-minibuffers t)
 
-;; Dictionary (install dictd to use as local server)
-(setq dictionary-use-single-buffer t ; Use a single buffer for the dictionary
-      dictionary-server "localhost")
-
 (use-package pdf-tools
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :bind (:map pdf-view-mode-map

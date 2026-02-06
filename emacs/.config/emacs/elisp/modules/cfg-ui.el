@@ -39,7 +39,6 @@
                 elfeed-show-mode-hook
                 help-mode-hook
                 helpful-mode-hook
-                dictionary-mode-hook
                 mpdel-playlist-mode-hook
                 mpdel-browser-mode-hook
                 mpdel-tablist-mode-hook))

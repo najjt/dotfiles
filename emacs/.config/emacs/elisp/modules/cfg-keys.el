@@ -11,10 +11,6 @@
 ;; Make escape quit prompts
 (keymap-global-set "<escape>" 'keyboard-escape-quit)
 
-;; Look up word at point
-(keymap-global-set "C-c d l" 'dictionary-lookup-definition)
-(keymap-global-set "C-c d s" 'dictionary-search)
-
 (keymap-global-set "C-c R" 'revert-buffer)
 
 ;; vi emulation
