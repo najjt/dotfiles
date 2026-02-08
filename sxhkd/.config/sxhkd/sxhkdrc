@@ -1,6 +1,6 @@
 # Open Emacs client
 super + m
-    emacsclient -c -e "(fancy-startup-screen)"
+    emacsclient -c
 
 # Open web browser
 super + n
