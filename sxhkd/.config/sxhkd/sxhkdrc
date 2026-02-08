@@ -2,6 +2,10 @@
 super + m
     emacsclient -c
 
+# Open terminal emulator
+super + t
+    alacritty
+
 # Open web browser
 super + n
     firefox &
