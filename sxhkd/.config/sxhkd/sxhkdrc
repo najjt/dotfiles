@@ -21,3 +21,7 @@ super + i
 # Open Org Mode capture frame
 super + c
     emacsclient -e '(prot-window-popup-org-capture)'
+
+# Run word definition script
+super + d
+    define
