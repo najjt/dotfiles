@@ -22,6 +22,11 @@
   (setq tab-always-indent 'complete
         completion-cycle-threshold 1))
 
+(use-package corfu-terminal
+  :config
+  (unless (display-graphic-p)
+    (corfu-terminal-mode +1)))
+
 ;; Completion extensions
 (use-package cape
   :init
