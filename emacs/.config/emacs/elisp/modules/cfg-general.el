@@ -8,7 +8,7 @@
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "firefox")
 
-;; Get environment variables from your shell
+;; Get environment variables from shell
 (use-package exec-path-from-shell
   :config
   ;; Don't start an interactive shell (improves startup time)
@@ -110,6 +110,7 @@
 ;; Focus new frames
 (defun my/focus-new-client-frame ()
   (select-frame-set-input-focus (selected-frame)))
+
 (add-hook 'server-after-make-frame-hook #'my/focus-new-client-frame)
 
 ;; Use Emacs minibuffer for GPG pinentry

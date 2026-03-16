@@ -22,7 +22,8 @@
   :defer t)
 
 ;; Tabs are four spaces
-(setq-default tab-width 4 indent-tabs-mode nil)
+(setq-default tab-width 4
+              indent-tabs-mode nil)
 
 (use-package isearch
   :ensure nil

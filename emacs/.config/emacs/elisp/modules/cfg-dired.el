@@ -16,7 +16,7 @@
 
 (use-package browse-url
   :ensure nil
-  :custom  (browse-url-handlers '(("\\`file:" . browse-url-default-browser))))
+  :custom (browse-url-handlers '(("\\`file:" . browse-url-default-browser))))
 
 ;; Show recursive directory size in dired
 (use-package dired-du
