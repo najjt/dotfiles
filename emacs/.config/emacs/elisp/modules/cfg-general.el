@@ -15,7 +15,7 @@
   (setq exec-path-from-shell-arguments nil)
 
   ;; Which environment variables to import
-  (dolist (var '("LANG" "LC_ALL" "PATH" "ZDOTDIR"))
+  (dolist (var '("LANG" "LC_ALL" "PATH"))
     (add-to-list 'exec-path-from-shell-variables var))
   (exec-path-from-shell-initialize))
 
