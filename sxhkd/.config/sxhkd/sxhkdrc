@@ -1,7 +1,3 @@
-# Open Emacs client
-super + m
-    emacsclient -c
-
 # Open terminal emulator
 super + t
     alacritty
