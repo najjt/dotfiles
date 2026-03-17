@@ -1,6 +1,6 @@
-# Open terminal emulator
+# Open terminal emulator with tmux
 super + t
-    alacritty
+    alacritty -e tmux
 
 # Open web browser
 super + n
