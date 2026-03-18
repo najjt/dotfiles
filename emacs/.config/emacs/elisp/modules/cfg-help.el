@@ -3,7 +3,10 @@
 ;; Show completions in a vertical UI
 (use-package vertico
   :config
-  (vertico-mode))
+  (vertico-mode)
+  ;; Invert the background of the selected candidate
+  (custom-set-faces
+   '(vertico-current ((t (:inverse-video t :weight bold))))))
 
 ;; Better completion style
 (use-package orderless
