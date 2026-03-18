@@ -111,11 +111,11 @@
          (dedicated . t)
          (preserve-size . (t . t)))
 
-        ("\\*grep\\*"
-         (display-buffer-reuse-mode-window)
-         (body-function . my/select-window)
+        ("\\*compilation\\*"
+         (display-buffer-reuse-window display-buffer-same-window)
          (dedicated . t)
-         (preserve-size . (t . t)))
+         (preserve-size . (t . t))
+         (inhibit-same-window . nil))
 
         ((or . ((derived-mode . helpful-mode)))
          (display-buffer-reuse-mode-window)
