@@ -4,7 +4,7 @@
     foreground                 : #cecece;
     separatorcolor             : #cecece;
     selected-normal-background : #424858;
-    font                       : "Terminus 12";
+    font                       : "Terminus (TTF) 12";
 }
 
 window {
