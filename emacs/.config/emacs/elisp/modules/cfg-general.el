@@ -143,9 +143,6 @@
 ;; Set default alert style to send desktop notifications
 (setq alert-default-style 'libnotify)
 
-(when (eq system-type 'gnu/linux)
-  (use-package sxhkdrc-mode))
-
 ;; Search and navigation commands
 (use-package consult
   :defer nil
