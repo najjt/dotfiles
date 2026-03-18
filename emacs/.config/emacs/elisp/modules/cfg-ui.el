@@ -125,14 +125,6 @@
         ("\\*compilation\\*" display-buffer-no-window
          (allow-no-window . t))))
 
-(use-package nerd-icons-completion
-  :after marginalia
-  :config
-  (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup)
-  (add-hook 'minibuffer-setup-hook (lambda ()
-                                     (when (display-graphic-p)
-                                       (nerd-icons-completion-mode)))))
-
 (use-package nerd-icons-corfu
   :after corfu
   :init
