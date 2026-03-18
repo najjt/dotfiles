@@ -176,4 +176,7 @@
 ;; Mouse support for terminal environment
 (xterm-mouse-mode +1)
 
+;; Automatically follow symlinks without prompting
+(setq vc-follow-symlinks t)
+
 (provide 'cfg-general)
