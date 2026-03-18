@@ -70,13 +70,10 @@
 (use-package popper
   :defer nil
   :bind
-  ("M-`"     . popper-cycle)
+  ("M-+"     . popper-cycle)
   ("C-c p d" . popper-kill-latest-popup)
   ("C-c p t" . popper-toggle-type)
-  ;; US kb layout
-  ("C-`"     . popper-toggle)
-  ;; SV kb layout
-  ("C-§"     . popper-toggle)
+  ("C-c p p" . popper-toggle)
   :init
   (setq popper-reference-buffers
         '("\\*Compile-Log\\*"
