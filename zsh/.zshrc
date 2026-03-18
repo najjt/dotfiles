@@ -129,4 +129,5 @@ alias ctar="tar -cvzf"  # Creates
 
 # Update
 alias apt-up="sudo apt update && sudo apt upgrade -y"
+alias dnf-up="sudo dnf upgrade -y"
 alias fp-up="flatpak update"
