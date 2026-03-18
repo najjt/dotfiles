@@ -20,7 +20,7 @@ export LC_ALL="en_IE.UTF-8"
 export LC_CTYPE="en_IE.UTF-8"
 
 # Path
-export PATH="$HOME/.local/bin:$HOME/scripts:$PATH"
+export PATH="$HOME/go/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/scripts:$PATH"
 
 # Java
 export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
