@@ -25,25 +25,6 @@
                 org-mode-hook))
   (add-hook hook 'display-line-numbers-mode))
 
-;; Highlight current line
-(dolist (hook '(text-mode-hook
-                prog-mode-hook
-                dired-mode-hook
-                Man-mode-hook
-                conf-mode-hook
-                emms-browser-mode-hook
-                emms-playlist-mode-hook
-                org-agenda-mode-hook
-                Info-mode-hook
-                mu4e-view-mode-hook
-                elfeed-show-mode-hook
-                help-mode-hook
-                helpful-mode-hook
-                mpdel-playlist-mode-hook
-                mpdel-browser-mode-hook
-                mpdel-tablist-mode-hook))
-  (add-hook hook 'hl-line-mode))
-
 ;; Set font
 (let ((mono-spaced-font "monospace")
       (proportionately-spaced-font "sans"))
