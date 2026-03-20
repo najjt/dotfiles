@@ -4,9 +4,8 @@
 (use-package vertico
   :config
   (vertico-mode)
-  ;; Invert the background of the selected candidate
   (custom-set-faces
-   '(vertico-current ((t (:inverse-video t :weight bold))))))
+   '(vertico-current ((t (:inherit nil :background "blue" :foreground "white" :weight bold))))))
 
 ;; Better completion style
 (use-package orderless
