@@ -18,8 +18,4 @@
   :ensure nil
   :custom (browse-url-handlers '(("\\`file:" . browse-url-default-browser))))
 
-;; Show recursive directory size in dired
-(use-package dired-du
-  :custom (dired-du-size-format t)) ; Use human-readable format
-
 (provide 'cfg-dired)
