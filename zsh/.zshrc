@@ -1,6 +1,3 @@
-# Source aliases
-[ -f "$ZDOTDIR/alias" ] && source "$ZDOTDIR/alias"
-
 # Load modules
 zmodload zsh/complist
 autoload -U compinit && compinit
