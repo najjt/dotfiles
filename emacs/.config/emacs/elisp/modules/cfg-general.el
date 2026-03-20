@@ -14,7 +14,7 @@
   ;; Don't start an interactive shell (improves startup time)
   (setq exec-path-from-shell-arguments nil)
 
-  ;; Which environment variables to import
+  ;; Import language, locale, and path
   (dolist (var '("LANG" "LC_ALL" "PATH"))
     (add-to-list 'exec-path-from-shell-variables var))
   (exec-path-from-shell-initialize))
