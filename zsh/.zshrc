@@ -115,6 +115,7 @@ alias pi="ssh root@192.168.1.48"
 # Emacs
 alias e="emacs -nw"
 alias ec="emacsclient -c -nw"
+alias magit="emacsclient -c -nw -e '(magit-status)'"
 
 # Restart Syncthing service
 alias stre="systemctl --user restart syncthing"
