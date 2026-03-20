@@ -67,7 +67,7 @@
 ;; Use minibuffer whilst in the minibuffer
 (setopt enable-recursive-minibuffers t)
 
-;; Focus new frames
+;; Ensure new frames are focused
 (defun my/focus-new-client-frame ()
   (select-frame-set-input-focus (selected-frame)))
 

@@ -1,10 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
 ;; Source: https://protesilaos.com/codelog/2024-09-19-emacs-command-popup-frame-emacsclient/
-;; Changes:
-;; - Set window system to X11
-;; - Ensure frame gets focus
-;; - Set frame's width and height
 
 ;;;; Run commands in a popup frame
 
