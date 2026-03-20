@@ -60,10 +60,10 @@
         ("C-h" . isearch-query-replace)))
 
 ;; Copy to system clipboard in terminal
-(use-package xclip
+(use-package clipetty
   :if (not (display-graphic-p))
   :config
-  (xclip-mode))
+  (clipetty-mode))
 
 ;; Writable grep buffers
 (use-package wgrep)
