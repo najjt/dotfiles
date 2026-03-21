@@ -119,6 +119,9 @@
 (use-package consult
   :defer nil
   :bind (("C-c f"     . consult-find)
+         ("C-c r"     . consult-ripgrep)
+         ("C-x C-r"   . consult-recent-file)
+         ("C-s"       . consult-line)
          ("M-y"       . consult-yank-pop)
          ("C-c C-x f" . consult-recent-file))
   :custom (consult-preview-key "M-.") ; Preview manually with <M-.>
