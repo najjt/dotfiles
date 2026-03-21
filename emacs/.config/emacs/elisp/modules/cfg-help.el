@@ -4,8 +4,9 @@
 (use-package vertico
   :config
   (vertico-mode)
+  (setq vertico-cycle t)
   (custom-set-faces
-   '(vertico-current ((t (:inherit nil :background "blue" :foreground "white" :weight bold))))))
+   '(vertico-current ((t (:inherit nil :background "darkblue" :foreground "white" :weight bold))))))
 
 ;; Better completion style
 (use-package orderless
