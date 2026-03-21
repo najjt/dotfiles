@@ -61,6 +61,7 @@
 
 ;; Copy to system clipboard in terminal
 (use-package clipetty
+  :diminish
   :if (not (display-graphic-p))
   :config
   (global-clipetty-mode))
