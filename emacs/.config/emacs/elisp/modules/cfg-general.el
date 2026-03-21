@@ -151,4 +151,12 @@
 ;; Automatically follow symlinks without prompting
 (setq vc-follow-symlinks t)
 
+;; Copy links to system clipboard in terminal Emacs
+(define-advice browse-url
+    (:around (orig-fun &rest args) copy-url-if-termainl)
+  (if (display-graphic-p)
+      (apply orig-fun args)
+    (let ((url (nth 0 args)))
+      (message "Clipetty link: %s" url)
+      (clipetty--emit (clipetty--osc url t)))))
 (provide 'cfg-general)
