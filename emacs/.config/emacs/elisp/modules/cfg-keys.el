@@ -77,6 +77,4 @@
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
 
-(global-set-key (kbd "C-c r") 'rgrep)
-
 (provide 'cfg-keys)
