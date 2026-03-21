@@ -92,11 +92,12 @@
          (dedicated . t)
          (preserve-size . (t . t)))
 
-        ("\\*compilation\\*"
+        ((or . ((derived-mode . compilation-mode)))
          (display-buffer-reuse-window display-buffer-same-window)
+         (body-function . my/select-window)
          (dedicated . t)
-         (preserve-size . (t . t))
-         (inhibit-same-window . nil))
+         (inhibit-same-window . nil)
+         (preserve-size . (t . t)))
 
         ((or . ((derived-mode . helpful-mode)))
          (display-buffer-reuse-mode-window)
