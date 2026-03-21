@@ -159,4 +159,7 @@
     (let ((url (nth 0 args)))
       (message "Clipetty link: %s" url)
       (clipetty--emit (clipetty--osc url t)))))
+
+;; Scroll just enough to bring cursor back into view
+(setq scroll-conservatively 10000)
 (provide 'cfg-general)
