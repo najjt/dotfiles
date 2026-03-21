@@ -63,7 +63,7 @@
 (use-package clipetty
   :if (not (display-graphic-p))
   :config
-  (clipetty-mode))
+  (global-clipetty-mode))
 
 (defun my/find-link-at-point()
   "Returns the link at point. Improved version of the `browse-url-at-point'."
