@@ -9,11 +9,6 @@
   :mode ("\\.rasi\\'"
          "\\.edn\\'"))
 
-;; Better commenting
-(use-package evil-nerd-commenter
-  :defer t
-  :bind ("M-/" . evilnc-comment-or-uncomment-lines))
-
 ;; Git interface
 (use-package magit
   :defer t
