@@ -162,4 +162,8 @@
 
 ;; Scroll just enough to bring cursor back into view
 (setq scroll-conservatively 10000)
+
+;; Consider all themes as safe
+(setq custom-safe-themes t)
+
 (provide 'cfg-general)
