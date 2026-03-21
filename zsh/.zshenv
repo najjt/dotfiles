@@ -10,6 +10,7 @@ export SHELL_SESSIONS_DISABLE=1
 
 # Defaults
 export EDITOR=emacsclient
+export SUDO_EDITOR=emacsclient
 export TERM=xterm-256color
 export GPG_TTY=$(tty)
 
