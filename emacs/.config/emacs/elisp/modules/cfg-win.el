@@ -73,7 +73,7 @@
   ("M-+"     . popper-cycle)
   ("C-c p d" . popper-kill-latest-popup)
   ("C-c p t" . popper-toggle-type)
-  ("C-c p p" . popper-toggle)
+  ("C-c ´"   . popper-toggle)
   :init
   (setq popper-reference-buffers
         '("\\*Compile-Log\\*"
