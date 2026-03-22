@@ -2,10 +2,10 @@
 
 (use-package org
   :ensure nil
-  :bind (("C-c a"          . org-agenda)
-         ("C-c c"          . org-capture)
-         ("C-c l"          . org-store-link)
-         ("C-c C-<return>" . org-insert-todo-heading)) ; For terminal
+  :bind (("C-c a"     . org-agenda)
+         ("C-c c"     . org-capture)
+         ("C-c l"     . org-store-link)
+         ("C-c M-RET" . org-insert-todo-heading)) ; For terminal
   :hook (org-mode . (lambda () (setq tab-width 8)))
   :config
   ;; Basic settings
