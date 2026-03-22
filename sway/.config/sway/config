@@ -27,7 +27,7 @@ input type:keyboard {
 }
 
 ### Startup
-exec_always --no-startup-id $sd/autostart-sway
+exec_always $sd/autostart-sway
 
 ### Outputs (adjust names via: swaymsg -t get_outputs)
 workspace 1 output HDMI-A-1 eDP-1
