@@ -43,6 +43,10 @@ default_border pixel 3
 gaps inner 5
 gaps outer 5
 
+set $opacity 0.95
+for_window [class=".*"] opacity $opacity
+for_window [app_id=".*"] opacity $opacity
+
 ### Keybindings
 
 bindsym $mod+Return exec $term
