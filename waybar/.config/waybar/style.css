@@ -5,7 +5,12 @@
     font-size: 14px;
     min-height: 0;
     background: #000000;
-    padding: 0 5px;
+    margin: 0 2px;
+    margin-left: 0;
+}
+
+.modules-right .module {
+    margin-left: 20px;   /* space between right modules */
 }
 
 window#waybar {
