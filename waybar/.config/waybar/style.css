@@ -1,0 +1,42 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: sans;
+    font-size: 13px;
+    min-height: 0;
+    background: #000000;
+    padding: 0 5px;
+}
+
+window#waybar {
+    color: #ffffff;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: #7f7f7f;
+}
+
+#workspaces button.visible {
+    color: #ffffff;
+}
+
+#workspaces button.urgent {
+    color: #cd0000;
+}
+
+#window {
+    padding: 0 10px;
+}
+
+#battery.warning {
+    color: #cdcd00;
+}
+
+#battery.critical {
+    color: #cd0000;
+}
+
+#tray {
+    color: #ffffff;
+}

@@ -1,0 +1,56 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 24,
+
+    "modules-left": [
+        "sway/workspaces",
+        "sway/window"
+    ],
+
+    "modules-right": [
+        "mpd",
+        "pulseaudio",
+        "cpu",
+        "battery",
+        "clock",
+    ],
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true
+    },
+
+    "sway/window": {
+        "max-length": 100
+    },
+
+    "cpu": {
+        "interval": 4,
+        "format": "CPU {usage}%"
+    },
+
+    "battery": {
+        "format": "BAT {capacity}% {time}",
+        "format-charging": "BAT {capacity}% [CHR]",
+        "format-warning": "BAT {capacity}% LOW",
+        "states": {
+            "warning": 40,
+            "critical": 20
+        }
+    },
+
+    "clock": {
+        "format": "{:%Y-%m-%d %a %H:%M}"
+    },
+
+    "mpd": {
+        "format": "{artist} - {title}",
+        "interval": 2
+    },
+
+    "pulseaudio": {
+        "format": "VOL {volume}%",
+        "format-muted": "VOL muted"
+    }
+}
