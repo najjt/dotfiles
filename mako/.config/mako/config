@@ -1,0 +1,28 @@
+# Positioning
+anchor=top-right
+
+# Size
+width=300
+height=100
+
+# Spacing
+margin=5
+padding=5
+border-size=1
+border-radius=5
+
+# Colors
+background-color=#000000
+text-color=#ffffff
+border-color=#cecece
+
+# Behavior
+default-timeout=5000
+ignore-timeout=0
+
+# Format
+format=<b>%s</b>\n%b
+
+# Icons
+icons=1
+max-icon-size=48
