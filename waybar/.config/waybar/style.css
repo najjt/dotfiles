@@ -36,7 +36,3 @@ window#waybar {
 #battery.critical {
     color: #cd0000;
 }
-
-#tray {
-    color: #ffffff;
-}
