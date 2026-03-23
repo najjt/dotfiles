@@ -40,28 +40,28 @@ select-word-style bash
 set -o emacs
 
 # Copy to system clipboard
-x-copy-region-as-kill () {
+wl-copy-region-as-kill () {
   zle copy-region-as-kill
-  print -rn -- $CUTBUFFER | xsel -i -b
+  print -rn -- $CUTBUFFER | wl-copy
 }
 
-zle -N x-copy-region-as-kill
-x-kill-region () {
+zle -N wl-copy-region-as-kill
+wl-kill-region () {
   zle kill-region
-  print -rn -- $CUTBUFFER | xsel -i -b
+  print -rn -- $CUTBUFFER | wl-copy
 }
 
-zle -N x-kill-region
-x-yank () {
-  CUTBUFFER=$(xsel -o -b </dev/null)
+zle -N wl-kill-region
+wl-yank () {
+  CUTBUFFER=$(wl-paste </dev/null)
   zle yank
 }
 
-zle -N x-yank
+zle -N wl-yank
 
-bindkey -e '\ew' x-copy-region-as-kill
-bindkey -e '^W' x-kill-region
-bindkey -e '^Y' x-yank
+bindkey -e '\ew' wl-copy-region-as-kill
+bindkey -e '^W' wl-kill-region
+bindkey -e '^Y' wl-yank
 
 #
 # Plugins
