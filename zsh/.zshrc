@@ -117,9 +117,6 @@ alias e="emacs -nw"
 alias ec="emacsclient -c -nw"
 alias magit="emacsclient -c -nw -e '(magit-status)'"
 
-# Restart Syncthing service
-alias stre="systemctl --user restart syncthing"
-
 # Archives
 alias ltar="tar -ztvf"  # Lists
 alias untar="tar -zxvf" # Unpacks
