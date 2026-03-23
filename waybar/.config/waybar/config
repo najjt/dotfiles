@@ -32,7 +32,7 @@
     },
 
     "battery": {
-        "format": "BAT {capacity}% {time}",
+        "format": "BAT {capacity}%",
         "format-charging": "BAT {capacity}% [CHR]",
         "format-warning": "BAT {capacity}% LOW",
         "states": {
