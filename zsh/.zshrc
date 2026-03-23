@@ -42,13 +42,13 @@ set -o emacs
 # Copy to system clipboard
 wl-copy-region-as-kill () {
   zle copy-region-as-kill
-  print -rn -- $CUTBUFFER | wl-copy
+  print -rn -- $CUTBUFFER | wl-copy --foreground
 }
 
 zle -N wl-copy-region-as-kill
 wl-kill-region () {
   zle kill-region
-  print -rn -- $CUTBUFFER | wl-copy
+  print -rn -- $CUTBUFFER | wl-copy --foreground
 }
 
 zle -N wl-kill-region
