@@ -17,7 +17,7 @@ workspace_layout tabbed
 
 set $term foot
 set $menu rofi -modi "drun" -show drun -show-icons
-set $clip cliphist list | rofi -dmenu | cliphist-decode | wl-copy
+set $clip sh -c 'cliphist list | rofi -dmenu | cliphist decode | wl-copy'
 set $browser firefox
 
 input type:keyboard {
