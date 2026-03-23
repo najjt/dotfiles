@@ -15,7 +15,6 @@ zstyle ':completion:*' squeeze-slashes false # explicit disable to allow /*/ exp
 # history shared across sessions
 setopt append_history inc_append_history share_history
 setopt auto_menu menu_complete    # Autocmp first menu match
-setopt autocd                     # Type a dir to cd
 setopt auto_param_slash           # When a dir is completed, add a / instead of a trailing space
 setopt no_case_glob no_case_match # Make cmp case insensitive
 setopt globdots                   # Include dotfiles
