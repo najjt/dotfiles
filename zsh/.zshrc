@@ -23,7 +23,6 @@ setopt interactive_comments       # Allow comments in shell
 unsetopt prompt_sp                # Don't autoclean blanklines
 stty stop undef                   # Disable accidental ctrl s
 
-# History opts
 HISTSIZE=1000000
 SAVEHIST=1000000
 HISTFILE="$XDG_CACHE_HOME/zsh_history" # Move histfile to cache
