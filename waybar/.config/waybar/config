@@ -46,6 +46,7 @@
 
     "mpd": {
         "format": "{artist} - {title}",
+        "format-stopped": "",
         "interval": 2
     },
 
