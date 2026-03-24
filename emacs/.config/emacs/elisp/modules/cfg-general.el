@@ -151,4 +151,24 @@
 ;; Scroll just enough to bring cursor back into view
 (setq scroll-conservatively 10000)
 
+(use-package vterm
+  :hook (vterm-mode . (lambda ()
+                        (setq-local evil-insert-state-cursor 'box)
+                        (evil-insert-state)))
+  :bind (:map vterm-mode-map
+         ("C-c C-s" . isearch-forward)
+         ("C-c C-r" . isearch-backward))
+  :custom
+  (term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
+  (vterm-shell "zsh")
+  (vterm-max-scrollback 10000))
+
+;; Open multiple vterm buffers
+(use-package multi-vterm
+  :bind
+  ("C-c T"     . multi-vterm-dedicated-toggle)
+  ("C-c t" . multi-vterm)
+  :config
+  (setq multi-vterm-dedicated-window-height-percent 30))
+
 (provide 'cfg-general)
