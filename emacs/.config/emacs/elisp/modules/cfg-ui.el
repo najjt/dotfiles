@@ -112,4 +112,18 @@
   :init
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
+;; Enable context menu (mouse-click menu)
+(add-hook 'text-mode-hook 'context-menu-mode)
+(add-hook 'prog-mode-hook 'context-menu-mode)
+(add-hook 'dired-mode-hook 'context-menu-mode)
+
+;; Indicate current evil state in terminal environment
+(use-package evil-terminal-cursor-changer
+  :config
+  (unless (display-graphic-p)
+    (evil-terminal-cursor-changer-activate)))
+
+;; Consider all themes as safe
+(setq custom-safe-themes t)
+
 (provide 'cfg-ui)

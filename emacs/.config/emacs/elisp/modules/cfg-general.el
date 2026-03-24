@@ -133,17 +133,6 @@
 
   (use-package embark-consult))
 
-;; Enable context menu (mouse-click menu)
-(add-hook 'text-mode-hook 'context-menu-mode)
-(add-hook 'prog-mode-hook 'context-menu-mode)
-(add-hook 'dired-mode-hook 'context-menu-mode)
-
-;; Indicate current evil state in terminal environment
-(use-package evil-terminal-cursor-changer
-  :config
-  (unless (display-graphic-p)
-    (evil-terminal-cursor-changer-activate)))
-
 ;; Mouse support for terminal environment
 (xterm-mouse-mode +1)
 
@@ -161,8 +150,5 @@
 
 ;; Scroll just enough to bring cursor back into view
 (setq scroll-conservatively 10000)
-
-;; Consider all themes as safe
-(setq custom-safe-themes t)
 
 (provide 'cfg-general)
