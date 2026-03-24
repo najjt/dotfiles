@@ -9,6 +9,7 @@
     ],
 
     "modules-right": [
+        "idle_inhibitor",
         "mpd",
         "pulseaudio",
         "temperature",
@@ -16,6 +17,14 @@
         "battery",
         "clock",
     ],
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
 
     "sway/workspaces": {
         "disable-scroll": true,
