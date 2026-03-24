@@ -53,6 +53,8 @@ bindsym $mod+Return exec $term
 bindsym $mod+b exec $menu
 bindsym $mod+i exec $clip
 bindsym $mod+n exec $browser
+bindsym $mod+c exec emacsclient -c -e '(prot-window-popup-org-capture)'
+bindsym $mod+a exec emacsclient -c -e '(prot-window-popup-org-agenda)'
 
 ## Kill window
 bindsym $mod+Shift+d kill
@@ -155,6 +157,8 @@ bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/Screenshots/screenshot-$(
 ### Window rules
 for_window [app_id="bitwarden"] floating enable
 for_window [app_id="discord"] floating enable
+for_window [app_id="emacs" title="Org Capture"] floating enable
+for_window [app_id="emacs" title="Org Agenda"] floating enable
 
 ## Idle / lock
 exec swayidle -w \
