@@ -34,6 +34,7 @@
 
 ;; Add packages to load path
 (add-to-list 'load-path '"~/.config/emacs/elisp")
+(load "global-popup")
 
 ;; Load setup files
 (mapc 'load (file-expand-wildcards "~/.config/emacs/elisp/modules/*.el"))
