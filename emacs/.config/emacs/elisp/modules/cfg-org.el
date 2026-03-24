@@ -146,4 +146,10 @@
   :init
   (require 'ox-org))
 
+(use-package org-wild-notifier
+  :config
+  (org-wild-notifier-mode)
+  (setq org-wild-notifier-day-wide-alert-times '("07:00")))
+
+
 (provide 'cfg-org)
