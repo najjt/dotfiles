@@ -148,17 +148,12 @@ bindsym XF86MonBrightnessUp exec $sd/buttons brightness_up
 bindsym XF86MonBrightnessDown exec $sd/buttons brightness_down
 
 ## Screenshots
-bindsym Print exec grim ~/Pictures/Screenshots/screenshot-$(date +'%F-%T').png
-bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/Screenshots/screenshot-$(date +'%F-%T').png
-
-## Monitor detection
-# bindsym $mod+y exec $sd/lid_monitor
+bindsym Print exec grim ~/Pictures/Screenshots/screenshot-$(date +'%F-%T').png && notify-send "Screenshot taken"
+bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/Screenshots/screenshot-$(date +'%F-%T').png && notify-send "Screenshot taken"
 
 ### Window rules
 for_window [app_id="bitwarden"] floating enable
 for_window [app_id="discord"] floating enable
-for_window [app_id="emacs" title="Org Capture"] floating enable
-for_window [app_id="emacs" title="Org Agenda"] floating enable
 
 ## Idle / lock
 exec swayidle -w \
