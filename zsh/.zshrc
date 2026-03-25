@@ -68,7 +68,7 @@ bindkey -e '^Y' wl-yank
 #
 
 # Set up fzf keybindings and fuzzy completion
-source /usr/share/fzf/shell/key-bindings.zsh
+source <(fzf --zsh)
 
 # Additional zsh completions
 fpath=($HOME/src/zsh-completions/src $fpath)
