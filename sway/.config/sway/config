@@ -53,8 +53,9 @@ bindsym $mod+Return exec $term
 bindsym $mod+b exec $menu
 bindsym $mod+i exec $clip
 bindsym $mod+n exec $browser
-bindsym $mod+c exec emacsclient -c -e '(prot-window-popup-org-capture)'
-bindsym $mod+a exec emacsclient -c -e '(prot-window-popup-org-agenda)'
+bindsym $mod+m exec emacsclient -c
+bindsym $mod+c exec emacsclient -e '(prot-window-popup-org-capture)'
+bindsym $mod+a exec emacsclient -e '(prot-window-popup-org-agenda)'
 
 ## Kill window
 bindsym $mod+Shift+d kill
