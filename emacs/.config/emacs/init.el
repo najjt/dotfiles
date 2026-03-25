@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
+(setq native-comp-jit-compilation-deny-list '(".*org-element.*"))
+
 ;; Performance
 (setq gc-cons-threshold (* 50 1000 1000))
 (setq read-process-output-max (* 1024 1024))
