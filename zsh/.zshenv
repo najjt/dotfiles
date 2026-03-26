@@ -27,5 +27,5 @@ export PATH="$HOME/go/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/scripts:$PATH"
 export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
 
 # fzf default options
-export FZF_DEFAULT_OPTS="--color 16 --layout=reverse --height 30% --preview='batcat -p --color=always {}'"
+export FZF_DEFAULT_OPTS="--color 16 --layout=reverse --height 30% --preview='bat -p --color=always {}'"
 export FZF_CTRL_R_OPTS="--color 16 --info inline --no-sort --no-preview" # Separate opts for history widget
