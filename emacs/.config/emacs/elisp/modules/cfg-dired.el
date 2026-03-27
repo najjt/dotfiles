@@ -14,8 +14,4 @@
   ;; No infinite dired buffers!
   (dired-kill-when-opening-new-dired-buffer t))
 
-(use-package browse-url
-  :ensure nil
-  :custom (browse-url-handlers '(("\\`file:" . browse-url-default-browser))))
-
 (provide 'cfg-dired)
