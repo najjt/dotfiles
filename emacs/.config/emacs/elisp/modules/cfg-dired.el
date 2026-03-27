@@ -14,4 +14,6 @@
   ;; No infinite dired buffers!
   (dired-kill-when-opening-new-dired-buffer t))
 
+(use-package dired-open)
+
 (provide 'cfg-dired)
