@@ -46,11 +46,8 @@
 ;; Increase large file warning threshold
 (setq large-file-warning-threshold 100000000)
 
-;; Clean up unneccesary whitespace on save, unless in markdown mode
-(defun my/whitespace-cleanup ()
-  (unless (derived-mode-p 'markdown-mode)
-    (whitespace-cleanup)))
-(add-hook 'before-save-hook 'my/whitespace-cleanup)
+;; Clean up unneccesary whitespace on save
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; Map yes and no to y and n
 (fset 'yes-or-no-p 'y-or-n-p)
