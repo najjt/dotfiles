@@ -20,6 +20,7 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (blink-cursor-mode -1)
+(setq visible-cursor nil)
 
 ;; Don't show unnecessary warnings
 (setq warning-minimum-level :error
