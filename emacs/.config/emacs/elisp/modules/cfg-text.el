@@ -25,8 +25,7 @@
 (use-package clipetty
   :diminish
   :if (not (display-graphic-p))
-  :config
-  (global-clipetty-mode))
+  :hook (after-init . global-clipetty-mode))
 
 (defun my/find-link-at-point()
   "Returns the link at point. Improved version of the `browse-url-at-point'."
