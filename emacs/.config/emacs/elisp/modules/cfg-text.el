@@ -51,6 +51,15 @@
 (with-eval-after-load "org"
   (add-hook 'org-open-at-point-functions #'my/browse-url-at-point))
 
+;; Copy links to system clipboard in terminal Emacs
+(define-advice browse-url
+    (:around (orig-fun &rest args) copy-url-if-termainl)
+  (if (display-graphic-p)
+      (apply orig-fun args)
+    (let ((url (nth 0 args)))
+      (message "Clipetty link: %s" url)
+      (clipetty--emit (clipetty--osc url t)))))
+
 ;; Writable grep buffers
 (use-package wgrep)
 
