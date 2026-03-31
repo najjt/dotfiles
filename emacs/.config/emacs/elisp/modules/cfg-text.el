@@ -4,8 +4,6 @@
 
 ;; Automatic line breaking
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
-;; Add a newline automatically at the end of the file upon save
-(setq require-final-newline t)
 
 ;; Spell checking
 (use-package jinx
