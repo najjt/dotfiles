@@ -114,6 +114,7 @@ alias pi="ssh root@192.168.1.48"
 alias e="emacs -nw"
 alias ec="emacsclient -c -nw"
 alias magit="emacsclient -c -nw -e '(magit-status)'"
+alias esr="systemctl --user restart emacs"
 
 # Archives
 alias ltar="tar -ztvf"  # Lists
