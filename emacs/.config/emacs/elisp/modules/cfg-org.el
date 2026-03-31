@@ -19,12 +19,12 @@
   (load "sv-kalender")
 
   ;; Refile settings
-  (setq org-default-notes-file (concat org-directory "/refile.org")
-        org-refile-targets (quote (("todo.org"          :maxlevel . 2)
-                                   ("repeat.org"        :maxlevel . 1)
-                                   ("arkiv.org"         :maxlevel . 1)
-                                   ("misc.org"          :maxlevel . 1)
-                                   ("kalender.org"      :level    . 0)))
+  (setq org-default-notes-file (concat org-directory "/omarkiv.org")
+        org-refile-targets (quote (("att-gora.org"     :maxlevel . 2)
+                                   ("aterkommande.org" :maxlevel . 1)
+                                   ("arkiv.org"        :maxlevel . 1)
+                                   ("varia.org"        :maxlevel . 1)
+                                   ("kalender.org"     :level    . 0)))
         org-refile-use-outline-path 'file       ; Provide refile targets as path
         org-outline-path-complete-in-steps nil) ; Refile in a single go
 
