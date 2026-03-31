@@ -20,7 +20,7 @@
 
   ;; Refile settings
   (setq org-default-notes-file (concat org-directory "/omarkiv.org")
-        org-refile-targets (quote (("att-gora.org"     :maxlevel . 2)
+        org-refile-targets (quote (("todo.org"         :maxlevel . 2)
                                    ("aterkommande.org" :maxlevel . 1)
                                    ("arkiv.org"        :maxlevel . 1)
                                    ("varia.org"        :maxlevel . 1)
