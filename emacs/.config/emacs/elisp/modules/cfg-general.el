@@ -146,8 +146,6 @@
 (setq scroll-conservatively 10000)
 
 (use-package vterm
-  :bind (:map vterm-mode-map
-              ("C-c C-s" . consult-line))
   :custom
   (term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
   (vterm-shell "zsh")
