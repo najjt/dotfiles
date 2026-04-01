@@ -1,5 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 
+;; Use default dark theme
+(set-foreground-color "white")
+(set-background-color "black")
+
 ;; Set default frame dimensions
 (add-to-list 'default-frame-alist '(height . 40))
 (add-to-list 'default-frame-alist '(width . 90))
