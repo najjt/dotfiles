@@ -4,7 +4,9 @@
 (use-package vertico
   :config
   (vertico-mode)
-  (setq vertico-cycle t))
+  (setq vertico-cycle t
+        vertico-resize t
+        vertico-count 5))
 
 ;; Better completion style
 (use-package orderless
