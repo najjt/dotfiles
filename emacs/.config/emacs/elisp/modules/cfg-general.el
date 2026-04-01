@@ -146,12 +146,8 @@
 (setq scroll-conservatively 10000)
 
 (use-package vterm
-  :hook (vterm-mode . (lambda ()
-                        (setq-local evil-insert-state-cursor 'box)
-                        (evil-insert-state)))
   :bind (:map vterm-mode-map
-         ("C-c C-s" . isearch-forward)
-         ("C-c C-r" . isearch-backward))
+              ("C-c C-s" . consult-line))
   :custom
   (term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
   (vterm-shell "zsh")
