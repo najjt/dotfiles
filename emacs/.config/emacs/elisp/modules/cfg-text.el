@@ -5,6 +5,9 @@
 ;; Automatic line breaking
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
+;; Delete selection on insert
+(delete-selection-mode)
+
 ;; Spell checking
 (use-package jinx
   :diminish
