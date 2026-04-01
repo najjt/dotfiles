@@ -30,13 +30,11 @@
 
 ;; Initialize the package manager
 (package-initialize)
-
 (setq use-package-always-ensure t
       use-package-verbose t)
 
 ;; Add packages to load path
 (add-to-list 'load-path '"~/.config/emacs/elisp")
-(load "global-popup")
 
 ;; Load setup files
 (mapc 'load (file-expand-wildcards "~/.config/emacs/elisp/modules/*.el"))
