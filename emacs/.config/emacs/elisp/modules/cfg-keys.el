@@ -15,6 +15,15 @@
 (define-key key-translation-map (kbd "C-x ,") (kbd "C-x C-;")) ; comment-line
 (define-key key-translation-map (kbd "C-c ,") (kbd "C-c C-,")) ; org-insert-structure-template
 
+(defun my/smart-open-line ()
+  "Insert an empty line after the current line.
+Position the cursor at its beginning, according to the current mode."
+  (interactive)
+  (move-end-of-line nil)
+  (newline-and-indent))
+
+(global-set-key [(shift return)] #'my/smart-open-line)
+
 ;; vi emulation
 (use-package evil
   :diminish
