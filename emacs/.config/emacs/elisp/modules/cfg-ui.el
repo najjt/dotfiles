@@ -67,9 +67,11 @@
              evil-collection-unimpaired-mode
              org-indent-mode
              abbrev-mode
-             subword-mode
              flymake-mode
              hs-minor-mode))
+
+(with-eval-after-load 'subword
+  (diminish 'subword-mode))
 
 ;; Show full path to file in header line
 (defun my/set-header-line-for-files-only ()
