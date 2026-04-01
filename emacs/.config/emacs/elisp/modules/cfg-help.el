@@ -6,7 +6,7 @@
   (vertico-mode)
   (setq vertico-cycle t
         vertico-resize t
-        vertico-count 5))
+        vertico-count 7))
 
 ;; Better completion style
 (use-package orderless
