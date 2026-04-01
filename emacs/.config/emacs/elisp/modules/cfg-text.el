@@ -16,10 +16,6 @@
   :config
   (setq jinx-languages "sv en_US"))
 
-;; Undo functionality
-(use-package vundo
-  :defer t)
-
 ;; Tabs are four spaces
 (setq-default tab-width 4
               indent-tabs-mode nil)

@@ -45,6 +45,16 @@
       :type line
       (let ((line-move-visual (unless count t)))
         (evil-line-move (- (or count 1))))))
+
+  ;; Indicate current evil state in terminal environment
+  (use-package evil-terminal-cursor-changer
+    :config
+    (unless (display-graphic-p)
+      (evil-terminal-cursor-changer-activate)))
+
+  ;; Undo functionality
+  (use-package vundo
+    :defer t)
   :custom
   ;; Horizontal movement crosses lines
   (evil-cross-lines t))

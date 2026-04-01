@@ -117,12 +117,6 @@
 (add-hook 'prog-mode-hook 'context-menu-mode)
 (add-hook 'dired-mode-hook 'context-menu-mode)
 
-;; Indicate current evil state in terminal environment
-(use-package evil-terminal-cursor-changer
-  :config
-  (unless (display-graphic-p)
-    (evil-terminal-cursor-changer-activate)))
-
 ;; Consider all themes as safe
 (setq custom-safe-themes t)
 
