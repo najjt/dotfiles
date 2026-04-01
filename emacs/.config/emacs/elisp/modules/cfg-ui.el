@@ -113,9 +113,10 @@
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
 ;; Enable context menu (mouse-click menu)
-(add-hook 'text-mode-hook 'context-menu-mode)
-(add-hook 'prog-mode-hook 'context-menu-mode)
-(add-hook 'dired-mode-hook 'context-menu-mode)
+(dolist (hook '(text-mode-hook
+                prog-mode-hook
+                dired-mode-hook))
+  (add-hook hook 'context-menu-mode))
 
 ;; Consider all themes as safe
 (setq custom-safe-themes t)
