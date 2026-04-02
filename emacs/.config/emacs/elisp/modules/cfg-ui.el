@@ -1,13 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-;; Use default dark theme
-(add-hook 'after-make-frame-functions
-          (lambda (frame)
-            (select-frame frame)
-            (set-background-color "black")
-            (set-foreground-color "white")
-            (set-face-attribute 'default nil :background "black" :foreground "white")))
-
 ;; Set default frame dimensions
 (add-to-list 'default-frame-alist '(height . 40))
 (add-to-list 'default-frame-alist '(width . 90))
