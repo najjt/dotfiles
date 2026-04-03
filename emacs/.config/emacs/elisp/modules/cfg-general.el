@@ -162,7 +162,7 @@
 (use-package dired
   :ensure nil
   :hook (dired-mode . dired-hide-details-mode)
-  :bind (:map dired-mode-map ("<backspace>" . dired-up-directory))
+  :bind (:map dired-mode-map ("b" . dired-up-directory))
   :custom
   ;; Show in long listing format,
   ;; show hidden files,
