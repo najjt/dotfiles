@@ -99,6 +99,9 @@ alias grep='grep --color=auto'
 # and list them as they are created
 alias mkdir='mkdir -pv'
 
+# Add verbose output to mv
+alias mv='mv -v'
+
 # Colorize diff output
 alias diff='colordiff'
 
