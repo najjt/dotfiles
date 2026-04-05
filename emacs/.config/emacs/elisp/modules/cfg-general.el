@@ -114,15 +114,12 @@
 ;; Search and navigation commands
 (use-package consult
   :defer nil
-  :bind (("C-c f"     . consult-find)
-         ("C-c r"     . consult-ripgrep)
-         ("C-x C-r"   . consult-recent-file)
+  :bind (("C-x C-r"   . consult-recent-file)
          ("C-s"       . consult-line)
          ("M-y"       . consult-yank-pop)
          ("C-c C-x f" . consult-recent-file))
   :custom (consult-preview-key "M-.") ; Preview manually with <M-.>
   :config
-  (setq-default consult-find-args "find .")
   (global-set-key [remap switch-to-buffer] 'consult-buffer)
   (global-set-key [remap switch-to-buffer-other-window] 'consult-buffer-other-window)
   (global-set-key [remap switch-to-buffer-other-frame] 'consult-buffer-other-frame)
@@ -162,7 +159,10 @@
 (use-package dired
   :ensure nil
   :hook (dired-mode . dired-hide-details-mode)
-  :bind (:map dired-mode-map ("b" . dired-up-directory))
+  :bind
+  (("C-c f"     . find-name-dired)
+   :map dired-mode-map
+   ("b" . dired-up-directory))
   :custom
   ;; Show in long listing format,
   ;; show hidden files,

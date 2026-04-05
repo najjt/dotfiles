@@ -11,6 +11,8 @@
 ;; Make escape quit prompts
 (keymap-global-set "<escape>" 'keyboard-escape-quit)
 
+(keymap-global-set "C-c r" 'rgrep)
+
 ;; Keybind workarounds for terminal Emacs
 (define-key key-translation-map (kbd "C-x ,") (kbd "C-x C-;")) ; comment-line
 (define-key key-translation-map (kbd "C-c ,") (kbd "C-c C-,")) ; org-insert-structure-template
