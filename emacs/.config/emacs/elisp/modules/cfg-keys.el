@@ -26,8 +26,6 @@ Position the cursor at its beginning, according to the current mode."
   (move-end-of-line nil)
   (newline-and-indent))
 
-(global-set-key [(shift return)] #'my/smart-open-line)
-
 ;; vi emulation
 (use-package evil
   :diminish
@@ -97,5 +95,6 @@ Position the cursor at its beginning, according to the current mode."
   :config
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
+(keymap-global-set "S-<return>" #'my/smart-open-line)
 
 (provide 'cfg-keys)
