@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
+;; Completions-related Settings
+
 ;; Show completions in a vertical UI
 (use-package vertico
   :config

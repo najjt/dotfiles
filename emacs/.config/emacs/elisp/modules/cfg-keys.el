@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
+;; Keybindings
+
 ;; Additional keybinding for M-x
 (global-set-key (kbd "C-c k") 'execute-extended-command)
 

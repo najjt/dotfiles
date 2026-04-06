@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
+;; Org Mode Settings
+
 (use-package org
   :ensure nil
   :bind (("C-c a"     . org-agenda)
@@ -8,7 +10,6 @@
          ("C-c M-RET" . org-insert-todo-heading)) ; For terminal
   :hook (org-mode . (lambda () (setq tab-width 8)))
   :config
-  ;; Basic settings
   (setq org-directory "~/notes/org"
         org-todo-keywords '((sequence "TODO" "|" "DONE"))
         org-M-RET-may-split-line '((default . nil))

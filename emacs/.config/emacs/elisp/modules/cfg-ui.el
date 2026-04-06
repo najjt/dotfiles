@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
+;; UI Settings
+
 ;; Set default frame dimensions
 (add-to-list 'default-frame-alist '(height . 40))
 (add-to-list 'default-frame-alist '(width . 90))

@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
+;; Text-related Settings
+
 (set-language-environment "UTF-8")
 
 ;; Automatic line breaking

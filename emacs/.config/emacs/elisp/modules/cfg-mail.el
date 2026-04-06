@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
+;; Mail Settings
+
 (use-package mu4e
   :commands (mu4e make-mu4e-context)
   :load-path "/usr/share/emacs/site-lisp/elpa-src/mu4e-1.12.9"

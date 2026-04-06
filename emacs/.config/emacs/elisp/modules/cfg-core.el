@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
+;; Core Settings
+
 ;; User information
 (setq user-full-name "Martin Lönn Andersson"
       user-mail-address "martin@malon.se")

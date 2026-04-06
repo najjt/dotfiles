@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
+;; Programming Settings
+
 (use-package prog-mode
   :ensure nil
   :hook (prog-mode . (lambda ()
