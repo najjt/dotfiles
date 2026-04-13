@@ -117,7 +117,6 @@
 (use-package consult
   :defer nil
   :bind (("C-x C-r"   . consult-recent-file)
-         ("C-s"       . consult-line)
          ("M-y"       . consult-yank-pop)
          ("C-c C-x f" . consult-recent-file))
   :custom (consult-preview-key "M-.") ; Preview manually with <M-.>
@@ -189,5 +188,8 @@
         TeX-source-correlate-mode 1)
 
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
+
+;; Show number of matches in the minibuffer
+(setq isearch-lazy-count t)
 
 (provide 'cfg-general)
