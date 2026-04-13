@@ -47,7 +47,6 @@
   ;; Send mail
   (setq sendmail-program "/usr/bin/msmtp"
         send-mail-function 'smtpmail-send-it
-        message-sendmail-f-is-evil t
         message-sendmail-extra-arguments '("--read-envelope-from")
         message-send-mail-function 'message-send-mail-with-sendmail)
 
@@ -100,9 +99,6 @@
     (interactive)
     (mu4e-quit)
     (mu4e-update-mail-and-index t))
-
-  (with-eval-after-load 'mu4e
-    (evil-define-key 'normal mu4e-main-mode-map (kbd "q") #'my/mu4e-quit))
 
   ;; Prefer plain text
   (with-eval-after-load "mm-decode"
