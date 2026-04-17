@@ -1,6 +1,8 @@
 ;; -*- lexical-binding: t; -*-
 
-;;;; Core Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Core Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; User information
 (setq user-full-name "Martin Lönn Andersson"
@@ -15,7 +17,6 @@
   :config
   ;; Don't start an interactive shell (improves startup time)
   (setq exec-path-from-shell-arguments nil)
-
   ;; Import language, locale, and path
   (dolist (var '("LANG" "LC_ALL" "PATH"))
     (add-to-list 'exec-path-from-shell-variables var))
@@ -48,7 +49,7 @@
 ;; Increase large file warning threshold
 (setq large-file-warning-threshold 100000000)
 
-;; Clean up unneccesary whitespace on save
+;; Clean up unnecessary whitespace on save
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; Map yes and no to y and n
@@ -75,25 +76,24 @@
 (setq epa-pinentry-mode 'loopback
       epg-pinentry-mode 'loopback)
 
-;; Refresh packages when using package-install
-;; if last refresh was longer than 24 hours ago
+;; Refresh packages when using package-install if last refresh was longer than 24 hours ago
 ;; Source: https://andreyor.st/posts/2022-07-15-refresh-package-contents-automatically/
 (defcustom package-last-refresh-date nil
   "Date and time when package lists have been refreshed.
 
-  This variable is then used to check whether
-  `package-refresh-contents' call is needed before calling
-  `package-install'. The value of this variable is updated when
-  `package-refresh-contents' is called.
+This variable is then used to check whether
+`package-refresh-contents' call is needed before calling
+`package-install'. The value of this variable is updated when
+`package-refresh-contents' is called.
 
-  See `package-refresh-hour-threshold' for the amount of time needed to
-  trigger a refresh."
+See `package-refresh-hour-threshold' for the amount of time needed to
+trigger a refresh."
   :type 'string
   :group 'package)
 
 (defcustom package-automatic-refresh-threshold 24
   "Amount of hours since last `package-refresh-contents' call
-  needed to trigger automatic refresh before calling `package-install'."
+needed to trigger automatic refresh before calling `package-install'."
   :type 'number
   :group 'package)
 
@@ -116,6 +116,16 @@
 ;; Automatically follow symlinks without prompting
 (setq vc-follow-symlinks t)
 
+;; Show number of matches in the minibuffer
+(setq isearch-lazy-count t)
+
+;; Show completions in a vertical UI
+(fido-vertical-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Terminal/Console Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; Copy links to system clipboard in terminal Emacs
 (define-advice browse-url
     (:around (orig-fun &rest args) copy-url-if-termainl)
@@ -124,6 +134,17 @@
     (let ((url (nth 0 args)))
       (message "Clipetty link: %s" url)
       (clipetty--emit (clipetty--osc url t)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; UI/UX Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Scroll just enough to bring cursor back into view
+(setq scroll-conservatively 10000)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Shell/Vterm Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package vterm
   :custom
@@ -139,6 +160,10 @@
   :config
   (setq multi-vterm-dedicated-window-height-percent 30))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; File/Directory Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (use-package dired
   :ensure nil
   :hook (dired-mode . dired-hide-details-mode)
@@ -152,11 +177,14 @@
   ;; sort directories first,
   ;; use natural sort for version numbers within text
   (dired-listing-switches "-lAhv --group-directories-first")
-
   ;; No infinite dired buffers!
   (dired-kill-when-opening-new-dired-buffer t))
 
 (use-package dired-open)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; TeX/LaTeX Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq TeX-source-correlate-method 'synctex)
 
@@ -167,16 +195,11 @@
         TeX-view-program-selection '((output-pdf "PDF Tools"))
         TeX-source-correlate-start-server t
         TeX-source-correlate-mode 1)
-
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
 
-;; Show number of matches in the minibuffer
-(setq isearch-lazy-count t)
-
-;; Show completions in a vertical UI
-(fido-vertical-mode)
-
-;;;; Text-related Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Text-related Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (set-language-environment "UTF-8")
 
@@ -200,19 +223,9 @@
   :if (not (display-graphic-p))
   :hook (after-init . global-clipetty-mode))
 
-;; Copy links to system clipboard in terminal Emacs
-(define-advice browse-url
-    (:around (orig-fun &rest args) copy-url-if-termainl)
-  (if (display-graphic-p)
-      (apply orig-fun args)
-    (let ((url (nth 0 args)))
-      (message "Clipetty link: %s" url)
-      (clipetty--emit (clipetty--osc url t)))))
-
-;; Writable grep buffers
-(use-package wgrep)
-
-;;;; Keybindings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Keybindings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Additional keybinding for M-x
 (keymap-global-set "C-c k" 'execute-extended-command)
@@ -249,7 +262,9 @@ Position the cursor at its beginning, according to the current mode."
 ;; Move backward to end of previous word
 (keymap-global-set "M-B" 'backward-to-word)
 
-;;;; Programming Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Programming Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package prog-mode
   :ensure nil
@@ -280,11 +295,12 @@ Position the cursor at its beginning, according to the current mode."
 (use-package csv-mode)
 (use-package markdown-mode)
 (use-package lua-mode)
-(use-package markdown-mode)
 (use-package ini-mode)
 (use-package rasi-mode)
 
-;;;; Completions-related Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Completions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Better completion style
 (use-package orderless
