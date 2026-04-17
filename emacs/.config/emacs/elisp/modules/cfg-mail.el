@@ -8,6 +8,11 @@
   :commands (mu4e make-mu4e-context)
   :load-path "/usr/share/emacs/site-lisp//mu4e/"
   :bind ("C-c m" . mu4e)
+  (:map mu4e-main-mode-map
+	("q" . (lambda ()
+		 (interactive)
+		 (mu4e-update-mail-and-index t)
+		 (mu4e-quit))))
   (:map mu4e-compose-mode-map
 	("C-c C-a" . mail-add-attachment))
   (:map mu4e-view-mode-map
@@ -79,12 +84,6 @@
   (fset 'my/move-to-trash "mTrash")
   (define-key mu4e-headers-mode-map (kbd "d") 'my/move-to-trash)
   (define-key mu4e-view-mode-map (kbd "d") 'my/move-to-trash)
-
-  ;; Update on quitting
-  (defun my/mu4e-quit ()
-    (interactive)
-    (mu4e-quit)
-    (mu4e-update-mail-and-index t))
   (setq  mu4e-context-policy 'pick-first
 	 mu4e-confirm-quit nil
 	 mu4e-headers-skip-duplicates t
