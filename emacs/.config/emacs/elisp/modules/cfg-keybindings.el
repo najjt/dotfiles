@@ -3,7 +3,7 @@
 ;; Keybindings
 
 ;; Additional keybinding for M-x
-(global-set-key (kbd "C-c k") 'execute-extended-command)
+(keymap-global-set "C-c k" 'execute-extended-command)
 
 ;; Increase/decrease text scale
 (keymap-global-set "C-=" #'text-scale-increase)
