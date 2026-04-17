@@ -82,6 +82,7 @@
 ;; Visualize color codes in text
 (use-package colorful-mode
   :diminish
+  :defer nil
   :config
   (global-colorful-mode t))
 

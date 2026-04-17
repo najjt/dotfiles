@@ -272,6 +272,7 @@ Position the cursor at its beginning, according to the current mode."
 ;; Show Git diff in margin
 (use-package git-gutter
   :diminish
+  :defer nil
   :config
   (global-git-gutter-mode))
 
