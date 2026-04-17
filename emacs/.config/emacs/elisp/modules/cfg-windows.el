@@ -71,7 +71,6 @@
 
 ;; Popup windows
 (use-package popper
-  :defer nil
   :bind
   ("M-+"     . popper-cycle)
   ("C-c p d" . popper-kill-latest-popup)

@@ -264,7 +264,6 @@ Position the cursor at its beginning, according to the current mode."
 
 ;; Git interface
 (use-package magit
-  :defer t
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
   :bind
