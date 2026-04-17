@@ -33,6 +33,11 @@
 (setq use-package-always-ensure t
       use-package-verbose t)
 
+;; Defer packages when not launched in daemon mode
+(eval-when-compile (require 'use-package))
+(setq use-package-always-defer (not (daemonp))
+      use-package-always-demand (daemonp))
+
 ;; Add packages to load path
 (add-to-list 'load-path (expand-file-name "~/.config/emacs/elisp"))
 
