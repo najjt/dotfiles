@@ -1,128 +1,350 @@
 ;; -*- lexical-binding: t; -*-
 
-;; UI Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Core Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Set default frame dimensions
-(add-to-list 'default-frame-alist '(height . 40))
-(add-to-list 'default-frame-alist '(width . 90))
+;; User information
+(setq user-full-name "Martin Lönn Andersson"
+      user-mail-address "martin@malon.se")
 
-;; Show column number in status bar
-(column-number-mode)
+;; Set default browser
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "firefox")
 
-;; Show fringes
-(fringe-mode 8)
+;; Get environment variables from shell
+(use-package exec-path-from-shell
+  :config
+  ;; Don't start an interactive shell (improves startup time)
+  (setq exec-path-from-shell-arguments nil)
+  ;; Import language, locale, and path
+  (dolist (var '("LANG" "LC_ALL" "PATH"))
+    (add-to-list 'exec-path-from-shell-variables var))
+  (exec-path-from-shell-initialize))
 
-;; Hide tab bar if only one tab
-(setq tab-bar-show 1)
+;; Save text entered in minibuffer prompts
+(setq history-length 25)
+(savehist-mode 1)
 
-;; Make line numbers relative
-(setq display-line-numbers-type 'relative
-      display-line-numbers-width-start t)
+;; Save place in files
+(save-place-mode 1)
 
-;; Display line numbers in the below modes
-(dolist (hook '(conf-mode-hook
-                prog-mode-hook
-                text-mode-hook
-                markdown-mode-hook
-                org-mode-hook))
-  (add-hook hook 'display-line-numbers-mode))
+;; Remember recently edited files
+(recentf-mode 1)
 
-;; Set font
-(let ((mono-spaced-font "monospace")
-      (proportionately-spaced-font "sans"))
-  (set-face-attribute 'default nil :family mono-spaced-font :height 115)
-  (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.15)
-  (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.1))
+;; Automatically reread files when changed
+(setopt auto-revert-avoid-polling t
+        auto-revert-interval 5
+        auto-revert-check-vc-info t)
+(global-auto-revert-mode t)
 
-(defun my/disable-all-themes ()
-  "Disable all active themes."
-  (dolist (theme custom-enabled-themes)
-    (disable-theme theme)))
+;; Automatically reload non-file buffers
+(setq global-auto-revert-non-file-buffers t)
 
-(defun my/enable-theme (theme)
-  "Interactively enable the specified THEME and disable all other themes."
-  (interactive
-   (list (completing-read "Choose theme: " (mapcar #'symbol-name (custom-available-themes)))))
-  (my/disable-all-themes)
-  (load-theme (intern theme) t)
-  (customize-save-variable 'my-chosen-theme theme))
+;; sudo privileges
+(use-package sudo-edit
+  :defer t
+  :diminish)
 
-;; Remember last used theme between sessions
-(add-hook 'after-init-hook
-          (lambda ()
-            (if (boundp 'my-chosen-theme)
-                (my/enable-theme my-chosen-theme))))
+;; Increase large file warning threshold
+(setq large-file-warning-threshold 100000000)
 
-;; Hide minor modes in modeline
-(use-package diminish
-  :diminish (auto-fill-function
-             centered-window-mode
-             eldoc-mode
-             evil-collection-unimpaired-mode
-             org-indent-mode
-             abbrev-mode
-             flymake-mode
-             hs-minor-mode))
+;; Clean up unnecessary whitespace on save
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
-(with-eval-after-load 'subword
-  (diminish 'subword-mode))
+;; Map yes and no to y and n
+(fset 'yes-or-no-p 'y-or-n-p)
 
-;; Show full path to file in header line
-(defun my/set-header-line-for-files-only ()
-  "Set `header-line-format` to show bold file name info only in file-visiting buffers."
-  (setq header-line-format
-        (when buffer-file-name
-          (let ((file-name (abbreviate-file-name buffer-file-name)))
-            (concat (propertize file-name 'face 'italic))))))
+;; Disable visual and audible bell
+(setq ring-bell-function 'ignore)
 
-(add-hook 'after-change-major-mode-hook #'my/set-header-line-for-files-only)
+;; Suppress auto revert messages
+(setq auto-revert-verbose nil)
 
-;; Visualize color codes in text
-(use-package colorful-mode
+;; Automatically kill all active processes when closing Emacs
+(setq confirm-kill-processes nil)
+
+;; Use minibuffer whilst in the minibuffer
+(setopt enable-recursive-minibuffers t)
+
+;; Ensure new frames are focused
+(defun my/focus-new-client-frame ()
+  (select-frame-set-input-focus (selected-frame)))
+(add-hook 'server-after-make-frame-hook #'my/focus-new-client-frame)
+
+;; Use Emacs minibuffer for GPG pinentry
+(setq epa-pinentry-mode 'loopback
+      epg-pinentry-mode 'loopback)
+
+;; Refresh packages when using package-install if last refresh was longer than 24 hours ago
+;; Source: https://andreyor.st/posts/2022-07-15-refresh-package-contents-automatically/
+(defcustom package-last-refresh-date nil
+  "Date and time when package lists have been refreshed.
+
+This variable is then used to check whether
+`package-refresh-contents' call is needed before calling
+`package-install'. The value of this variable is updated when
+`package-refresh-contents' is called.
+
+See `package-refresh-hour-threshold' for the amount of time needed to
+trigger a refresh."
+  :type 'string
+  :group 'package)
+
+(defcustom package-automatic-refresh-threshold 24
+  "Amount of hours since last `package-refresh-contents' call
+needed to trigger automatic refresh before calling `package-install'."
+  :type 'number
+  :group 'package)
+
+(define-advice package-install (:before (&rest _) package-refresh-contents-maybe)
+  (when (or (null package-last-refresh-date)
+            (> (/ (float-time
+                   (time-subtract (date-to-time (format-time-string "%Y-%m-%dT%H:%M"))
+                                  (date-to-time package-last-refresh-date)))
+                  3600)
+               package-automatic-refresh-threshold))
+    (package-refresh-contents)))
+
+(define-advice package-refresh-contents (:after (&rest _) update-package-refresh-date)
+  (customize-save-variable 'package-last-refresh-date
+                           (format-time-string "%Y-%m-%dT%H:%M")))
+
+;; Set default alert style to send desktop notifications
+(setq alert-default-style 'libnotify)
+
+;; Automatically follow symlinks without prompting
+(setq vc-follow-symlinks t)
+
+;; Show number of matches in the minibuffer
+(setq isearch-lazy-count t)
+
+;; Show completions in a vertical UI
+(fido-vertical-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Terminal/Console Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Copy links to system clipboard in terminal Emacs
+(define-advice browse-url
+    (:around (orig-fun &rest args) copy-url-if-termainl)
+  (if (display-graphic-p)
+      (apply orig-fun args)
+    (let ((url (nth 0 args)))
+      (message "Clipetty link: %s" url)
+      (clipetty--emit (clipetty--osc url t)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Shell/Vterm Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package vterm
+  :custom
+  (term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
+  (vterm-shell "zsh")
+  (vterm-max-scrollback 10000))
+
+;; Open multiple vterm buffers
+(use-package multi-vterm
+  :bind
+  ("C-c T"     . multi-vterm-dedicated-toggle)
+  ("C-c t" . multi-vterm)
+  :config
+  (setq multi-vterm-dedicated-window-height-percent 30))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; File/Directory Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package dired
+  :ensure nil
+  :hook (dired-mode . dired-hide-details-mode)
+  :bind
+  (:map dired-mode-map
+   ("b" . dired-up-directory))
+  :custom
+  ;; Show in long listing format,
+  ;; show hidden files,
+  ;; show sizes in human-readable format
+  ;; sort directories first,
+  ;; use natural sort for version numbers within text
+  (dired-listing-switches "-lAhv --group-directories-first")
+  ;; No infinite dired buffers!
+  (dired-kill-when-opening-new-dired-buffer t))
+
+(use-package dired-open)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; TeX/LaTeX Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(setq TeX-source-correlate-method 'synctex)
+
+(use-package auctex
+  :config
+  (setq TeX-auto-save t
+        TeX-parse-self t
+        TeX-view-program-selection '((output-pdf "PDF Tools"))
+        TeX-source-correlate-start-server t
+        TeX-source-correlate-mode 1)
+  (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Text-related Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(set-language-environment "UTF-8")
+
+;; Automatic line breaking
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+
+;; Delete selection on insert
+(delete-selection-mode)
+
+;; Spell checking
+(use-package jinx
+  :diminish
+  :hook (((markdown-mode org-mode text-mode) . jinx-mode))
+  :bind ("C-c s" . jinx-correct)
+  :config
+  (setq jinx-languages "sv en_US"))
+
+;; Copy to system clipboard in terminal
+(use-package clipetty
+  :diminish
+  :if (not (display-graphic-p))
+  :hook (after-init . global-clipetty-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Keybindings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Additional keybinding for M-x
+(keymap-global-set "C-c k" 'execute-extended-command)
+
+;; Increase/decrease text scale
+(keymap-global-set "C-=" #'text-scale-increase)
+(keymap-global-set "C-+" #'text-scale-increase)
+(keymap-global-set "C--" #'text-scale-decrease)
+
+;; Make escape quit prompts
+(keymap-global-set "<escape>" 'keyboard-escape-quit)
+
+;; Keybind workarounds for terminal Emacs
+(define-key key-translation-map (kbd "C-x ,") (kbd "C-x C-;")) ; comment-line
+(define-key key-translation-map (kbd "C-c ,") (kbd "C-c C-,")) ; org-insert-structure-template
+
+(defun my/smart-open-line ()
+  "Insert an empty line after the current line.
+Position the cursor at its beginning, according to the current mode."
+  (interactive)
+  (move-end-of-line nil)
+  (newline-and-indent))
+
+(keymap-global-set "S-<return>" #'my/smart-open-line)
+
+(keymap-global-set "M-g r" 'recentf)
+
+(keymap-global-set "M-s g" 'grep)
+(keymap-global-set "M-s r" 'rgrep)
+(keymap-global-set "M-s f" 'find-name-dired)
+
+;; Move forward to beginning of next word
+(keymap-global-set "M-F" 'forward-to-word)
+;; Move backward to end of previous word
+(keymap-global-set "M-B" 'backward-to-word)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Programming Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package prog-mode
+  :ensure nil
+  :hook (prog-mode . (lambda ()
+                       (subword-mode)         ; Toggle subword movement
+                       (show-paren-mode)      ; Highlight matching parentheses
+                       (electric-pair-mode))) ; Insert matching delimiters
+  :mode ("\\.rasi\\'"
+         "\\.edn\\'"))
+
+;; Git interface
+(use-package magit
+  :defer t
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+  :bind
+  ("C-c g" . magit-status))
+
+;; Show Git diff in margin
+(use-package git-gutter
   :diminish
   :config
-  (global-colorful-mode t))
+  (global-git-gutter-mode))
 
-(defun my/select-window (window &rest _)
-  "Select WINDOW for display-buffer-alist"
-  (select-window window))
+;; Common file types
+(use-package yaml-mode)
+(use-package json-mode)
+(use-package csv-mode)
+(use-package markdown-mode)
+(use-package lua-mode)
+(use-package ini-mode)
+(use-package rasi-mode)
 
-;; Settings for displaying buffers
-(setq display-buffer-alist
-      '(
-        ((or . ((derived-mode . occur-mode)))
-         (display-buffer-reuse-mode-window display-buffer-at-bottom)
-         (body-function . my/select-window)
-         (dedicated . t)
-         (preserve-size . (t . t)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Completions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-        ((or . ((derived-mode . compilation-mode)))
-         (display-buffer-reuse-window display-buffer-same-window)
-         (body-function . my/select-window)
-         (dedicated . t)
-         (inhibit-same-window . nil)
-         (preserve-size . (t . t)))
+;; Better completion style
+(use-package orderless
+  :config
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles partial-completion))))
+  (completion-category-defaults nil)   ; Disable defaults, use orderless settings
+  (completion-pcm-leading-wildcard t)) ; Emacs 31: partial-completion behaves like substring
 
-        ((or . ((derived-mode . helpful-mode)))
-         (display-buffer-reuse-mode-window)
-         (dedicated . t))
+;; Completions
+(use-package corfu
+  :init (global-corfu-mode)
+  :config
+  ;; Use <TAB> for both indentation & completion
+  (setq tab-always-indent 'complete
+        completion-cycle-threshold 1))
 
-        ;; Hide compilation windows
-        ("\\*compilation\\*" display-buffer-no-window
-         (allow-no-window . t))))
+(use-package corfu-terminal
+  :config
+  (unless (display-graphic-p)
+    (corfu-terminal-mode +1)))
 
-(use-package nerd-icons-corfu
-  :after corfu
+;; Completion extensions
+(use-package cape
   :init
-  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-file)
+  (add-hook 'completion-at-point-functions #'cape-elisp-block))
 
-;; Enable context menu (mouse-click menu)
-(dolist (hook '(text-mode-hook
-                prog-mode-hook
-                dired-mode-hook))
-  (add-hook hook 'context-menu-mode))
+;; Annotations for the minibuffer
+(use-package marginalia
+  :config
+  (marginalia-mode 1))
 
-;; Consider all themes as safe
-(setq custom-safe-themes t)
+;; More detailed help buffers
+(use-package helpful
+  :bind (:map helpful-mode-map
+              ("q" . (lambda () (interactive) (quit-window))))
+  :config
+  ;; Note that the built-in `describe-function' includes both functions
+  ;; and macros. `helpful-function' is functions only, so we provide
+  ;; `helpful-callable' as a drop-in replacement.
+  (global-set-key (kbd "C-h f") #'helpful-callable)
+  (global-set-key (kbd "C-h v") #'helpful-variable)
+  (global-set-key (kbd "C-h k") #'helpful-key)
+  (global-set-key (kbd "C-h x") #'helpful-command))
 
-(provide 'cfg-ui)
+(use-package embark
+  :config
+  ;; Use Embark to help with command discovery
+  (setq prefix-help-command #'embark-prefix-help-command))
+
+(provide 'cfg-core)

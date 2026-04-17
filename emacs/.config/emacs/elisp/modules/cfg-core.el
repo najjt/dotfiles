@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-;; Core Settings
+;;;; Core Settings
 
 ;; User information
 (setq user-full-name "Martin Lönn Andersson"
@@ -125,9 +125,6 @@
       (message "Clipetty link: %s" url)
       (clipetty--emit (clipetty--osc url t)))))
 
-;; Scroll just enough to bring cursor back into view
-(setq scroll-conservatively 10000)
-
 (use-package vterm
   :custom
   (term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
@@ -176,4 +173,169 @@
 ;; Show number of matches in the minibuffer
 (setq isearch-lazy-count t)
 
-(provide 'cfg-general)
+;; Show completions in a vertical UI
+(fido-vertical-mode)
+
+;;;; Text-related Settings
+
+(set-language-environment "UTF-8")
+
+;; Automatic line breaking
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+
+;; Delete selection on insert
+(delete-selection-mode)
+
+;; Spell checking
+(use-package jinx
+  :diminish
+  :hook (((markdown-mode org-mode text-mode) . jinx-mode))
+  :bind ("C-c s" . jinx-correct)
+  :config
+  (setq jinx-languages "sv en_US"))
+
+;; Copy to system clipboard in terminal
+(use-package clipetty
+  :diminish
+  :if (not (display-graphic-p))
+  :hook (after-init . global-clipetty-mode))
+
+;; Copy links to system clipboard in terminal Emacs
+(define-advice browse-url
+    (:around (orig-fun &rest args) copy-url-if-termainl)
+  (if (display-graphic-p)
+      (apply orig-fun args)
+    (let ((url (nth 0 args)))
+      (message "Clipetty link: %s" url)
+      (clipetty--emit (clipetty--osc url t)))))
+
+;; Writable grep buffers
+(use-package wgrep)
+
+;;;; Keybindings
+
+;; Additional keybinding for M-x
+(keymap-global-set "C-c k" 'execute-extended-command)
+
+;; Increase/decrease text scale
+(keymap-global-set "C-=" #'text-scale-increase)
+(keymap-global-set "C-+" #'text-scale-increase)
+(keymap-global-set "C--" #'text-scale-decrease)
+
+;; Make escape quit prompts
+(keymap-global-set "<escape>" 'keyboard-escape-quit)
+
+;; Keybind workarounds for terminal Emacs
+(define-key key-translation-map (kbd "C-x ,") (kbd "C-x C-;")) ; comment-line
+(define-key key-translation-map (kbd "C-c ,") (kbd "C-c C-,")) ; org-insert-structure-template
+
+(defun my/smart-open-line ()
+  "Insert an empty line after the current line.
+Position the cursor at its beginning, according to the current mode."
+  (interactive)
+  (move-end-of-line nil)
+  (newline-and-indent))
+
+(keymap-global-set "S-<return>" #'my/smart-open-line)
+
+(keymap-global-set "M-g r" 'recentf)
+
+(keymap-global-set "M-s g" 'grep)
+(keymap-global-set "M-s r" 'rgrep)
+(keymap-global-set "M-s f" 'find-name-dired)
+
+;; Move forward to beginning of next word
+(keymap-global-set "M-F" 'forward-to-word)
+;; Move backward to end of previous word
+(keymap-global-set "M-B" 'backward-to-word)
+
+;;;; Programming Settings
+
+(use-package prog-mode
+  :ensure nil
+  :hook (prog-mode . (lambda ()
+                       (subword-mode)         ; Toggle subword movement
+                       (show-paren-mode)      ; Highlight matching parentheses
+                       (electric-pair-mode))) ; Insert matching delimiters
+  :mode ("\\.rasi\\'"
+         "\\.edn\\'"))
+
+;; Git interface
+(use-package magit
+  :defer t
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+  :bind
+  ("C-c g" . magit-status))
+
+;; Show Git diff in margin
+(use-package git-gutter
+  :diminish
+  :config
+  (global-git-gutter-mode))
+
+;; Common file types
+(use-package yaml-mode)
+(use-package json-mode)
+(use-package csv-mode)
+(use-package markdown-mode)
+(use-package lua-mode)
+(use-package markdown-mode)
+(use-package ini-mode)
+(use-package rasi-mode)
+
+;;;; Completions-related Settings
+
+;; Better completion style
+(use-package orderless
+  :config
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles partial-completion))))
+  (completion-category-defaults nil)   ; Disable defaults, use orderless settings
+  (completion-pcm-leading-wildcard t)) ; Emacs 31: partial-completion behaves like substring
+
+;; Completions
+(use-package corfu
+  :init (global-corfu-mode)
+  :config
+  ;; Use <TAB> for both indentation & completion
+  (setq tab-always-indent 'complete
+        completion-cycle-threshold 1))
+
+(use-package corfu-terminal
+  :config
+  (unless (display-graphic-p)
+    (corfu-terminal-mode +1)))
+
+;; Completion extensions
+(use-package cape
+  :init
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-file)
+  (add-hook 'completion-at-point-functions #'cape-elisp-block))
+
+;; Annotations for the minibuffer
+(use-package marginalia
+  :config
+  (marginalia-mode 1))
+
+;; More detailed help buffers
+(use-package helpful
+  :bind (:map helpful-mode-map
+              ("q" . (lambda () (interactive) (quit-window))))
+  :config
+  ;; Note that the built-in `describe-function' includes both functions
+  ;; and macros. `helpful-function' is functions only, so we provide
+  ;; `helpful-callable' as a drop-in replacement.
+  (global-set-key (kbd "C-h f") #'helpful-callable)
+  (global-set-key (kbd "C-h v") #'helpful-variable)
+  (global-set-key (kbd "C-h k") #'helpful-key)
+  (global-set-key (kbd "C-h x") #'helpful-command))
+
+(use-package embark
+  :config
+  ;; Use Embark to help with command discovery
+  (setq prefix-help-command #'embark-prefix-help-command))
+
+(provide 'cfg-core)
