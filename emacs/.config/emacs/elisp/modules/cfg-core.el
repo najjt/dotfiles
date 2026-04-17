@@ -153,8 +153,7 @@ needed to trigger automatic refresh before calling `package-install'."
   :ensure nil
   :hook (dired-mode . dired-hide-details-mode)
   :bind
-  (:map dired-mode-map
-   ("b" . dired-up-directory))
+  (:map dired-mode-map ("b" . dired-up-directory))
   :custom
   ;; Show in long listing format,
   ;; show hidden files,

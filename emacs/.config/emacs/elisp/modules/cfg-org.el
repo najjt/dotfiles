@@ -7,43 +7,43 @@
 (use-package org
   :ensure nil
   :bind (("C-c a"     . org-agenda)
-         ("C-c c"     . org-capture)
-         ("C-c l"     . org-store-link)
-         ("C-c M-RET" . org-insert-todo-heading)) ; For terminal
+	 ("C-c c"     . org-capture)
+	 ("C-c l"     . org-store-link)
+	 ("C-c M-RET" . org-insert-todo-heading)) ; For terminal
   :hook (org-mode . (lambda () (setq tab-width 8)))
   :config
   (setq org-directory "~/notes/org"
-        org-todo-keywords '((sequence "TODO" "|" "DONE"))
-        org-M-RET-may-split-line '((default . nil))
-        org-insert-heading-respect-content t
-        org-log-done 'time
-        org-log-into-drawer t)
+	org-todo-keywords '((sequence "TODO" "|" "DONE"))
+	org-M-RET-may-split-line '((default . nil))
+	org-insert-heading-respect-content t
+	org-log-done 'time
+	org-log-into-drawer t)
 
   (load "sv-kalender")
 
   ;; Refile settings
   (setq org-default-notes-file (concat org-directory "/omarkiv.org")
-        org-refile-targets (quote (("todo.org"         :maxlevel . 2)
-                                   ("aterkommande.org" :maxlevel . 1)
-                                   ("arkiv.org"        :maxlevel . 1)
-                                   ("varia.org"        :maxlevel . 1)
-                                   ("kalender.org"     :level    . 0)))
-        org-refile-use-outline-path 'file       ; Provide refile targets as path
-        org-outline-path-complete-in-steps nil) ; Refile in a single go
+	org-refile-targets (quote (("todo.org"         :maxlevel . 2)
+				   ("aterkommande.org" :maxlevel . 1)
+				   ("arkiv.org"        :maxlevel . 1)
+				   ("varia.org"        :maxlevel . 1)
+				   ("kalender.org"     :level    . 0)))
+	org-refile-use-outline-path 'file       ; Provide refile targets as path
+	org-outline-path-complete-in-steps nil) ; Refile in a single go
 
   ;; Appearance
   (setq org-tags-column 0               ; Position tags next to heading
-        org-startup-folded t
-        org-src-preserve-indentation t  ; Don't add unnecessary indentation
-        org-agenda-prefix-format        ; Hide file names in agenda buffer
-        '((agenda . " %i %?-12t% s")
-          (todo   . " %i %-12:c")
-          (tags   . " %i %-12:c")
-          (search . " %i %-12:c"))
-        org-ellipsis " ▾"
-        ;; Empty line before headings
-        org-blank-before-new-entry (quote ((heading . auto)
-                                           (plain-list-item . nil))))
+	org-startup-folded t
+	org-src-preserve-indentation t  ; Don't add unnecessary indentation
+	org-agenda-prefix-format        ; Hide file names in agenda buffer
+	'((agenda . " %i %?-12t% s")
+	  (todo   . " %i %-12:c")
+	  (tags   . " %i %-12:c")
+	  (search . " %i %-12:c"))
+	org-ellipsis " ▾"
+	;; Empty line before headings
+	org-blank-before-new-entry (quote ((heading . auto)
+					   (plain-list-item . nil))))
 
   ;; Make only first org heading be bold
   (custom-set-faces
@@ -61,7 +61,6 @@
 
 ;; Generate a table of contents
 (use-package toc-org
-  :defer t
   :hook (org-mode . toc-org-mode))
 
 (use-package org-agenda
@@ -69,26 +68,26 @@
   :after org
   :config
   (setq org-agenda-span 'day
-        org-agenda-tags-column 0
-        org-agenda-start-on-weekday nil
-        org-agenda-skip-scheduled-if-deadline-is-shown t
-        org-agenda-skip-deadline-if-done t
-        org-agenda-skip-scheduled-if-done t
-        org-agenda-todo-list-sublevels t
-        org-agenda-files '("~/notes/org")
+	org-agenda-tags-column 0
+	org-agenda-start-on-weekday nil
+	org-agenda-skip-scheduled-if-deadline-is-shown t
+	org-agenda-skip-deadline-if-done t
+	org-agenda-skip-scheduled-if-done t
+	org-agenda-todo-list-sublevels t
+	org-agenda-files '("~/notes/org")
 
-        ;; Time grid settings
-        org-agenda-time-grid
-        '((daily today require-timed remove-match)
-          (800 1000 1200 1400 1600 1800 2000)
-          "...." "------------")
-        org-agenda-current-time-string "← now")
+	;; Time grid settings
+	org-agenda-time-grid
+	'((daily today require-timed remove-match)
+	  (800 1000 1200 1400 1600 1800 2000)
+	  "...." "------------")
+	org-agenda-current-time-string "← now")
 
   (setq org-agenda-custom-commands
-        '(("w" "Week agenda"
-           ((agenda "" ((org-agenda-span 'week)))))
-          ("k" "Month agenda"
-           ((agenda "" ((org-agenda-span 'month)))))))
+	'(("w" "Week agenda"
+	   ((agenda "" ((org-agenda-span 'week)))))
+	  ("k" "Month agenda"
+	   ((agenda "" ((org-agenda-span 'month)))))))
 
   ;; Date heading settings
   (custom-set-faces
@@ -104,7 +103,7 @@
   :config
   ;; Don't save org capture bookmarks
   (setq org-bookmark-names-plist nil
-        org-capture-bookmark nil)
+	org-capture-bookmark nil)
   :custom
   (org-capture-templates
    '(("t" "Task" entry (file "")
@@ -125,7 +124,6 @@
 (use-package org-contacts
   :after org
   :pin melpa
-  :defer t
   :custom (org-contacts-files '("~/notes/org/kontakter.org")))
 
 (org-babel-do-load-languages
@@ -138,11 +136,11 @@
 ;; Block templates
 (setq org-structure-template-alist
       '(("l" . "src emacs-lisp")
-        ("j" . "src java")
-        ("h" . "src sh")
-        ("s" . "src")
-        ("e" . "example")
-        ("q" . "quote")))
+	("j" . "src java")
+	("h" . "src sh")
+	("s" . "src")
+	("e" . "example")
+	("q" . "quote")))
 
 ;; Generate mind maps from org files
 (use-package org-mind-map
