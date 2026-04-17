@@ -12,16 +12,6 @@
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "firefox")
 
-;; Get environment variables from shell
-(use-package exec-path-from-shell
-  :config
-  ;; Don't start an interactive shell (improves startup time)
-  (setq exec-path-from-shell-arguments nil)
-  ;; Import language, locale, and path
-  (dolist (var '("LANG" "LC_ALL" "PATH"))
-    (add-to-list 'exec-path-from-shell-variables var))
-  (exec-path-from-shell-initialize))
-
 ;; Save text entered in minibuffer prompts
 (setq history-length 25)
 (savehist-mode 1)
@@ -34,17 +24,12 @@
 
 ;; Automatically reread files when changed
 (setopt auto-revert-avoid-polling t
-        auto-revert-interval 5
-        auto-revert-check-vc-info t)
+	auto-revert-interval 5
+	auto-revert-check-vc-info t)
 (global-auto-revert-mode t)
 
 ;; Automatically reload non-file buffers
 (setq global-auto-revert-non-file-buffers t)
-
-;; sudo privileges
-(use-package sudo-edit
-  :defer t
-  :diminish)
 
 ;; Increase large file warning threshold
 (setq large-file-warning-threshold 100000000)
@@ -99,16 +84,16 @@ needed to trigger automatic refresh before calling `package-install'."
 
 (define-advice package-install (:before (&rest _) package-refresh-contents-maybe)
   (when (or (null package-last-refresh-date)
-            (> (/ (float-time
-                   (time-subtract (date-to-time (format-time-string "%Y-%m-%dT%H:%M"))
-                                  (date-to-time package-last-refresh-date)))
-                  3600)
-               package-automatic-refresh-threshold))
+	    (> (/ (float-time
+		   (time-subtract (date-to-time (format-time-string "%Y-%m-%dT%H:%M"))
+				  (date-to-time package-last-refresh-date)))
+		  3600)
+	       package-automatic-refresh-threshold))
     (package-refresh-contents)))
 
 (define-advice package-refresh-contents (:after (&rest _) update-package-refresh-date)
   (customize-save-variable 'package-last-refresh-date
-                           (format-time-string "%Y-%m-%dT%H:%M")))
+			   (format-time-string "%Y-%m-%dT%H:%M")))
 
 ;; Set default alert style to send desktop notifications
 (setq alert-default-style 'libnotify)
@@ -191,10 +176,10 @@ needed to trigger automatic refresh before calling `package-install'."
 (use-package auctex
   :config
   (setq TeX-auto-save t
-        TeX-parse-self t
-        TeX-view-program-selection '((output-pdf "PDF Tools"))
-        TeX-source-correlate-start-server t
-        TeX-source-correlate-mode 1)
+	TeX-parse-self t
+	TeX-view-program-selection '((output-pdf "PDF Tools"))
+	TeX-source-correlate-start-server t
+	TeX-source-correlate-mode 1)
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -269,11 +254,11 @@ Position the cursor at its beginning, according to the current mode."
 (use-package prog-mode
   :ensure nil
   :hook (prog-mode . (lambda ()
-                       (subword-mode)         ; Toggle subword movement
-                       (show-paren-mode)      ; Highlight matching parentheses
-                       (electric-pair-mode))) ; Insert matching delimiters
+		       (subword-mode)         ; Toggle subword movement
+		       (show-paren-mode)      ; Highlight matching parentheses
+		       (electric-pair-mode))) ; Insert matching delimiters
   :mode ("\\.rasi\\'"
-         "\\.edn\\'"))
+	 "\\.edn\\'"))
 
 ;; Git interface
 (use-package magit
@@ -317,7 +302,7 @@ Position the cursor at its beginning, according to the current mode."
   :config
   ;; Use <TAB> for both indentation & completion
   (setq tab-always-indent 'complete
-        completion-cycle-threshold 1))
+	completion-cycle-threshold 1))
 
 (use-package corfu-terminal
   :config
@@ -339,7 +324,7 @@ Position the cursor at its beginning, according to the current mode."
 ;; More detailed help buffers
 (use-package helpful
   :bind (:map helpful-mode-map
-              ("q" . (lambda () (interactive) (quit-window))))
+	      ("q" . (lambda () (interactive) (quit-window))))
   :config
   ;; Note that the built-in `describe-function' includes both functions
   ;; and macros. `helpful-function' is functions only, so we provide
