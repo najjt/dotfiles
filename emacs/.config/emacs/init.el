@@ -43,3 +43,13 @@
 
 ;; Load setup files
 (mapc 'load (file-expand-wildcards "~/.config/emacs/elisp/modules/*.el"))
+
+;; Display startup time
+(defun my/display-startup-time ()
+  (message "Emacs loaded in %s with %d garbage collections."
+	   (format "%.2f seconds"
+		   (float-time
+		   (time-subtract after-init-time before-init-time)))
+	   gcs-done))
+
+(add-hook 'emacs-startup-hook #'my/display-startup-time)
