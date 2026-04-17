@@ -6,90 +6,74 @@
 
 (use-package mu4e
   :commands (mu4e make-mu4e-context)
-  :bind
-  ("C-c m" . mu4e)
   :load-path "/usr/share/emacs/site-lisp//mu4e/"
+  :bind ("C-c m" . mu4e)
   (:map mu4e-compose-mode-map
-        ("C-c C-a" . mail-add-attachment))
+	("C-c C-a" . mail-add-attachment))
   (:map mu4e-view-mode-map
-        ("e"       . mu4e-view-save-attachment))
+	("e"       . mu4e-view-save-attachments))
   :config
-  (setq mail-user-agent 'mu4e-user-agent) ; Make mu4e default email client
-  (set-variable 'read-mail-command 'mu4e) ; Make mu4e default email reader
+  ;; Make mu4e default email client
+  (setq mail-user-agent 'mu4e-user-agent)
+  (set-variable 'read-mail-command 'mu4e)
 
   ;; Maildir setup
-  (setq
-   mu4e-maildir        "~/.local/share/mail"
-   mu4e-attachment-dir "~/Downloads"
-   mu4e-refile-folder  "/Archive"
-   mu4e-sent-folder    "/Sent"
-   mu4e-drafts-folder  "/Drafts"
-   mu4e-trash-folder   "/Trash"
+  (setq mu4e-maildir        "~/.local/share/mail"
+	mu4e-attachment-dir "~/Downloads"
+	mu4e-refile-folder  "/Archive"
+	mu4e-sent-folder    "/Sent"
+	mu4e-drafts-folder  "/Drafts"
+	mu4e-trash-folder   "/Trash"
 
-   mu4e-maildir-shortcuts
-   '((:maildir "/INBOX"   :key ?i)
-     (:maildir "/Sent"    :key ?s)
-     (:maildir "/Drafts"  :key ?d)
-     (:maildir "/Trash"   :key ?t)
-     (:maildir "/Archive" :key ?a)
-     (:maildir "/Viktigt" :key ?v))
+	mu4e-maildir-shortcuts
+	'((:maildir "/INBOX"   :key ?i)
+	  (:maildir "/Sent"    :key ?s)
+	  (:maildir "/Drafts"  :key ?d)
+	  (:maildir "/Trash"   :key ?t)
+	  (:maildir "/Archive" :key ?a)
+	  (:maildir "/Viktigt" :key ?v))
 
-   ;; Filters for hiding trashed messages from bookmarks
-   mu4e-bookmarks
-   `(("flag:unread AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Unread messages" ?u)
-     ("date:today..now AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Today's messages" ?t)
-     ("maildir:/INBOX AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Inbox" ?i)
-     ("date:7d..now AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Last 7 days" ?w)))
+	;; Filters for hiding trashed messages from bookmarks
+	mu4e-bookmarks
+	`(("flag:unread AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Unread messages" ?u)
+	  ("date:today..now AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Today's messages" ?t)
+	  ("maildir:/INBOX AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Inbox" ?i)
+	  ("date:7d..now AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Trash" "Last 7 days" ?w)))
 
   ;; Fetch mail
   (setq mu4e-get-mail-command "mbsync -a"
-        mu4e-change-filenames-when-moving t   ; Needed for mbsync
-        mu4e-update-interval 300)             ; Update every 5 minutes
+	mu4e-change-filenames-when-moving t   ; Needed for mbsync
+	mu4e-update-interval 300)             ; Update every 5 minutes
 
   ;; Send mail
   (setq sendmail-program "/usr/bin/msmtp"
-        send-mail-function 'smtpmail-send-it
-        message-sendmail-extra-arguments '("--read-envelope-from")
-        message-send-mail-function 'message-send-mail-with-sendmail)
+	send-mail-function 'smtpmail-send-it
+	message-sendmail-extra-arguments '("--read-envelope-from")
+	message-send-mail-function 'message-send-mail-with-sendmail)
 
   (setq mu4e-contexts
-        `( ,(make-mu4e-context
-             :name "main"
-             :enter-func (lambda () (mu4e-message "Entering MAIN context"))
-             :leave-func (lambda () (mu4e-message "Leaving MAIN context"))
-             :vars '((user-mail-address     . "martin@malon.se")
-                     (user-full-name        . "Martin Lönn Andersson")
-                     (message-signature     .
-                                            (concat
-                                             "Med vänlig hälsning,\n"
-                                             "Martin Lönn Andersson"))))
-           ,(make-mu4e-context
-             :name "Mask"
-             :enter-func (lambda () (mu4e-message "Switch to the MASK context"))
-             ;; no leave-func
-             :vars '((user-mail-address      . "tidy.dust2080@fastmail.com")
-                     (user-full-name         . "Martin")
-                     (message-signature      .
-                                             (concat
-                                              "Kind regards,\n"
-                                              "Martin"))))))
-
-  ;; start with the first (default) context
-  (setq mu4e-context-policy 'pick-first)
+	`( ,(make-mu4e-context
+	     :name "main"
+	     :enter-func (lambda () (mu4e-message "Entering MAIN context"))
+	     :leave-func (lambda () (mu4e-message "Leaving MAIN context"))
+	     :vars '((user-mail-address     . "martin@malon.se")
+		     (user-full-name        . "Martin Lönn Andersson")
+		     (message-signature     .
+					    (concat
+					     "Med vänlig hälsning,\n"
+					     "Martin Lönn Andersson"))))
+	   ,(make-mu4e-context
+	     :name "Mask"
+	     :enter-func (lambda () (mu4e-message "Switch to the MASK context"))
+	     ;; no leave-func
+	     :vars '((user-mail-address      . "tidy.dust2080@fastmail.com")
+		     (user-full-name         . "Martin")
+		     (message-signature      .
+					     (concat
+					      "Kind regards,\n"
+					      "Martin"))))))
 
   ;; Other options
-  (setq mu4e-confirm-quit nil
-        mu4e-headers-skip-duplicates t
-        mu4e-display-update-status-in-modeline t
-        mu4e-view-show-images t
-        mu4e-view-show-addresses t
-        mu4e-date-format "%d/%m/%y"
-        mu4e-headers-date-format "%d/%m/%Y"
-        mu4e-compose-dont-reply-to-self t
-        mu4e-view-fields '(:from :to :cc :bcc :subject :flags :date :maildir :mailing-list :tags :attachments :signature :decryption)
-        mu4e-headers-fields '((:human-date . 12) (:flags . 6) (:from . 22) (:subject))
-        mu4e-compose-format-flowed t  ; Re-flow mail so it's not hard wrapped
-        fill-flowed-encode-column 80) ; The column beyond which flowed lines are wrapped
 
   ;; Move messages to the trash folder instead of completely deleting it
   (fset 'my/move-to-trash "mTrash")
@@ -101,6 +85,19 @@
     (interactive)
     (mu4e-quit)
     (mu4e-update-mail-and-index t))
+  (setq  mu4e-context-policy 'pick-first
+	 mu4e-confirm-quit nil
+	 mu4e-headers-skip-duplicates t
+	 mu4e-display-update-status-in-modeline t
+	 mu4e-view-show-images t
+	 mu4e-view-show-addresses t
+	 mu4e-date-format "%d/%m/%y"
+	 mu4e-headers-date-format "%d/%m/%Y"
+	 mu4e-compose-dont-reply-to-self t
+	 mu4e-view-fields '(:from :to :cc :bcc :subject :flags :date :maildir :mailing-list :tags :attachments :signature :decryption)
+	 mu4e-headers-fields '((:human-date . 12) (:flags . 6) (:from . 22) (:subject))
+	 mu4e-compose-format-flowed t  ; Re-flow mail so it's not hard wrapped
+	 fill-flowed-encode-column 80) ; The column beyond which flowed lines are wrapped
 
   ;; Prefer plain text
   (with-eval-after-load "mm-decode"
@@ -111,13 +108,13 @@
 (use-package org-mime
   :after mu4e
   :bind (:map mu4e-compose-mode-map
-              ("C-c C-o" . org-mime-edit-mail-in-org-mode)
-              ("C-c h"   . org-mime-htmlize))
+	      ("C-c C-o" . org-mime-edit-mail-in-org-mode)
+	      ("C-c h"   . org-mime-htmlize))
   :config
   ;; Ask before sending email if it should be HTML
   (add-hook 'message-send-hook 'org-mime-confirm-when-no-multipart)
   (setq org-mime-export-options '(:section-numbers nil :with-author nil :with-toc nil)
-        org-mime-export-ascii 'ascii))
+	org-mime-export-ascii 'ascii))
 
 ;; Add attachments from dired
 (use-package gnus-dired
