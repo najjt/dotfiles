@@ -113,21 +113,6 @@
 ;; Set default alert style to send desktop notifications
 (setq alert-default-style 'libnotify)
 
-;; Search and navigation commands
-(use-package consult
-  :defer nil
-  :bind (("C-x C-r"   . consult-recent-file)
-         ("M-y"       . consult-yank-pop)
-         ("C-c C-x f" . consult-recent-file))
-  :custom (consult-preview-key "M-.") ; Preview manually with <M-.>
-  :config
-  (global-set-key [remap switch-to-buffer] 'consult-buffer)
-  (global-set-key [remap switch-to-buffer-other-window] 'consult-buffer-other-window)
-  (global-set-key [remap switch-to-buffer-other-frame] 'consult-buffer-other-frame)
-  (global-set-key [remap goto-line] 'consult-goto-line)
-
-  (use-package embark-consult))
-
 ;; Automatically follow symlinks without prompting
 (setq vc-follow-symlinks t)
 
