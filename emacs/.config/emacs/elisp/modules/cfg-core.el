@@ -195,12 +195,15 @@ needed to trigger automatic refresh before calling `package-install'."
 (delete-selection-mode)
 
 ;; Spell checking
-(use-package jinx
-  :diminish
-  :hook (((markdown-mode org-mode text-mode) . jinx-mode))
-  :bind ("C-c s" . jinx-correct)
+(use-package ispell
+  :ensure nil
   :config
-  (setq jinx-languages "sv en_US"))
+  (setq ispell-program-name "hunspell"
+	ispell-dictionary "sv_SE,en_US")
+  ;; ispell-set-spellchecker-params has to be called
+  ;; before ispell-hunspell-add-multi-dic will work
+  (ispell-set-spellchecker-params)
+  (ispell-hunspell-add-multi-dic "sv_SE,en_US"))
 
 ;; Copy to system clipboard in terminal
 (use-package clipetty
