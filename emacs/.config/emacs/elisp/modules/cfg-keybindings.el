@@ -28,4 +28,5 @@ Position the cursor at its beginning, according to the current mode."
 
 (keymap-global-set "S-<return>" #'my/smart-open-line)
 
+(keymap-global-set "M-s f" 'find-name-dired)
 (provide 'cfg-keys)

@@ -161,8 +161,7 @@
   :ensure nil
   :hook (dired-mode . dired-hide-details-mode)
   :bind
-  (("C-c f"     . find-name-dired)
-   :map dired-mode-map
+  (:map dired-mode-map
    ("b" . dired-up-directory))
   :custom
   ;; Show in long listing format,
