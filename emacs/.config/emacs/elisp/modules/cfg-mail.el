@@ -79,11 +79,6 @@
 					      "Martin"))))))
 
   ;; Other options
-
-  ;; Move messages to the trash folder instead of completely deleting it
-  (fset 'my/move-to-trash "mTrash")
-  (define-key mu4e-headers-mode-map (kbd "d") 'my/move-to-trash)
-  (define-key mu4e-view-mode-map (kbd "d") 'my/move-to-trash)
   (setq  mu4e-context-policy 'pick-first
 	 mu4e-confirm-quit nil
 	 mu4e-headers-skip-duplicates t
