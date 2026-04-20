@@ -53,7 +53,6 @@
   ;; Send mail
   (setq sendmail-program "/usr/bin/msmtp"
 	send-mail-function 'smtpmail-send-it
-	message-sendmail-extra-arguments '("--read-envelope-from")
 	message-send-mail-function 'message-send-mail-with-sendmail)
 
   (setq mu4e-contexts
