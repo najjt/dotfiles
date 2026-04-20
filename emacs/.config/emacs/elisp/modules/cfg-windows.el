@@ -88,37 +88,6 @@
   :config
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
-;; Popup windows
-(use-package popper
-  :bind
-  ("M-+"     . popper-cycle)
-  ("C-c p d" . popper-kill-latest-popup)
-  ("C-c p t" . popper-toggle-type)
-  ("C-c `"   . popper-toggle)
-  :init
-  (setq popper-reference-buffers
-	'("\\*Compile-Log\\*"
-	  "^\\*compilation.*\\*$"
-	  "Output\\*$"
-	  "\\*Async Shell Command\\*"
-	  "^\\*tex-shell.*\\*$"
-	  "^\\*Flycheck.*\\*$"
-	  "^\\*LSP Error List*\\*$"
-	  "^\\*vterminal - dedicated\\*"
-	  magit-mode
-	  comint-mode
-	  shell-mode
-	  term-mode
-	  help-mode
-	  helpful-mode
-	  compilation-mode
-	  mpdel-song-mode))
-  :config
-  (setq popper-mode-line " POP " ; Let it breathe a bit
-	popper-window-height 19)
-  (popper-mode 1)
-  (popper-echo-mode 1))
-
 (use-package hydra
   :bind ("C-c q" . hydra-window/body)
   :config

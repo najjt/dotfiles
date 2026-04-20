@@ -142,11 +142,6 @@
 	("e" . "example")
 	("q" . "quote")))
 
-;; Generate mind maps from org files
-(use-package org-mind-map
-  :init
-  (require 'ox-org))
-
 (use-package org-wild-notifier
   :config
   (org-wild-notifier-mode)
