@@ -90,7 +90,8 @@
 	 mu4e-view-fields '(:from :to :cc :bcc :subject :flags :date :maildir :mailing-list :tags :attachments :signature :decryption)
 	 mu4e-headers-fields '((:human-date . 12) (:flags . 6) (:from . 22) (:subject))
 	 mu4e-compose-format-flowed t  ; Re-flow mail so it's not hard wrapped
-	 fill-flowed-encode-column 80) ; The column beyond which flowed lines are wrapped
+	 fill-flowed-encode-column 80  ; The column beyond which flowed lines are wrapped
+	 mu4e-notification-support t)
 
   ;; Prefer plain text
   (with-eval-after-load "mm-decode"
