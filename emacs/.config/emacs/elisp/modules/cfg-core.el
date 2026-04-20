@@ -104,9 +104,6 @@ needed to trigger automatic refresh before calling `package-install'."
 ;; Show number of matches in the minibuffer
 (setq isearch-lazy-count t)
 
-;; Show completions in a vertical UI
-(fido-vertical-mode)
-
 ;; Auto chmod scripts on save
 (add-hook 'after-save-hook
 	  #'executable-make-buffer-file-executable-if-script-p)
@@ -320,6 +317,14 @@ Position the cursor at its beginning, according to the current mode."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Completions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package vertico
+  :config
+  (setq vertico-scroll-margin 0
+	vertico-count 5
+	vertico-resize t
+	vertico-cycle t)
+  (vertico-mode 1))
 
 ;; Better completion style
 (use-package orderless
