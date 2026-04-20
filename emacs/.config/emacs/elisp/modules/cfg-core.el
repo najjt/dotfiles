@@ -107,6 +107,13 @@ needed to trigger automatic refresh before calling `package-install'."
 ;; Show completions in a vertical UI
 (fido-vertical-mode)
 
+;; Auto chmod scripts on save
+(add-hook 'after-save-hook
+	  #'executable-make-buffer-file-executable-if-script-p)
+
+;; Faster mark popping
+(setq set-mark-command-repeat-pop t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Terminal/Console Settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -187,6 +194,11 @@ needed to trigger automatic refresh before calling `package-install'."
 
 (set-language-environment "UTF-8")
 
+;; Disable bidirectional text scanning
+(setq-default bidi-display-reordering 'left-to-right
+	      bidi-paragraph-direction 'left-to-right)
+(setq bidi-inhibit-bpa t)
+
 ;; Automatic line breaking
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
@@ -209,6 +221,23 @@ needed to trigger automatic refresh before calling `package-install'."
   :diminish
   :if (not (display-graphic-p))
   :hook (after-init . global-clipetty-mode))
+
+;; Skip fontification during input
+(setq redisplay-skip-fontification-on-input t)
+
+;; Save clipboard before killing
+(setq save-interprogram-paste-before-kill t)
+
+;; No duplicates in the kill ring
+(setq kill-do-not-save-duplicates t)
+
+;; Persist kill ring across sessions
+(setq savehist-additional-variables
+      '(search-ring regexp-search-ring kill-ring))
+
+;; Hide inapplicable commands for current major mode
+(setq read-extended-command-predicate
+      #'command-completion-default-include-p)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Keybindings
@@ -248,6 +277,9 @@ Position the cursor at its beginning, according to the current mode."
 (keymap-global-set "M-F" 'forward-to-word)
 ;; Move backward to end of previous word
 (keymap-global-set "M-B" 'backward-to-word)
+
+;; Easier repeating of commands
+(repeat-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Programming Settings

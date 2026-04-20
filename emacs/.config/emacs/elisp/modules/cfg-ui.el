@@ -131,4 +131,8 @@
 ;; Scroll just enough to bring cursor back into view
 (setq scroll-conservatively 10000)
 
+;; Don't render cursors in non-focused windows
+(setq-default cursor-in-non-selected-windows nil)
+(setq highlight-nonselected-windows nil)
+
 (provide 'cfg-ui)

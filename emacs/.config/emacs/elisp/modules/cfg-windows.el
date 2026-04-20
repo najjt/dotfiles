@@ -62,6 +62,25 @@
 ;; Auto focus help-mode windows
 (setq help-window-select t)
 
+;; Proportionally resize windows
+(setq window-combination-resize t)
+
+;; Reversible <C-x 1>
+(defun toggle-delete-other-windows ()
+  "Delete other windows in frame if any, or restore previous window config."
+  (interactive)
+  (if (and winner-mode
+	   (equal (selected-window) (next-window)))
+      (winner-undo)
+    (delete-other-windows)))
+
+(global-set-key (kbd "C-x 1") #'toggle-delete-other-windows)
+
+;; Recenter after save-place restores position
+(advice-add 'save-place-find-file-hook :after
+	    (lambda (&rest _)
+	      (when buffer-file-name (ignore-errors (recenter)))))
+
 ;; Manage windows
 (use-package ace-window
   :bind ("M-o" . ace-window)
