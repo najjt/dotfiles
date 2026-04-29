@@ -15,8 +15,8 @@ export TERM=xterm-256color
 export GPG_TTY=$(tty)
 
 # Language & locale
-export LANGUAGE="en_IE.UTF-8"
-export LANG="en_IE.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+export LANG="en_US.UTF-8"
 export LC_ALL="en_IE.UTF-8"
 export LC_CTYPE="en_IE.UTF-8"
 
