@@ -10,7 +10,6 @@
 	 ("C-c c"     . org-capture)
 	 ("C-c l"     . org-store-link)
 	 ("C-c M-RET" . org-insert-todo-heading)) ; For terminal
-  :hook (org-mode . (lambda () (setq tab-width 8)))
   :config
   (setq org-directory "~/notes/org"
 	org-todo-keywords '((sequence "TODO" "|" "DONE"))
@@ -55,10 +54,7 @@
    '(org-level-5 ((t (:inherit outline-5 :weight normal))))
    '(org-level-6 ((t (:inherit outline-6 :weight normal))))
    '(org-level-7 ((t (:inherit outline-7 :weight normal))))
-   '(org-level-8 ((t (:inherit outline-8 :weight normal)))))
-
-  ;; Put cursor at beginning of buffer when opening agenda
-  (add-hook 'org-agenda-finalize-hook #'beginning-of-buffer))
+   '(org-level-8 ((t (:inherit outline-8 :weight normal))))))
 
 ;; Generate a table of contents
 (use-package toc-org
@@ -95,9 +91,6 @@
    '(org-agenda-date ((t (:height 1.0 :weight bold :background unspecified))))
    '(org-agenda-date-today ((t (:height 1.3 :weight bold :background unspecified :underline unspecified))))))
 
-;; Show org item properties in the agenda buffer
-(use-package org-agenda-property)
-
 (use-package org-capture
   :ensure nil
   :after org
@@ -126,22 +119,6 @@
   :after org
   :pin melpa
   :custom (org-contacts-files '("~/notes/org/kontakter.org")))
-
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (java . t)))
-
-(setq org-confirm-babel-evaluate nil)
-
-;; Block templates
-(setq org-structure-template-alist
-      '(("l" . "src emacs-lisp")
-	("j" . "src java")
-	("h" . "src sh")
-	("s" . "src")
-	("e" . "example")
-	("q" . "quote")))
 
 (use-package org-wild-notifier
   :config
