@@ -71,7 +71,7 @@
 
 ;; Show full path to file in header line
 (defun my/set-header-line-for-files-only ()
-  "Set `header-line-format` to show bold file name info only in file-visiting buffers."
+  "Set `header-line-format` to show file name info only in file-visiting buffers."
   (setq header-line-format
 	(when buffer-file-name
 	  (let ((file-name (abbreviate-file-name buffer-file-name)))

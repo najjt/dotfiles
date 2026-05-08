@@ -112,73 +112,6 @@ needed to trigger automatic refresh before calling `package-install'."
 (setq set-mark-command-repeat-pop t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Terminal/Console Settings
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Copy links to system clipboard in terminal Emacs
-(define-advice browse-url
-    (:around (orig-fun &rest args) copy-url-if-termainl)
-  (if (display-graphic-p)
-      (apply orig-fun args)
-    (let ((url (nth 0 args)))
-      (message "Clipetty link: %s" url)
-      (clipetty--emit (clipetty--osc url t)))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Shell/Vterm Settings
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(use-package vterm
-  :custom
-  (term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
-  (vterm-shell "zsh")
-  (vterm-max-scrollback 10000))
-
-;; Open multiple vterm buffers
-(use-package multi-vterm
-  :bind
-  ("C-c T"     . multi-vterm-dedicated-toggle)
-  ("C-c t" . multi-vterm)
-  :config
-  (setq multi-vterm-dedicated-window-height-percent 30))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; File/Directory Settings
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(use-package dired
-  :ensure nil
-  :hook (dired-mode . dired-hide-details-mode)
-  :bind
-  (:map dired-mode-map ("b" . dired-up-directory))
-  :custom
-  ;; Show in long listing format,
-  ;; show hidden files,
-  ;; show sizes in human-readable format
-  ;; sort directories first,
-  ;; use natural sort for version numbers within text
-  (dired-listing-switches "-lAhv --group-directories-first")
-  ;; No infinite dired buffers!
-  (dired-kill-when-opening-new-dired-buffer t))
-
-(use-package dired-open)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; TeX/LaTeX Settings
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(setq TeX-source-correlate-method 'synctex)
-
-(use-package auctex
-  :config
-  (setq TeX-auto-save t
-	TeX-parse-self t
-	TeX-view-program-selection '((output-pdf "PDF Tools"))
-	TeX-source-correlate-start-server t
-	TeX-source-correlate-mode 1)
-  (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Text-related Settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -370,5 +303,70 @@ Position the cursor at its beginning, according to the current mode."
   :config
   ;; Use Embark to help with command discovery
   (setq prefix-help-command #'embark-prefix-help-command))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Terminal/Console Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Copy links to system clipboard in terminal Emacs
+(define-advice browse-url
+    (:around (orig-fun &rest args) copy-url-if-termainl)
+  (if (display-graphic-p)
+      (apply orig-fun args)
+    (let ((url (nth 0 args)))
+      (message "Clipetty link: %s" url)
+      (clipetty--emit (clipetty--osc url t)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Shell/Vterm Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package vterm
+  :custom
+  (term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
+  (vterm-shell "zsh")
+  (vterm-max-scrollback 10000))
+
+;; Open multiple vterm buffers
+(use-package multi-vterm
+  :bind
+  ("C-c T"     . multi-vterm-dedicated-toggle)
+  ("C-c t" . multi-vterm)
+  :config
+  (setq multi-vterm-dedicated-window-height-percent 30))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; File/Directory Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package dired
+  :ensure nil
+  :hook (dired-mode . dired-hide-details-mode)
+  :bind
+  (:map dired-mode-map ("b" . dired-up-directory))
+  :custom
+  ;; Show in long listing format,
+  ;; show hidden files,
+  ;; show sizes in human-readable format
+  ;; sort directories first,
+  ;; use natural sort for version numbers within text
+  (dired-listing-switches "-lAhv --group-directories-first")
+  ;; No infinite dired buffers!
+  (dired-kill-when-opening-new-dired-buffer t))
+
+(use-package dired-open)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; TeX/LaTeX Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package auctex
+  :config
+  (setq TeX-auto-save t
+	TeX-parse-self t
+	TeX-view-program-selection '((output-pdf "PDF Tools"))
+	TeX-source-correlate-start-server t
+	TeX-source-correlate-mode 1)
+  (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
 
 (provide 'cfg-core)
