@@ -277,11 +277,9 @@ Position the cursor at its beginning, according to the current mode."
 (use-package prog-mode
   :ensure nil
   :hook (prog-mode . (lambda ()
-		       (subword-mode)         ; Toggle subword movement
-		       (show-paren-mode)      ; Highlight matching parentheses
-		       (electric-pair-mode))) ; Insert matching delimiters
-  :mode ("\\.rasi\\'"
-	 "\\.edn\\'"))
+		       (subword-mode)          ; Toggle subword movement
+		       (show-paren-mode)       ; Highlight matching parentheses
+		       (electric-pair-mode)))) ; Insert matching delimiters
 
 ;; Git interface
 (use-package magit
