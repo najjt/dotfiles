@@ -1,4 +1,0 @@
-These are my configuration files for Emacs.
-
-[[file:early-init.el][early-init.el]] and [[file:init.el][init.el]] both contain settings executed at initialization. The
-[[file:elisp/modules][modules]] directory holds my modularized configuration files.
