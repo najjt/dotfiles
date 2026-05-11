@@ -131,6 +131,9 @@ needed to trigger automatic refresh before calling `package-install'."
 ;; Spell checking
 (use-package ispell
   :ensure nil
+  :hook ((text-mode . flyspell-mode)
+	 (prog-mode . flyspell-prog-mode))
+  :bind ("C-c s" . flyspell-check-previous-highlighted-word)
   :config
   (setq ispell-program-name "hunspell"
 	ispell-dictionary "sv_SE,en_US")
