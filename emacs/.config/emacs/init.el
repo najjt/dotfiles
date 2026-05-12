@@ -224,6 +224,8 @@ needed to trigger automatic refresh before calling `package-install'."
 (setq read-extended-command-predicate
       #'command-completion-default-include-p)
 
+(setq mouse-wheel-scroll-amount '(4))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Text-related Settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
