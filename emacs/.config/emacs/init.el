@@ -104,7 +104,7 @@
       use-package-always-demand (daemonp))
 
 ;; Add packages to load path
-;; (add-to-list 'load-path (expand-file-name "~/.config/emacs/lisp"))
+(add-to-list 'load-path (expand-file-name "~/.config/emacs/lisp"))
 
 ;; Refresh packages when using package-install if last refresh was longer than 24 hours ago
 ;; Source: https://andreyor.st/posts/2022-07-15-refresh-package-contents-automatically/
