@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
-(setq native-comp-jit-compilation-deny-list '(".*org-element.*"))
+(setq user-full-name "Martin Lönn Andersson"
+      user-mail-address "martin@malon.se")
 
 ;;; Performance
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -137,12 +138,6 @@ needed to trigger automatic refresh before calling `package-install'."
   (customize-save-variable
    'package-last-refresh-date
    (format-time-string "%Y-%m-%dT%H:%M")))
-
-;;; User Information
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(setq user-full-name "Martin Lönn Andersson"
-      user-mail-address "martin@malon.se")
 
 ;;; System Integration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
