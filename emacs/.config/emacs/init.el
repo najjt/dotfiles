@@ -214,7 +214,7 @@ needed to trigger automatic refresh before calling `package-install'."
 
 (setq mouse-wheel-scroll-amount '(4))
 
-;;; Text-related Settings
+;;; Text
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Clean up unnecessary whitespace on save
@@ -283,7 +283,7 @@ Position the cursor at its beginning, according to the current mode."
 
 (keymap-global-set "M-o" 'other-window)
 
-;;; Programming Settings
+;;; Programming
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package prog-mode
@@ -308,9 +308,7 @@ Position the cursor at its beginning, according to the current mode."
   :config
   (global-git-gutter-mode))
 
-;;; Common File Types
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;; Common File Types
 (use-package yaml-mode)
 (use-package json-mode)
 (use-package csv-mode)
@@ -386,7 +384,7 @@ Position the cursor at its beginning, according to the current mode."
   (add-to-list 'corfu-margin-formatters
 	       #'nerd-icons-corfu-formatter))
 
-;;; Window Settings
+;;; Windows
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Undo and redo changes in window layout
@@ -466,7 +464,7 @@ Position the cursor at its beginning, according to the current mode."
 	("\\*compilation\\*" display-buffer-no-window
 	 (allow-no-window . t))))
 
-;;; UI Settings
+;;; UI
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Set default frame dimensions
@@ -581,7 +579,7 @@ Position the cursor at its beginning, according to the current mode."
 (setq-default cursor-in-non-selected-windows nil)
 (setq highlight-nonselected-windows nil)
 
-;;; Org Mode Settings
+;;; Org Mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package org
