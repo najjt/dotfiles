@@ -20,12 +20,8 @@
 ;; Increase large file warning threshold
 (setq large-file-warning-threshold 100000000)
 
-;;; Customization & Persistence
+;;; Persistence
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Make customize-based setting live in the custom.el file
-(setq custom-file "~/.config/emacs/custom.el")
-(load custom-file 'noerror)
 
 ;; Save text entered in minibuffer prompts
 (setq history-length 25)
@@ -43,6 +39,10 @@
 
 ;;; File Handling
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Make customize-based setting live in the custom.el file
+(setq custom-file "~/.config/emacs/custom.el")
+(load custom-file 'noerror)
 
 ;; Set backup, autosave and lockfiles
 ;; to live in /tmp
