@@ -785,7 +785,9 @@ Position the cursor at its beginning, according to the current mode."
   (add-hook 'TeX-after-compilation-finished-functions
 	    #'TeX-revert-document-buffer))
 
-(use-package pdf-tools)
+(use-package pdf-tools
+  :config
+  (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode)))
 
 ;; Local Variables:
 ;; outline-minor-mode-cycle: t
